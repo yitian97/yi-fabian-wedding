@@ -161,13 +161,23 @@ $(document).ready(function () {
 
 
     /********************** Toggle Map Content **********************/
-    $('#btn-show-map').click(function () {
-        $('#map-content').toggleClass('toggle-map-content');
-        $('#btn-show-content').toggleClass('toggle-map-content');
-    });
     $('#btn-show-content').click(function () {
         $('#map-content').toggleClass('toggle-map-content');
-        $('#btn-show-content').toggleClass('toggle-map-content');
+        // Button stays visible, only content toggles
+    });
+    
+    // Ceremony venue map
+    $('#btn-show-ceremony-map').click(function () {
+        // Hide the info window but keep the "Show info" button visible
+        $('#map-content').addClass('toggle-map-content');
+        showCeremonyMap();
+    });
+    
+    // Banquet venue map
+    $('#btn-show-banquet-map').click(function () {
+        // Hide the info window but keep the "Show info" button visible
+        $('#map-content').addClass('toggle-map-content');
+        showBanquetMap();
     });
 
     /********************** Add to Calendar **********************/
@@ -256,19 +266,133 @@ $(document).ready(function () {
 /********************** Extras **********************/
 
 // Google map
-function initMap() {
-    var location = {lat: 41.675278, lng: 2.790556};
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
-        center: location,
-        scrollwheel: false
-    });
+// Global map variable to reuse
+var currentMap = null;
 
-    var marker = new google.maps.Marker({
-        position: location,
-        map: map
-    });
+function initMap() {
+    // Initialize with ceremony venue by default
+    showCeremonyMap();
 }
+
+function showCeremonyMap() {
+    try {
+        var mapElement = document.getElementById('map-canvas');
+        if (!mapElement) {
+            console.error('Map canvas element not found');
+            return;
+        }
+        
+        // Check if Google Maps API is loaded
+        if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
+            showMapFallback(mapElement, 'Marimurtra Botanical Garden', 'Passeig de Carles Faust, 9<br>17300 Blanes, Girona, Spain');
+            return;
+        }
+        
+        // Ceremony venue: Marimurtra Botanical Garden coordinates
+        var location = {lat: 41.67685518645192, lng: 2.8023133370418227};
+        
+        if (currentMap) {
+            // Update existing map
+            currentMap.setCenter(location);
+            currentMap.setZoom(15);
+            currentMap.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+            // Remove old markers and add new one
+            if (currentMap.markers) {
+                currentMap.markers.forEach(function(marker) {
+                    marker.setMap(null);
+                });
+            }
+        } else {
+            // Create new map
+            currentMap = new google.maps.Map(mapElement, {
+                zoom: 15,
+                center: location,
+                scrollwheel: false,
+                mapTypeId: google.maps.MapTypeId.SATELLITE
+            });
+            currentMap.markers = [];
+        }
+
+        var marker = new google.maps.Marker({
+            position: location,
+            map: currentMap
+        });
+        currentMap.markers.push(marker);
+    } catch (error) {
+        console.error('Error initializing ceremony map:', error);
+        var mapElement = document.getElementById('map-canvas');
+        if (mapElement) {
+            showMapFallback(mapElement, 'Marimurtra Botanical Garden', 'Passeig de Carles Faust, 9<br>17300 Blanes, Girona, Spain');
+        }
+    }
+}
+
+function showBanquetMap() {
+    try {
+        var mapElement = document.getElementById('map-canvas');
+        if (!mapElement) {
+            console.error('Map canvas element not found');
+            return;
+        }
+        
+        // Check if Google Maps API is loaded
+        if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
+            showMapFallback(mapElement, 'Banquet Venue', 'Plaça Nacions Unides, 1<br>17310 Canyelles, Girona, Spain');
+            return;
+        }
+        
+        // Banquet venue coordinates
+        var location = {lat: 41.70508170891604, lng: 2.877597663840154};
+        
+        if (currentMap) {
+            // Update existing map
+            currentMap.setCenter(location);
+            currentMap.setZoom(15);
+            currentMap.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+            // Remove old markers and add new one
+            if (currentMap.markers) {
+                currentMap.markers.forEach(function(marker) {
+                    marker.setMap(null);
+                });
+            }
+        } else {
+            // Create new map
+            currentMap = new google.maps.Map(mapElement, {
+                zoom: 15,
+                center: location,
+                scrollwheel: false,
+                mapTypeId: google.maps.MapTypeId.SATELLITE
+            });
+            currentMap.markers = [];
+        }
+
+        var marker = new google.maps.Marker({
+            position: location,
+            map: currentMap
+        });
+        currentMap.markers.push(marker);
+    } catch (error) {
+        console.error('Error initializing banquet map:', error);
+        var mapElement = document.getElementById('map-canvas');
+        if (mapElement) {
+            showMapFallback(mapElement, 'Banquet Venue', 'Plaça Nacions Unides, 1<br>17310 Canyelles, Girona, Spain');
+        }
+    }
+}
+
+function showMapFallback(mapElement, title, address) {
+    title = title || 'Venue';
+    address = address || 'Address';
+    mapElement.innerHTML = '<div style="padding: 40px; text-align: center; background: #f5f5f5; border-radius: 5px; height: 100%; display: flex; flex-direction: column; justify-content: center;"><h4 style="margin-bottom: 15px;">' + title + '</h4><p style="font-size: 16px; color: #666; margin-bottom: 20px;">' + address + '</p><a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(title + ' ' + address) + '" target="_blank" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: white; text-decoration: none; border-radius: 3px; margin-top: 10px;">Open in Google Maps</a></div>';
+}
+
+// Fallback if Google Maps API fails to load
+window.gm_authFailure = function() {
+    var mapElement = document.getElementById('map-canvas');
+    if (mapElement) {
+        showMapFallback(mapElement);
+    }
+};
 
 function initBBSRMap() {
     var la_fiesta = {lat: 20.305826, lng: 85.85480189999998};

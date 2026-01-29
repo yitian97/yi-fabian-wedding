@@ -58,6 +58,69 @@
     <link rel="stylesheet" href="css/queries.css">
     <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
+    <style>
+        /* Fix RSVP form input placeholder alignment */
+        .rsvp .form-input-group {
+            display: flex !important;
+            align-items: center !important;
+            position: relative !important;
+        }
+        .rsvp .form-input-group i {
+            position: absolute !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            margin-left: 20px !important;
+            font-size: 14px !important;
+            color: #d4af37 !important;
+            z-index: 1 !important;
+        }
+        .rsvp .form-input-group i:not(.fa-chevron-down):after {
+            content: "" !important;
+            height: 30px !important;
+            width: 1px !important;
+            border-right: solid 1px #e0e0e0 !important;
+            position: absolute !important;
+            top: 50% !important;
+            left: 30px !important;
+            transform: translateY(-50%) !important;
+        }
+        .rsvp .form-input-group input,
+        .rsvp .form-input-group select {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            padding-left: 68px !important;
+            margin: 0 !important;
+            border: none !important;
+            outline: none !important;
+            background: transparent !important;
+            line-height: 55px !important;
+            height: 55px !important;
+            box-sizing: border-box !important;
+        }
+        .rsvp .form-input-group select {
+            padding-right: 30px !important;
+        }
+        .rsvp .form-input-group input::-webkit-input-placeholder {
+            line-height: 55px !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .rsvp .form-input-group input::-moz-placeholder {
+            line-height: 55px !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .rsvp .form-input-group input:-ms-input-placeholder {
+            line-height: 55px !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .rsvp .form-input-group input::placeholder {
+            line-height: 55px !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    </style>
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body id="top">
@@ -76,9 +139,9 @@
                             <li><a href="#intro">Our story</a></li>
                             <li><a href="#events">Events</a></li>
                             <li class="hidden-sm hidden-xs"><a href="#video-bg">Glimpse of the city</a></li>
+                            <li><a href="#map">Venue</a></li>
                         </ul>
                         <ul class="member-actions">
-                            <li><a href="#map" class="login">Venue</a></li>
                             <li><a href="#rsvp" class="btn-white btn-small">RSVP</a></li>
                         </ul>
                     </nav>
@@ -150,7 +213,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="header">Events 2nd of May</h3>
+                <h3 class="header">Events Preview</h3>
             </div>
         </div>
         <div class="row">
@@ -168,12 +231,13 @@
                     <h5>Photo Session <span class="time">18:00 – 18:50</span></h5>
                     <p>Continued photo session with family and friends</p>
                 </div>
-            </div>
-            <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
                 <div class="wp4">
                     <h5>Transfer to Restaurant <span class="time">19:00 – 19:30</span></h5>
                     <p>We'll make our way to the reception venue</p>
                 </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
+
                 <div class="wp5">
                     <h5>Garden Cocktail Hour <span class="time">19:30 – 21:00</span></h5>
                     <p>A relaxed time to mingle and enjoy drinks in the garden</p>
@@ -189,9 +253,14 @@
             </div>
         </div>
         <div class="row section-padding">
-            <div class="col-md-4 col-md-offset-4 text-center">
+            <div class="col-md-6 text-center">
                 <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#dc-modal">
                     <i class="fa fa-barcode"></i>&nbsp;&nbsp;Dress code
+                </a>
+            </div>
+            <div class="col-md-6 text-center">
+                <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#menu-modal">
+                    <i class="fa fa-cutlery"></i>&nbsp;&nbsp;Menu
                 </a>
             </div>
         </div>
@@ -208,38 +277,86 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
                     </button>
                     <h3 class="text-center section-padding">Ugh... dress codes?</h3>
-                    <h5>Mehndi <span class="time">1PM - 5PM</span></h5>
                     <p>
-                        <strong>Ethnic indian wear</strong>
-                        <br>
-                        Ladies can wear something
-                        <a href="https://www.pinterest.com/ramswarooppatra/mehndi-dress-for-women/">bright & vivid</a>
-                        and gentlemen can be on
-                        their <a href="https://www.pinterest.com/ramswarooppatra/mehndi-dress-for-men/">vibrant
-                        kurtas</a> with pants or pyjamas along with an optional shawl.
+                        We want you to feel comfortable, happy, and yourself—whatever that means for you. There's no strict dress code, just come as you are and ready to celebrate with us ❤️
                     </p>
-                    <h5>Cocktail Night <span class="time">7PM - 12AM</span></h5>
+                    
                     <p>
-                        <strong>Western attire</strong>
-                        <br>
-                        A semi-formal look that is contemporary & fashionable which is not too prim & proper is the best
-                        to pull off this night. You can see some pins for
-                        <a href="https://www.pinterest.com/ramswarooppatra/cocktail-night-outfit-for-women/">ladies</a>
-                        & <a href="https://www.pinterest.com/ramswarooppatra/cocktail-night-outfit-for-men/">gents</a>.
+                        <strong>Ladies</strong><br>
+                        Please kindly avoid white, china red (the bride's color), and black.<br>
+                        If you'd like to match the vibe (and look great in photos), we're going for warm, neutral pastel tones.
                     </p>
-                    <h5>Wedding <span class="time">6PM-12AM</span></h5>
+                    
                     <p>
-                        <strong>Indo-western</strong>
-                        <br>
-                        Ladies can flaunt their unconventional sarees,
-                        <a href="https://www.pinterest.com/ramswarooppatra/indo-western-lehengas/">lehengas</a>,
-                        <a href="https://www.pinterest.com/ramswarooppatra/indo-western-anarkalis/">anarkalis</a>,
-                        dresses and the list
-                        goes on whereas gentlemen can wear any kind of suit or just blazer. If you don't like to wear a
-                        suit/blazer, you can do a <a
-                            href="https://www.pinterest.com/ramswarooppatra/high-neck-jackets-for-men/">high-neck
-                        (band gala) waistcoat & shirt</a> combo.
+                        <strong>Gentlemen</strong><br>
+                        Smart casual to semi-formal—anything you feel good and comfortable wearing is perfect.
                     </p>
+                    
+                    <p>
+                        <strong>Good to know</strong><br>
+                        The ceremony and dinner will be outdoors by the sea, so it can get a little breezy in the evening—bring a light jacket or wrap just in case.<br>
+                        The party will be indoors, so once the dancing starts, you can drop the jacket and have fun 💃🕺
+                    </p>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div id="menu-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
+                    </button>
+                    <h3 class="text-center section-padding">Menu</h3>
+                    <div style="text-align: left; padding: 0 20px;">
+                        <p style="margin-bottom: 20px;">
+                            <strong>Appetizer</strong><br>
+                            Mediterranean tapas
+                        </p>
+                        
+                        <p style="margin-bottom: 15px;">
+                            <strong>Main Course</strong> (Choose one)
+                        </p>
+                        
+                        <p style="margin-bottom: 15px;">
+                            <strong style="color: #0066cc;"><i class="fa fa-tint"></i> THE SEA...</strong><br>
+                            Hake supremes with crunchy seafood mussoline.
+                        </p>
+                        
+                        <p style="margin-bottom: 15px; text-align: center;">
+                            <strong>- OR -</strong>
+                        </p>
+                        
+                        <p style="margin-bottom: 15px;">
+                            <strong style="color: #8B4513;"><i class="fa fa-tree"></i> THE MOUNTAIN...</strong><br>
+                            Mellow Iberian Pork at the "Cabernet Sauvignon" with creamy truffled potato, raisins and pine nuts.
+                        </p>
+                        
+                        <p style="margin-bottom: 20px; font-size: 0.9em; color: #666;">
+                            * Possibility of changing it for braised veal
+                        </p>
+                        
+                        <p style="margin-bottom: 20px;">
+                            <strong>DESSERT</strong><br>
+                            Mousse of nougat of almond with chocolate to the cup
+                        </p>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div id="venue-map-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document" style="width: 90%; max-width: 1200px;">
+            <div class="modal-content">
+                <div class="modal-body" style="padding: 20px;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
+                    </button>
+                    <h3 class="text-center section-padding">Venue Map</h3>
+                    <div style="text-align: center;">
+                        <img src="img/venue_map.png" alt="Venue Map" class="img-responsive" style="max-width: 100%; height: auto; margin: 0 auto;">
+                    </div>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -249,39 +366,110 @@
 
 <section id="video-bg" class="hidden-sm hidden-xs">
     <div id="bgndVideo" class="player"
-         data-property="{videoURL:'https://youtu.be/9giqL1H6yRs',containment:'#video-bg',autoPlay:true, mute:true, showControls:false, startAt:80, stopAt:259, opacity:1}">
+         data-property="{videoURL:'https://youtu.be/TRDmKTIYwMQ',containment:'#video-bg',autoPlay:true, mute:true, showControls:false, startAt:14, stopAt:55, opacity:1}">
     </div>
     <div id="video-content">
-        <h5>Kolkata</h5>
+        <h5>Barcelona</h5>
         <p>City of joy</p>
     </div>
 </section>
 
 <section id="map" class="section-padding">
-    <div class="text-center">
+    <div class="container">
+        <div class="row section-padding">
+            <div class="col-md-12 text-center">
+                <h3 class="header">The Ceremony Venue</h3>
+                <p>The ceremony will be held at Linnaeus Pavilion inside <strong>Marimurtra Botanical Garden</strong> in Blanes. </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
+                <img src="img/marimurtra.jpg" alt="Venue" class="img-responsive" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
+                <img src="img/marimurtra2.jpg" alt="Venue" class="img-responsive" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+    </div>
+    <div class="text-center section-padding">
         <h3>How do I get there?</h3>
         <p>It's way easier than you think!</p>
     </div>
-    <div id="map-canvas"></div>
+    <div class="container section-padding">
+        <div class="row">
+            <div class="col-md-7">
+                <h4 style="margin-bottom: 20px;">Getting to the Ceremony Venue from Barcelona</h4>
+                <p style="margin-bottom: 20px;">
+
+                </p>
+                <ul style="text-align: left; margin-bottom: 30px;">
+                    <li style="margin-bottom: 10px;">
+                        <strong>By Train:</strong> Take the R1 train (Rodalies de Catalunya) from Barcelona Sants or Plaça Catalunya to Blanes station (approximately 1.5 hours). 
+                        Trains run frequently throughout the day. Tickets can be purchased directly at the station. 
+                        From Blanes station, it's a 15-minute walk or short taxi ride to the venue.
+                        <br><a href="https://rodalies.gencat.cat/en/horaris/" target="_blank">Check train schedules →</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <strong>By Car:</strong> It is 1 hour drive from Barcelona to the venue. Take the AP-7 or C-32 highway towards Girona, then exit at Blanes. 
+                        Parking is available near the venue.
+                        <br><a href="https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden" target="_blank">Get directions →</a>
+                    </li>
+    
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <div style="background: #f5f5f5; padding: 20px; border-radius: 5px; height: 100%;">
+                    <h5 style="margin-bottom: 15px;">🚌 Shuttle Bus Service</h5>
+                    <p style="margin-bottom: 10px;">
+                        We will provide a shuttle bus <strong>from Marimurtra Botanical Garden (ceremony venue) to the banquet venue</strong> after the ceremony.
+                    </p>
+                    <p>
+                        There will be an extra shuttle bus to transfer the drunk guests <strong>from the banquet venue back to Barcelona</strong> at the end of the night. More info will be updated here later.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-12">
+                <div id="map-canvas" style="height: 500px; width: 100%;"></div>
+            </div>
+            <div class="col-md-4 col-sm-12" style="padding-left: 20px;">
+                <div style="position: relative;">
+                    <img src="img/venue_map.png" alt="Venue Map" class="img-responsive" style="width: 100%; height: 500px; object-fit: contain; background-color: #f5f5f5; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">
+                        <div id="btn-view-larger" class="pointer-events-auto" data-toggle="modal" data-target="#venue-map-modal" style="cursor: pointer; display: inline-block; padding: 10px 20px; background: rgba(255,255,255,0.95); border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                            <i class="fa fa-expand"></i>&nbsp;&nbsp;View larger
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="map-content-wrapper" class="container pointer-events-none">
         <div class="row">
-            <div class="col-xs-offset-1 col-xs-10 col-md-offset-3 col-md-6">
+            <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-6">
                 <div class="text-center">
-                    <div id="btn-show-content" class="toggle-map-content pointer-events-auto">
+                    <div id="btn-show-content" class="pointer-events-auto">
                         <i class="fa fa-info-circle"></i>&nbsp;&nbsp; Show info
                     </div>
                 </div>
                 <div id="map-content" class="pointer-events-auto">
                     <div class="row">
-                        <div class="col-md-12">
-                            <h5>Marimurtra Botanical Garden</h5>
-                            <p>Passeig de Carles Faust, 9, 17300 Blanes, Girona, Spain</p>
+                        <div class="col-md-6" style="padding-right: 15px;">
+                            <h5>Ceremony Venue</h5>
+                            <p>Marimurtra Botanical Garden<br>Passeig de Carles Faust, 9, 17300 Blanes, Girona, Spain</p>
+                            <div class="text-center" style="margin-top: 15px;">
+                                <a class="btn btn-accent btn-small" id="btn-show-ceremony-map"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Show map</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col-md-12" style="padding: 5px;">
-                            <a class="btn btn-accent btn-small" id="btn-show-map"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Show
-                                map</a>
+                        <div class="col-md-6" style="padding-left: 15px; border-left: 1px solid #e0e0e0;">
+                            <h5>Banquet Venue</h5>
+                            <p>Plaça Nacions Unides, 1, 17310 Canyelles, Girona, Spain</p>
+                            <div class="text-center" style="margin-top: 15px;">
+                                <a class="btn btn-accent btn-small" id="btn-show-banquet-map"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Show map</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -312,33 +500,61 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <h3>What are you waiting for?</h3>
-                <p>We would greatly appreciate if you could RSVP before 1st of November '17</p>
+                <p>We would greatly appreciate if you could RSVP before 31st of March, 2026</p>
                 <form id="rsvp-form" class="rsvp-form"
                       action=""
                       method="POST">
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-envelope"></i><input type="email" name="email" class=""
-                                                                     placeholder="Your email"
-                                                                     required>
+                                <i class="fa fa-user"></i><input name="name" class=""
+                                                                 placeholder="Name"
+                                                                 required style="padding: 0; padding-left: 68px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-user"></i><input name="name" class=""
-                                                                 placeholder="Your name"
-                                                                 required>
+                                <i class="fa fa-phone"></i><input type="tel" name="phone" class=""
+                                                                 placeholder="Phone"
+                                                                 required style="padding: 0; padding-left: 68px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                        <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-users"></i><input type="number" name="extras" class="" min="0"
+                                <i class="fa fa-heart"></i><input type="number" name="partners" class="" min="0"
+                                                                  max="1"
+                                                                  placeholder="Partner"
+                                                                  required style="padding: 0; padding-left: 68px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-users"></i><input type="number" name="kids" class="" min="0"
                                                                   max="4"
-                                                                  placeholder="Husband/Wife or kids"
-                                                                  required>
+                                                                  placeholder="Kids"
+                                                                  required style="padding: 0; padding-left: 68px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group" style="position: relative;">
+                                <i class="fa fa-bus"></i>
+                                <select name="shuttle_bus" class="" required style="padding: 0; padding-left: 68px; padding-right: 30px; margin: 0; width: 100%; height: 55px; border: none; border-radius: 6px; background: transparent; -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; line-height: 55px; box-sizing: border-box;">
+                                    <option value="">Shuttle bus?</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <i class="fa fa-chevron-down" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #999;"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-cutlery"></i><input type="text" name="food_requirements" class=""
+                                                                     placeholder="Food requirements"
+                                                                     style="padding: 0; padding-left: 68px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
                             </div>
                         </div>
                     </div>
@@ -372,9 +588,9 @@
 <script src="js/jquery.flexslider-min.js"></script>
 <script src="js/jquery.mb.YTPlayer.min.js"></script>
 <script src="js/vendor/ouical.js"></script>
-<script src="js/scripts.min.js"></script>
+<script src="js/scripts.js"></script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlPw3GQYI3faa_9mRE6plWuM7xNEmrwH0&callback=initMap"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqY5anuxoX2o_67kR8Owvd9klybNWPT-c&callback=initMap"></script>
 <!-- Google Analytics -->
 <script>
     (function (i, s, o, g, r, a, m) {
