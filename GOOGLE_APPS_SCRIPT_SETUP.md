@@ -77,10 +77,19 @@ function doPost(e) {
     // Add the data to the sheet in the correct order: Timestamp, Name, Phone, Partners, Kids, Shuttle Bus, Food Requirements
     sheet.appendRow([timestamp, name, phone, partners, kids, shuttleBus, foodRequirements]);
     
-    // Optional: Send email notification (uncomment if you want this)
-    // var subject = "New RSVP: " + name;
-    // var body = "Name: " + name + "\nPhone: " + phone + "\nPartners: " + partners + "\nKids: " + kids + "\nShuttle Bus: " + shuttleBus + "\nFood Requirements: " + (foodRequirements || "None");
-    // MailApp.sendEmail("your-email@gmail.com", subject, body);
+    // Send email notification every time someone RSVPs
+    // IMPORTANT: Replace "your-email@gmail.com" with your actual email address
+    var recipientEmail = "your-email@gmail.com"; // ⬅️ CHANGE THIS TO YOUR EMAIL
+    var subject = "🎉 New RSVP: " + name;
+    var body = "You have received a new RSVP!\n\n" +
+               "Name: " + name + "\n" +
+               "Phone: " + phone + "\n" +
+               "Partners: " + partners + "\n" +
+               "Kids: " + kids + "\n" +
+               "Shuttle Bus: " + shuttleBus + "\n" +
+               "Food Requirements: " + (foodRequirements || "None") + "\n\n" +
+               "Timestamp: " + timestamp;
+    MailApp.sendEmail(recipientEmail, subject, body);
     
     // Return success response with CORS headers
     return ContentService.createTextOutput(JSON.stringify({
@@ -147,18 +156,25 @@ function doGet(e) {
 3. Submit it
 4. Check your Google Sheet - you should see the data appear!
 
-## Optional: Email Notifications
+## Step 6: Enable Email Notifications
 
-If you want to receive an email every time someone RSVPs:
+The script is already set up to send email notifications! You just need to:
 
 1. Go back to your Apps Script editor
-2. Find the commented lines (starting with `// Optional: Send email notification`)
-3. Uncomment those lines (remove the `//`)
-4. Replace `"your-email@gmail.com"` with your actual email address
-5. Click **Save**
-6. Click **Deploy** → **Manage deployments**
-7. Click the edit icon (✏️) next to your deployment
-8. Click **Deploy** again (this updates the deployment with the new code)
+2. Find the line that says: `var recipientEmail = "your-email@gmail.com";`
+3. **Replace `"your-email@gmail.com"` with your actual email address** (the one you want to receive notifications)
+4. Click **Save** (💾 icon)
+5. Click **Deploy** → **Manage deployments**
+6. Click the edit icon (✏️) next to your deployment
+7. Click **Deploy** again (this updates the deployment with the new code)
+8. **Authorize email permissions** (if prompted):
+   - When you first run the script with email, Google will ask for permission to send emails
+   - Click "Review permissions" → Choose your account → Click "Advanced" → "Go to [Project Name] (unsafe)" → Click "Allow"
+
+**Note**: You can add multiple email addresses by separating them with commas:
+```javascript
+var recipientEmail = "email1@gmail.com, email2@gmail.com";
+```
 
 ## Troubleshooting
 
