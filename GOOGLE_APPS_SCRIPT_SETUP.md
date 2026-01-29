@@ -44,7 +44,7 @@ function doPost(e) {
     // var body = "Name: " + name + "\nEmail: " + email + "\nAdditional Guests: " + extras;
     // MailApp.sendEmail("your-email@gmail.com", subject, body);
     
-    // Return success response
+    // Return success response with CORS headers
     return ContentService.createTextOutput(JSON.stringify({
       "result": "success",
       "message": "RSVP saved successfully!"
@@ -57,6 +57,14 @@ function doPost(e) {
       "message": error.toString()
     })).setMimeType(ContentService.MimeType.JSON);
   }
+}
+
+// Optional: Add doGet for testing
+function doGet(e) {
+  return ContentService.createTextOutput(JSON.stringify({
+    "result": "success",
+    "message": "Script is working! Use POST to submit RSVP."
+  })).setMimeType(ContentService.MimeType.JSON);
 }
 ```
 

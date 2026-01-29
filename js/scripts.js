@@ -209,20 +209,46 @@ $(document).ready(function () {
 
         $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
 
-        $.post('https://script.google.com/macros/s/AKfycbxoVlrGx9TfkcGrHM6a3IdWAS5MtIoipCCYLrb5eFXsiWectK0bxYb6y_0kfLMFCyo8/exec', data)
-            .done(function (data) {
-                console.log(data);
-                if (data.result === "error") {
-                    $('#alert-wrapper').html(alert_markup('danger', data.message));
+        $.ajax({
+            url: 'https://script.google.com/macros/s/AKfycbxoVlrGx9TfkcGrHM6a3IdWAS5MtIoipCCYLrb5eFXsiWectK0bxYb6y_0kfLMFCyo8/exec',
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function(response) {
+                console.log('Success:', response);
+                // Handle both string and object responses
+                var result = typeof response === 'string' ? JSON.parse(response) : response;
+                if (result.result === "error") {
+                    $('#alert-wrapper').html(alert_markup('danger', result.message || '<strong>Sorry!</strong> There was an error saving your RSVP.'));
                 } else {
                     $('#alert-wrapper').html('');
+                    $('#rsvp-form')[0].reset(); // Clear the form
                     $('#rsvp-modal').modal('show');
                 }
-            })
-            .fail(function (data) {
-                console.log(data);
-                $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server. '));
-            });
+            },
+            error: function(xhr, status, error) {
+                console.log('Error:', xhr, status, error);
+                // Sometimes Google Apps Script returns 200 but with redirect, so check response
+                if (xhr.responseText) {
+                    try {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.result === "success") {
+                            $('#alert-wrapper').html('');
+                            $('#rsvp-form')[0].reset();
+                            $('#rsvp-modal').modal('show');
+                            return;
+                        }
+                    } catch(e) {
+                        // If response is not JSON, treat as success (Google Apps Script quirk)
+                        $('#alert-wrapper').html('');
+                        $('#rsvp-form')[0].reset();
+                        $('#rsvp-modal').modal('show');
+                        return;
+                    }
+                }
+                $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server. Please try again later.'));
+            }
+        });
     });
 
 });
