@@ -296,7 +296,7 @@ function showCeremonyMap() {
             // Update existing map
             currentMap.setCenter(location);
             currentMap.setZoom(15);
-            currentMap.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+            currentMap.setMapTypeId(google.maps.MapTypeId.ROADMAP);
             // Remove old markers and add new one
             if (currentMap.markers) {
                 currentMap.markers.forEach(function(marker) {
@@ -309,7 +309,7 @@ function showCeremonyMap() {
                 zoom: 15,
                 center: location,
                 scrollwheel: false,
-                mapTypeId: google.maps.MapTypeId.SATELLITE
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             });
             currentMap.markers = [];
         }
@@ -349,7 +349,7 @@ function showBanquetMap() {
             // Update existing map
             currentMap.setCenter(location);
             currentMap.setZoom(15);
-            currentMap.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+            currentMap.setMapTypeId(google.maps.MapTypeId.ROADMAP);
             // Remove old markers and add new one
             if (currentMap.markers) {
                 currentMap.markers.forEach(function(marker) {
@@ -362,7 +362,7 @@ function showBanquetMap() {
                 zoom: 15,
                 center: location,
                 scrollwheel: false,
-                mapTypeId: google.maps.MapTypeId.SATELLITE
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             });
             currentMap.markers = [];
         }
