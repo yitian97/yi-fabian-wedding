@@ -191,15 +191,16 @@ $(document).ready(function () {
             // Event title
             title: "Yi and Fabian's Wedding",
 
-            // Event start date
-            start: new Date('Nov 27, 2017 10:00'),
+            // Event start date - May 2nd, 2026 at 2:00 PM (14:00)
+            start: new Date('May 2, 2026 16:00'),
 
             // Event duration (IN MINUTES)
             // duration: 120,
 
             // You can also choose to set an end time
             // If an end time is set, this will take precedence over duration
-            end: new Date('Nov 29, 2017 00:00'),
+            // Wedding ends at midnight (end of the day)
+            end: new Date('May 3, 2026 01:00'),
 
             // Event Address
             address: 'Marimurtra Botanical Garden, Passeig de Carles Faust, 9, 17300 Blanes, Girona, Spain',

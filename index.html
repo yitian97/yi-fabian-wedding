@@ -120,6 +120,289 @@
             padding: 0 !important;
             margin: 0 !important;
         }
+        
+        /* Position hero background below navigation line */
+        .hero {
+            background-position: center 100px !important;
+        }
+        
+        /* Make navigation black on initial load */
+        section.navigation {
+            background-color: #000 !important;
+        }
+        
+        /* Change to dark burgundy when scrolled (via .fixed class) */
+        section.navigation.fixed {
+            background-color: rgba(55, 36, 40, .88) !important;
+        }
+        
+        /* Mobile hero background - show full width */
+        @media screen and (max-width: 991px) {
+            .hero {
+                background-size: 120% auto !important;
+                background-repeat: no-repeat !important;
+                background-position: center -20px !important;
+                background-attachment: scroll !important;
+                min-height: 60vh !important;
+            }
+        }
+        
+        @media screen and (max-width: 640px) {
+            .hero {
+                background-size: 130% auto !important;
+                background-repeat: no-repeat !important;
+                background-position: center 80px !important;
+                background-attachment: scroll !important;
+                min-height: 50vh !important;
+            }
+        }
+        
+        /* Make logo smaller on mobile */
+        @media screen and (max-width: 991px) {
+            .logo img {
+                width: auto !important;
+                height: auto !important;
+                max-width: 60px !important;
+                max-height: 60px !important;
+                object-fit: contain !important;
+            }
+        }
+        
+        @media screen and (max-width: 640px) {
+            .logo img {
+                max-width: 50px !important;
+                max-height: 50px !important;
+            }
+        }
+        
+        /* Add shadow to desktop logo-lg */
+        .hero-content img[src="img/logo-lg.png"] {
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.8)) !important;
+        }
+        
+        /* Make logo-lg smaller on mobile and overlap the hero image */
+        @media screen and (max-width: 991px) {
+            .hero-content {
+                position: relative !important;
+            }
+            
+            .hero-content img[src="img/logo-lg.png"] {
+                width: 50% !important;
+                max-width: 200px !important;
+                position: relative !important;
+                margin-top: -20vh !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                margin-bottom: -50px !important;
+                display: block !important;
+                z-index: 10 !important;
+                filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.8)) !important;
+            }
+            
+            /* Show RSVP button on mobile and position it below logo-lg */
+            .rsvp-btn {
+                display: inline-block !important;
+                margin-top: -10px !important;
+                margin-bottom: 20px !important;
+                transform: translateY(-2px) !important;
+                font-size: 16px !important;
+                font-weight: bold !important;
+                padding: 6px 28px !important;
+                position: relative !important;
+                z-index: 10 !important;
+                width: auto !important;
+                background: rgba(232, 202, 111, 0.3) !important;
+                backdrop-filter: blur(5px) !important;
+                -webkit-backdrop-filter: blur(5px) !important;
+                border: 1px solid rgba(232, 202, 111, 0.5) !important;
+                color: #fff !important;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5) !important;
+                box-shadow: 0 4px 15px rgba(232, 202, 111, 0.4) !important;
+                animation: pulse 2s infinite !important;
+            }
+        }
+        
+        @media screen and (max-width: 640px) {
+            /* Add more space between dress code and menu buttons on mobile */
+            .col-md-6.text-center {
+                margin-bottom: 20px !important;
+            }
+            
+            /* Add more right margin to ceremony venue section on mobile */
+            .col-md-7[style*="max-width"] {
+                margin-right: 20px !important;
+                padding-right: 15px !important;
+            }
+            
+            /* Position show info button over Google map on mobile */
+            /* Ensure Google map column appears first on mobile (before venue map) */
+            section#map .container .row {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+            
+            section#map .container .row .col-md-8.col-sm-12 {
+                order: 1 !important;
+            }
+            
+            section#map .container .row .col-md-4.col-sm-12 {
+                order: 2 !important;
+            }
+            
+            /* Hide venue map on mobile */
+            section#map .container .row .col-md-4.col-sm-12 {
+                display: none !important;
+            }
+            
+            /* Make Google map full width on mobile */
+            section#map .container .row .col-md-8.col-sm-12 {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            /* Position wrapper using negative margin to overlay the Google map */
+            section#map .container:has(#map-canvas) {
+                margin-bottom: 0 !important;
+            }
+            
+            section#map #map-content-wrapper {
+                position: relative !important;
+                margin-top: -500px !important;
+                margin-bottom: 150px !important;
+                z-index: 10 !important;
+            }
+            
+            /* Show venue map button on mobile */
+            section#map #btn-venue-map-mobile {
+                display: inline-block !important;
+            }
+            
+            /* Remove left border from banquet venue on mobile */
+            section#map #map-content .row .col-md-6:last-child {
+                border-left: none !important;
+                padding-left: 0 !important;
+            }
+            
+            /* Vertically center the ceremony and banquet venue sections on mobile */
+            section#map #map-content .row {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            
+            section#map #map-content .row .col-md-6 {
+                width: 100% !important;
+                text-align: center !important;
+            }
+            
+            /* Make map-content box shorter on mobile */
+            section#map #map-content {
+                padding: 20px 15px !important;
+            }
+            
+            .hero-content {
+                position: relative !important;
+            }
+            
+            .hero-content img[src="img/logo-lg.png"] {
+                width: 65% !important;
+                max-width: 160px !important;
+                position: relative !important;
+                margin-top: -12vh !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                margin-bottom: -40px !important;
+                display: block !important;
+                z-index: 10 !important;
+                filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 1)) !important;
+            }
+            
+            /* Show RSVP button on mobile and position it below logo-lg */
+            .hero .rsvp-btn {
+                display: inline-block !important;
+                margin-top: 0px !important;
+                margin-bottom: 15px !important;
+                transform: translateY(-10px) !important;
+                font-size: 13px !important;
+                font-weight: bold !important;
+                padding: 5px 16px !important;
+                position: relative !important;
+                z-index: 10 !important;
+                width: auto !important;
+                background: rgba(232, 202, 111, 0.3) !important;
+                backdrop-filter: blur(5px) !important;
+                -webkit-backdrop-filter: blur(5px) !important;
+                border: 1px solid rgba(232, 202, 111, 0.5) !important;
+                color: #fff !important;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5) !important;
+                box-shadow: 0 4px 15px rgba(232, 202, 111, 0.4) !important;
+                animation: pulse 2s infinite !important;
+            }
+            
+            /* Keep form RSVP button same as desktop on mobile */
+            .rsvp .rsvp-btn,
+            .rsvp-form .rsvp-btn {
+                display: inline-block !important;
+                margin-top: 0 !important;
+                margin-bottom: 0 !important;
+                transform: none !important;
+                font-size: 13px !important;
+                font-weight: normal !important;
+                padding: 15px 0 !important;
+                position: relative !important;
+                z-index: auto !important;
+                width: 100% !important;
+                background: #e8ca6f !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                border: solid 2px #e8ca6f !important;
+                border-radius: 40px !important;
+                color: #fff !important;
+                text-shadow: none !important;
+                box-shadow: none !important;
+                animation: none !important;
+            }
+        }
+        
+        /* Add pulse animation for RSVP button */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(232, 202, 111, 0.6);
+            }
+            100% {
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+        }
+        
+        /* Hide down arrow on mobile */
+        @media screen and (max-width: 991px) {
+            .down-arrow {
+                display: none !important;
+            }
+        }
+        
+        @media screen and (max-width: 640px) {
+            .down-arrow {
+                display: none !important;
+            }
+        }
+        
+        /* Floating arrow animation for mobile - combines centering and movement */
+        @keyframes floating-arrow-mobile {
+            from {
+                transform: translate(-50%, 0);
+            }
+            65% {
+                transform: translate(-50%, 15px);
+            }
+            to {
+                transform: translate(-50%, 0);
+            }
+        }
     </style>
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
@@ -166,7 +449,7 @@
         </div>
         <div class="row">
             <div class="col-sm-4 hidden-xs"></div>
-            <div class="col-sm-4 hidden-xs text-center"><a href="#rsvp"
+            <div class="col-sm-4 text-center"><a href="#rsvp"
                                                            class="btn btn-accent btn-large rsvp-btn" style="margin-top: -150px;">RSVP</a></div>
             <div class="col-sm-4 hidden-xs"></div>
         </div>
@@ -179,7 +462,7 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <h3>We are getting married</h3>
-                <p>The dates are 2<sup>nd</sup> of May 2026 and we would like you to be a part of
+                <p>The dates are <strong>2<sup>nd</sup> of May, 2026</strong> and we would like you to be a part of
                     it.</p>
                 <div class="share-bar"></div>
             </div>
@@ -398,19 +681,19 @@
     </div>
     <div class="container section-padding">
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-7" style="max-width: 600px; margin: 0 auto; margin-left: 5%;">
                 <h4 style="margin-bottom: 20px;">Getting to the Ceremony Venue from Barcelona</h4>
                 <p style="margin-bottom: 20px;">
 
                 </p>
-                <ul style="text-align: left; margin-bottom: 30px;">
-                    <li style="margin-bottom: 10px;">
+                <ul style="text-align: justify; margin-bottom: 30px;">
+                    <li style="margin-bottom: 10px; text-align: justify;">
                         <strong>By Train:</strong> Take the R1 train (Rodalies de Catalunya) from Barcelona Sants or Plaça Catalunya to Blanes station (approximately 1.5 hours). 
                         Trains run frequently throughout the day. Tickets can be purchased directly at the station. 
                         From Blanes station, it's a 15-minute walk or short taxi ride to the venue.
                         <br><a href="https://rodalies.gencat.cat/en/horaris/" target="_blank">Check train schedules →</a>
                     </li>
-                    <li style="margin-bottom: 10px;">
+                    <li style="margin-bottom: 10px; text-align: justify;">
                         <strong>By Car:</strong> It is 1 hour drive from Barcelona to the venue. Take the AP-7 or C-32 highway towards Girona, then exit at Blanes. 
                         Parking is available near the venue.
                         <br><a href="https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden" target="_blank">Get directions →</a>
@@ -461,15 +744,16 @@
                         <div class="col-md-6" style="padding-right: 15px;">
                             <h5>Ceremony Venue</h5>
                             <p>Marimurtra Botanical Garden<br>Passeig de Carles Faust, 9, 17300 Blanes, Girona, Spain</p>
-                            <div class="text-center" style="margin-top: 15px;">
-                                <a class="btn btn-accent btn-small" id="btn-show-ceremony-map"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Show map</a>
+                            <div style="margin-top: 0px; margin-bottom: 20px; display: flex; justify-content: space-between; gap: 10px;">
+                                <a class="btn btn-accent btn-small" id="btn-show-ceremony-map" style="flex: 1; font-size: 11px; padding: 6px 10px;"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Show map</a>
+                                <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#venue-map-modal" style="display: none; flex: 1; font-size: 11px; padding: 6px 10px;" id="btn-venue-map-mobile"><i class="fa fa-image"></i>&nbsp;&nbsp;Venue map</a>
                             </div>
                         </div>
                         <div class="col-md-6" style="padding-left: 15px; border-left: 1px solid #e0e0e0;">
                             <h5>Banquet Venue</h5>
                             <p>Plaça Nacions Unides, 1, 17310 Canyelles, Girona, Spain</p>
-                            <div class="text-center" style="margin-top: 15px;">
-                                <a class="btn btn-accent btn-small" id="btn-show-banquet-map"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Show map</a>
+                            <div class="text-center" style="margin-top: 0px; margin-bottom: 10px;">
+                                <a class="btn btn-accent btn-small" id="btn-show-banquet-map" style="font-size: 11px; padding: 6px 10px;"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Show map</a>
                             </div>
                         </div>
                     </div>
@@ -524,18 +808,23 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-heart"></i><input type="number" name="partners" class="" min="0"
-                                                                  max="1"
-                                                                  placeholder="Partner"
+                                <i class="fa fa-heart"></i><input type="text" name="partner_name" class=""
+                                                                  placeholder="Partner? name"
                                                                   required style="padding: 0; padding-left: 68px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-users"></i><input type="number" name="kids" class="" min="0"
-                                                                  max="4"
-                                                                  placeholder="Kids"
-                                                                  required style="padding: 0; padding-left: 68px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
+                            <div class="form-input-group" style="position: relative;">
+                                <i class="fa fa-users"></i>
+                                <select name="num_of_kids" class="" required style="padding: 0; padding-left: 68px; padding-right: 30px; margin: 0; width: 100%; height: 55px; border: none; border-radius: 6px; background: transparent; -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; line-height: 55px; box-sizing: border-box;">
+                                    <option value="">Kids?</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                                <i class="fa fa-chevron-down" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #999; z-index: 1;"></i>
                             </div>
                         </div>
                     </div>
@@ -544,7 +833,7 @@
                             <div class="form-input-group" style="position: relative;">
                                 <i class="fa fa-bus"></i>
                                 <select name="shuttle_bus" class="" required style="padding: 0; padding-left: 68px; padding-right: 30px; margin: 0; width: 100%; height: 55px; border: none; border-radius: 6px; background: transparent; -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; line-height: 55px; box-sizing: border-box;">
-                                    <option value="">Shuttle bus?</option>
+                                    <option value="">Bus to Barcelona?</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
                                 </select>
