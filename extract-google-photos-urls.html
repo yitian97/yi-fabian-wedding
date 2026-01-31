@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extract Google Photos URLs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #372428;
+            margin-bottom: 20px;
+        }
+        .instructions {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #d4af37;
+        }
+        .instructions ol {
+            line-height: 1.8;
+        }
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #d4af37;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #b8941f;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f5e9;
+            border-radius: 5px;
+            display: none;
+        }
+        .code-block {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📸 Extract Google Photos URLs</h1>
+        
+        <div class="instructions">
+            <h3>Instructions:</h3>
+            <ol>
+                <li>Open your Google Photos album in a new tab: <a href="https://photos.app.goo.gl/9DdHysbo3EMchceG6" target="_blank">https://photos.app.goo.gl/9DdHysbo3EMchceG6</a></li>
+                <li>Scroll down to load all photos in the album (or wait for them to load)</li>
+                <li>Open the browser console:
+                    <ul>
+                        <li><strong>Chrome/Edge:</strong> Press F12, or Right-click → Inspect → Console tab</li>
+                        <li><strong>Firefox:</strong> Press F12, or Right-click → Inspect Element → Console tab</li>
+                        <li><strong>Safari:</strong> Enable Developer menu first, then press Cmd+Option+C</li>
+                    </ul>
+                </li>
+                <li>Copy and paste the code below into the console, then press Enter</li>
+                <li>Copy the output array and paste it into the textarea below</li>
+            </ol>
+        </div>
+        
+        <div class="code-block">
+(function() {
+    var photos = [];
+    var images = document.querySelectorAll('img[src*="googleusercontent.com"]');
+    images.forEach(function(img) {
+        var src = img.src;
+        if (src && src.includes('googleusercontent.com')) {
+            // Convert to higher resolution
+            var highRes = src.replace(/=w\d+-h\d+/, '=w1920-h1080')
+                            .replace(/=s\d+/, '=s1920')
+                            .replace(/=w\d+$/, '=w1920');
+            if (!photos.includes(highRes)) {
+                photos.push(highRes);
+            }
+        }
+    });
+    console.log('✅ Found ' + photos.length + ' photos');
+    console.log('📋 Copy this array:');
+    console.log(JSON.stringify(photos, null, 2));
+    console.log('\n💡 Tip: Right-click on the output above and select "Copy object" or copy the JSON string');
+    return photos;
+})();
+        </div>
+        
+        <h3>Paste the extracted URLs here (as JSON array):</h3>
+        <textarea id="urls-input" placeholder='Paste the array here, e.g.: ["https://lh3.googleusercontent.com/...", "https://lh3.googleusercontent.com/..."]'></textarea>
+        
+        <div>
+            <button onclick="formatUrls()">Format & Copy for Code</button>
+            <button onclick="clearAll()">Clear</button>
+        </div>
+        
+        <div id="result" class="result"></div>
+    </div>
+    
+    <script>
+        function formatUrls() {
+            var input = document.getElementById('urls-input').value.trim();
+            var resultDiv = document.getElementById('result');
+            
+            if (!input) {
+                alert('Please paste the URLs first!');
+                return;
+            }
+            
+            try {
+                // Try to parse as JSON
+                var urls = JSON.parse(input);
+                
+                if (!Array.isArray(urls)) {
+                    throw new Error('Input must be an array');
+                }
+                
+                // Format for code
+                var formatted = 'var photoUrls = [\n';
+                urls.forEach(function(url, index) {
+                    formatted += "    '" + url + "'";
+                    if (index < urls.length - 1) {
+                        formatted += ',';
+                    }
+                    formatted += '\n';
+                });
+                formatted += '];';
+                
+                // Show result
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '<h4>✅ Formatted code (click to select, then copy):</h4><div class="code-block" onclick="selectText(this)" style="cursor: pointer; user-select: all;">' + formatted + '</div><p><strong>Found ' + urls.length + ' photos!</strong> Copy the code above and paste it into memories.html to replace the photoUrls array.</p>';
+                
+                // Copy to clipboard
+                var textarea = document.createElement('textarea');
+                textarea.value = formatted;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                
+                alert('✅ Copied to clipboard! Paste it into memories.html');
+                
+            } catch (e) {
+                alert('Error: ' + e.message + '\n\nMake sure you copied the array correctly from the console.');
+            }
+        }
+        
+        function selectText(element) {
+            var range = document.createRange();
+            range.selectNode(element);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+        }
+        
+        function clearAll() {
+            document.getElementById('urls-input').value = '';
+            document.getElementById('result').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

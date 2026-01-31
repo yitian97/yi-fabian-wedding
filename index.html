@@ -136,6 +136,75 @@
             background-color: rgba(55, 36, 40, .88) !important;
         }
         
+        /* Gallery submenu styles */
+        .primary-nav li {
+            position: relative;
+        }
+        
+        .primary-nav li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(55, 36, 40, .95);
+            min-width: 180px;
+            padding: 10px 0;
+            margin-top: 0;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            pointer-events: auto;
+        }
+        
+        .primary-nav li:hover ul,
+        .primary-nav li:focus-within ul,
+        .primary-nav li ul:hover {
+            display: block;
+        }
+        
+        .primary-nav li ul li {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .primary-nav li ul li a {
+            display: block;
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            pointer-events: auto;
+            position: relative;
+            z-index: 10001;
+        }
+        
+        .primary-nav li ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Mobile submenu styles */
+        @media screen and (max-width: 991px) {
+            .primary-nav li ul {
+                position: static;
+                display: none;
+                background-color: transparent;
+                padding: 0;
+                margin: 10px 0 0 20px;
+                box-shadow: none;
+            }
+            
+            .primary-nav li.active ul {
+                display: block;
+            }
+            
+            .primary-nav li ul li a {
+                padding: 10px 0;
+                font-size: 20px;
+            }
+        }
+        
         /* Mobile hero background - show full width */
         @media screen and (max-width: 991px) {
             .hero {
@@ -149,10 +218,13 @@
         
         @media screen and (max-width: 640px) {
             .hero {
-                background-size: 130% auto !important;
+                background-color: #000 !important;
+                background-size: 110% auto !important;
                 background-repeat: no-repeat !important;
-                background-position: center 80px !important;
+                background-position: center 140px !important;
                 background-attachment: scroll !important;
+                padding-top: 20px !important;
+                padding-bottom: 20px !important;
                 min-height: 50vh !important;
             }
         }
@@ -423,7 +495,14 @@
                             <li><a href="#events">Events</a></li>
                             <li class="hidden-sm hidden-xs"><a href="#video-bg">Glimpse of the city</a></li>
                             <li><a href="#map">Venue</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
+                            <li>
+                                <a href="memories.html">Memories <i class="fa fa-caret-down" style="margin-left: 5px; font-size: 0.8em;"></i></a>
+                                <ul>
+                                    <li><a href="memories.html#wishes">Wishes Wall</a></li>
+                                    <li><a href="memories.html#bits">Bits & Pieces</a></li>
+                                    <li><a href="memories.html#wedding-gallery">Wedding Gallery</a></li>
+                                </ul>
+                            </li>
                         </ul>
                         <ul class="member-actions">
                             <li><a href="#rsvp" class="btn-white btn-small">RSVP</a></li>
@@ -462,7 +541,7 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <h3>We are getting married</h3>
-                <p>The dates are <strong>2<sup>nd</sup> of May, 2026</strong> and we would like you to be a part of
+                <p>The date is <strong>2<sup>nd</sup> of May, 2026</strong> and we would like you to be a part of
                     it.</p>
                 <div class="share-bar"></div>
             </div>
@@ -879,6 +958,40 @@
 <script src="js/jquery.mb.YTPlayer.min.js"></script>
 <script src="js/vendor/ouical.js"></script>
 <script src="js/scripts.js"></script>
+<script>
+    // Mobile submenu toggle
+    $(document).ready(function() {
+        // Handle clicks on parent Gallery link (mobile only)
+        $('.primary-nav > li:has(ul) > a').on('click', function(e) {
+            if ($(window).width() <= 991) {
+                var $parent = $(this).parent('li');
+                var $submenu = $parent.find('ul');
+                
+                // Only prevent default if clicking the parent link itself
+                if ($submenu.length > 0 && $(e.target).is('a') && !$(e.target).closest('ul').length) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $parent.toggleClass('active');
+                    return false;
+                }
+            }
+        });
+        
+        // Ensure submenu items are fully clickable
+        $('.primary-nav li ul li a').on('click', function(e) {
+            // Allow submenu items to navigate normally
+            e.stopPropagation();
+            // Don't prevent default - let the link work
+            // Close mobile menu after clicking
+            if ($(window).width() <= 991) {
+                $('.header-nav').removeClass('open');
+                $('.nav-toggle').removeClass('active');
+            }
+            // For cross-page links, let them navigate normally
+            // The target page will handle scrolling to the hash
+        });
+    });
+</script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqY5anuxoX2o_67kR8Owvd9klybNWPT-c&callback=initMap"></script>
 <!-- Google Analytics -->

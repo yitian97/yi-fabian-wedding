@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Wishes Script</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .alert {
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        form {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            font-family: inherit;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            border: none;
+            background-color: #d4af37;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #b8941f;
+        }
+        #wishes-display {
+            margin-top: 30px;
+        }
+        .wish-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border-left: 4px solid #d4af37;
+        }
+        .wish-name {
+            color: #372428;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .wish-date {
+            color: #999;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        .wish-message {
+            color: #666;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Google Apps Script for Wishes</h1>
+    
+    <form id="wishes-form">
+        <div class="form-group">
+            <label>Your Name (Optional)</label>
+            <input type="text" name="name" id="wish-name" placeholder="Leave blank to remain anonymous">
+        </div>
+        <div class="form-group">
+            <label>Your Message <span style="color: #d00;">*</span></label>
+            <textarea name="message" id="wish-message" rows="5" placeholder="Share your wishes, congratulations, or suggestions..." required></textarea>
+        </div>
+        <div id="wishes-alert-wrapper"></div>
+        <button type="submit">Submit Your Wish</button>
+    </form>
+    
+    <div id="result"></div>
+    
+    <h2>Messages from Guests</h2>
+    <div id="wishes-display">
+        <p style="color: #999; text-align: center; padding: 40px;">Loading wishes...</p>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Helper function to show alerts
+        function showAlert(type, message) {
+            var alertClass = type === 'success' ? 'alert-success' : type === 'error' ? 'alert-error' : 'alert-info';
+            return '<div class="alert ' + alertClass + '">' + message + '</div>';
+        }
+        
+        // Load wishes from Google Apps Script
+        function loadWishes() {
+            var scriptUrl = 'https://script.google.com/macros/s/AKfycbzd8si22j1o2GqeU1zd3RPKE9w9ZvluGG_vBT8hTCPKb5E8zrk7BPkCG4Cu0URuM4mK/exec';
+            
+            $.ajax({
+                url: scriptUrl,
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    console.log('Loaded wishes:', response);
+                    if (response.result === 'success' && response.wishes) {
+                        displayWishes(response.wishes);
+                    } else {
+                        $('#wishes-display').html('<p style="color: #999; text-align: center; padding: 40px;">No wishes yet. Be the first!</p>');
+                    }
+                },
+                error: function() {
+                    console.log('Error loading wishes');
+                    $('#wishes-display').html('<p style="color: #999; text-align: center; padding: 40px;">Error loading wishes.</p>');
+                }
+            });
+        }
+        
+        // Display wishes
+        function displayWishes(wishes) {
+            var $display = $('#wishes-display');
+            $display.empty();
+            
+            if (wishes.length === 0) {
+                $display.html('<p style="color: #999; text-align: center; padding: 40px;">No wishes yet. Be the first!</p>');
+                return;
+            }
+            
+            // Sort by date (newest first)
+            wishes.sort(function(a, b) {
+                return new Date(b.timestamp) - new Date(a.timestamp);
+            });
+            
+            wishes.forEach(function(wish) {
+                var name = wish.name && wish.name.trim() ? wish.name : 'Anonymous';
+                var date = new Date(wish.timestamp);
+                var dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                
+                var wishHtml = '<div class="wish-card">' +
+                    '<div class="wish-name">' + escapeHtml(name) + 
+                    '<span class="wish-date">' + dateStr + '</span></div>' +
+                    '<div class="wish-message">' + escapeHtml(wish.message) + '</div>' +
+                    '</div>';
+                
+                $display.append(wishHtml);
+            });
+        }
+        
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            var map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text ? text.replace(/[&<>"']/g, function(m) { return map[m]; }) : '';
+        }
+        
+        // Handle form submission - EXACT same as memories.html
+        $('#wishes-form').on('submit', function(e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            
+            var message = $('#wish-message').val().trim();
+            if (!message) {
+                $('#wishes-alert-wrapper').html(showAlert('error', 'Please enter a message!'));
+                return false;
+            }
+            
+            // Show loading
+            $('#wishes-alert-wrapper').html(showAlert('info', '<strong>Submitting...</strong> Your wish is being saved.'));
+            
+            // Handle empty name - set to Anonymous if empty (before serializing)
+            if (!$('#wish-name').val().trim()) {
+                $('#wish-name').val('Anonymous');
+            }
+            
+            // Use serialize() exactly like test file
+            var scriptUrl = 'https://script.google.com/macros/s/AKfycbzd8si22j1o2GqeU1zd3RPKE9w9ZvluGG_vBT8hTCPKb5E8zrk7BPkCG4Cu0URuM4mK/exec';
+            var data = $(this).serialize();
+            
+            console.log('Submitting:', data);
+            console.log('URL:', scriptUrl);
+            
+            $.ajax({
+                url: scriptUrl,
+                type: 'POST',
+                data: data,
+                dataType: 'json',
+                success: function(response) {
+                    console.log('Success:', response);
+                    var result = typeof response === 'string' ? JSON.parse(response) : response;
+                    if (result.result === 'success') {
+                        $('#wishes-alert-wrapper').html(showAlert('success', '<strong>Thank you!</strong> Your wish has been submitted.'));
+                        $('#wishes-form')[0].reset();
+                        setTimeout(function() {
+                            loadWishes();
+                        }, 1500);
+                    } else {
+                        $('#wishes-alert-wrapper').html(showAlert('error', result.message || 'Error saving wish.'));
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log('Error:', status, error);
+                    console.log('Status:', xhr.status);
+                    console.log('Response:', xhr.responseText);
+                    
+                    // Check if it's actually a success (Google Apps Script redirects)
+                    if (xhr.responseText) {
+                        try {
+                            var response = JSON.parse(xhr.responseText);
+                            if (response.result === 'success') {
+                                $('#wishes-alert-wrapper').html(showAlert('success', '<strong>Thank you!</strong> Your wish has been submitted.'));
+                                $('#wishes-form')[0].reset();
+                                setTimeout(function() {
+                                    loadWishes();
+                                }, 1500);
+                                return;
+                            }
+                        } catch(e) {
+                            // Not JSON, might still be success
+                        }
+                    }
+                    
+                    $('#wishes-alert-wrapper').html(showAlert('error', 'Error submitting wish. Please try again.'));
+                }
+            });
+            
+            return false;
+        });
+        
+        // Load wishes on page load
+        loadWishes();
+    </script>
+</body>
+</html>

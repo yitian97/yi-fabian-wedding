@@ -1,0 +1,888 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Memories - Yi & Fabian Wedding</title>
+    <meta name="description" content="Our wedding memories - photos and videos from our special day.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Memories - Yi & Fabian Wedding">
+    <meta property="og:description" content="Our wedding gallery - photos and videos from our special day.">
+    <meta property="og:image" content="https://yifabian.love/img/hero-min.jpg">
+    <meta property="og:type" content="website">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+
+    <script>
+        // load css files from CDN if local node_modules fail
+        function loadCssFromCDN(css) {
+            // create new link tag
+            const link = document.createElement('link');
+            if (css === 'animate.css') {
+                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
+            } else if (css === 'font-awesome.css') {
+                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+            }
+            link.rel = 'stylesheet';
+
+            // add link tag to head section
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+
+        // load js files from CDN if local node_modules fail
+        function loadJsFromCDN(js) {
+            if (js === 'waypoints.js') {
+                document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"><\/script>');
+            } else if (js === 'jquery.js') {
+                document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>');
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <link rel="stylesheet" href="css/queries.css">
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <style>
+        /* White Background for Gallery */
+        section#gallery {
+            background-color: #ffffff !important;
+            position: relative !important;
+        }
+        
+        section#gallery .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        section#gallery .header,
+        section#gallery h3,
+        section#gallery h4,
+        section#gallery h5,
+        section#gallery p {
+            color: #000000 !important;
+        }
+        
+        /* Scroll margin for anchor links to account for fixed navigation */
+        #wishes,
+        #bits,
+        #wedding-gallery {
+            scroll-margin-top: 100px;
+        }
+        
+        /* Navigation menu color effect - same as main page */
+        section.navigation {
+            background-color: #000 !important;
+            transition: background-color 300ms ease-in-out !important;
+            z-index: 999 !important;
+        }
+        
+        /* Change to dark burgundy when scrolled (via .fixed class) */
+        section.navigation.fixed,
+        section.navigation.fixed {
+            background-color: rgba(55, 36, 40, .88) !important;
+        }
+        
+        /* Override any base .fixed class */
+        body section.navigation.fixed {
+            background-color: rgba(55, 36, 40, .88) !important;
+        }
+        
+        /* Gallery submenu styles */
+        .primary-nav li {
+            position: relative;
+        }
+        
+        .primary-nav li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(55, 36, 40, .95);
+            min-width: 180px;
+            padding: 10px 0;
+            margin-top: 0;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            pointer-events: auto;
+        }
+        
+        .primary-nav li:hover ul,
+        .primary-nav li:focus-within ul,
+        .primary-nav li ul:hover {
+            display: block;
+        }
+        
+        .primary-nav li ul li {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .primary-nav li ul li a {
+            display: block;
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            pointer-events: auto;
+            position: relative;
+            z-index: 10001;
+        }
+        
+        .primary-nav li ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Mobile submenu styles */
+        @media screen and (max-width: 991px) {
+            .primary-nav li ul {
+                position: static;
+                display: none;
+                background-color: transparent;
+                padding: 0;
+                margin: 10px 0 0 20px;
+                box-shadow: none;
+            }
+            
+            .primary-nav li.active ul {
+                display: block;
+            }
+            
+            .primary-nav li ul li a {
+                padding: 10px 0;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="navigation">
+    <header>
+        <div class="header-content">
+            <div class="logo"><a href="index.html"><img src="img/logo.png" alt="Logo" style="width: 120%; max-width: 100px; height: 120%; max-height: 100px;"></a></div>
+            <div class="header-nav">
+                <nav>
+                    <ul class="primary-nav">
+                        <li><a href="index.html#intro">Our story</a></li>
+                        <li><a href="index.html#events">Events</a></li>
+                        <li class="hidden-sm hidden-xs"><a href="index.html#video-bg">Glimpse of the city</a></li>
+                        <li><a href="index.html#map">Venue</a></li>
+                        <li>
+                            <a href="memories.html">Memories <i class="fa fa-caret-down" style="margin-left: 5px; font-size: 0.8em;"></i></a>
+                            <ul>
+                                <li><a href="memories.html#wishes">Wishes Wall</a></li>
+                                <li><a href="memories.html#bits">Bits & Pieces</a></li>
+                                <li><a href="memories.html#wedding-gallery">Wedding Gallery</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="member-actions">
+                        <li><a href="index.html#rsvp" class="btn-white btn-small">RSVP</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="navicon">
+                <a class="nav-toggle" href="#"><span></span></a>
+            </div>
+        </div>
+    </header>
+</section>
+
+<section id="gallery" class="section-padding" style="padding-top: 150px;">
+    <div class="container">
+        <!-- Wishes Wall Section -->
+        <div class="row section-padding" id="wishes" style="padding-top: 50px;">
+            <div class="col-md-12 text-center">
+                <h3 class="header" style="margin-bottom: 30px;">Wishes Wall</h3>
+            </div>
+            
+            <!-- Display Wishes - Moved before the form with nice background box -->
+            <div class="col-md-12" style="margin-bottom: 50px;">
+                <div style="background: linear-gradient(135deg, #faf8f3 0%, #ffffff 100%); padding: 50px 40px; border-radius: 20px; box-shadow: 0 6px 30px rgba(0,0,0,0.12); border: 2px solid #e8e8e8; position: relative; overflow: hidden;">
+                    <!-- Decorative elements -->
+                    <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
+                    <div style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%); border-radius: 50%;"></div>
+                    
+                    <div style="position: relative; z-index: 1;">
+                        <h4 style="text-align: center; margin-bottom: 40px; color: #372428; font-size: 24px; font-weight: 700; letter-spacing: 1px;">
+                            <i class="fa fa-heart" style="color: #d4af37; margin-right: 12px; font-size: 26px;"></i>Messages from Our Guests
+                        </h4>
+                        <div class="row" id="wishes-display">
+                            <!-- Wishes will be loaded here -->
+                            <div class="col-md-12 text-center" style="padding: 40px; color: #999;">
+                                <i class="fa fa-comments" style="font-size: 48px; margin-bottom: 15px; display: block; color: #d4af37;"></i>
+                                <p style="font-size: 16px;">Be the first to leave a wish! 💕</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Description text before form -->
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1" style="margin-bottom: 30px;">
+                <p style="color: #666; text-align: center; font-size: 17px; line-height: 1.8; padding: 20px; background: #f9f9f9; border-radius: 10px; border-left: 4px solid #d4af37;">
+                    <i class="fa fa-info-circle" style="color: #d4af37; margin-right: 8px;"></i>
+                    Leave your wishes, congratulations, or suggestions for our special day! Messages are anonymous.
+                </p>
+            </div>
+            
+            <!-- Wishes Form -->
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1" style="margin-bottom: 50px;">
+                <form id="wishes-form" style="background: #f9f9f9; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;">Your Name (Optional)</label>
+                        <input type="text" name="name" id="wish-name" placeholder="Leave blank to remain anonymous" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;">Your Message <span style="color: #d00;">*</span></label>
+                        <textarea name="message" id="wish-message" rows="5" placeholder="Share your wishes, congratulations, or suggestions..." required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; resize: vertical; font-family: inherit;"></textarea>
+                    </div>
+                    <div id="wishes-alert-wrapper" style="margin-bottom: 15px;"></div>
+                    <button type="submit" class="btn btn-accent" style="width: 100%; padding: 12px; font-size: 14px; border: none; cursor: pointer; background-color: #d4af37 !important; color: #fff !important;">
+                        <i class="fa fa-heart" style="margin-right: 8px;"></i>Submit Your Wish
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Bits & Pieces Section -->
+        <div class="row section-padding" id="bits" style="padding-top: 50px;">
+            <div class="col-md-12 text-center">
+                <h3 class="header" style="margin-bottom: 30px;">Bits & Pieces</h3>
+            </div>
+            <div class="col-md-12" style="margin-bottom: 40px;">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                        <div style="background: linear-gradient(135deg, #faf8f3 0%, #ffffff 100%); padding: 40px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border: 2px solid #e8e8e8; text-align: center;">
+                            <div id="random-photo-container" style="margin-bottom: 25px; min-height: 500px; background: #f5f5f5; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                <div style="color: #999; font-size: 16px;">
+                                    <i class="fa fa-image" style="font-size: 48px; display: block; margin-bottom: 10px;"></i>
+                                    <p>Click below to unlock puppy Pipita</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                                <button id="random-photo-btn" class="btn btn-accent" style="padding: 12px 30px; font-size: 16px; border: none; cursor: pointer; border-radius: 5px;">
+                                    <i class="fa fa-random" style="margin-right: 8px;"></i>Show Random Cuttie
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wedding Gallery Section -->
+        <div class="row section-padding" id="wedding-gallery" style="padding-top: 50px;">
+            <div class="col-md-12 text-center">
+                <h3 class="header" style="margin-bottom: 30px;">Wedding Gallery</h3>
+            </div>
+            <div class="col-md-12" style="margin-bottom: 40px;">
+                <div class="row" id="photo-gallery">
+                    <!-- Placeholder to show gallery is not updated yet -->
+                    <div class="col-md-12 text-center" style="padding: 60px 20px;">
+                        <div style="display: inline-block; width: 360px; height: 360px; background: #e0e0e0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; overflow: hidden;">
+                            <img src="img/pipita-wedding.png" alt="Gallery Placeholder" style="width: 100%; height: 100%; object-fit: cover; object-position: 0% 25%; filter: grayscale(60%) opacity(0.6);">
+                        </div>
+                        <p style="color: #999; font-size: 16px; margin: 0;">Gallery coming after the wedding...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video Section -->
+            <div class="col-md-12" style="margin-bottom: 40px;">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+                        <div class="text-center">
+                            <button id="watch-video-btn" type="button" class="btn btn-accent btn-large" style="display: inline-block; padding: 15px 40px; font-size: 18px; border: none; cursor: pointer;">
+                                <i class="fa fa-play-circle" style="margin-right: 10px;"></i>Watch Wedding Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cute 404 Modal -->
+            <div id="video-modal" class="video-modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 1000000 !important;">
+                <div class="video-modal-content" style="background: #fff; padding: 20px; border-radius: 15px; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; z-index: 1000001 !important; animation: modalFadeIn 0.3s ease; margin-top: 100px;">
+                    <button class="modal-close" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 28px; color: #999; cursor: pointer; line-height: 1; padding: 0; width: 30px; height: 30px;">&times;</button>
+                    <div style="font-size: 60px; margin-bottom: 10px;">💒</div>
+                    <h2 style="color: #372428; margin-bottom: 5px; font-size: 28px; font-weight: bold;">Oops!</h2>
+                    <img src="img/pipi_1.png" alt="Pipi" style="max-width: 400px; width: 100%; height: auto; margin: 0 0 10px 0;">
+                    <p style="color: #999; font-size: 14px; line-height: 1.4;">
+                        Please check back soon. We can't wait to share our special day with you! 💕
+                    </p>
+                    <button class="modal-close-btn" style="margin-top: 15px; padding: 10px 25px; background-color: #d4af37; color: #fff; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; transition: background-color 0.3s;">
+                        Got it!
+                    </button>
+                </div>
+            </div>
+            
+            <style>
+                @keyframes modalFadeIn {
+                    from {
+                        opacity: 0;
+                        transform: scale(0.9);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+                
+                #video-modal {
+                    z-index: 1000000 !important;
+                }
+                
+                .video-modal-overlay.show {
+                    display: flex !important;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1000000 !important;
+                }
+                
+                .video-modal-content {
+                    z-index: 1000001 !important;
+                }
+                
+                .modal-close:hover,
+                .modal-close-btn:hover {
+                    opacity: 0.8;
+                }
+                
+                .modal-close-btn:hover {
+                    background-color: #c19d26 !important;
+                }
+            </style>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center content">
+                <span class="to-top-wrapper"><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a></span>
+                <p>Crafted with lots of <span class="fa fa-heart pulse2"></span> for Yi & Fabian</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/vendor/jquery-1.11.2.min.js" onerror="loadJsFromCDN('jquery.js')"></script>
+<script src="node_modules/waypoints/lib/jquery.waypoints.min.js" onerror="loadJsFromCDN('waypoints.js')"></script>
+<script src="js/jquery.fancybox.pack.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/jquery.flexslider-min.js"></script>
+<script src="js/vendor/ouical.js"></script>
+<script src="js/scripts.js"></script>
+<script>
+    // Wishes Wall functionality - wait for everything to load
+    // Use window.onload to ensure ALL scripts are loaded first
+    window.addEventListener('load', function() {
+        // Wait a bit more to ensure scripts.js has finished
+        setTimeout(function() {
+            initWishesForm();
+        }, 500);
+    });
+    
+    function initWishesForm() {
+        // Helper function to show alerts
+        function showAlert(type, message) {
+            var alertClass = type === 'success' ? 'alert-success' : type === 'error' ? 'alert-danger' : 'alert-info';
+            var icon = type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+            return '<div class="alert ' + alertClass + '" style="padding: 12px; border-radius: 5px; margin-bottom: 15px;"><i class="fa ' + icon + '" style="margin-right: 8px;"></i>' + message + '</div>';
+        }
+        
+        // Load wishes from Google Apps Script
+        function loadWishes() {
+            var scriptUrl = 'https://script.google.com/macros/s/AKfycbzd8si22j1o2GqeU1zd3RPKE9w9ZvluGG_vBT8hTCPKb5E8zrk7BPkCG4Cu0URuM4mK/exec';
+            
+            $.ajax({
+                url: scriptUrl,
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    if (response.result === 'success' && response.wishes) {
+                        displayWishes(response.wishes);
+                    } else {
+                        // Fallback to localStorage if response format is unexpected
+                        var wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
+                        displayWishes(wishes);
+                    }
+                },
+                error: function() {
+                    // Fallback to localStorage if script fails
+                    var wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
+                    displayWishes(wishes);
+                }
+            });
+        }
+        
+        // Display wishes
+        function displayWishes(wishes) {
+            var $display = $('#wishes-display');
+            $display.empty();
+            
+            if (wishes.length === 0) {
+                $display.html('<div class="col-md-12 text-center" style="padding: 40px; color: #999;"><i class="fa fa-comments" style="font-size: 48px; margin-bottom: 15px; display: block; color: #d4af37;"></i><p style="font-size: 16px;">Be the first to leave a wish! 💕</p></div>');
+                return;
+            }
+            
+            // Sort by date (newest first)
+            wishes.sort(function(a, b) {
+                return new Date(b.timestamp) - new Date(a.timestamp);
+            });
+            
+            wishes.forEach(function(wish) {
+                var name = wish.name && wish.name.trim() ? wish.name : 'Anonymous';
+                var date = new Date(wish.timestamp);
+                var dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                
+                var wishHtml = '<div class="col-md-4 col-sm-6" style="margin-bottom: 15px;">' +
+                    '<div style="background: linear-gradient(135deg, #ffffff 0%, #faf8f3 100%); padding: 14px 16px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); height: 100%; border-left: 3px solid #d4af37; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;">' +
+                    '<div style="position: absolute; top: 0; right: 0; width: 40px; height: 40px; background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%); border-radius: 0 0 0 100%;"></div>' +
+                    '<div style="position: relative; z-index: 1;">' +
+                    '<div style="margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">' +
+                    '<strong style="color: #372428; font-size: 14px; font-weight: 600; display: flex; align-items: center;">' +
+                    '<i class="fa fa-user-circle" style="color: #d4af37; margin-right: 5px; font-size: 14px;"></i>' + escapeHtml(name) + 
+                    '</strong>' +
+                    '<span style="color: #999; font-size: 10px; font-style: italic;">' + dateStr + '</span>' +
+                    '</div>' +
+                    '<p style="color: #555; line-height: 1.5; margin: 0; font-size: 13px; font-style: italic;">' +
+                    '<i class="fa fa-quote-left" style="color: #d4af37; margin-right: 5px; font-size: 11px;"></i>' +
+                    escapeHtml(wish.message) +
+                    '</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+                
+                $display.append(wishHtml);
+            });
+        }
+        
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            var map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text ? text.replace(/[&<>"']/g, function(m) { return map[m]; }) : '';
+        }
+        
+        // Handle form submission - EXACT copy from test file (which works!)
+        // Check if form exists
+        var $form = $('#wishes-form');
+        if ($form.length === 0) {
+            console.error('Wishes form not found!');
+            return;
+        }
+        console.log('Attaching handler to wishes form, form found:', $form.length);
+        
+        // Remove any existing handlers first to avoid conflicts with scripts.js
+        $form.off('submit').on('submit', function(e) {
+            console.log('Form submit event triggered!');
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            
+            var message = $('#wish-message').val().trim();
+            if (!message) {
+                $('#wishes-alert-wrapper').html(showAlert('error', 'Please enter a message!'));
+                return false;
+            }
+            
+            // Show loading
+            $('#wishes-alert-wrapper').html(showAlert('info', '<strong>Submitting...</strong> Your wish is being saved.'));
+            
+            // Handle empty name - set to Anonymous if empty (before serializing)
+            if (!$('#wish-name').val().trim()) {
+                $('#wish-name').val('Anonymous');
+            }
+            
+            // Use serialize() exactly like test file
+            var scriptUrl = 'https://script.google.com/macros/s/AKfycbzd8si22j1o2GqeU1zd3RPKE9w9ZvluGG_vBT8hTCPKb5E8zrk7BPkCG4Cu0URuM4mK/exec';
+            var data = $(this).serialize();
+            
+            console.log('Submitting:', data);
+            console.log('URL:', scriptUrl);
+            
+            $.ajax({
+                url: scriptUrl,
+                type: 'POST',
+                data: data,
+                dataType: 'json',
+                success: function(response) {
+                    console.log('Success:', response);
+                    var result = typeof response === 'string' ? JSON.parse(response) : response;
+                    if (result.result === 'success') {
+                        $('#wishes-alert-wrapper').html(showAlert('success', '<strong>Thank you!</strong> Your wish has been submitted.'));
+                        $('#wishes-form')[0].reset();
+                        setTimeout(function() {
+                            loadWishes();
+                        }, 1500);
+                    } else {
+                        $('#wishes-alert-wrapper').html(showAlert('error', result.message || 'Error saving wish.'));
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log('Error:', status, error);
+                    console.log('Status:', xhr.status);
+                    console.log('Response:', xhr.responseText);
+                    
+                    // Check if it's actually a success (Google Apps Script redirects)
+                    if (xhr.responseText) {
+                        try {
+                            var response = JSON.parse(xhr.responseText);
+                            if (response.result === 'success') {
+                                $('#wishes-alert-wrapper').html(showAlert('success', '<strong>Thank you!</strong> Your wish has been submitted.'));
+                                $('#wishes-form')[0].reset();
+                                setTimeout(function() {
+                                    loadWishes();
+                                }, 1500);
+                                return;
+                            }
+                        } catch(e) {
+                            // Not JSON, might still be success
+                        }
+                    }
+                    
+                    $('#wishes-alert-wrapper').html(showAlert('error', 'Error submitting wish. Please try again.'));
+                }
+            });
+            
+            return false;
+        });
+        
+        // Load wishes on page load
+        loadWishes();
+    }
+    
+    // Bits & Pieces - Google Photos functionality
+    var googlePhotosAlbumLink = 'https://photos.app.goo.gl/9DdHysbo3EMchceG6';
+    
+    // Array to store photo URLs
+    // To extract all photo URLs from your Google Photos album:
+    // 1. Open your album in Chrome/Firefox: https://photos.app.goo.gl/9DdHysbo3EMchceG6
+    // 2. Scroll down to load all photos (or wait for them to load)
+    // 3. Open browser console (F12 or Right-click → Inspect → Console)
+    // 4. Paste and run this code:
+    /*
+    (function() {
+        var photos = [];
+        var images = document.querySelectorAll('img[src*="googleusercontent.com"]');
+        images.forEach(function(img) {
+            var src = img.src;
+            if (src && src.includes('googleusercontent.com') && !photos.includes(src)) {
+                // Convert to higher resolution if possible
+                var highRes = src.replace(/=w\d+-h\d+/, '=w1920-h1080').replace(/=s\d+/, '=s1920');
+                photos.push(highRes);
+            }
+        });
+        console.log('Found ' + photos.length + ' photos');
+        console.log('Copy this array:');
+        console.log(JSON.stringify(photos, null, 2));
+        return photos;
+    })();
+    */
+    // 5. Copy the output array and paste it below
+    
+    var photoUrls = [
+        'https://lh3.googleusercontent.com/pw/AP1GczMiBdmDnNworf3YqSyzPgqLc4u10qaD_Ybv09c4SPkKl3hZberkDPgLbpY2jnOwQmUXpdeiVimBJbO0NsUVtWBs7DyHgqCF-8RJAVgvnTJu6rBhQrp8955ng8XFCTuKeonhE4jyAPShOgg5N1jpS9iZTg=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczOu7oTz_G5ayDKLq7rFeCpljuRHHV72EqKHX795JdGfkyW5kPS3YnWJJAjqV0jswq8qQw1ez0_LzW6A9fDkUMTiSexNBFP_o_joTKstn0qbFxIUyBrL47UEeM3_t28Xj2YP6r_RJWB5t6PD1DNxIilxPQ=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczONtN1Hz2zjdVxqZ1ta7gsRscfFr7Xpw3NrvUv1nKn8F2B5zgccRYbDfeQMGVPtTMkQJD8KjA63GumC4POF65ML3eeSQtQijwpedFJfdrNwML1Uwos2rDaAlFu0FGJK6KAiXz3lPECCAGZrCH8LNha0KA=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczNE_Lblt3qti99wn1A0ITBlm3QSBN8MZJHSxuyyNu0xchuRoitc_4u166KajEAyQlxgKupwUB7F004pGxRlAfabL5nZg6eFclRihQ6lNSKl-RRjxHO9OsGifIt7PzZh5pqFSd1PaBvwpalZnpqvoft5Fw=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczPFmXSMwK3tgB3BdIKKRrr7hprQoElrQ0pwY2oBgvT5NLpeVLEtJPf2GqCCW6mQ1ndYnyV0VX5Ebzc5l7JNw0QcpDL7RYPcIiRtcXlCP5tLDDgWKs6iB1CJ_SGZ48UNKb44e1szjxlaEGWHTaNJu2zv_g=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczMKwW8JoCZzvV9JA_ACjs3_DuyWvc7ZhGnA6HRGdojip3qR_5lOQVX0FwMJsleT2Fh2korqUJrCBa06cS4h2gb9Fi_PXP3gkVsKJepKZQAlJez35M58VVH8ajy3dVpwTTlgvvFSp1TscFqUiVT2-4gtcQ=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczNj5YAcvMf_yyuXgYw0m1TtCzSzya-W2pp-xSW_uWJinfJUz2q0zmAKvmM_5R17GwWLdbXrHh19Nl9B7if2NkEuI2G2_wzpGyiVUMgSX2OlYY6rr0ieum6bbuBoZfaDOD4pgap7vZE8jhU-GDytPIzTeQ=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczP-_u8GxxJ1JORuougCGU1aiUYVkjV9m5vUYOdgMkDEhGzsglTwu2QywxBy3D_deNiVFzRjeMHSyZy6afY0bTJhbBrDltOXitUg_d2zUiwo8nih1pFcmYpKXpAJbP3WDVxZgXzZfTfSjOZR9nDr3n2z4A=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczPn7PJJa4-TNq8AkBDDttZA3HDIucMM6esjWK0hDtKIhXW0ZZJuDwVV5_XZ5gZ9I9maqI3Mx0NSvkbFKucYOSiqX4wSn2-CAMPw2f_1BDXeSv_tlXgZ2ga8M-y48yWe5KuHMaphqT1vmpdZpcfyx8dIcw=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczO7iDsS-H6wPVPsTi2_itTpAx4D8JJilFSV4viJ0s9F0-iRHqF9RAz7RtV1c8vZx_b3FZplTaKh7fGsTc3VOwP2_OnIhxmKsVuHMNSsf9j80Lv3IV6oLugqWhRMGGGbGr0tb0hvtTqE_BuwvLIwHmvFng=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczNDKTeGOhd4AocqdtxRzelO-yz61rV2ItJYYa7yKprjfrJ9E7dVu96I9W5waQBS4mJUZ4DrmiM53AopzVqe6gW471vWSSyt6Y1KZM3y86IGSkFWG4rRNj314_z8OyRRDLU2BsT111DbgrI7Rofyc6XoMA=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczNUzBVnz7_r8qkEHmQgSy102aRqtQOV_seGKX9zDFOcXPRgGDMPP1-f11Z1fwyz5DtHa0tnJAc026o-RaqYwsZdZ1UEFskmfnOJ0Z2T39r7JU07F5xrWmTH6KY67_BwIOjHSNXfMoNFE41dOYrd6m1Dew=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczN4lNrQGVvq4PA1soZJfHMRt2SCoToLFY0IzF3bn9lRrry5mGWRX42U6CGcJp-Ov6rfmqr5Q2AeCHQP8GdJds3CDfcSOSU52-YuNqUjd-4bgxbT0sGv93xq8XJbZw9nlUCW7gOLrbnc97qKmrtrtWQPag=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczOhrdg-ZJAPnrzigqx7K2fuSerm0lV9zDD-ZK-KWW28yzLZR56jn5RAvG-Zat_P8ONcv22VeZzIGKh6Cg2Jcyf0_G0qXSlFv98QOFrccumMfbd4es7JKs8rpo5jCnaPYMRzsLTuktUCOmA2pGp4bIDXMQ=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczNXdqZLeDdqQhM8VzyO0-8LLJ85NmzX9Hv-DxdrW6a3FMIEgLuhHFCxBxPITokLOyX1oGihgh3JKCoU0iQ_Un3JUxfKpSEUlZ_JGf7i1rC5sw73FeubNBbZZlURQRRsKlnXFuSn3TwyCqbIJn1uKD6vOg=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczOtHVre1C2WqCsuD4GgZyVnQADkto88a-PG7A5VW2MVkBC0FEiadHATUnDu8RkbwldQmDs1qO-7EcsfGC3w4LqhXM67pERfAd0Lr7cEguLjZaCZYNnQAIVI74gNE5LA0Z94oZYRqeOu3soZRe_3vXeg2Q=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczO9vfsuZ2qMG0GwYUwIz_uuIVwWmOEUqXad6EqV02X2xAhtCTykQBXGr8h2SdguS4r4QxF7NJbr5vHQ1Fwg6FUDj9GAj8TYBcJ1IwvkFAzB9f6jeRICg9S2laQN0mep47JnZs77KDkA40Ve8k1Uw_8kBw=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczOz8Mgyxz86t6ziBcukjmsh1TTKMjP8-_35zIT3DQZge-kN3rZ7l-ExswVGia0_nBQsy5yR8FgrfjFAo-RG3y7oRVOwsxivlX8hDoj49GofHRlhge_wehr0KKasN0RqEsWx-_tkr3hS-9t2xZFtKAhSbA=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczOIf5Sb5hj_LyI10nytVH0rGILz7M9Zh5Gy-pu1OJ9Q6cIWUQh-dF9kaO6wNmDA8PRZY-kQzsHNm0m3d99wX-dXzxQd5dD6HUy6grFjgkkF4QzXINWQRGxO7MaQrPMKHrRY2a5peBXuHAqwmw39cL7msg=w1920-h1080',
+        'https://lh3.googleusercontent.com/pw/AP1GczPHkjPCJ4eb33U2pNF47KhhZDNT1RmEaq7WbW7uVLGwES9ildfO4tQ5eNcgMf9jzRxBT_EpYo3xQ4dzaY23jBvjMIXh2-6TKzIr5ijquVoX2ugqn_pLJJSJb56lMuQO0BHyv2-V_uHrcmNe_ncB3AiVeA=w1920-h1080'
+    ];
+    
+    
+    // Function to show random photo
+    function showRandomPhoto() {
+        var container = document.getElementById('random-photo-container');
+        
+        if (photoUrls.length > 0) {
+            // Get random photo
+            var randomIndex = Math.floor(Math.random() * photoUrls.length);
+            var randomPhotoUrl = photoUrls[randomIndex];
+            
+            // Display the photo
+            container.innerHTML = '<img src="' + randomPhotoUrl + '" alt="Random Photo" style="width: 100%; height: auto; max-height: 600px; object-fit: contain;">';
+        } else {
+            // If no photos, show message
+            container.innerHTML = '<div style="color: #999; font-size: 16px; padding: 40px;"><i class="fa fa-info-circle" style="font-size: 48px; display: block; margin-bottom: 10px;"></i><p>Please add photo URLs to the photoUrls array in the code</p></div>';
+        }
+    }
+    
+    // Add click handler for random photo button
+    document.addEventListener('DOMContentLoaded', function() {
+        var randomBtn = document.getElementById('random-photo-btn');
+        if (randomBtn) {
+            randomBtn.addEventListener('click', function() {
+                showRandomPhoto();
+            });
+        }
+    });
+</script>
+<script>
+    // Video modal functionality - using both jQuery and vanilla JS for reliability
+    function openVideoModal() {
+        var modal = document.getElementById('video-modal');
+        if (modal) {
+            modal.classList.add('show');
+            modal.style.display = 'flex';
+            modal.style.opacity = '0';
+            setTimeout(function() {
+                modal.style.transition = 'opacity 0.3s';
+                modal.style.opacity = '1';
+            }, 10);
+        }
+    }
+    
+    function closeVideoModal() {
+        var modal = document.getElementById('video-modal');
+        if (modal) {
+            modal.style.opacity = '0';
+            setTimeout(function() {
+                modal.classList.remove('show');
+                modal.style.display = 'none';
+                modal.style.opacity = '';
+                modal.style.transition = '';
+            }, 300);
+        }
+    }
+    
+    // Attach event listeners when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        var btn = document.getElementById('watch-video-btn');
+        if (btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openVideoModal();
+                return false;
+            });
+        }
+        
+        // Close buttons
+        var closeBtns = document.querySelectorAll('.modal-close, .modal-close-btn');
+        closeBtns.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeVideoModal();
+                return false;
+            });
+        });
+        
+        // Close on outside click
+        var modal = document.getElementById('video-modal');
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeVideoModal();
+                }
+            });
+        }
+        
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+                closeVideoModal();
+            }
+        });
+        
+        // Also use jQuery if available
+        if (typeof jQuery !== 'undefined') {
+            jQuery(document).ready(function($) {
+                $('#watch-video-btn').on('click', function(e) {
+                    e.preventDefault();
+                    openVideoModal();
+                    return false;
+                });
+            });
+        }
+    });
+</script>
+<script>
+    // Mobile submenu toggle
+    $(document).ready(function() {
+        // Handle clicks on parent Gallery link (mobile only)
+        $('.primary-nav > li:has(ul) > a').on('click', function(e) {
+            if ($(window).width() <= 991) {
+                var $parent = $(this).parent('li');
+                var $submenu = $parent.find('ul');
+                
+                // Only prevent default if clicking the parent link itself
+                if ($submenu.length > 0 && $(e.target).is('a') && !$(e.target).closest('ul').length) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $parent.toggleClass('active');
+                    return false;
+                }
+            }
+        });
+        
+        // Ensure submenu items are fully clickable
+        $('.primary-nav li ul li a').on('click', function(e) {
+            // Allow submenu items to navigate normally
+            e.stopPropagation();
+            // Don't prevent default - let the link work
+            // Close mobile menu after clicking
+            if ($(window).width() <= 991) {
+                $('.header-nav').removeClass('open');
+                $('.nav-toggle').removeClass('active');
+            }
+            // Handle smooth scroll for hash links on same page
+            var href = $(this).attr('href');
+            if (href.indexOf('#') !== -1) {
+                var hash = href.split('#')[1];
+                var target = $('#' + hash);
+                if (target.length && location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')) {
+                    e.preventDefault();
+                    // Calculate navigation menu height dynamically
+                    var navHeight = $('section.navigation').outerHeight() || 120;
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - navHeight - 20
+                    }, 1000);
+                    // Update URL without jumping
+                    if (history.pushState) {
+                        history.pushState(null, null, '#' + hash);
+                    }
+                }
+            }
+        });
+    });
+</script>
+<script>
+    // Handle hash anchor scrolling on page load (for cross-page navigation)
+    $(document).ready(function() {
+        if (window.location.hash) {
+            var hash = window.location.hash.substring(1);
+            var target = $('#' + hash);
+            if (target.length) {
+                // Wait for page to fully load, then scroll
+                // Calculate navigation menu height dynamically
+                setTimeout(function() {
+                    var navHeight = $('section.navigation').outerHeight() || 120;
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - navHeight - 20
+                    }, 1000);
+                }, 500);
+            }
+        }
+    });
+    
+    // Gallery page navigation scroll effect
+    // Run after scripts.js loads to ensure it works
+    (function() {
+        var scrollHandler = function() {
+            var scroll = $(window).scrollTop();
+            var $nav = $('section.navigation');
+            
+            if (!$nav.length) return;
+            
+            if (scroll >= 20) {
+                $nav.addClass('fixed');
+                $nav[0].style.setProperty('background-color', 'rgba(55, 36, 40, .88)', 'important');
+                $('header').css({
+                    "border-bottom": "none",
+                    "padding": "35px 0"
+                });
+                $('header .member-actions').css({
+                    "top": "26px",
+                });
+                $('header .navicon').css({
+                    "top": "34px",
+                });
+            } else {
+                $nav.removeClass('fixed');
+                $nav[0].style.setProperty('background-color', '#000', 'important');
+                $('header').css({
+                    "border-bottom": "solid 1px rgba(255, 255, 255, 0.2)",
+                    "padding": "50px 0"
+                });
+                $('header .member-actions').css({
+                    "top": "41px",
+                });
+                $('header .navicon').css({
+                    "top": "48px",
+                });
+            }
+        };
+        
+        // Set up handler after page loads
+        $(document).ready(function() {
+            // Wait a bit for scripts.js to potentially set up
+            setTimeout(function() {
+                // Add our handler (will run alongside or after scripts.js handler)
+                $(window).on('scroll.gallery', scrollHandler);
+                // Check initial state
+                scrollHandler();
+            }, 300);
+        });
+        
+        // Also set up on window load
+        $(window).on('load', function() {
+            setTimeout(function() {
+                $(window).on('scroll.gallery', scrollHandler);
+                scrollHandler();
+            }, 100);
+        });
+    })();
+</script>
+<!-- Google Analytics -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-46465113-4', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>
