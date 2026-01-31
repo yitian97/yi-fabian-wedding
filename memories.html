@@ -187,21 +187,27 @@
             <div class="header-nav">
                 <nav>
                     <ul class="primary-nav">
-                        <li><a href="index.html#intro">Our story</a></li>
-                        <li><a href="index.html#events">Events</a></li>
-                        <li class="hidden-sm hidden-xs"><a href="index.html#video-bg">Glimpse of the city</a></li>
-                        <li><a href="index.html#map">Venue</a></li>
+                        <li><a href="index.html#intro" data-translate="nav.ourStory">Our story</a></li>
+                        <li><a href="index.html#events" data-translate="nav.events">Events</a></li>
+                        <li class="hidden-sm hidden-xs"><a href="index.html#video-bg" data-translate="nav.glimpse">Glimpse of the city</a></li>
+                        <li><a href="index.html#map" data-translate="nav.venue">Venue</a></li>
                         <li>
-                            <a href="memories.html">Memories <i class="fa fa-caret-down" style="margin-left: 5px; font-size: 0.8em;"></i></a>
+                            <a href="memories.html" data-translate="nav.memories">Memories <i class="fa fa-caret-down" style="margin-left: 5px; font-size: 0.8em;"></i></a>
                             <ul>
-                                <li><a href="memories.html#wishes">Wishes Wall</a></li>
-                                <li><a href="memories.html#bits">Bits & Pieces</a></li>
-                                <li><a href="memories.html#wedding-gallery">Wedding Gallery</a></li>
+                                <li><a href="memories.html#wishes" data-translate="nav.wishesWall">Wishes Wall</a></li>
+                                <li><a href="memories.html#bits" data-translate="nav.bitsPieces">Bits & Pieces</a></li>
+                                <li><a href="memories.html#wedding-gallery" data-translate="nav.weddingGallery">Wedding Gallery</a></li>
                             </ul>
                         </li>
                     </ul>
                     <ul class="member-actions">
-                        <li><a href="index.html#rsvp" class="btn-white btn-small">RSVP</a></li>
+                        <li>
+                            <select id="language-selector" style="background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 5px 10px; border-radius: 3px; margin-right: 15px; cursor: pointer;">
+                                <option value="en">EN</option>
+                                <option value="de">DE</option>
+                            </select>
+                        </li>
+                        <li><a href="index.html#rsvp" class="btn-white btn-small" data-translate="nav.rsvp">RSVP</a></li>
                     </ul>
                 </nav>
             </div>
@@ -217,7 +223,7 @@
         <!-- Wishes Wall Section -->
         <div class="row section-padding" id="wishes" style="padding-top: 50px;">
             <div class="col-md-12 text-center">
-                <h3 class="header" style="margin-bottom: 30px;">Wishes Wall</h3>
+                <h3 class="header" style="margin-bottom: 30px;" data-translate="memories.wishesWall">Wishes Wall</h3>
             </div>
             
             <!-- Display Wishes - Moved before the form with nice background box -->
@@ -229,13 +235,13 @@
                     
                     <div style="position: relative; z-index: 1;">
                         <h4 style="text-align: center; margin-bottom: 40px; color: #372428; font-size: 24px; font-weight: 700; letter-spacing: 1px;">
-                            <i class="fa fa-heart" style="color: #d4af37; margin-right: 12px; font-size: 26px;"></i>Messages from Our Guests
+                            <i class="fa fa-heart" style="color: #d4af37; margin-right: 12px; font-size: 26px;"></i><span data-translate="memories.messagesFromGuests">Messages from Our Guests</span>
                         </h4>
                         <div class="row" id="wishes-display">
                             <!-- Wishes will be loaded here -->
                             <div class="col-md-12 text-center" style="padding: 40px; color: #999;">
                                 <i class="fa fa-comments" style="font-size: 48px; margin-bottom: 15px; display: block; color: #d4af37;"></i>
-                                <p style="font-size: 16px;">Be the first to leave a wish! 💕</p>
+                                <p style="font-size: 16px;" data-translate="memories.firstWish">Be the first to leave a wish! 💕</p>
                             </div>
                         </div>
                     </div>
@@ -246,7 +252,7 @@
             <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1" style="margin-bottom: 30px;">
                 <p style="color: #666; text-align: center; font-size: 17px; line-height: 1.8; padding: 20px; background: #f9f9f9; border-radius: 10px; border-left: 4px solid #d4af37;">
                     <i class="fa fa-info-circle" style="color: #d4af37; margin-right: 8px;"></i>
-                    Leave your wishes, congratulations, or suggestions for our special day! Messages are anonymous.
+                    <span data-translate="memories.wishesDesc">Leave your wishes, congratulations, or suggestions for our special day! Messages are anonymous.</span>
                 </p>
             </div>
             
@@ -254,16 +260,16 @@
             <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1" style="margin-bottom: 50px;">
                 <form id="wishes-form" style="background: #f9f9f9; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
                     <div class="form-group" style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;">Your Name (Optional)</label>
-                        <input type="text" name="name" id="wish-name" placeholder="Leave blank to remain anonymous" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
+                        <label style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;" data-translate="memories.yourName">Your Name (Optional)</label>
+                        <input type="text" name="name" id="wish-name" placeholder="" data-translate-placeholder="memories.anonymous" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
                     </div>
                     <div class="form-group" style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;">Your Message <span style="color: #d00;">*</span></label>
-                        <textarea name="message" id="wish-message" rows="5" placeholder="Share your wishes, congratulations, or suggestions..." required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; resize: vertical; font-family: inherit;"></textarea>
+                        <label style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;" data-translate="memories.yourMessage">Your Message <span style="color: #d00;">*</span></label>
+                        <textarea name="message" id="wish-message" rows="5" placeholder="" data-translate-placeholder="memories.messagePlaceholder" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; resize: vertical; font-family: inherit;"></textarea>
                     </div>
                     <div id="wishes-alert-wrapper" style="margin-bottom: 15px;"></div>
                     <button type="submit" class="btn btn-accent" style="width: 100%; padding: 12px; font-size: 14px; border: none; cursor: pointer; background-color: #d4af37 !important; color: #fff !important;">
-                        <i class="fa fa-heart" style="margin-right: 8px;"></i>Submit Your Wish
+                        <i class="fa fa-heart" style="margin-right: 8px;"></i><span data-translate="memories.submitWish">Submit Your Wish</span>
                     </button>
                 </form>
             </div>
@@ -272,7 +278,7 @@
         <!-- Bits & Pieces Section -->
         <div class="row section-padding" id="bits" style="padding-top: 50px;">
             <div class="col-md-12 text-center">
-                <h3 class="header" style="margin-bottom: 30px;">Bits & Pieces</h3>
+                <h3 class="header" style="margin-bottom: 30px;" data-translate="memories.bitsPieces">Bits & Pieces</h3>
             </div>
             <div class="col-md-12" style="margin-bottom: 40px;">
                 <div class="row">
@@ -281,12 +287,12 @@
                             <div id="random-photo-container" style="margin-bottom: 25px; min-height: 500px; background: #f5f5f5; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
                                 <div style="color: #999; font-size: 16px;">
                                     <i class="fa fa-image" style="font-size: 48px; display: block; margin-bottom: 10px;"></i>
-                                    <p>Click below to unlock puppy Pipita</p>
+                                    <p data-translate="memories.unlockPipita">Click below to unlock puppy Pipita</p>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                                 <button id="random-photo-btn" class="btn btn-accent" style="padding: 12px 30px; font-size: 16px; border: none; cursor: pointer; border-radius: 5px;">
-                                    <i class="fa fa-random" style="margin-right: 8px;"></i>Show Random Cuttie
+                                    <i class="fa fa-random" style="margin-right: 8px;"></i><span data-translate="memories.showRandom">Show Random Cuttie</span>
                                 </button>
                             </div>
                         </div>
@@ -298,7 +304,7 @@
         <!-- Wedding Gallery Section -->
         <div class="row section-padding" id="wedding-gallery" style="padding-top: 50px;">
             <div class="col-md-12 text-center">
-                <h3 class="header" style="margin-bottom: 30px;">Wedding Gallery</h3>
+                <h3 class="header" style="margin-bottom: 30px;" data-translate="memories.weddingGallery">Wedding Gallery</h3>
             </div>
             <div class="col-md-12" style="margin-bottom: 40px;">
                 <div class="row" id="photo-gallery">
@@ -307,7 +313,7 @@
                         <div style="display: inline-block; width: 360px; height: 360px; background: #e0e0e0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; overflow: hidden;">
                             <img src="img/pipita-wedding.png" alt="Gallery Placeholder" style="width: 100%; height: 100%; object-fit: cover; object-position: 0% 25%; filter: grayscale(60%) opacity(0.6);">
                         </div>
-                        <p style="color: #999; font-size: 16px; margin: 0;">Gallery coming after the wedding...</p>
+                        <p style="color: #999; font-size: 16px; margin: 0;" data-translate="memories.galleryComing">Gallery coming after the wedding...</p>
                     </div>
                 </div>
             </div>
@@ -318,7 +324,7 @@
                     <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
                         <div class="text-center">
                             <button id="watch-video-btn" type="button" class="btn btn-accent btn-large" style="display: inline-block; padding: 15px 40px; font-size: 18px; border: none; cursor: pointer;">
-                                <i class="fa fa-play-circle" style="margin-right: 10px;"></i>Watch Wedding Video
+                                <i class="fa fa-play-circle" style="margin-right: 10px;"></i><span data-translate="memories.watchVideo">Watch Wedding Video</span>
                             </button>
                         </div>
                     </div>
@@ -330,12 +336,12 @@
                 <div class="video-modal-content" style="background: #fff; padding: 20px; border-radius: 15px; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; z-index: 1000001 !important; animation: modalFadeIn 0.3s ease; margin-top: 100px;">
                     <button class="modal-close" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 28px; color: #999; cursor: pointer; line-height: 1; padding: 0; width: 30px; height: 30px;">&times;</button>
                     <div style="font-size: 60px; margin-bottom: 10px;">💒</div>
-                    <h2 style="color: #372428; margin-bottom: 5px; font-size: 28px; font-weight: bold;">Oops!</h2>
+                    <h2 style="color: #372428; margin-bottom: 5px; font-size: 28px; font-weight: bold;" data-translate="memories.oops">Oops!</h2>
                     <img src="img/pipi_1.png" alt="Pipi" style="max-width: 400px; width: 100%; height: auto; margin: 0 0 10px 0;">
-                    <p style="color: #999; font-size: 14px; line-height: 1.4;">
+                    <p style="color: #999; font-size: 14px; line-height: 1.4;" data-translate="memories.checkBackSoon">
                         Please check back soon. We can't wait to share our special day with you! 💕
                     </p>
-                    <button class="modal-close-btn" style="margin-top: 15px; padding: 10px 25px; background-color: #d4af37; color: #fff; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; transition: background-color 0.3s;">
+                    <button class="modal-close-btn" style="margin-top: 15px; padding: 10px 25px; background-color: #d4af37; color: #fff; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; transition: background-color 0.3s;" data-translate="memories.gotIt">
                         Got it!
                     </button>
                 </div>
@@ -386,7 +392,7 @@
         <div class="row">
             <div class="col-sm-12 text-center content">
                 <span class="to-top-wrapper"><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a></span>
-                <p>Crafted with lots of <span class="fa fa-heart pulse2"></span> for Yi & Fabian</p>
+                <p data-translate="memories.footer">Crafted with lots of <span class="fa fa-heart pulse2"></span> by Yi</p>
             </div>
         </div>
     </div>
@@ -883,6 +889,158 @@
     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
     ga('create', 'UA-46465113-4', 'auto');
     ga('send', 'pageview');
+</script>
+<script>
+    // Language Translation System (shared with index.html)
+    const translations = {
+        en: {
+            nav: {
+                ourStory: "Our story",
+                events: "Events",
+                glimpse: "Glimpse of the city",
+                venue: "Venue",
+                memories: "Memories",
+                wishesWall: "Wishes Wall",
+                bitsPieces: "Bits & Pieces",
+                weddingGallery: "Wedding Gallery",
+                rsvp: "RSVP"
+            },
+            memories: {
+                wishesWall: "Wishes Wall",
+                bitsPieces: "Bits & Pieces",
+                weddingGallery: "Wedding Gallery",
+                wishesDesc: "Leave your wishes, congratulations, or suggestions for our special day! Messages are anonymous.",
+                yourName: "Your Name (Optional)",
+                anonymous: "Leave blank to remain anonymous",
+                yourMessage: "Your Message *",
+                messagePlaceholder: "Share your wishes, congratulations, or suggestions...",
+                submitWish: "Submit Your Wish",
+                unlockPipita: "Click below to unlock puppy Pipita",
+                showRandom: "Show Random Cuttie",
+                galleryComing: "Gallery coming after the wedding...",
+                firstWish: "Be the first to leave a wish! 💕",
+                messagesFromGuests: "Messages from Our Guests",
+                watchVideo: "Watch Wedding Video",
+                oops: "Oops!",
+                checkBackSoon: "Please check back soon. We can't wait to share our special day with you! 💕",
+                gotIt: "Got it!",
+                footer: "Crafted with lots of <span class=\"fa fa-heart pulse2\"></span> by Yi"
+            }
+        },
+        de: {
+            nav: {
+                ourStory: "Unsere Geschichte",
+                events: "Veranstaltungen",
+                glimpse: "Einblick in die Stadt",
+                venue: "Veranstaltungsort",
+                memories: "Erinnerungen",
+                wishesWall: "Wünschewand",
+                bitsPieces: "Kleine Momente",
+                weddingGallery: "Hochzeitsgalerie",
+                rsvp: "Zusagen"
+            },
+            memories: {
+                wishesWall: "Wünschewand",
+                bitsPieces: "Kleine Momente",
+                weddingGallery: "Hochzeitsgalerie",
+                wishesDesc: "Hinterlassen Sie Ihre Wünsche, Glückwünsche oder Vorschläge für unseren besonderen Tag! Nachrichten sind anonym.",
+                yourName: "Ihr Name (Optional)",
+                anonymous: "Leer lassen, um anonym zu bleiben",
+                yourMessage: "Ihre Nachricht *",
+                messagePlaceholder: "Teilen Sie Ihre Wünsche, Glückwünsche oder Vorschläge mit...",
+                submitWish: "Wunsch absenden",
+                unlockPipita: "Klicken Sie unten, um Welpe Pipita freizuschalten",
+                showRandom: "Zufälliges Süßes zeigen",
+                galleryComing: "Galerie kommt nach der Hochzeit...",
+                firstWish: "Seien Sie der Erste, der einen Wunsch hinterlässt! 💕",
+                messagesFromGuests: "Nachrichten von unseren Gästen",
+                watchVideo: "Hochzeitsvideo ansehen",
+                oops: "Ups!",
+                checkBackSoon: "Bitte schauen Sie bald wieder vorbei. Wir können es kaum erwarten, unseren besonderen Tag mit Ihnen zu teilen! 💕",
+                gotIt: "Verstanden!",
+                footer: "Mit viel <span class=\"fa fa-heart pulse2\"></span> von Yi erstellt"
+            }
+        }
+    };
+    
+    // Get saved language or default to English
+    let currentLang = localStorage.getItem('wedding-lang') || 'en';
+    
+    // Function to translate content
+    function translatePage(lang) {
+        currentLang = lang;
+        localStorage.setItem('wedding-lang', lang);
+        
+        // Update language selector
+        var selector = document.getElementById('language-selector');
+        if (selector) {
+            selector.value = lang;
+        }
+        
+        // Translate all elements with data-translate attribute
+        document.querySelectorAll('[data-translate]').forEach(function(element) {
+            const key = element.getAttribute('data-translate');
+            const keys = key.split('.');
+            let translation = translations[lang];
+            
+            for (let i = 0; i < keys.length; i++) {
+                translation = translation[keys[i]];
+            }
+            
+            if (translation) {
+                element.innerHTML = translation;
+            }
+        });
+        
+        // Translate placeholders
+        document.querySelectorAll('[data-translate-placeholder]').forEach(function(element) {
+            const key = element.getAttribute('data-translate-placeholder');
+            const keys = key.split('.');
+            let translation = translations[lang];
+            
+            for (let i = 0; i < keys.length; i++) {
+                translation = translation[keys[i]];
+            }
+            
+            if (translation) {
+                element.placeholder = translation;
+            }
+        });
+    }
+    
+    // Initialize language on page load
+    function initTranslation() {
+        translatePage(currentLang);
+        
+        // Language selector change handler
+        $('#language-selector').on('change', function(e) {
+            translatePage($(this).val());
+        });
+    }
+    
+    // Try multiple initialization points to ensure it runs
+    $(document).ready(function() {
+        initTranslation();
+    });
+    
+    $(window).on('load', function() {
+        setTimeout(function() {
+            initTranslation();
+        }, 100);
+    });
+    
+    // Also try with vanilla JS as fallback
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                initTranslation();
+            }, 200);
+        });
+    } else {
+        setTimeout(function() {
+            initTranslation();
+        }, 100);
+    }
 </script>
 </body>
 </html>

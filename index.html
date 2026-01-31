@@ -491,21 +491,27 @@
                 <div class="header-nav">
                     <nav>
                         <ul class="primary-nav">
-                            <li><a href="#intro">Our story</a></li>
-                            <li><a href="#events">Events</a></li>
-                            <li class="hidden-sm hidden-xs"><a href="#video-bg">Glimpse of the city</a></li>
-                            <li><a href="#map">Venue</a></li>
+                            <li><a href="#intro" data-translate="nav.ourStory">Our story</a></li>
+                            <li><a href="#events" data-translate="nav.events">Events</a></li>
+                            <li class="hidden-sm hidden-xs"><a href="#video-bg" data-translate="nav.glimpse">Glimpse of the city</a></li>
+                            <li><a href="#map" data-translate="nav.venue">Venue</a></li>
                             <li>
-                                <a href="memories.html">Memories <i class="fa fa-caret-down" style="margin-left: 5px; font-size: 0.8em;"></i></a>
+                                <a href="memories.html" data-translate="nav.memories">Memories <i class="fa fa-caret-down" style="margin-left: 5px; font-size: 0.8em;"></i></a>
                                 <ul>
-                                    <li><a href="memories.html#wishes">Wishes Wall</a></li>
-                                    <li><a href="memories.html#bits">Bits & Pieces</a></li>
-                                    <li><a href="memories.html#wedding-gallery">Wedding Gallery</a></li>
+                                    <li><a href="memories.html#wishes" data-translate="nav.wishesWall">Wishes Wall</a></li>
+                                    <li><a href="memories.html#bits" data-translate="nav.bitsPieces">Bits & Pieces</a></li>
+                                    <li><a href="memories.html#wedding-gallery" data-translate="nav.weddingGallery">Wedding Gallery</a></li>
                                 </ul>
                             </li>
                         </ul>
                         <ul class="member-actions">
-                            <li><a href="#rsvp" class="btn-white btn-small">RSVP</a></li>
+                            <li>
+                                <select id="language-selector" style="background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 5px 10px; border-radius: 3px; margin-right: 15px; cursor: pointer;">
+                                    <option value="en">EN</option>
+                                    <option value="de">DE</option>
+                                </select>
+                            </li>
+                            <li><a href="#rsvp" class="btn-white btn-small" data-translate="nav.rsvp">RSVP</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -529,7 +535,7 @@
         <div class="row">
             <div class="col-sm-4 hidden-xs"></div>
             <div class="col-sm-4 text-center"><a href="#rsvp"
-                                                           class="btn btn-accent btn-large rsvp-btn" style="margin-top: -150px;">RSVP</a></div>
+                                                           class="btn btn-accent btn-large rsvp-btn" style="margin-top: -150px;" data-translate="nav.rsvp">RSVP</a></div>
             <div class="col-sm-4 hidden-xs"></div>
         </div>
     </div>
@@ -540,8 +546,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h3>We are getting married</h3>
-                <p>The date is <strong>2<sup>nd</sup> of May, 2026</strong> and we would like you to be a part of
+                <h3 data-translate="content.gettingMarried">We are getting married</h3>
+                <p data-translate="content.invitation">The date is <strong>2<sup>nd</sup> of May, 2026</strong> and we would like you to be a part of
                     it.</p>
                 <div class="share-bar"></div>
             </div>
@@ -553,13 +559,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h3 class="header">Our story</h3>
+                <h3 class="header" data-translate="content.ourStory">Our story</h3>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3 hidden-sm hidden-xs"><img src="img/IMG_9763.png" class="wp1" style="width: 120%; max-width: 400px; margin-top: -30px;"></div>
             <div class="col-md-6">
-                <p>
+                <p data-translate="content.ourStoryText">
                     Our story started in 2020 during COVID, when there was nothing else to do. We became running partners, hitting the trails together to escape the monotony of lockdown. What started as a way to stay active and sane during those challenging times slowly transformed into something more. Mile by mile, run by run, we discovered a connection that went far beyond the paths we shared. Running became our love language, and we realized we were meant to be together. After two years, we adopted our baby Pipita, expanding our little family. Now, we're excited to take the next step and celebrate our love with all of you.
                 </p>
             </div>
@@ -576,54 +582,54 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="header">Events Preview</h3>
+                <h3 class="header" data-translate="events.title">Events Preview</h3>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
                 <div class="wp3">
-                    <h5>Guest Arrival <span class="time">16:00</span></h5>
-                    <p>Welcome drink and guest photo session</p>
+                    <h5 data-translate="events.guestArrival">Guest Arrival <span class="time">16:00</span></h5>
+                    <p data-translate="events.guestArrivalDesc">Welcome drink and guest photo session</p>
                 </div>
                 
                 <div class="wp6">
-                    <h5>Wedding Ceremony <span class="time">17:00 – 18:00</span></h5>
-                    <p>Join us as we exchange vows and celebrate our union</p>
+                    <h5 data-translate="events.ceremony">Wedding Ceremony <span class="time">17:00 – 18:00</span></h5>
+                    <p data-translate="events.ceremonyDesc">Join us as we exchange vows and celebrate our union</p>
                 </div>
                 <div class="wp3">
-                    <h5>Photo Session <span class="time">18:00 – 18:50</span></h5>
-                    <p>Continued photo session with family and friends</p>
+                    <h5 data-translate="events.photoSession">Photo Session <span class="time">18:00 – 18:50</span></h5>
+                    <p data-translate="events.photoSessionDesc">Continued photo session with family and friends</p>
                 </div>
                 <div class="wp4">
-                    <h5>Transfer to Restaurant <span class="time">19:00 – 19:30</span></h5>
-                    <p>We'll make our way to the reception venue</p>
+                    <h5 data-translate="events.transfer">Transfer to Restaurant <span class="time">19:00 – 19:30</span></h5>
+                    <p data-translate="events.transferDesc">We'll make our way to the reception venue</p>
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
 
                 <div class="wp5">
-                    <h5>Garden Cocktail Hour <span class="time">19:30 – 21:00</span></h5>
-                    <p>A relaxed time to mingle and enjoy drinks in the garden</p>
+                    <h5 data-translate="events.cocktail">Garden Cocktail Hour <span class="time">19:30 – 21:00</span></h5>
+                    <p data-translate="events.cocktailDesc">A relaxed time to mingle and enjoy drinks in the garden</p>
                 </div>
                 <div class="wp6">
-                    <h5>Banquet Dinner <span class="time">21:00 – 23:00</span></h5>
-                    <p>An elegant evening meal to celebrate together</p>
+                    <h5 data-translate="events.banquet">Banquet Dinner <span class="time">21:00 – 23:00</span></h5>
+                    <p data-translate="events.banquetDesc">An elegant evening meal to celebrate together</p>
                 </div>
                 <div class="wp3">
-                    <h5>Dance Party & Open Bar <span class="time">23:00 – 01:00</span></h5>
-                    <p>Let's dance the night away! The bar is open and the music is ready</p>
+                    <h5 data-translate="events.dance">Dance Party & Open Bar <span class="time">23:00 – 01:00</span></h5>
+                    <p data-translate="events.danceDesc">Let's dance the night away! The bar is open and the music is ready</p>
                 </div>
             </div>
         </div>
         <div class="row section-padding">
             <div class="col-md-6 text-center">
                 <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#dc-modal">
-                    <i class="fa fa-barcode"></i>&nbsp;&nbsp;Dress code
+                    <i class="fa fa-barcode"></i>&nbsp;&nbsp;<span data-translate="events.dressCode">Dress code</span>
                 </a>
             </div>
             <div class="col-md-6 text-center">
                 <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#menu-modal">
-                    <i class="fa fa-cutlery"></i>&nbsp;&nbsp;Menu
+                    <i class="fa fa-cutlery"></i>&nbsp;&nbsp;<span data-translate="events.menu">Menu</span>
                 </a>
             </div>
         </div>
@@ -639,23 +645,23 @@
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
                     </button>
-                    <h3 class="text-center section-padding">Ugh... dress codes?</h3>
-                    <p>
+                    <h3 class="text-center section-padding" data-translate="dressCode.title">Ugh... dress codes?</h3>
+                    <p data-translate="dressCode.intro">
                         We want you to feel comfortable, happy, and yourself—whatever that means for you. There's no strict dress code, just come as you are and ready to celebrate with us ❤️
                     </p>
                     
-                    <p>
+                    <p data-translate="dressCode.ladies">
                         <strong>Ladies</strong><br>
                         Please kindly avoid white, china red (the bride's color), and black.<br>
                         If you'd like to match the vibe (and look great in photos), we're going for warm, neutral pastel tones.
                     </p>
                     
-                    <p>
+                    <p data-translate="dressCode.gentlemen">
                         <strong>Gentlemen</strong><br>
                         Smart casual to semi-formal—anything you feel good and comfortable wearing is perfect.
                     </p>
                     
-                    <p>
+                    <p data-translate="dressCode.goodToKnow">
                         <strong>Good to know</strong><br>
                         The ceremony and dinner will be outdoors by the sea, so it can get a little breezy in the evening—bring a light jacket or wrap just in case.<br>
                         The party will be indoors, so once the dancing starts, you can drop the jacket and have fun 💃🕺
@@ -671,36 +677,36 @@
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
                     </button>
-                    <h3 class="text-center section-padding">Menu</h3>
+                    <h3 class="text-center section-padding" data-translate="menu.title">Menu</h3>
                     <div style="text-align: left; padding: 0 20px;">
-                        <p style="margin-bottom: 20px;">
+                        <p style="margin-bottom: 20px;" data-translate="menu.appetizer">
                             <strong>Appetizer</strong><br>
                             Mediterranean tapas
                         </p>
                         
-                        <p style="margin-bottom: 15px;">
+                        <p style="margin-bottom: 15px;" data-translate="menu.mainCourse">
                             <strong>Main Course</strong> (Choose one)
                         </p>
                         
-                        <p style="margin-bottom: 15px;">
+                        <p style="margin-bottom: 15px;" data-translate="menu.sea">
                             <strong style="color: #0066cc;"><i class="fa fa-tint"></i> THE SEA...</strong><br>
                             Hake supremes with crunchy seafood mussoline.
                         </p>
                         
-                        <p style="margin-bottom: 15px; text-align: center;">
+                        <p style="margin-bottom: 15px; text-align: center;" data-translate="menu.or">
                             <strong>- OR -</strong>
                         </p>
                         
-                        <p style="margin-bottom: 15px;">
+                        <p style="margin-bottom: 15px;" data-translate="menu.mountain">
                             <strong style="color: #8B4513;"><i class="fa fa-tree"></i> THE MOUNTAIN...</strong><br>
                             Mellow Iberian Pork at the "Cabernet Sauvignon" with creamy truffled potato, raisins and pine nuts.
                         </p>
                         
-                        <p style="margin-bottom: 20px; font-size: 0.9em; color: #666;">
+                        <p style="margin-bottom: 20px; font-size: 0.9em; color: #666;" data-translate="menu.note">
                             * Possibility of changing it for braised veal
                         </p>
                         
-                        <p style="margin-bottom: 20px;">
+                        <p style="margin-bottom: 20px;" data-translate="menu.dessert">
                             <strong>DESSERT</strong><br>
                             Mousse of nougat of almond with chocolate to the cup
                         </p>
@@ -733,7 +739,7 @@
     </div>
     <div id="video-content">
         <h5>Barcelona</h5>
-        <p>City of joy</p>
+        <p data-translate="city.joy">City of joy</p>
     </div>
 </section>
 
@@ -741,8 +747,8 @@
     <div class="container">
         <div class="row section-padding">
             <div class="col-md-12 text-center">
-                <h3 class="header">The Ceremony Venue</h3>
-                <p>The ceremony will be held at Linnaeus Pavilion inside <strong>Marimurtra Botanical Garden</strong> in Blanes. </p>
+                <h3 class="header" data-translate="venue.ceremonyTitle">The Ceremony Venue</h3>
+                <p data-translate="venue.ceremonyDesc">The ceremony will be held at Linnaeus Pavilion inside <strong>Marimurtra Botanical Garden</strong> in Blanes. </p>
             </div>
         </div>
         <div class="row">
@@ -755,38 +761,38 @@
         </div>
     </div>
     <div class="text-center section-padding">
-        <h3>How do I get there?</h3>
-        <p>It's way easier than you think!</p>
+        <h3 data-translate="venue.howToGet">How do I get there?</h3>
+        <p data-translate="venue.easy">It's way easier than you think!</p>
     </div>
     <div class="container section-padding">
         <div class="row">
             <div class="col-md-7" style="max-width: 600px; margin: 0 auto; margin-left: 5%;">
-                <h4 style="margin-bottom: 20px;">Getting to the Ceremony Venue from Barcelona</h4>
+                <h4 style="margin-bottom: 20px;" data-translate="venue.gettingThere">Getting to the Ceremony Venue from Barcelona</h4>
                 <p style="margin-bottom: 20px;">
 
                 </p>
                 <ul style="text-align: justify; margin-bottom: 30px;">
-                    <li style="margin-bottom: 10px; text-align: justify;">
+                    <li style="margin-bottom: 10px; text-align: justify;" data-translate="venue.byTrain">
                         <strong>By Train:</strong> Take the R1 train (Rodalies de Catalunya) from Barcelona Sants or Plaça Catalunya to Blanes station (approximately 1.5 hours). 
                         Trains run frequently throughout the day. Tickets can be purchased directly at the station. 
                         From Blanes station, it's a 15-minute walk or short taxi ride to the venue.
-                        <br><a href="https://rodalies.gencat.cat/en/horaris/" target="_blank">Check train schedules →</a>
+                        <br><a href="https://rodalies.gencat.cat/en/horaris/" target="_blank" data-translate="venue.checkTrain">Check train schedules →</a>
                     </li>
-                    <li style="margin-bottom: 10px; text-align: justify;">
+                    <li style="margin-bottom: 10px; text-align: justify;" data-translate="venue.byCar">
                         <strong>By Car:</strong> It is 1 hour drive from Barcelona to the venue. Take the AP-7 or C-32 highway towards Girona, then exit at Blanes. 
                         Parking is available near the venue.
-                        <br><a href="https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden" target="_blank">Get directions →</a>
+                        <br><a href="https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden" target="_blank" data-translate="venue.getDirections">Get directions →</a>
                     </li>
     
                 </ul>
             </div>
             <div class="col-md-5">
                 <div style="background: #f5f5f5; padding: 20px; border-radius: 5px; height: 100%;">
-                    <h5 style="margin-bottom: 15px;">🚌 Shuttle Bus Service</h5>
-                    <p style="margin-bottom: 10px;">
+                    <h5 style="margin-bottom: 15px;" data-translate="venue.shuttleTitle">🚌 Shuttle Bus Service</h5>
+                    <p style="margin-bottom: 10px;" data-translate="venue.shuttleDesc1">
                         We will provide a shuttle bus <strong>from Marimurtra Botanical Garden (ceremony venue) to the banquet venue</strong> after the ceremony.
                     </p>
-                    <p>
+                    <p data-translate="venue.shuttleDesc2">
                         There will be an extra shuttle bus to transfer the drunk guests <strong>from the banquet venue back to Barcelona</strong> at the end of the night. More info will be updated here later.
                     </p>
                 </div>
@@ -803,7 +809,7 @@
                     <img src="img/venue_map.png" alt="Venue Map" class="img-responsive" style="width: 100%; height: 500px; object-fit: contain; background-color: #f5f5f5; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
                     <div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">
                         <div id="btn-view-larger" class="pointer-events-auto" data-toggle="modal" data-target="#venue-map-modal" style="cursor: pointer; display: inline-block; padding: 10px 20px; background: rgba(255,255,255,0.95); border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-                            <i class="fa fa-expand"></i>&nbsp;&nbsp;View larger
+                            <i class="fa fa-expand"></i>&nbsp;&nbsp;<span data-translate="venue.viewLarger">View larger</span>
                         </div>
                     </div>
                 </div>
@@ -815,24 +821,24 @@
             <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-6">
                 <div class="text-center">
                     <div id="btn-show-content" class="pointer-events-auto">
-                        <i class="fa fa-info-circle"></i>&nbsp;&nbsp; Show info
+                        <i class="fa fa-info-circle"></i>&nbsp;&nbsp; <span data-translate="venue.showInfo">Show info</span>
                     </div>
                 </div>
                 <div id="map-content" class="pointer-events-auto">
                     <div class="row">
                         <div class="col-md-6" style="padding-right: 15px;">
-                            <h5>Ceremony Venue</h5>
+                            <h5 data-translate="venue.ceremonyVenue">Ceremony Venue</h5>
                             <p>Marimurtra Botanical Garden<br>Passeig de Carles Faust, 9, 17300 Blanes, Girona, Spain</p>
                             <div style="margin-top: 0px; margin-bottom: 20px; display: flex; justify-content: space-between; gap: 10px;">
-                                <a class="btn btn-accent btn-small" id="btn-show-ceremony-map" style="flex: 1; font-size: 11px; padding: 6px 10px;"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Show map</a>
-                                <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#venue-map-modal" style="display: none; flex: 1; font-size: 11px; padding: 6px 10px;" id="btn-venue-map-mobile"><i class="fa fa-image"></i>&nbsp;&nbsp;Venue map</a>
+                                <a class="btn btn-accent btn-small" id="btn-show-ceremony-map" style="flex: 1; font-size: 11px; padding: 6px 10px;"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span data-translate="venue.showMap">Show map</span></a>
+                                <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#venue-map-modal" style="display: none; flex: 1; font-size: 11px; padding: 6px 10px;" id="btn-venue-map-mobile"><i class="fa fa-image"></i>&nbsp;&nbsp;<span data-translate="venue.venueMap">Venue map</span></a>
                             </div>
                         </div>
                         <div class="col-md-6" style="padding-left: 15px; border-left: 1px solid #e0e0e0;">
-                            <h5>Banquet Venue</h5>
+                            <h5 data-translate="venue.banquetVenue">Banquet Venue</h5>
                             <p>Plaça Nacions Unides, 1, 17310 Canyelles, Girona, Spain</p>
                             <div class="text-center" style="margin-top: 0px; margin-bottom: 10px;">
-                                <a class="btn btn-accent btn-small" id="btn-show-banquet-map" style="font-size: 11px; padding: 6px 10px;"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Show map</a>
+                                <a class="btn btn-accent btn-small" id="btn-show-banquet-map" style="font-size: 11px; padding: 6px 10px;"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span data-translate="venue.showMap">Show map</span></a>
                             </div>
                         </div>
                     </div>
@@ -851,8 +857,8 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
                     </button>
                     <div class="section-padding">
-                        <h3>Thank you!</h3>
-                        <p>We are glad to see you join us on our big day.</p>
+                        <h3 data-translate="rsvp.thankYou">Thank you!</h3>
+                        <p data-translate="rsvp.thankYouMsg">We are glad to see you join us on our big day.</p>
                         <div id="add-to-cal"></div>
                     </div>
                 </div>
@@ -863,8 +869,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <h3>What are you waiting for?</h3>
-                <p>We would greatly appreciate if you could RSVP before 31st of March, 2026</p>
+                <h3 data-translate="rsvp.title">What are you waiting for?</h3>
+                <p data-translate="rsvp.deadline">We would greatly appreciate if you could RSVP before 31st of March, 2026</p>
                 <form id="rsvp-form" class="rsvp-form"
                       action=""
                       method="POST">
@@ -872,14 +878,14 @@
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
                                 <i class="fa fa-user"></i><input name="name" class=""
-                                                                 placeholder="Name"
+                                                                 placeholder="" data-translate-placeholder="rsvp.name"
                                                                  required style="padding: 0; padding-left: 68px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
                                 <i class="fa fa-phone"></i><input type="tel" name="phone" class=""
-                                                                 placeholder="Phone"
+                                                                 placeholder="" data-translate-placeholder="rsvp.phone"
                                                                  required style="padding: 0; padding-left: 68px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
                             </div>
                         </div>
@@ -888,7 +894,7 @@
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
                                 <i class="fa fa-heart"></i><input type="text" name="partner_name" class=""
-                                                                  placeholder="Partner? name"
+                                                                  placeholder="" data-translate-placeholder="rsvp.partner"
                                                                   required style="padding: 0; padding-left: 68px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
                             </div>
                         </div>
@@ -896,7 +902,7 @@
                             <div class="form-input-group" style="position: relative;">
                                 <i class="fa fa-users"></i>
                                 <select name="num_of_kids" class="" required style="padding: 0; padding-left: 68px; padding-right: 30px; margin: 0; width: 100%; height: 55px; border: none; border-radius: 6px; background: transparent; -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; line-height: 55px; box-sizing: border-box;">
-                                    <option value="">Kids?</option>
+                                    <option value="" data-translate="rsvp.kids">Kids?</option>
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -912,9 +918,9 @@
                             <div class="form-input-group" style="position: relative;">
                                 <i class="fa fa-bus"></i>
                                 <select name="shuttle_bus" class="" required style="padding: 0; padding-left: 68px; padding-right: 30px; margin: 0; width: 100%; height: 55px; border: none; border-radius: 6px; background: transparent; -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; line-height: 55px; box-sizing: border-box;">
-                                    <option value="">Bus to Barcelona?</option>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option value="" data-translate="rsvp.bus">Bus to Barcelona?</option>
+                                    <option value="yes" data-translate="rsvp.yes">Yes</option>
+                                    <option value="no" data-translate="rsvp.no">No</option>
                                 </select>
                                 <i class="fa fa-chevron-down" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #999;"></i>
                             </div>
@@ -922,7 +928,7 @@
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
                                 <i class="fa fa-cutlery"></i><input type="text" name="food_requirements" class=""
-                                                                     placeholder="Food requirements"
+                                                                     placeholder="" data-translate-placeholder="rsvp.food"
                                                                      style="padding: 0; padding-left: 68px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
                             </div>
                         </div>
@@ -931,8 +937,7 @@
                         <div class="col-md-12" id="alert-wrapper"></div>
                     </div>
                     <button class="btn-fill rsvp-btn">
-                        Yes,
-                        that's me!
+                        <span data-translate="rsvp.yesMe">Yes, that's me!</span>
                     </button>
                 </form>
             </div>
@@ -945,7 +950,7 @@
         <div class="row">
             <div class="col-sm-12 text-center content">
                 <span class="to-top-wrapper"><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a></span>
-                <p>Crafted with lots of <span class="fa fa-heart pulse2"></span> for Yi & Fabian</p>
+                <p data-translate="footer.crafted">Crafted with lots of <span class="fa fa-heart pulse2"></span> by Yi</p>
             </div>
         </div>
     </div>
@@ -1009,6 +1014,273 @@
     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
     ga('create', 'UA-46465113-4', 'auto');
     ga('send', 'pageview');
+</script>
+<script>
+    // Language Translation System
+    const translations = {
+        en: {
+            nav: {
+                ourStory: "Our story",
+                events: "Events",
+                glimpse: "Glimpse of the city",
+                venue: "Venue",
+                memories: "Memories",
+                wishesWall: "Wishes Wall",
+                bitsPieces: "Bits & Pieces",
+                weddingGallery: "Wedding Gallery",
+                rsvp: "RSVP"
+            },
+            content: {
+                gettingMarried: "We are getting married",
+                invitation: "The date is <strong>2<sup>nd</sup> of May, 2026</strong> and we would like you to be a part of it.",
+                ourStory: "Our story",
+                ourStoryText: "Our story started in 2020 during COVID, when there was nothing else to do. We became running partners, hitting the trails together to escape the monotony of lockdown. What started as a way to stay active and sane during those challenging times slowly transformed into something more. Mile by mile, run by run, we discovered a connection that went far beyond the paths we shared. Running became our love language, and we realized we were meant to be together. After two years, we adopted our baby Pipita, expanding our little family. Now, we're excited to take the next step and celebrate our love with all of you."
+            },
+            events: {
+                title: "Events Preview",
+                guestArrival: "Guest Arrival <span class=\"time\">16:00</span>",
+                guestArrivalDesc: "Welcome drink and guest photo session",
+                ceremony: "Wedding Ceremony <span class=\"time\">17:00 – 18:00</span>",
+                ceremonyDesc: "Join us as we exchange vows and celebrate our union",
+                photoSession: "Photo Session <span class=\"time\">18:00 – 18:50</span>",
+                photoSessionDesc: "Continued photo session with family and friends",
+                transfer: "Transfer to Restaurant <span class=\"time\">19:00 – 19:30</span>",
+                transferDesc: "We'll make our way to the reception venue",
+                cocktail: "Garden Cocktail Hour <span class=\"time\">19:30 – 21:00</span>",
+                cocktailDesc: "A relaxed time to mingle and enjoy drinks in the garden",
+                banquet: "Banquet Dinner <span class=\"time\">21:00 – 23:00</span>",
+                banquetDesc: "An elegant evening meal to celebrate together",
+                dance: "Dance Party & Open Bar <span class=\"time\">23:00 – 01:00</span>",
+                danceDesc: "Let's dance the night away! The bar is open and the music is ready",
+                dressCode: "Dress code",
+                menu: "Menu"
+            },
+            venue: {
+                ceremonyTitle: "The Ceremony Venue",
+                ceremonyDesc: "The ceremony will be held at Linnaeus Pavilion inside <strong>Marimurtra Botanical Garden</strong> in Blanes.",
+                howToGet: "How do I get there?",
+                easy: "It's way easier than you think!",
+                gettingThere: "Getting to the Ceremony Venue from Barcelona",
+                shuttleTitle: "🚌 Shuttle Bus Service",
+                shuttleDesc1: "We will provide a shuttle bus <strong>from Marimurtra Botanical Garden (ceremony venue) to the banquet venue</strong> after the ceremony.",
+                shuttleDesc2: "There will be an extra shuttle bus to transfer the drunk guests <strong>from the banquet venue back to Barcelona</strong> at the end of the night. More info will be updated here later.",
+                viewLarger: "View larger",
+                showInfo: "Show info",
+                ceremonyVenue: "Ceremony Venue",
+                banquetVenue: "Banquet Venue",
+                showMap: "Show map",
+                venueMap: "Venue map",
+                byTrain: "<strong>By Train:</strong> Take the R1 train (Rodalies de Catalunya) from Barcelona Sants or Plaça Catalunya to Blanes station (approximately 1.5 hours). Trains run frequently throughout the day. Tickets can be purchased directly at the station. From Blanes station, it's a 15-minute walk or short taxi ride to the venue.<br><a href=\"https://rodalies.gencat.cat/en/horaris/\" target=\"_blank\">Check train schedules →</a>",
+                checkTrain: "Check train schedules →",
+                byCar: "<strong>By Car:</strong> It is 1 hour drive from Barcelona to the venue. Take the AP-7 or C-32 highway towards Girona, then exit at Blanes. Parking is available near the venue.<br><a href=\"https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden\" target=\"_blank\">Get directions →</a>",
+                getDirections: "Get directions →"
+            },
+            rsvp: {
+                title: "What are you waiting for?",
+                deadline: "We would greatly appreciate if you could RSVP before 31st of March, 2026",
+                name: "Name",
+                phone: "Phone",
+                partner: "Partner name",
+                kids: "Kids?",
+                bus: "Bus to Barcelona?",
+                yes: "Yes",
+                no: "No",
+                food: "Food requirements",
+                yesMe: "Yes, that's me!",
+                thankYou: "Thank you!",
+                thankYouMsg: "We are glad to see you join us on our big day."
+            },
+            dressCode: {
+                title: "Ugh... dress codes?",
+                intro: "We want you to feel comfortable, happy, and yourself—whatever that means for you. There's no strict dress code, just come as you are and ready to celebrate with us ❤️",
+                ladies: "<strong>Ladies</strong><br>Please kindly avoid white, china red (the bride's color), and black.<br>If you'd like to match the vibe (and look great in photos), we're going for warm, neutral pastel tones.",
+                gentlemen: "<strong>Gentlemen</strong><br>Smart casual to semi-formal—anything you feel good and comfortable wearing is perfect.",
+                goodToKnow: "<strong>Good to know</strong><br>The ceremony and dinner will be outdoors by the sea, so it can get a little breezy in the evening—bring a light jacket or wrap just in case.<br>The party will be indoors, so once the dancing starts, you can drop the jacket and have fun 💃🕺"
+            },
+            menu: {
+                title: "Menu",
+                appetizer: "<strong>Appetizer</strong><br>Mediterranean tapas",
+                mainCourse: "<strong>Main Course</strong> (Choose one)",
+                sea: "<strong style=\"color: #0066cc;\"><i class=\"fa fa-tint\"></i> THE SEA...</strong><br>Hake supremes with crunchy seafood mussoline.",
+                or: "<strong>- OR -</strong>",
+                mountain: "<strong style=\"color: #8B4513;\"><i class=\"fa fa-tree\"></i> THE MOUNTAIN...</strong><br>Mellow Iberian Pork at the \"Cabernet Sauvignon\" with creamy truffled potato, raisins and pine nuts.",
+                note: "* Possibility of changing it for braised veal",
+                dessert: "<strong>DESSERT</strong><br>Mousse of nougat of almond with chocolate to the cup"
+            },
+            city: {
+                joy: "City of joy"
+            },
+            footer: {
+                crafted: "Crafted with lots of <span class=\"fa fa-heart pulse2\"></span> by Yi"
+            }
+        },
+        de: {
+            nav: {
+                ourStory: "Unsere Geschichte",
+                events: "Veranstaltungen",
+                glimpse: "Einblick in die Stadt",
+                venue: "Veranstaltungsort",
+                memories: "Erinnerungen",
+                wishesWall: "Wünschewand",
+                bitsPieces: "Kleine Momente",
+                weddingGallery: "Hochzeitsgalerie",
+                rsvp: "Zusagen"
+            },
+            content: {
+                gettingMarried: "Wir heiraten",
+                invitation: "Das Datum ist der <strong>2. Mai 2026</strong> und wir möchten, dass Sie dabei sind.",
+                ourStory: "Unsere Geschichte",
+                ourStoryText: "Unsere Geschichte begann 2020 während COVID, als es nichts anderes zu tun gab. Wir wurden Laufpartner und trafen uns auf den Trails, um der Monotonie des Lockdowns zu entkommen. Was als eine Möglichkeit begann, in diesen herausfordernden Zeiten aktiv und bei Verstand zu bleiben, verwandelte sich langsam in etwas mehr. Meile für Meile, Lauf für Lauf, entdeckten wir eine Verbindung, die weit über die Wege hinausging, die wir teilten. Laufen wurde unsere Liebessprache, und wir erkannten, dass wir füreinander bestimmt waren. Nach zwei Jahren adoptierten wir unser Baby Pipita und erweiterten unsere kleine Familie. Jetzt freuen wir uns darauf, den nächsten Schritt zu gehen und unsere Liebe mit euch allen zu feiern."
+            },
+            events: {
+                title: "Veranstaltungsvorschau",
+                guestArrival: "Gästeankunft <span class=\"time\">16:00</span>",
+                guestArrivalDesc: "Willkommensgetränk und Gästefotosession",
+                ceremony: "Hochzeitszeremonie <span class=\"time\">17:00 – 18:00</span>",
+                ceremonyDesc: "Begleiten Sie uns, während wir unsere Gelübde austauschen und unsere Vereinigung feiern",
+                photoSession: "Fotosession <span class=\"time\">18:00 – 18:50</span>",
+                photoSessionDesc: "Fortgesetzte Fotosession mit Familie und Freunden",
+                transfer: "Transfer zum Restaurant <span class=\"time\">19:00 – 19:30</span>",
+                transferDesc: "Wir machen uns auf den Weg zum Empfangsort",
+                cocktail: "Garten-Cocktail-Stunde <span class=\"time\">19:30 – 21:00</span>",
+                cocktailDesc: "Eine entspannte Zeit zum Plaudern und Genießen von Getränken im Garten",
+                banquet: "Bankettessen <span class=\"time\">21:00 – 23:00</span>",
+                banquetDesc: "Ein elegantes Abendessen zum gemeinsamen Feiern",
+                dance: "Tanzparty & Open Bar <span class=\"time\">23:00 – 01:00</span>",
+                danceDesc: "Lassen Sie uns die Nacht durchtanzen! Die Bar ist geöffnet und die Musik ist bereit",
+                dressCode: "Dresscode",
+                menu: "Menü"
+            },
+            venue: {
+                ceremonyTitle: "Der Zeremonienort",
+                ceremonyDesc: "Die Zeremonie findet im Linnaeus-Pavillon im <strong>Botanischen Garten Marimurtra</strong> in Blanes statt.",
+                howToGet: "Wie komme ich dorthin?",
+                easy: "Es ist viel einfacher als Sie denken!",
+                gettingThere: "Anreise zum Zeremonienort von Barcelona",
+                shuttleTitle: "🚌 Shuttle-Bus-Service",
+                shuttleDesc1: "Wir stellen einen Shuttle-Bus <strong>vom Botanischen Garten Marimurtra (Zeremonienort) zum Bankettort</strong> nach der Zeremonie zur Verfügung.",
+                shuttleDesc2: "Es wird einen zusätzlichen Shuttle-Bus geben, um die betrunkenen Gäste <strong>vom Bankettort zurück nach Barcelona</strong> am Ende der Nacht zu transportieren. Weitere Informationen werden später hier aktualisiert.",
+                viewLarger: "Größer anzeigen",
+                showInfo: "Info anzeigen",
+                ceremonyVenue: "Zeremonienort",
+                banquetVenue: "Bankettort",
+                showMap: "Karte anzeigen",
+                venueMap: "Ortskarte",
+                byTrain: "<strong>Mit dem Zug:</strong> Nehmen Sie den R1-Zug (Rodalies de Catalunya) vom Barcelona Sants oder Plaça Catalunya zum Bahnhof Blanes (ca. 1,5 Stunden). Die Züge verkehren tagsüber häufig. Tickets können direkt am Bahnhof gekauft werden. Vom Bahnhof Blanes sind es 15 Minuten zu Fuß oder eine kurze Taxifahrt zum Veranstaltungsort.<br><a href=\"https://rodalies.gencat.cat/en/horaris/\" target=\"_blank\">Fahrpläne prüfen →</a>",
+                checkTrain: "Fahrpläne prüfen →",
+                byCar: "<strong>Mit dem Auto:</strong> Es sind 1 Stunde Fahrt von Barcelona zum Veranstaltungsort. Nehmen Sie die AP-7 oder C-32 Autobahn Richtung Girona, dann Ausfahrt Blanes. Parkplätze sind in der Nähe des Veranstaltungsorts verfügbar.<br><a href=\"https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden\" target=\"_blank\">Wegbeschreibung abrufen →</a>",
+                getDirections: "Wegbeschreibung abrufen →"
+            },
+            rsvp: {
+                title: "Worauf wartest du noch?",
+                deadline: "Wir würden uns sehr freuen, wenn Sie vor dem 31. März 2026 zusagen könnten",
+                name: "Name",
+                phone: "Telefon",
+                partner: "Partnername",
+                kids: "Kinder?",
+                bus: "Bus nach Barcelona?",
+                yes: "Ja",
+                no: "Nein",
+                food: "Essensanforderungen",
+                yesMe: "Ja, das bin ich!",
+                thankYou: "Danke schön!",
+                thankYouMsg: "Wir freuen uns, Sie an unserem großen Tag dabei zu haben."
+            },
+            dressCode: {
+                title: "Ugh... Dresscode?",
+                intro: "Wir möchten, dass Sie sich wohl, glücklich und wie Sie selbst fühlen—was auch immer das für Sie bedeutet. Es gibt keinen strengen Dresscode, kommen Sie einfach wie Sie sind und bereit, mit uns zu feiern ❤️",
+                ladies: "<strong>Damen</strong><br>Bitte vermeiden Sie freundlicherweise Weiß, China-Rot (die Farbe der Braut) und Schwarz.<br>Wenn Sie zur Stimmung passen möchten (und auf Fotos großartig aussehen), gehen wir für warme, neutrale Pastelltöne.",
+                gentlemen: "<strong>Herren</strong><br>Smart Casual bis Semi-Formal—alles, womit Sie sich gut und wohl fühlen, ist perfekt.",
+                goodToKnow: "<strong>Gut zu wissen</strong><br>Die Zeremonie und das Abendessen finden im Freien am Meer statt, daher kann es abends etwas windig werden—bringen Sie eine leichte Jacke oder ein Tuch mit, nur für den Fall.<br>Die Party wird drinnen stattfinden, sobald das Tanzen beginnt, können Sie die Jacke ablegen und Spaß haben 💃🕺"
+            },
+            menu: {
+                title: "Menü",
+                appetizer: "<strong>Vorspeise</strong><br>Mediterrane Tapas",
+                mainCourse: "<strong>Hauptgericht</strong> (Wählen Sie eines)",
+                sea: "<strong style=\"color: #0066cc;\"><i class=\"fa fa-tint\"></i> DAS MEER...</strong><br>Seehecht-Supremes mit knuspriger Meeresfrüchte-Mousseline.",
+                or: "<strong>- ODER -</strong>",
+                mountain: "<strong style=\"color: #8B4513;\"><i class=\"fa fa-tree\"></i> DER BERG...</strong><br>Milder iberischer Schweinebraten am \"Cabernet Sauvignon\" mit cremiger Trüffelkartoffel, Rosinen und Pinienkernen.",
+                note: "* Möglichkeit, es gegen geschmortes Kalbfleisch zu ändern",
+                dessert: "<strong>NACHTISCH</strong><br>Mousse aus Mandelnougat mit Schokolade im Becher"
+            },
+            city: {
+                joy: "Stadt der Freude"
+            },
+            footer: {
+                crafted: "Mit viel <span class=\"fa fa-heart pulse2\"></span> von Yi erstellt"
+            }
+        }
+    };
+    
+    // Get saved language or default to English
+    let currentLang = localStorage.getItem('wedding-lang') || 'en';
+    
+    // Function to translate content
+    function translatePage(lang) {
+        currentLang = lang;
+        localStorage.setItem('wedding-lang', lang);
+        
+        // Update language selector
+        var selector = document.getElementById('language-selector');
+        if (selector) {
+            selector.value = lang;
+        }
+        
+        // Translate all elements with data-translate attribute
+        document.querySelectorAll('[data-translate]').forEach(function(element) {
+            const key = element.getAttribute('data-translate');
+            const keys = key.split('.');
+            let translation = translations[lang];
+            
+            for (let i = 0; i < keys.length; i++) {
+                translation = translation[keys[i]];
+            }
+            
+            if (translation) {
+                element.innerHTML = translation;
+            }
+        });
+        
+        // Translate placeholders
+        document.querySelectorAll('[data-translate-placeholder]').forEach(function(element) {
+            const key = element.getAttribute('data-translate-placeholder');
+            const keys = key.split('.');
+            let translation = translations[lang];
+            
+            for (let i = 0; i < keys.length; i++) {
+                translation = translation[keys[i]];
+            }
+            
+            if (translation) {
+                element.placeholder = translation;
+            }
+        });
+        
+        // Translate option text
+        document.querySelectorAll('option[data-translate]').forEach(function(element) {
+            const key = element.getAttribute('data-translate');
+            const keys = key.split('.');
+            let translation = translations[lang];
+            
+            for (let i = 0; i < keys.length; i++) {
+                translation = translation[keys[i]];
+            }
+            
+            if (translation) {
+                element.textContent = translation;
+            }
+        });
+    }
+    
+    // Initialize language on page load
+    $(document).ready(function() {
+        translatePage(currentLang);
+        
+        // Language selector change handler
+        $('#language-selector').on('change', function(e) {
+            translatePage($(this).val());
+        });
+    });
 </script>
 </body>
 </html>
