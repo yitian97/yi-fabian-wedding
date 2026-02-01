@@ -11,10 +11,14 @@ This guide will help you set up Google Sheets and Google Apps Script to collect 
    - **A1**: `Timestamp`
    - **B1**: `Name`
    - **C1**: `Phone`
-   - **D1**: `Partners` (0 or 1)
+   - **D1**: `Partner Name` (text - name of partner if bringing one)
    - **E1**: `Kids` (number of kids)
    - **F1**: `Shuttle Bus` (Yes/No)
    - **G1**: `Food Requirements` (optional)
+   - **H1**: `Accommodation` (optional - Barcelona city / Near venue / Not booked)
+   - **I1**: `Accommodation Details` (optional - hotel name)
+   - **J1**: `Interested in Arranged Hotel` (optional - Yes/No, appears when "Not booked" is selected)
+   - **K1**: `Other Requirements` (optional)
 5. Format Row 1 as **bold** (optional, but recommended)
 6. **Save the sheet** - remember the name for later
 
@@ -57,10 +61,14 @@ function doPost(e) {
     
     var name = params.name || '';
     var phone = params.phone || '';
-    var partners = params.partners ? parseInt(params.partners) : 0;
-    var kids = params.kids ? parseInt(params.kids) : 0;
+    var partnerName = params.partner_name || '';
+    var kids = params.num_of_kids ? parseInt(params.num_of_kids) : 0;
     var shuttleBus = params.shuttle_bus || 'No';
     var foodRequirements = params.food_requirements || '';
+    var accommodation = params.accommodation || '';
+    var accommodationDetails = params.accommodation_details || '';
+    var interestedArrangedHotel = params.interested_arranged_hotel || '';
+    var otherComments = params.other_comments || '';
     
     // Get current timestamp
     var timestamp = new Date();
@@ -69,25 +77,33 @@ function doPost(e) {
     Logger.log('Parsed values:');
     Logger.log('  name: ' + name);
     Logger.log('  phone: ' + phone);
-    Logger.log('  partners: ' + partners);
+    Logger.log('  partnerName: ' + partnerName);
     Logger.log('  kids: ' + kids);
     Logger.log('  shuttleBus: ' + shuttleBus);
     Logger.log('  foodRequirements: ' + foodRequirements);
+    Logger.log('  accommodation: ' + accommodation);
+    Logger.log('  accommodationDetails: ' + accommodationDetails);
+    Logger.log('  interestedArrangedHotel: ' + interestedArrangedHotel);
+    Logger.log('  otherComments: ' + otherComments);
     
-    // Add the data to the sheet in the correct order: Timestamp, Name, Phone, Partners, Kids, Shuttle Bus, Food Requirements
-    sheet.appendRow([timestamp, name, phone, partners, kids, shuttleBus, foodRequirements]);
+    // Add the data to the sheet in the correct order: Timestamp, Name, Phone, Partner Name, Kids, Shuttle Bus, Food Requirements, Accommodation, Accommodation Details, Interested in Arranged Hotel, Other Requirements
+    sheet.appendRow([timestamp, name, phone, partnerName, kids, shuttleBus, foodRequirements, accommodation, accommodationDetails, interestedArrangedHotel, otherComments]);
     
     // Send email notification every time someone RSVPs
     // IMPORTANT: Replace "your-email@gmail.com" with your actual email address
-    var recipientEmail = "your-email@gmail.com"; // ⬅️ CHANGE THIS TO YOUR EMAIL
+    var recipientEmail = "tianyi9097@gmail.com"; // ⬅️ CHANGE THIS TO YOUR EMAIL
     var subject = "🎉 New RSVP: " + name;
     var body = "You have received a new RSVP!\n\n" +
                "Name: " + name + "\n" +
                "Phone: " + phone + "\n" +
-               "Partners: " + partners + "\n" +
+               "Partner Name: " + (partnerName || "None") + "\n" +
                "Kids: " + kids + "\n" +
                "Shuttle Bus: " + shuttleBus + "\n" +
-               "Food Requirements: " + (foodRequirements || "None") + "\n\n" +
+               "Food Requirements: " + (foodRequirements || "None") + "\n" +
+               "Accommodation: " + (accommodation || "None") + "\n" +
+               "Accommodation Details: " + (accommodationDetails || "None") + "\n" +
+               "Interested in Arranged Hotel: " + (interestedArrangedHotel || "None") + "\n" +
+               "Other Requirements: " + (otherComments || "None") + "\n\n" +
                "Timestamp: " + timestamp;
     MailApp.sendEmail(recipientEmail, subject, body);
     
@@ -156,25 +172,95 @@ function doGet(e) {
 3. Submit it
 4. Check your Google Sheet - you should see the data appear!
 
-## Step 6: Enable Email Notifications
+## Important: If You Already Have a Google Sheet Set Up
 
-The script is already set up to send email notifications! You just need to:
+If you've already created your Google Sheet and Apps Script, you'll need to **update them** to include the new fields:
 
-1. Go back to your Apps Script editor
-2. Find the line that says: `var recipientEmail = "your-email@gmail.com";`
-3. **Replace `"your-email@gmail.com"` with your actual email address** (the one you want to receive notifications)
-4. Click **Save** (💾 icon)
-5. Click **Deploy** → **Manage deployments**
-6. Click the edit icon (✏️) next to your deployment
-7. Click **Deploy** again (this updates the deployment with the new code)
-8. **Authorize email permissions** (if prompted):
-   - When you first run the script with email, Google will ask for permission to send emails
-   - Click "Review permissions" → Choose your account → Click "Advanced" → "Go to [Project Name] (unsafe)" → Click "Allow"
+1. **Add new columns to your Google Sheet**:
+   - Add column **H1**: `Accommodation`
+   - Add column **I1**: `Accommodation Details`
+   - Add column **J1**: `Interested in Arranged Hotel`
+   - Add column **K1**: `Other Requirements`
 
-**Note**: You can add multiple email addresses by separating them with commas:
+2. **Update your Google Apps Script**:
+   - Copy the updated script code from Step 2 (it now includes accommodation and other_comments fields)
+   - Replace your existing script with the new code
+   - Click **Save**
+   - Click **Deploy** → **Manage deployments** → **Edit** → **Deploy** (to update the live version)
+
+3. **Test again** to make sure all fields are being captured correctly
+
+## Step 6: Enable Email Notifications 📧
+
+The script is already set up to send email notifications automatically every time someone RSVPs! You just need to configure it:
+
+### Quick Setup:
+
+1. **Open your Apps Script editor** (Extensions → Apps Script in your Google Sheet)
+2. **Find the email configuration** (around line 82):
+   ```javascript
+   var recipientEmail = "your-email@gmail.com"; // ⬅️ CHANGE THIS TO YOUR EMAIL
+   ```
+3. **Replace `"your-email@gmail.com"` with your actual email address**
+   - Example: `var recipientEmail = "yi.fabian.wedding@gmail.com";`
+4. **Save the script** (💾 icon or `Ctrl+S` / `Cmd+S`)
+5. **Update the deployment**:
+   - Click **Deploy** → **Manage deployments**
+   - Click the **edit icon** (✏️) next to your deployment
+   - Click **Deploy** again (this updates the live deployment with your email)
+6. **Authorize email permissions** (first time only):
+   - When you first run the script with email, Google will ask for permission
+   - Click **"Review permissions"** → Choose your Google account
+   - Click **Advanced** → **Go to [Project Name] (unsafe)**
+   - Click **Allow**
+   - This allows the script to send emails on your behalf
+
+### Email Features:
+
+✅ **Automatic notifications** - You'll receive an email every time someone submits an RSVP  
+✅ **Complete RSVP details** - Name, phone, partner, kids, shuttle bus, food requirements  
+✅ **Timestamp included** - Know exactly when each RSVP was submitted  
+✅ **Multiple recipients** - Send to multiple email addresses  
+
+### Send to Multiple Email Addresses:
+
+To send notifications to multiple people, separate email addresses with commas:
+
 ```javascript
-var recipientEmail = "email1@gmail.com, email2@gmail.com";
+var recipientEmail = "bride@gmail.com, groom@gmail.com, planner@gmail.com";
 ```
+
+### Customize Email Content:
+
+You can customize the email subject and body by editing these lines in the script:
+
+```javascript
+var subject = "🎉 New RSVP: " + name;  // Change the subject line
+var body = "You have received a new RSVP!\n\n" +
+           "Name: " + name + "\n" +
+           // ... add or remove fields as needed
+```
+
+### Test Email Notifications:
+
+1. Submit a test RSVP from your website
+2. Check your email inbox (and spam folder, just in case)
+3. You should receive an email with all the RSVP details
+
+### Troubleshooting Email Issues:
+
+**Not receiving emails?**
+- Check your spam/junk folder
+- Verify the email address is correct in the script
+- Make sure you authorized email permissions (Step 6.6 above)
+- Check Apps Script execution logs: **View** → **Executions** → Click on a recent execution → Check for errors
+
+**Want to disable email notifications temporarily?**
+- Comment out the email line by adding `//` in front:
+  ```javascript
+  // MailApp.sendEmail(recipientEmail, subject, body);
+  ```
+- Or remove the email section entirely (lines 80-92)
 
 ## Troubleshooting
 
@@ -197,10 +283,24 @@ var recipientEmail = "email1@gmail.com, email2@gmail.com";
 - **Try redeploying**: Edit your deployment and click Deploy again
 
 ### Data not appearing in sheet
-- Check that your column headers match: Timestamp, Name, Phone, Partners, Kids, Shuttle Bus, Food Requirements
+- Check that your column headers match: Timestamp, Name, Phone, Partner Name, Kids, Shuttle Bus, Food Requirements, Accommodation, Accommodation Details, Interested in Arranged Hotel, Other Requirements
 - Make sure the sheet is the active one when you created the script
 - Check the Apps Script execution log: **View** → **Executions**
 - If you see logs but data is wrong, check the log output to see what values were received
+
+### Partner name showing as number instead of text
+- Make sure your Google Apps Script code uses `params.partner_name` (not `params.partners`)
+- Make sure the column header in your sheet is `Partner Name` (not `Partners`)
+- The script should store the partner name as text, not convert it to a number
+
+### Email notifications not working
+- **Check email address**: Make sure you replaced `"your-email@gmail.com"` with your actual email
+- **Check spam folder**: Emails might be going to spam/junk
+- **Authorize permissions**: Make sure you authorized email permissions when prompted (Step 6.6)
+- **Check execution logs**: Go to **View** → **Executions** → Click on a recent execution → Look for email-related errors
+- **Redeploy after changes**: After changing the email address, you must redeploy (Deploy → Manage deployments → Edit → Deploy)
+- **Test the script**: Try submitting a test RSVP and check if you receive the email
+- **Multiple emails**: If using multiple recipients, separate with commas: `"email1@gmail.com, email2@gmail.com"`
 
 ### CORS errors in browser console
 - This is normal - Google Apps Script handles CORS automatically

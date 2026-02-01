@@ -100,6 +100,75 @@
         .rsvp .form-input-group select {
             padding-right: 30px !important;
         }
+        .rsvp .form-input-group textarea {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            padding-left: 68px !important;
+            padding-right: 20px !important;
+            margin: 0 !important;
+            border: none !important;
+            outline: none !important;
+            background: transparent !important;
+            line-height: 55px !important;
+            height: 55px !important;
+            box-sizing: border-box !important;
+            font-family: inherit !important;
+            resize: none !important;
+            overflow: hidden !important;
+        }
+        .rsvp .form-input-group textarea::-webkit-input-placeholder {
+            color: #999 !important;
+        }
+        .rsvp .form-input-group textarea:-moz-placeholder {
+            color: #999 !important;
+        }
+        .rsvp .form-input-group textarea::-moz-placeholder {
+            color: #999 !important;
+        }
+        .rsvp .form-input-group textarea:-ms-input-placeholder {
+            color: #999 !important;
+        }
+        .rsvp .form-input-group textarea::placeholder {
+            color: #999 !important;
+        }
+        /* Food requirements menu styling */
+        .food-info-icon:hover,
+        .partner-info-icon:hover,
+        .accommodation-info-icon:hover {
+            color: #b8941f !important;
+            transform: translateY(-50%) scale(1.1) !important;
+            transition: all 0.2s ease !important;
+        }
+        .food-requirements-menu,
+        .partner-info-menu,
+        .accommodation-info-menu {
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .food-requirements-menu > div[onclick] {
+            transition: background-color 0.2s ease;
+        }
+        .food-requirements-menu > div[onclick]:hover {
+            background-color: #f0ead6 !important;
+        }
+        @media screen and (max-width: 768px) {
+            .food-requirements-menu,
+            .partner-info-menu,
+            .accommodation-info-menu {
+                max-width: 100% !important;
+                right: 0 !important;
+                left: 0 !important;
+            }
+        }
         .rsvp .form-input-group input::-webkit-input-placeholder {
             line-height: 55px !important;
             padding: 0 !important;
@@ -507,9 +576,9 @@
                         <ul class="member-actions">
                             <li>
                                 <select id="language-selector" style="background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 5px 10px; border-radius: 3px; margin-right: 15px; cursor: pointer;">
-                                    <option value="en">EN</option>
-                                    <option value="de">DE</option>
-                                    <option value="es">ES</option>
+                                    <option value="en">🇬🇧 EN</option>
+                                    <option value="de">🇩🇪 DE</option>
+                                    <option value="es">🇪🇸 ES</option>
                                 </select>
                             </li>
                             <li><a href="#rsvp" class="btn-white btn-small" data-translate="nav.rsvp">RSVP</a></li>
@@ -654,7 +723,7 @@
                     <p data-translate="dressCode.ladies">
                         <strong>Ladies</strong><br>
                         Please kindly avoid white, china red (the bride's color), and black.<br>
-                        If you'd like to match the vibe (and look great in photos), we're going for warm, neutral pastel tones.
+                        If you'd like to match the wedding theme colour (and look great in photos), we're going for warm, neutral pastel tones.
                     </p>
                     
                     <p data-translate="dressCode.gentlemen">
@@ -678,36 +747,36 @@
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
                     </button>
-                    <h3 class="text-center section-padding" data-translate="menu.title">Menu</h3>
-                    <div style="text-align: left; padding: 0 20px;">
-                        <p style="margin-bottom: 20px;" data-translate="menu.appetizer">
+                    <h3 class="text-center" style="margin-bottom: 10px; padding-top: 5px; font-size: 1.3em;" data-translate="menu.title">Menu</h3>
+                    <div style="text-align: left; padding: 0 15px 10px 15px;">
+                        <p style="margin-bottom: 6px; line-height: 1.4;" data-translate="menu.appetizer">
                             <strong>Appetizer</strong><br>
                             Mediterranean tapas
                         </p>
                         
-                        <p style="margin-bottom: 15px;" data-translate="menu.mainCourse">
+                        <p style="margin-bottom: 5px; line-height: 1.4;" data-translate="menu.mainCourse">
                             <strong>Main Course</strong> (Choose one)
                         </p>
                         
-                        <p style="margin-bottom: 15px;" data-translate="menu.sea">
+                        <p style="margin-bottom: 5px; line-height: 1.4;" data-translate="menu.sea">
                             <strong style="color: #0066cc;"><i class="fa fa-tint"></i> THE SEA...</strong><br>
                             Hake supremes with crunchy seafood mussoline.
                         </p>
                         
-                        <p style="margin-bottom: 15px; text-align: center;" data-translate="menu.or">
+                        <p style="margin-bottom: 5px; text-align: center; line-height: 1.4;" data-translate="menu.or">
                             <strong>- OR -</strong>
                         </p>
                         
-                        <p style="margin-bottom: 15px;" data-translate="menu.mountain">
+                        <p style="margin-bottom: 5px; line-height: 1.4;" data-translate="menu.mountain">
                             <strong style="color: #8B4513;"><i class="fa fa-tree"></i> THE MOUNTAIN...</strong><br>
                             Mellow Iberian Pork at the "Cabernet Sauvignon" with creamy truffled potato, raisins and pine nuts.
                         </p>
                         
-                        <p style="margin-bottom: 20px; font-size: 0.9em; color: #666;" data-translate="menu.note">
+                        <p style="margin-bottom: 6px; font-size: 0.8em; color: #666; line-height: 1.3;" data-translate="menu.note">
                             * Possibility of changing it for braised veal
                         </p>
                         
-                        <p style="margin-bottom: 20px;" data-translate="menu.dessert">
+                        <p style="margin-bottom: 0; line-height: 1.4;" data-translate="menu.dessert">
                             <strong>DESSERT</strong><br>
                             Mousse of nougat of almond with chocolate to the cup
                         </p>
@@ -794,7 +863,10 @@
                         We will provide a shuttle bus <strong>from Marimurtra Botanical Garden (ceremony venue) to the banquet venue</strong> after the ceremony.
                     </p>
                     <p data-translate="venue.shuttleDesc2">
-                        There will be an extra shuttle bus to transfer the drunk guests <strong>from the banquet venue back to Barcelona</strong> at the end of the night. More info will be updated here later.
+                        There will be an extra shuttle bus to transfer guests <strong>from the banquet venue back to Barcelona</strong> at the end of the night. More info will be updated here later.
+                    </p>
+                    <p data-translate="venue.shuttleDesc3" style="margin-top: 15px; font-size: 0.95em; color: #666;">
+                        The metro in Barcelona functions 24 hours.
                     </p>
                 </div>
             </div>
@@ -892,11 +964,17 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
+                        <div class="col-md-6 col-sm-6" style="position: relative;">
+                            <div class="form-input-group" style="position: relative;">
                                 <i class="fa fa-heart"></i><input type="text" name="partner_name" class=""
                                                                   placeholder="" data-translate-placeholder="rsvp.partner"
-                                                                  required style="padding: 0; padding-left: 68px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
+                                                                  style="padding: 0; padding-left: 68px; padding-right: 50px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
+                                <i class="fa fa-info-circle partner-info-icon" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: #d4af37; cursor: pointer; font-size: 18px; z-index: 10;" title="Click for info"></i>
+                            </div>
+                            <div class="partner-info-menu" style="display: none; position: absolute; background: #fff; border: 2px solid #d4af37; border-radius: 8px; padding: 20px; margin-top: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 1000; max-width: 350px; right: 0; top: 100%;">
+                                <div style="font-size: 14px; color: #372428; line-height: 1.6;">
+                                    <span data-translate="rsvp.partnerDesc">Indicate the partner name if bringing a partner</span>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
@@ -926,11 +1004,83 @@
                                 <i class="fa fa-chevron-down" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #999;"></i>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
+                        <div class="col-md-6 col-sm-6" style="position: relative;">
+                            <div class="form-input-group" style="position: relative;">
                                 <i class="fa fa-cutlery"></i><input type="text" name="food_requirements" class=""
                                                                      placeholder="" data-translate-placeholder="rsvp.food"
-                                                                     style="padding: 0; padding-left: 68px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
+                                                                     style="padding: 0; padding-left: 68px; padding-right: 50px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
+                                <i class="fa fa-info-circle food-info-icon" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: #d4af37; cursor: pointer; font-size: 18px; z-index: 10;" title="Click for food options"></i>
+                            </div>
+                            <div class="food-requirements-menu" style="display: none; position: absolute; background: #fff; border: 2px solid #d4af37; border-radius: 8px; padding: 20px; margin-top: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 1000; max-width: 400px; right: 0; top: 100%;">
+                                <div style="margin-bottom: 15px;">
+                                    <strong data-translate="rsvp.foodOptions">Common Options:</strong>
+                                </div>
+                                <div class="food-option-item" style="margin-bottom: 10px; padding: 8px; background: #faf8f3; border-radius: 5px; cursor: pointer;" onclick="setFoodRequirement('No');">
+                                    <strong>✓ No</strong> - No special dietary requirements
+                                </div>
+                                <div class="food-option-item" style="margin-bottom: 10px; padding: 8px; background: #faf8f3; border-radius: 5px; cursor: pointer;" onclick="setFoodRequirement('Vegetarian');">
+                                    <strong>🥬 Vegetarian</strong> - No meat or fish
+                                </div>
+                                <div class="food-option-item" style="margin-bottom: 10px; padding: 8px; background: #faf8f3; border-radius: 5px; cursor: pointer;" onclick="setFoodRequirement('Vegan');">
+                                    <strong>🌱 Vegan</strong> - No animal products
+                                </div>
+                                <div class="food-option-item" style="margin-bottom: 10px; padding: 8px; background: #faf8f3; border-radius: 5px; cursor: pointer;" onclick="setFoodRequirement('Allergies');">
+                                    <strong>⚠️ Allergies</strong> - Please specify in the field
+                                </div>
+                                <div class="food-option-item" style="margin-bottom: 10px; padding: 8px; background: #faf8f3; border-radius: 5px; cursor: pointer;" onclick="setFoodRequirement('Others');">
+                                    <strong>📝 Others</strong> - Please specify in the field
+                                </div>
+                                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e8e8e8; font-size: 12px; color: #666;">
+                                    <span data-translate="rsvp.foodNote">Click an option above or type your specific requirements in the field. You can check the <a href="#" data-toggle="modal" data-target="#menu-modal" onclick="$('.food-requirements-menu').hide();" style="color: #d4af37; text-decoration: underline; cursor: pointer;">menu</a> for details.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6" style="position: relative;">
+                            <div class="form-input-group" style="position: relative;">
+                                <i class="fa fa-bed"></i>
+                                <select name="accommodation" id="accommodation-select" class="" style="padding: 0; padding-left: 68px; padding-right: 30px; margin: 0; width: 100%; height: 55px; border: none; border-radius: 6px; background: transparent; -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; line-height: 55px; box-sizing: border-box;">
+                                    <option value="" data-translate="rsvp.accommodation">Accommodation? (Optional)</option>
+                                    <option value="barcelona" data-translate="rsvp.accommodationBarcelona">Barcelona city</option>
+                                    <option value="near_venue" data-translate="rsvp.accommodationNearVenue">Near the venue</option>
+                                    <option value="not_booked" data-translate="rsvp.accommodationNotBooked">Not booked</option>
+                                    <option value="na" data-translate="rsvp.na">N/A</option>
+                                </select>
+                                <i class="fa fa-chevron-down" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #999;"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6" id="accommodation-details-wrapper" style="display: none; position: relative;">
+                            <div class="form-input-group" style="position: relative;">
+                                <i class="fa fa-building"></i><input type="text" name="accommodation_details" id="accommodation-details" class=""
+                                                                     placeholder="" data-translate-placeholder="rsvp.accommodationDetails"
+                                                                     style="padding: 0; padding-left: 68px; padding-right: 50px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box;">
+                                <i class="fa fa-info-circle accommodation-info-icon" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: #d4af37; cursor: pointer; font-size: 18px; z-index: 10;" title="Click for info"></i>
+                            </div>
+                            <div class="accommodation-info-menu" style="display: none; position: absolute; background: #fff; border: 2px solid #d4af37; border-radius: 8px; padding: 15px; margin-top: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 1000; max-width: 350px; right: 0; top: 100%;">
+                                <div style="font-size: 12px; color: #372428; line-height: 1.6;">
+                                    <div data-translate="rsvp.accommodationInfo"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6" id="accommodation-not-booked-wrapper" style="display: none; position: relative;">
+                            <div class="form-input-group" style="position: relative;">
+                                <i class="fa fa-hotel"></i>
+                                <select name="interested_arranged_hotel" id="interested-arranged-hotel" class="" style="padding: 0; padding-left: 68px; padding-right: 30px; margin: 0; width: 100%; height: 55px; border: none; border-radius: 6px; background: transparent; -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; line-height: 55px; box-sizing: border-box;">
+                                    <option value="" data-translate="rsvp.interestedArrangedHotel">Interested in arranged hotel?</option>
+                                    <option value="yes" data-translate="rsvp.yes">Yes</option>
+                                    <option value="no" data-translate="rsvp.no">No</option>
+                                </select>
+                                <i class="fa fa-chevron-down" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #999;"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="form-input-group">
+                                <i class="fa fa-comment"></i>
+                                <textarea name="other_comments" class="" rows="1" placeholder="" data-translate-placeholder="rsvp.otherComments"
+                                          style="padding: 0; padding-left: 68px; padding-right: 20px; margin: 0; width: 100%; height: 55px; border: none; border-radius: 6px; background: transparent; resize: none; box-sizing: border-box; font-family: inherit; line-height: 55px; overflow: hidden;"></textarea>
                             </div>
                         </div>
                     </div>
@@ -940,6 +1090,9 @@
                     <button class="btn-fill rsvp-btn">
                         <span data-translate="rsvp.yesMe">Yes, that's me!</span>
                     </button>
+                    <div style="text-align: center; margin-top: 20px; font-size: 14px; color: #666;">
+                        <span data-translate="rsvp.wishWallMessage">If you want to leave us a wish or congratulations, go to <a href="memories.html#wishes-wall" style="color: #d4af37; text-decoration: underline;">wish wall</a>.</span>
+                    </div>
                 </form>
             </div>
         </div>
@@ -1064,7 +1217,8 @@
                 gettingThere: "Getting to the Ceremony Venue from Barcelona",
                 shuttleTitle: "🚌 Shuttle Bus Service",
                 shuttleDesc1: "We will provide a shuttle bus <strong>from Marimurtra Botanical Garden (ceremony venue) to the banquet venue</strong> after the ceremony.",
-                shuttleDesc2: "There will be an extra shuttle bus to transfer the drunk guests <strong>from the banquet venue back to Barcelona</strong> at the end of the night. More info will be updated here later.",
+                shuttleDesc2: "There will be an extra shuttle bus to transfer guests <strong>from the banquet venue back to Barcelona</strong> at the end of the night. More info will be updated here later.",
+                shuttleDesc3: "The metro in Barcelona functions 24 hours.",
                 viewLarger: "View larger",
                 showInfo: "Show info",
                 ceremonyVenue: "Ceremony Venue",
@@ -1081,20 +1235,33 @@
                 deadline: "We would greatly appreciate if you could RSVP before 31st of March, 2026",
                 name: "Name",
                 phone: "Phone",
-                partner: "Partner name",
+                partner: "Partner?",
+                partnerDesc: "Indicate the partner name if bringing a partner",
                 kids: "Kids?",
                 bus: "Bus to Barcelona?",
                 yes: "Yes",
                 no: "No",
-                food: "Food requirements",
+                na: "N/A",
+                food: "Food requirements (e.g., Vegetarian, Vegan, Allergies...)",
+                foodOptions: "Common Options:",
+                foodNote: "Click an option above or type your specific requirements in the field. You can check the <a href=\"#\" data-toggle=\"modal\" data-target=\"#menu-modal\" onclick=\"$('.food-requirements-menu').hide();\" style=\"color: #d4af37; text-decoration: underline; cursor: pointer;\">menu</a> for details.",
+                accommodation: "Accommodation? (Optional)",
+                accommodationBarcelona: "Barcelona city",
+                accommodationNearVenue: "Near the venue",
+                accommodationNotBooked: "Not booked",
+                interestedArrangedHotel: "Interested in arranged hotel?",
+                accommodationDetails: "Hotel name",
+                accommodationInfo: "Indicate the hotel name for better transportation arrangement.",
+                otherComments: "Other requirements (Optional)",
                 yesMe: "Yes, that's me!",
+                wishWallMessage: "If you want to leave us a wish or congratulations, go to <a href=\"memories.html#wishes-wall\" style=\"color: #d4af37; text-decoration: underline;\">wish wall</a>.",
                 thankYou: "Thank you!",
                 thankYouMsg: "We are glad to see you join us on our big day."
             },
             dressCode: {
                 title: "Ugh... dress codes?",
                 intro: "We want you to feel comfortable, happy, and yourself—whatever that means for you. There's no strict dress code, just come as you are and ready to celebrate with us ❤️",
-                ladies: "<strong>Ladies</strong><br>Please kindly avoid white, china red (the bride's color), and black.<br>If you'd like to match the vibe (and look great in photos), we're going for warm, neutral pastel tones.",
+                ladies: "<strong>Ladies</strong><br>Please kindly avoid white, china red (the bride's color), and black.<br>If you'd like to match the <a href=\"img/colour.png\" target=\"_blank\" style=\"color: #d4af37; text-decoration: underline;\">wedding theme colour</a> (and look great in photos), we're going for <strong>warm, neutral pastel tones</strong>.",
                 gentlemen: "<strong>Gentlemen</strong><br>Smart casual to semi-formal—anything you feel good and comfortable wearing is perfect.",
                 goodToKnow: "<strong>Good to know</strong><br>The ceremony and dinner will be outdoors by the sea, so it can get a little breezy in the evening—bring a light jacket or wrap just in case.<br>The party will be indoors, so once the dancing starts, you can drop the jacket and have fun 💃🕺"
             },
@@ -1160,7 +1327,8 @@
                 gettingThere: "Anreise zum Zeremonienort von Barcelona",
                 shuttleTitle: "🚌 Shuttle-Bus-Service",
                 shuttleDesc1: "Wir stellen einen Shuttle-Bus <strong>vom Botanischen Garten Marimurtra (Zeremonienort) zum Bankettort</strong> nach der Zeremonie zur Verfügung.",
-                shuttleDesc2: "Es wird einen zusätzlichen Shuttle-Bus geben, um die betrunkenen Gäste <strong>vom Bankettort zurück nach Barcelona</strong> am Ende der Nacht zu transportieren. Weitere Informationen werden später hier aktualisiert.",
+                shuttleDesc2: "Es wird einen zusätzlichen Shuttle-Bus geben, um die Gäste <strong>vom Bankettort zurück nach Barcelona</strong> am Ende der Nacht zu transportieren. Weitere Informationen werden später hier aktualisiert.",
+                shuttleDesc3: "Die Metro in Barcelona fährt 24 Stunden.",
                 viewLarger: "Größer anzeigen",
                 showInfo: "Info anzeigen",
                 ceremonyVenue: "Zeremonienort",
@@ -1177,20 +1345,33 @@
                 deadline: "Wir würden uns sehr freuen, wenn Sie vor dem 31. März 2026 zusagen könnten",
                 name: "Name",
                 phone: "Telefon",
-                partner: "Partnername",
+                partner: "Partner?",
+                partnerDesc: "Geben Sie den Partnernamen an, wenn Sie einen Partner mitbringen",
                 kids: "Kinder?",
                 bus: "Bus nach Barcelona?",
                 yes: "Ja",
                 no: "Nein",
-                food: "Essensanforderungen",
+                na: "N/A",
+                food: "Essensanforderungen (z.B. Vegetarisch, Vegan, Allergien...)",
+                foodOptions: "Häufige Optionen:",
+                foodNote: "Klicken Sie auf eine Option oben oder geben Sie Ihre spezifischen Anforderungen in das Feld ein. Sie können das <a href=\"#\" data-toggle=\"modal\" data-target=\"#menu-modal\" onclick=\"$('.food-requirements-menu').hide();\" style=\"color: #d4af37; text-decoration: underline; cursor: pointer;\">Menü</a> für Details überprüfen.",
+                accommodation: "Unterkunft? (Optional)",
+                accommodationBarcelona: "Barcelona Stadt",
+                accommodationNearVenue: "In der Nähe des Veranstaltungsorts",
+                accommodationNotBooked: "Nicht gebucht",
+                interestedArrangedHotel: "Interessiert an arrangiertem Hotel?",
+                accommodationDetails: "Hotelname",
+                accommodationInfo: "Geben Sie den Hotelnamen an, um die Transportplanung zu verbessern.",
+                otherComments: "Weitere Anforderungen (Optional)",
                 yesMe: "Ja, das bin ich!",
+                wishWallMessage: "Wenn Sie uns einen Wunsch oder Glückwünsche hinterlassen möchten, gehen Sie zur <a href=\"memories.html#wishes-wall\" style=\"color: #d4af37; text-decoration: underline;\">Wünschewand</a>.",
                 thankYou: "Danke schön!",
                 thankYouMsg: "Wir freuen uns, Sie an unserem großen Tag dabei zu haben."
             },
             dressCode: {
                 title: "Ugh... Dresscode?",
                 intro: "Wir möchten, dass Sie sich wohl, glücklich und wie Sie selbst fühlen—was auch immer das für Sie bedeutet. Es gibt keinen strengen Dresscode, kommen Sie einfach wie Sie sind und bereit, mit uns zu feiern ❤️",
-                ladies: "<strong>Damen</strong><br>Bitte vermeiden Sie freundlicherweise Weiß, China-Rot (die Farbe der Braut) und Schwarz.<br>Wenn Sie zur Stimmung passen möchten (und auf Fotos großartig aussehen), gehen wir für warme, neutrale Pastelltöne.",
+                ladies: "<strong>Damen</strong><br>Bitte vermeiden Sie freundlicherweise Weiß, China-Rot (die Farbe der Braut) und Schwarz.<br>Wenn Sie zur <a href=\"img/colour.png\" target=\"_blank\" style=\"color: #d4af37; text-decoration: underline;\">Hochzeitsfarben</a> passen möchten (und auf Fotos großartig aussehen), gehen wir für <strong>warme, neutrale Pastelltöne</strong>.",
                 gentlemen: "<strong>Herren</strong><br>Smart Casual bis Semi-Formal—alles, womit Sie sich gut und wohl fühlen, ist perfekt.",
                 goodToKnow: "<strong>Gut zu wissen</strong><br>Die Zeremonie und das Abendessen finden im Freien am Meer statt, daher kann es abends etwas windig werden—bringen Sie eine leichte Jacke oder ein Tuch mit, nur für den Fall.<br>Die Party wird drinnen stattfinden, sobald das Tanzen beginnt, können Sie die Jacke ablegen und Spaß haben 💃🕺"
             },
@@ -1257,6 +1438,7 @@
                 shuttleTitle: "🚌 Servicio de autobús lanzadera",
                 shuttleDesc1: "Proporcionaremos un autobús lanzadera <strong>desde el Jardín Botánico Marimurtra (lugar de la ceremonia) al lugar del banquete</strong> después de la ceremonia.",
                 shuttleDesc2: "Habrá un autobús lanzadera adicional para trasladar a los invitados <strong>desde el lugar del banquete de vuelta a Barcelona</strong> al final de la noche. Más información se actualizará aquí más tarde.",
+                shuttleDesc3: "El metro en Barcelona funciona las 24 horas.",
                 viewLarger: "Ver más grande",
                 showInfo: "Mostrar información",
                 ceremonyVenue: "Lugar de la ceremonia",
@@ -1273,20 +1455,33 @@
                 deadline: "Agradeceríamos mucho si pudieras confirmar tu asistencia antes del 31 de marzo de 2026",
                 name: "Nombre",
                 phone: "Teléfono",
-                partner: "Nombre del acompañante",
+                partner: "¿Acompañante?",
+                partnerDesc: "Indica el nombre del acompañante si traes uno",
                 kids: "¿Niños?",
                 bus: "¿Autobús a Barcelona?",
                 yes: "Sí",
                 no: "No",
-                food: "Requisitos alimentarios",
+                na: "N/A",
+                food: "Requisitos alimentarios (ej: Vegetariano, Vegano, Alergias...)",
+                foodOptions: "Opciones comunes:",
+                foodNote: "Haz clic en una opción arriba o escribe tus requisitos específicos en el campo. Puedes consultar el <a href=\"#\" data-toggle=\"modal\" data-target=\"#menu-modal\" onclick=\"$('.food-requirements-menu').hide();\" style=\"color: #d4af37; text-decoration: underline; cursor: pointer;\">menú</a> para más detalles.",
+                accommodation: "¿Alojamiento? (Opcional)",
+                accommodationBarcelona: "Ciudad de Barcelona",
+                accommodationNearVenue: "Cerca del lugar",
+                accommodationNotBooked: "No reservado",
+                interestedArrangedHotel: "¿Interesado en el hotel organizado?",
+                accommodationDetails: "Nombre del hotel",
+                accommodationInfo: "Indica el nombre del hotel para una mejor organización del transporte.",
+                otherComments: "Otros requisitos (Opcional)",
                 yesMe: "¡Sí, soy yo!",
+                wishWallMessage: "Si quieres dejarnos un deseo o felicitaciones, ve a la <a href=\"memories.html#wishes-wall\" style=\"color: #d4af37; text-decoration: underline;\">muro de deseos</a>.",
                 thankYou: "¡Gracias!",
                 thankYouMsg: "Estamos encantados de verte unirte a nosotros en nuestro gran día."
             },
             dressCode: {
                 title: "Ugh... ¿código de vestimenta?",
                 intro: "Queremos que te sientas cómodo, feliz y como tú mismo—lo que sea que eso signifique para ti. No hay un código de vestimenta estricto, solo ven como eres y listo para celebrar con nosotros ❤️",
-                ladies: "<strong>Damas</strong><br>Por favor, evita amablemente el blanco, el rojo china (el color de la novia) y el negro.<br>Si quieres hacer juego con el ambiente (y lucir genial en las fotos), vamos por tonos pastel cálidos y neutros.",
+                ladies: "<strong>Damas</strong><br>Por favor, evita amablemente el blanco, el rojo china (el color de la novia) y el negro.<br>Si quieres hacer juego con los <a href=\"img/colour.png\" target=\"_blank\" style=\"color: #d4af37; text-decoration: underline;\">colores del tema de la boda</a> (y lucir genial en las fotos), vamos por <strong>tonos pastel cálidos y neutros</strong>.",
                 gentlemen: "<strong>Caballeros</strong><br>Casual elegante a semi-formal—cualquier cosa con la que te sientas bien y cómodo es perfecto.",
                 goodToKnow: "<strong>Bueno saber</strong><br>La ceremonia y la cena serán al aire libre junto al mar, por lo que puede hacer un poco de brisa por la noche—trae una chaqueta ligera o un chal por si acaso.<br>La fiesta será en interiores, así que una vez que comience el baile, puedes dejar la chaqueta y divertirte 💃🕺"
             },
@@ -1377,7 +1572,75 @@
         $('#language-selector').on('change', function(e) {
             translatePage($(this).val());
         });
+        
+        // Food requirements menu toggle
+        $('.food-info-icon').on('click', function(e) {
+            e.stopPropagation();
+            var $menu = $('.food-requirements-menu');
+            $menu.toggle();
+        });
+        
+        // Partner info menu toggle
+        $('.partner-info-icon').on('click', function(e) {
+            e.stopPropagation();
+            var $menu = $('.partner-info-menu');
+            $menu.toggle();
+        });
+        
+        // Accommodation info menu toggle
+        $('.accommodation-info-icon').on('click', function(e) {
+            e.stopPropagation();
+            var $menu = $('.accommodation-info-menu');
+            $menu.toggle();
+        });
+        
+        // Close menus when clicking outside
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.food-info-icon, .food-requirements-menu').length) {
+                $('.food-requirements-menu').hide();
+            }
+            if (!$(e.target).closest('.partner-info-icon, .partner-info-menu').length) {
+                $('.partner-info-menu').hide();
+            }
+            if (!$(e.target).closest('.accommodation-info-icon, .accommodation-info-menu').length) {
+                $('.accommodation-info-menu').hide();
+            }
+        });
+        
+        // Accommodation field handler
+        $('#accommodation-select').on('change', function() {
+            var value = $(this).val();
+            var $detailsWrapper = $('#accommodation-details-wrapper');
+            var $detailsInput = $('#accommodation-details');
+            var $notBookedWrapper = $('#accommodation-not-booked-wrapper');
+            var $interestedHotel = $('#interested-arranged-hotel');
+            
+            if (value === 'near_venue') {
+                $detailsWrapper.show();
+                $notBookedWrapper.hide();
+                $interestedHotel.val('');
+                // Update placeholder
+                translatePage(currentLang);
+            } else if (value === 'not_booked') {
+                $detailsWrapper.hide();
+                $detailsInput.val('');
+                $notBookedWrapper.show();
+                translatePage(currentLang);
+            } else {
+                // Hide all conditional fields for other options (barcelona, na, or empty)
+                $detailsWrapper.hide();
+                $detailsInput.val('');
+                $notBookedWrapper.hide();
+                $interestedHotel.val('');
+            }
+        });
     });
+    
+    // Function to set food requirement and close menu
+    function setFoodRequirement(value) {
+        $('input[name="food_requirements"]').val(value);
+        $('.food-requirements-menu').hide();
+    }
 </script>
 </body>
 </html>
