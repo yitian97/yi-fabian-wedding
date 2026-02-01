@@ -254,6 +254,30 @@
         }
         
         /* Gallery submenu styles */
+        /* Adjust navigation for German language (longer text) - Desktop only */
+        @media screen and (min-width: 992px) {
+            html[lang="de"] .primary-nav li a,
+            html:lang(de) .primary-nav li a {
+                font-size: 11px !important;
+                padding-right: 15px !important;
+            }
+            
+            html[lang="de"] .primary-nav li:last-child a,
+            html:lang(de) .primary-nav li:last-child a {
+                padding-right: 0 !important;
+            }
+            
+            /* Alternative: Use JavaScript to detect German and add class */
+            body.lang-de .primary-nav li a {
+                font-size: 11px !important;
+                padding-right: 15px !important;
+            }
+            
+            body.lang-de .primary-nav li:last-child a {
+                padding-right: 0 !important;
+            }
+        }
+        
         .primary-nav li {
             position: relative;
         }
@@ -316,6 +340,13 @@
             .logo img {
                 max-width: 70px !important;
                 max-height: 70px !important;
+            }
+        }
+        
+        /* Make mobile menu text smaller for all languages */
+        @media screen and (max-width: 991px) {
+            nav ul li a {
+                font-size: 22px !important;
             }
         }
         
@@ -1008,7 +1039,19 @@
             translatePage(selectedLang);
             // Sync both selectors
             $('#language-selector, #language-selector-mobile').val(selectedLang);
+            
+            // Add/remove class for German language styling
+            if (selectedLang === 'de') {
+                $('body').addClass('lang-de');
+            } else {
+                $('body').removeClass('lang-de');
+            }
         });
+        
+        // Check initial language on page load
+        if (currentLang === 'de') {
+            $('body').addClass('lang-de');
+        }
     }
     
     // Try multiple initialization points to ensure it runs
