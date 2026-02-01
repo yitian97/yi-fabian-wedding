@@ -157,7 +157,10 @@ $(document).ready(function () {
     }
 
     /********************** Embed youtube video *********************/
-    $('.player').YTPlayer();
+    // Only initialize YTPlayer if plugin is loaded and elements exist
+    if (typeof $.fn.YTPlayer !== 'undefined' && $('.player').length > 0) {
+        $('.player').YTPlayer();
+    }
 
 
     /********************** Toggle Map Content **********************/

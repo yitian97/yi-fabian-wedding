@@ -1,0 +1,1385 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Wishes - Yi & Fabian Wedding</title>
+    <meta name="description" content="Leave your wishes and song requests for our special day.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Wishes - Yi & Fabian Wedding">
+    <meta property="og:description" content="Leave your wishes and song requests for our special day.">
+    <meta property="og:image" content="https://yifabian.love/img/hero-min.jpg">
+    <meta property="og:type" content="website">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+
+    <script>
+        // load css files from CDN if local node_modules fail
+        function loadCssFromCDN(css) {
+            // create new link tag
+            const link = document.createElement('link');
+            if (css === 'animate.css') {
+                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
+            } else if (css === 'font-awesome.css') {
+                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+            }
+            link.rel = 'stylesheet';
+
+            // add link tag to head section
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+
+        // load js files from CDN if local node_modules fail
+        function loadJsFromCDN(js) {
+            if (js === 'waypoints.js') {
+                document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"><\/script>');
+            } else if (js === 'jquery.js') {
+                document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>');
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <link rel="stylesheet" href="css/queries.css">
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <style>
+        /* White Background for Gallery */
+        section#gallery {
+            background-color: #ffffff !important;
+            position: relative !important;
+        }
+        
+        section#gallery .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        section#gallery .header,
+        section#gallery h3,
+        section#gallery h4,
+        section#gallery h5,
+        section#gallery p {
+            color: #000000 !important;
+        }
+        
+        /* Scroll margin for anchor links to account for fixed navigation */
+        #wishes,
+        #playlist {
+            scroll-margin-top: 100px;
+        }
+        
+        /* Custom scrollbar for playlist - Spotify style */
+        #playlist-display::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        #playlist-display::-webkit-scrollbar-track {
+            background: #121212;
+            border-radius: 10px;
+        }
+        
+        #playlist-display::-webkit-scrollbar-thumb {
+            background: #404040;
+            border-radius: 10px;
+        }
+        
+        #playlist-display::-webkit-scrollbar-thumb:hover {
+            background: #505050;
+        }
+        
+        /* Navigation menu color effect - same as main page */
+        section.navigation {
+            background-color: #000 !important;
+            transition: background-color 300ms ease-in-out !important;
+            z-index: 999 !important;
+        }
+        
+        /* Change to dark burgundy when scrolled (via .fixed class) */
+        section.navigation.fixed,
+        section.navigation.fixed {
+            background-color: rgba(55, 36, 40, .88) !important;
+        }
+        
+        /* Override any base .fixed class */
+        body section.navigation.fixed {
+            background-color: rgba(55, 36, 40, .88) !important;
+        }
+        
+        /* Gallery submenu styles */
+        .primary-nav li {
+            position: relative;
+        }
+        
+        .primary-nav li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(55, 36, 40, .95);
+            min-width: 180px;
+            padding: 10px 0;
+            margin-top: 0;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            pointer-events: auto;
+        }
+        
+        .primary-nav li:hover ul,
+        .primary-nav li:focus-within ul,
+        .primary-nav li ul:hover {
+            display: block;
+        }
+        
+        .primary-nav li ul li {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .primary-nav li ul li a {
+            display: block;
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            pointer-events: auto;
+            position: relative;
+            z-index: 10001;
+        }
+        
+        .primary-nav li ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Mobile submenu styles */
+        @media screen and (max-width: 991px) {
+            .primary-nav li ul {
+                position: static;
+                display: none;
+                background-color: transparent;
+                padding: 0;
+                margin: 10px 0 0 20px;
+                box-shadow: none;
+            }
+            
+            .primary-nav li.active ul {
+                display: block;
+            }
+            
+            .primary-nav li ul li a {
+                padding: 10px 0;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="navigation">
+    <header>
+        <div class="header-content">
+            <div class="logo"><a href="index.html"><img src="img/logo.png" alt="Logo" style="width: 120%; max-width: 100px; height: 120%; max-height: 100px;"></a></div>
+            <div class="header-nav">
+                <nav>
+                    <ul class="primary-nav">
+                        <li><a href="index.html#intro" data-translate="nav.ourStory">Our story</a></li>
+                        <li><a href="index.html#events" data-translate="nav.events">Events</a></li>
+                        <li class="hidden-sm hidden-xs"><a href="index.html#video-bg" data-translate="nav.glimpse">Glimpse of the city</a></li>
+                        <li><a href="index.html#map" data-translate="nav.venue">Venue</a></li>
+                        <li>
+                            <a href="wishes.html" data-translate="nav.wishes">Wishes <i class="fa fa-caret-down" style="margin-left: 5px; font-size: 0.8em;"></i></a>
+                            <ul>
+                                <li><a href="wishes.html#wishes" data-translate="nav.wishesWall">Wishes Wall</a></li>
+                                <li><a href="wishes.html#playlist" data-translate="nav.playlist">DJ Playlist</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="gallery.html" data-translate="nav.gallery">Gallery <i class="fa fa-caret-down" style="margin-left: 5px; font-size: 0.8em;"></i></a>
+                            <ul>
+                                <li><a href="gallery.html#bits" data-translate="nav.bitsPieces">Bits & Pieces</a></li>
+                                <li><a href="gallery.html#wedding-gallery" data-translate="nav.weddingGallery">Wedding Gallery</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="member-actions">
+                        <li>
+                                <select id="language-selector" style="background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 5px 10px; border-radius: 3px; margin-right: 15px; cursor: pointer;">
+                                    <option value="en">🇬🇧 EN</option>
+                                    <option value="de">🇩🇪 DE</option>
+                                    <option value="es">🇪🇸 ES</option>
+                                </select>
+                        </li>
+                        <li><a href="index.html#rsvp" class="btn-white btn-small" data-translate="nav.rsvp">RSVP</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="navicon">
+                <a class="nav-toggle" href="#"><span></span></a>
+            </div>
+        </div>
+    </header>
+</section>
+
+<section id="gallery" class="section-padding" style="padding-top: 150px;">
+    <div class="container">
+        <!-- Wishes Wall Section -->
+        <div class="row section-padding" id="wishes" style="padding-top: 50px;">
+            <div class="col-md-12 text-center">
+                <h3 class="header" style="margin-bottom: 30px;" data-translate="memories.wishesWall">Wishes Wall</h3>
+            </div>
+            
+            <!-- Display Wishes - Moved before the form with nice background box -->
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1" style="margin-bottom: 50px;">
+                <div style="background: linear-gradient(135deg, #faf8f3 0%, #ffffff 100%); padding: 50px 40px; border-radius: 20px; box-shadow: 0 6px 30px rgba(0,0,0,0.12); border: 2px solid #e8e8e8; position: relative; overflow: hidden;">
+                    <!-- Decorative elements -->
+                    <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
+                    <div style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%); border-radius: 50%;"></div>
+                    
+                    <div style="position: relative; z-index: 1;">
+                        <h4 style="text-align: center; margin-bottom: 40px; color: #372428; font-size: 24px; font-weight: 700; letter-spacing: 1px;">
+                            <i class="fa fa-heart" style="color: #d4af37; margin-right: 12px; font-size: 26px;"></i><span data-translate="memories.messagesFromGuests">Messages from Our Guests</span>
+                        </h4>
+                        <div class="row" id="wishes-display">
+                            <!-- Wishes will be loaded here -->
+                            <div class="col-md-12 text-center" style="padding: 40px; color: #999;">
+                                <i class="fa fa-comments" style="font-size: 48px; margin-bottom: 15px; display: block; color: #d4af37;"></i>
+                                <p style="font-size: 16px;" data-translate="memories.firstWish">Be the first to leave a wish! 💕</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Description text before form -->
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1" style="margin-bottom: 30px;">
+                <p style="color: #666; text-align: center; font-size: 17px; line-height: 1.8; padding: 20px; background: #f9f9f9; border-radius: 10px; border-left: 4px solid #d4af37;">
+                    <i class="fa fa-info-circle" style="color: #d4af37; margin-right: 8px;"></i>
+                    <span data-translate="memories.wishesDesc">Leave your wishes, congratulations, or suggestions for our special day! Messages are anonymous.</span>
+                </p>
+            </div>
+            
+            <!-- Wishes Form -->
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1" style="margin-bottom: 50px;">
+                <form id="wishes-form" style="background: #f9f9f9; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;" data-translate="memories.yourName">Your Name (Optional)</label>
+                        <input type="text" name="name" id="wish-name" placeholder="" data-translate-placeholder="memories.anonymous" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;" data-translate="memories.yourMessage">Your Message <span style="color: #d00;">*</span></label>
+                        <textarea name="message" id="wish-message" rows="5" placeholder="" data-translate-placeholder="memories.messagePlaceholder" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; resize: vertical; font-family: inherit;"></textarea>
+                    </div>
+                    <div id="wishes-alert-wrapper" style="margin-bottom: 15px;"></div>
+                    <button type="submit" class="btn btn-accent" style="width: 100%; padding: 12px; font-size: 14px; border: none; cursor: pointer; background-color: #d4af37 !important; color: #fff !important;">
+                        <i class="fa fa-heart" style="margin-right: 8px;"></i><span data-translate="memories.submitWish">Submit Your Wish</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- DJ Playlist Section -->
+        <div class="row section-padding" id="playlist" style="padding-top: 50px;">
+            <div class="col-md-12 text-center">
+                <h3 class="header" style="margin-bottom: 30px;" data-translate="memories.playlist">DJ Playlist Requests</h3>
+            </div>
+            
+            <!-- Display Playlist - Show submitted songs -->
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1" style="margin-bottom: 50px;">
+                <div style="background: #121212; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);">
+                    <h4 style="text-align: left; margin-bottom: 20px; color: #ffffff; font-size: 24px; font-weight: 700;">
+                        <i class="fa fa-music" style="color: #d4af37; margin-right: 10px;"></i><span data-translate="memories.playlistTitle" style="color: #ffffff;">Dancing Party Playlist</span>
+                    </h4>
+                    <div id="playlist-display" style="max-height: 600px; overflow-y: auto;">
+                        <!-- Songs will be loaded here -->
+                        <div class="text-center" style="padding: 40px; color: #b3b3b3;">
+                            <i class="fa fa-music" style="font-size: 48px; margin-bottom: 15px; display: block; color: #d4af37;"></i>
+                            <p style="font-size: 16px; color: #b3b3b3;" data-translate="memories.firstSong">Be the first to request a song! 🎵</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Description text before form -->
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1" style="margin-bottom: 30px;">
+                <p style="color: #666; text-align: center; font-size: 17px; line-height: 1.8; padding: 20px; background: #f9f9f9; border-radius: 10px; border-left: 4px solid #d4af37;">
+                    <i class="fa fa-info-circle" style="color: #d4af37; margin-right: 8px;"></i>
+                    <span data-translate="memories.playlistDesc">Request your favorite songs for the DJ to play at our dancing party! Help us create the perfect playlist.</span>
+                </p>
+            </div>
+            
+            <!-- Playlist Request Form -->
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1" style="margin-bottom: 50px;">
+                <form id="playlist-form" style="background: #f9f9f9; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;" data-translate="memories.yourName">Your Name (Optional)</label>
+                        <input type="text" name="name" id="song-name" placeholder="" data-translate-placeholder="memories.anonymous" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;" data-translate="memories.songLink">Song Link <span style="color: #d00;">*</span></label>
+                        <input type="url" name="song_link" id="song-link" placeholder="" data-translate-placeholder="memories.songLinkPlaceholder" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
+                        <small style="display: block; margin-top: 5px; color: #666; font-size: 12px;" data-translate="memories.songLinkHelp">Supports YouTube, Spotify, or SoundCloud links</small>
+                    </div>
+                    <div id="playlist-alert-wrapper" style="margin-bottom: 15px;"></div>
+                    <button type="submit" class="btn btn-accent" style="width: 100%; padding: 12px; font-size: 14px; border: none; cursor: pointer; background-color: #d4af37 !important; color: #fff !important;">
+                        <i class="fa fa-music" style="margin-right: 8px;"></i><span data-translate="memories.submitSong">Submit Song Request</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center content">
+                <span class="to-top-wrapper"><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a></span>
+                <p data-translate="memories.footer">Crafted with lots of <span class="fa fa-heart pulse2"></span> by Yi</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/vendor/jquery-1.11.2.min.js" onerror="loadJsFromCDN('jquery.js')"></script>
+<script src="node_modules/waypoints/lib/jquery.waypoints.min.js" onerror="loadJsFromCDN('waypoints.js')"></script>
+<script src="js/jquery.fancybox.pack.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/jquery.flexslider-min.js"></script>
+<script src="js/vendor/ouical.js"></script>
+<script src="js/scripts.js"></script>
+<script>
+    // Helper function to show alerts
+    function showAlert(type, message) {
+        var alertClass = type === 'success' ? 'alert-success' : type === 'error' ? 'alert-error' : 'alert-info';
+        return '<div class="alert ' + alertClass + '">' + message + '</div>';
+    }
+    
+    // Load wishes from Google Apps Script
+    function loadWishes() {
+        console.log('loadWishes() called');
+        var scriptUrl = 'https://script.google.com/macros/s/AKfycbzd8si22j1o2GqeU1zd3RPKE9w9ZvluGG_vBT8hTCPKb5E8zrk7BPkCG4Cu0URuM4mK/exec';
+        
+        // Check if display element exists
+        var $display = $('#wishes-display');
+        console.log('wishes-display element found:', $display.length);
+        if ($display.length === 0) {
+            console.error('wishes-display element not found!');
+            return;
+        }
+        
+        console.log('Making AJAX request to:', scriptUrl);
+        $.ajax({
+            url: scriptUrl,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                console.log('AJAX success! Response:', response);
+                // Handle different response formats
+                var wishes = null;
+                if (response && response.result === 'success' && response.wishes) {
+                    wishes = response.wishes;
+                    console.log('Found wishes in response.wishes:', wishes.length);
+                } else if (response && Array.isArray(response)) {
+                    wishes = response;
+                    console.log('Response is direct array:', wishes.length);
+                } else if (response && response.data && Array.isArray(response.data)) {
+                    wishes = response.data;
+                    console.log('Found wishes in response.data:', wishes.length);
+                } else {
+                    console.log('No wishes found in response. Response structure:', Object.keys(response || {}));
+                }
+                
+                if (wishes && wishes.length > 0) {
+                    console.log('Calling displayWishes with', wishes.length, 'wishes');
+                    displayWishes(wishes);
+                } else {
+                    console.log('No wishes to display, showing empty message');
+                    $display.html('<div class="col-md-12 text-center" style="padding: 40px; color: #999;"><i class="fa fa-comments" style="font-size: 48px; margin-bottom: 15px; display: block; color: #d4af37;"></i><p style="font-size: 16px;">Be the first to leave a wish! 💕</p></div>');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX error loading wishes:', status, error);
+                console.log('Status code:', xhr.status);
+                console.log('Response text:', xhr.responseText);
+                $display.html('<p style="color: #999; text-align: center; padding: 40px;">Error loading wishes.</p>');
+            }
+        });
+    }
+    
+    // Display wishes
+    function displayWishes(wishes) {
+        var $display = $('#wishes-display');
+        if ($display.length === 0) {
+            console.error('wishes-display element not found!');
+            return;
+        }
+        $display.empty();
+        
+        if (wishes.length === 0) {
+            $display.html('<div class="col-md-12 text-center" style="padding: 40px; color: #999;"><i class="fa fa-comments" style="font-size: 48px; margin-bottom: 15px; display: block; color: #d4af37;"></i><p style="font-size: 16px;">Be the first to leave a wish! 💕</p></div>');
+            return;
+        }
+        
+        // Sort by date (newest first)
+        wishes.sort(function(a, b) {
+            return new Date(b.timestamp) - new Date(a.timestamp);
+        });
+        
+        wishes.forEach(function(wish) {
+            var name = wish.name && wish.name.trim() ? wish.name : 'Anonymous';
+            var date = new Date(wish.timestamp);
+            var dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+            
+            var wishHtml = '<div class="col-md-4 col-sm-6" style="margin-bottom: 15px;">' +
+                '<div style="background: linear-gradient(135deg, #ffffff 0%, #faf8f3 100%); padding: 14px 16px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); height: 100%; border-left: 3px solid #d4af37; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;">' +
+                '<div style="position: absolute; top: 0; right: 0; width: 40px; height: 40px; background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%); border-radius: 0 0 0 100%;"></div>' +
+                '<div style="position: relative; z-index: 1;">' +
+                '<div style="margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">' +
+                '<strong style="color: #372428; font-size: 14px; font-weight: 600; display: flex; align-items: center;">' +
+                '<i class="fa fa-user-circle" style="color: #d4af37; margin-right: 5px; font-size: 14px;"></i>' + escapeHtml(name) + 
+                '</strong>' +
+                '<span style="color: #999; font-size: 10px; font-style: italic;">' + dateStr + '</span>' +
+                '</div>' +
+                '<p style="color: #555; line-height: 1.5; margin: 0; font-size: 13px; font-style: italic;">' +
+                '<i class="fa fa-quote-left" style="color: #d4af37; margin-right: 5px; font-size: 11px;"></i>' +
+                escapeHtml(wish.message) +
+                '</p>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
+            
+            $display.append(wishHtml);
+        });
+    }
+    
+    // Escape HTML to prevent XSS
+    function escapeHtml(text) {
+        var map = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        };
+        return text ? text.replace(/[&<>"']/g, function(m) { return map[m]; }) : '';
+    }
+    
+    // Handle form submission - Use event delegation to ensure it works
+    $(document).on('submit', '#wishes-form', function(e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            
+            var message = $('#wish-message').val().trim();
+            if (!message) {
+                $('#wishes-alert-wrapper').html(showAlert('error', 'Please enter a message!'));
+                return false;
+            }
+            
+            // Show loading
+            $('#wishes-alert-wrapper').html(showAlert('info', '<strong>Submitting...</strong> Your wish is being saved.'));
+            
+            // Handle empty name - set to Anonymous if empty (before serializing)
+            if (!$('#wish-name').val().trim()) {
+                $('#wish-name').val('Anonymous');
+            }
+            
+            // Use serialize() exactly like test file
+            var scriptUrl = 'https://script.google.com/macros/s/AKfycbzd8si22j1o2GqeU1zd3RPKE9w9ZvluGG_vBT8hTCPKb5E8zrk7BPkCG4Cu0URuM4mK/exec';
+            var data = $(this).serialize();
+            
+            console.log('Submitting:', data);
+            console.log('URL:', scriptUrl);
+            
+            $.ajax({
+                url: scriptUrl,
+                type: 'POST',
+                data: data,
+                dataType: 'json',
+                success: function(response) {
+                    console.log('Success:', response);
+                    var result = typeof response === 'string' ? JSON.parse(response) : response;
+                    if (result.result === 'success') {
+                        $('#wishes-alert-wrapper').html(showAlert('success', '<strong>Thank you!</strong> Your wish has been submitted.'));
+                        $('#wishes-form')[0].reset();
+                        setTimeout(function() {
+                            loadWishes();
+                        }, 1500);
+                    } else {
+                        $('#wishes-alert-wrapper').html(showAlert('error', result.message || 'Error saving wish.'));
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log('Error:', status, error);
+                    console.log('Status:', xhr.status);
+                    console.log('Response:', xhr.responseText);
+                    
+                    // Check if it's actually a success (Google Apps Script redirects)
+                    if (xhr.responseText) {
+                        try {
+                            var response = JSON.parse(xhr.responseText);
+                            if (response.result === 'success') {
+                                $('#wishes-alert-wrapper').html(showAlert('success', '<strong>Thank you!</strong> Your wish has been submitted.'));
+                                $('#wishes-form')[0].reset();
+                                setTimeout(function() {
+                                    loadWishes();
+                                }, 1500);
+                                return;
+                            }
+                        } catch(e) {
+                            // Not JSON, might still be success
+                        }
+                    }
+                    
+                    $('#wishes-alert-wrapper').html(showAlert('error', 'Error submitting wish. Please try again.'));
+                }
+            });
+            
+            return false;
+    });
+    
+    // Load wishes on page load - wait for DOM to be ready
+    // Use both window.onload and document.ready to ensure it works
+    var wishesLoaded = false;
+    
+    function initWishesLoad() {
+        if (wishesLoaded) return;
+        wishesLoaded = true;
+        console.log('Initializing wishes load...');
+        setTimeout(function() {
+            loadWishes();
+        }, 200);
+    }
+    
+    // Try on document ready first (faster)
+    $(document).ready(function() {
+        console.log('Document ready, wishes-display exists:', $('#wishes-display').length);
+        if ($('#wishes-display').length > 0) {
+            initWishesLoad();
+        }
+    });
+    
+    // Backup: use window.onload to ensure everything is loaded
+    window.addEventListener('load', function() {
+        console.log('Window loaded');
+        if (!$('#wishes-display').length) {
+            console.error('wishes-display still not found on window.load!');
+        } else if (!wishesLoaded) {
+            initWishesLoad();
+        }
+    });
+    
+    function initPlaylistForm() {
+        // Helper function to show alerts
+        function showAlert(type, message) {
+            var alertClass = type === 'success' ? 'alert-success' : type === 'error' ? 'alert-error' : 'alert-info';
+            var icon = type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+            return '<div class="alert ' + alertClass + '" style="padding: 12px; border-radius: 5px; margin-bottom: 15px;"><i class="fa ' + icon + '" style="margin-right: 8px;"></i>' + message + '</div>';
+        }
+        
+        // Load playlist from Google Apps Script
+        function loadPlaylist() {
+            var scriptUrl = 'https://script.google.com/macros/s/AKfycbyPVCxYA77tl845zBNR4ALZPfFUvgJSWBpCGm4Rt277xr16MaZD_u3MuLOpGsVXWpo0jA/exec';
+            
+            console.log('Loading playlist from:', scriptUrl);
+            
+            $.ajax({
+                url: scriptUrl,
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    console.log('Playlist response:', response);
+                    
+                    // Handle different response formats
+                    var songs = null;
+                    
+                    // Try to parse if response is a string
+                    if (typeof response === 'string') {
+                        try {
+                            response = JSON.parse(response);
+                        } catch(e) {
+                            console.error('Failed to parse response as JSON:', e);
+                        }
+                    }
+                    
+                    // Check various response formats
+                    if (response && response.songs && Array.isArray(response.songs)) {
+                        songs = response.songs;
+                    } else if (response && Array.isArray(response)) {
+                        songs = response;
+                    } else if (response && response.data && Array.isArray(response.data)) {
+                        songs = response.data;
+                    }
+                    
+                    if (songs && songs.length > 0) {
+                        console.log('Found', songs.length, 'songs');
+                        displayPlaylist(songs);
+                    } else {
+                        console.log('No songs found in response, using fallback');
+                        // Fallback to localStorage if response format is unexpected
+                        songs = JSON.parse(localStorage.getItem('weddingPlaylist') || '[]');
+                        displayPlaylist(songs);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error loading playlist:', status, error);
+                    console.log('Response:', xhr.responseText);
+                    // Fallback to localStorage if script fails
+                    var songs = JSON.parse(localStorage.getItem('weddingPlaylist') || '[]');
+                    displayPlaylist(songs);
+                }
+            });
+        }
+        
+        // Display playlist
+        function displayPlaylist(songs) {
+            console.log('displayPlaylist called with', songs ? songs.length : 0, 'songs');
+            var $display = $('#playlist-display');
+            if (!$display.length) {
+                console.error('playlist-display element not found!');
+                return;
+            }
+            $display.empty();
+            
+            if (!songs || songs.length === 0) {
+                console.log('No songs to display, showing empty message');
+                $display.html('<div class="text-center" style="padding: 40px; color: #b3b3b3;"><i class="fa fa-music" style="font-size: 48px; margin-bottom: 15px; display: block; color: #d4af37;"></i><p style="font-size: 16px; color: #b3b3b3;">Be the first to request a song! 🎵</p></div>');
+                return;
+            }
+            
+            // Sort by date (oldest first for continuous playlist)
+            songs.sort(function(a, b) {
+                return new Date(a.timestamp) - new Date(b.timestamp);
+            });
+            
+            // Create standard music player list
+            var playlistHtml = '';
+            
+            songs.forEach(function(song, index) {
+                var songLink = escapeHtml(song.song_link || song.youtube_link || ''); // Support both old and new field names
+                
+                // Determine platform
+                var platformIcon = 'fa-music';
+                var platformColor = '#b3b3b3';
+                var embedHtml = '';
+                
+                if (songLink) {
+                    // YouTube
+                    if (songLink.match(/(?:youtube\.com|youtu\.be)/)) {
+                        var match = songLink.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
+                        if (match) {
+                            var videoId = match[1];
+                            var youtubePlayerId = 'youtube-player-' + index;
+                            embedHtml = '<div style="position: relative; margin-top: 8px;">' +
+                                '<button onclick="toggleYouTubePlayer(\'' + youtubePlayerId + '\', \'' + videoId + '\')" style="background: #ff0000; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: background 0.2s ease;">' +
+                                '<i class="fa fa-play" id="play-icon-' + youtubePlayerId + '"></i>' +
+                                '<span id="play-text-' + youtubePlayerId + '">Play</span>' +
+                                '</button>' +
+                                '<div id="' + youtubePlayerId + '" style="display: none; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; background: #000; margin-top: 8px;">' +
+                                '<iframe id="iframe-' + youtubePlayerId + '" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
+                                '</div>' +
+                                '</div>';
+                            platformIcon = 'fa-youtube';
+                            platformColor = '#ff0000';
+                        }
+                    }
+                    // Spotify
+                    else if (songLink.match(/spotify\.com/)) {
+                        var spotifyUrl = songLink;
+                        if (spotifyUrl.includes('/track/')) {
+                            var trackMatch = spotifyUrl.match(/spotify\.com\/track\/([a-zA-Z0-9]+)/);
+                            if (trackMatch) {
+                                embedHtml = '<div style="position: relative; padding-bottom: 80px; height: 0; overflow: hidden; border-radius: 4px;">' +
+                                    '<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 80px;" src="https://open.spotify.com/embed/track/' + trackMatch[1] + '?utm_source=generator&theme=0" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>' +
+                                    '</div>';
+                                platformIcon = 'fa-spotify';
+                                platformColor = '#1db954';
+                            }
+                        } else if (spotifyUrl.includes('/album/')) {
+                            var albumMatch = spotifyUrl.match(/spotify\.com\/album\/([a-zA-Z0-9]+)/);
+                            if (albumMatch) {
+                                embedHtml = '<div style="position: relative; padding-bottom: 80px; height: 0; overflow: hidden; border-radius: 4px;">' +
+                                    '<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 80px;" src="https://open.spotify.com/embed/album/' + albumMatch[1] + '?utm_source=generator&theme=0" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>' +
+                                    '</div>';
+                                platformIcon = 'fa-spotify';
+                                platformColor = '#1db954';
+                            }
+                        } else if (spotifyUrl.includes('/playlist/')) {
+                            var playlistMatch = spotifyUrl.match(/spotify\.com\/playlist\/([a-zA-Z0-9]+)/);
+                            if (playlistMatch) {
+                                embedHtml = '<div style="position: relative; padding-bottom: 80px; height: 0; overflow: hidden; border-radius: 4px;">' +
+                                    '<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 80px;" src="https://open.spotify.com/embed/playlist/' + playlistMatch[1] + '?utm_source=generator&theme=0" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>' +
+                                    '</div>';
+                                platformIcon = 'fa-spotify';
+                                platformColor = '#1db954';
+                            }
+                        }
+                    }
+                    // SoundCloud
+                    else if (songLink.match(/soundcloud\.com/)) {
+                        embedHtml = '<div style="position: relative; padding-bottom: 80px; height: 0; overflow: hidden; border-radius: 4px;">' +
+                            '<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 80px;" src="https://w.soundcloud.com/player/?url=' + encodeURIComponent(songLink) + '&color=%23d4af37&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=true&visual=false" frameborder="no" scrolling="no"></iframe>' +
+                            '</div>';
+                        platformIcon = 'fa-soundcloud';
+                        platformColor = '#ff5500';
+                    }
+                    
+                    // Fallback: if no embed was created, show as clickable link
+                    if (!embedHtml) {
+                        embedHtml = '<p style="color: #b3b3b3; line-height: 1.5; margin: 8px 0 0 0; font-size: 12px;">' +
+                            '<i class="fa ' + platformIcon + '" style="color: ' + platformColor + '; margin-right: 5px; font-size: 12px;"></i>' +
+                            '<a href="' + songLink + '" target="_blank" style="color: #d4af37; text-decoration: underline; word-break: break-all;">' + songLink + '</a>' +
+                            '</p>';
+                    }
+                }
+                
+                // Create standard music player list item (like Spotify/Apple Music)
+                playlistHtml += '<div style="display: flex; align-items: center; padding: 12px; margin-bottom: 2px; border-radius: 4px; background: #181818; transition: background-color 0.2s ease; cursor: pointer;" onmouseover="this.style.backgroundColor=\'#282828\'" onmouseout="this.style.backgroundColor=\'#181818\'">' +
+                    '<div style="min-width: 30px; text-align: center; color: #b3b3b3; font-size: 14px; font-weight: 500;">' + (index + 1) + '</div>' +
+                    '<div style="flex: 1; margin-left: 16px;">' +
+                    '<div style="display: flex; align-items: center; margin-bottom: 8px;">' +
+                    '<i class="fa ' + platformIcon + '" style="color: ' + platformColor + '; margin-right: 8px; font-size: 16px;"></i>' +
+                    '</div>' +
+                    embedHtml +
+                    '</div>' +
+                    '</div>';
+            });
+            
+            $display.html(playlistHtml);
+            console.log('Playlist displayed with', songs.length, 'songs');
+        }
+        
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            var map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text ? text.replace(/[&<>"']/g, function(m) { return map[m]; }) : '';
+        }
+        
+        // Handle form submission
+        var $form = $('#playlist-form');
+        if ($form.length === 0) {
+            console.error('Playlist form not found!');
+            return;
+        }
+        console.log('Attaching handler to playlist form, form found:', $form.length);
+        
+        // Remove any existing handlers first to avoid conflicts
+        $form.off('submit').on('submit', function(e) {
+            console.log('Playlist form submit event triggered!');
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            
+            var songLink = $('#song-link').val().trim();
+            if (!songLink) {
+                $('#playlist-alert-wrapper').html(showAlert('error', 'Please enter a song link!'));
+                return false;
+            }
+            
+            // Validate URL is from supported platforms
+            if (!songLink.match(/(?:youtube\.com|youtu\.be|spotify\.com|soundcloud\.com)/)) {
+                $('#playlist-alert-wrapper').html(showAlert('error', 'Please enter a valid YouTube, Spotify, or SoundCloud link!'));
+                return false;
+            }
+            
+            // Show loading
+            $('#playlist-alert-wrapper').html(showAlert('info', '<strong>Submitting...</strong> Your song request is being saved.'));
+            
+            // Handle empty name - set to Anonymous if empty (before serializing)
+            if (!$('#song-name').val().trim()) {
+                $('#song-name').val('Anonymous');
+            }
+            
+            var scriptUrl = 'https://script.google.com/macros/s/AKfycbyPVCxYA77tl845zBNR4ALZPfFUvgJSWBpCGm4Rt277xr16MaZD_u3MuLOpGsVXWpo0jA/exec';
+            var data = $(this).serialize();
+            
+            console.log('Submitting playlist:', data);
+            console.log('URL:', scriptUrl);
+            
+            $.ajax({
+                url: scriptUrl,
+                type: 'POST',
+                data: data,
+                dataType: 'json',
+                success: function(response) {
+                    console.log('Success:', response);
+                    var result = typeof response === 'string' ? JSON.parse(response) : response;
+                    if (result.result === 'success') {
+                        $('#playlist-alert-wrapper').html(showAlert('success', '<strong>Thank you!</strong> Your song request has been submitted.'));
+                        $('#playlist-form')[0].reset();
+                        setTimeout(function() {
+                            loadPlaylist();
+                        }, 1500);
+                    } else {
+                        $('#playlist-alert-wrapper').html(showAlert('error', result.message || 'Error saving song request.'));
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                    console.log('Response:', xhr.responseText);
+                    
+                    // Check if it's actually a success (Google Apps Script redirects)
+                    if (xhr.responseText) {
+                        try {
+                            var response = JSON.parse(xhr.responseText);
+                            if (response.result === 'success') {
+                                $('#playlist-alert-wrapper').html(showAlert('success', '<strong>Thank you!</strong> Your song request has been submitted.'));
+                                $('#playlist-form')[0].reset();
+                                setTimeout(function() {
+                                    loadPlaylist();
+                                }, 1500);
+                                return;
+                            }
+                        } catch(e) {
+                            // Not JSON, might still be success
+                        }
+                    }
+                    
+                    $('#playlist-alert-wrapper').html(showAlert('error', 'Error submitting song request. Please try again.'));
+                }
+            });
+            
+            return false;
+        });
+        
+        // Load playlist on page load
+        loadPlaylist();
+    }
+    
+    // Initialize playlist on page load - similar to wishes
+    var playlistLoaded = false;
+    
+    function initPlaylistLoad() {
+        if (playlistLoaded) return;
+        playlistLoaded = true;
+        console.log('Initializing playlist load...');
+        setTimeout(function() {
+            initPlaylistForm();
+        }, 200);
+    }
+    
+    // Try on document ready first (faster)
+    $(document).ready(function() {
+        console.log('Document ready, playlist-display exists:', $('#playlist-display').length);
+        if ($('#playlist-display').length > 0) {
+            initPlaylistLoad();
+        }
+    });
+    
+    // Backup: use window.onload to ensure everything is loaded
+    window.addEventListener('load', function() {
+        console.log('Window loaded for playlist');
+        if (!$('#playlist-display').length) {
+            console.error('playlist-display still not found on window.load!');
+        } else if (!playlistLoaded) {
+            initPlaylistLoad();
+        }
+    });
+    
+    // Make functions accessible globally for debugging
+    window.reloadPlaylist = function() {
+        console.log('Manually reloading playlist...');
+        if (typeof initPlaylistForm !== 'undefined') {
+            initPlaylistForm();
+        } else {
+            console.error('initPlaylistForm not defined!');
+        }
+    };
+    
+    window.reloadWishes = function() {
+        console.log('Manually reloading wishes...');
+        if (typeof initWishesForm !== 'undefined') {
+            initWishesForm();
+        } else {
+            console.error('initWishesForm not defined!');
+        }
+    };
+    
+    // YouTube player toggle function
+    function toggleYouTubePlayer(playerId, videoId) {
+        var playerDiv = document.getElementById(playerId);
+        var iframe = document.getElementById('iframe-' + playerId);
+        var playIcon = document.getElementById('play-icon-' + playerId);
+        var playText = document.getElementById('play-text-' + playerId);
+        
+        if (playerDiv.style.display === 'none' || playerDiv.style.display === '') {
+            // Show and load player
+            playerDiv.style.display = 'block';
+            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&controls=1&modestbranding=1&rel=0';
+            playIcon.className = 'fa fa-pause';
+            playText.textContent = 'Hide';
+        } else {
+            // Hide player
+            playerDiv.style.display = 'none';
+            iframe.src = '';
+            playIcon.className = 'fa fa-play';
+            playText.textContent = 'Play';
+        }
+    }
+</script>
+
+<script>
+    // Video modal functionality - using both jQuery and vanilla JS for reliability
+    function openVideoModal() {
+        var modal = document.getElementById('video-modal');
+        if (modal) {
+            modal.classList.add('show');
+            modal.style.display = 'flex';
+            modal.style.opacity = '0';
+            setTimeout(function() {
+                modal.style.transition = 'opacity 0.3s';
+                modal.style.opacity = '1';
+            }, 10);
+        }
+    }
+    
+    function closeVideoModal() {
+        var modal = document.getElementById('video-modal');
+        if (modal) {
+            modal.style.opacity = '0';
+            setTimeout(function() {
+                modal.classList.remove('show');
+                modal.style.display = 'none';
+                modal.style.opacity = '';
+                modal.style.transition = '';
+            }, 300);
+        }
+    }
+    
+    // Attach event listeners when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        var btn = document.getElementById('watch-video-btn');
+        if (btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openVideoModal();
+                return false;
+            });
+        }
+        
+        // Close buttons
+        var closeBtns = document.querySelectorAll('.modal-close, .modal-close-btn');
+        closeBtns.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeVideoModal();
+                return false;
+            });
+        });
+        
+        // Close on outside click
+        var modal = document.getElementById('video-modal');
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeVideoModal();
+                }
+            });
+        }
+        
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+                closeVideoModal();
+            }
+        });
+        
+        // Also use jQuery if available
+        if (typeof jQuery !== 'undefined') {
+            jQuery(document).ready(function($) {
+                $('#watch-video-btn').on('click', function(e) {
+                    e.preventDefault();
+                    openVideoModal();
+                    return false;
+                });
+            });
+        }
+    });
+</script>
+<script>
+    // Mobile submenu toggle
+    $(document).ready(function() {
+        // Handle clicks on parent Gallery link (mobile only)
+        $('.primary-nav > li:has(ul) > a').on('click', function(e) {
+            if ($(window).width() <= 991) {
+                var $parent = $(this).parent('li');
+                var $submenu = $parent.find('ul');
+                
+                // Only prevent default if clicking the parent link itself
+                if ($submenu.length > 0 && $(e.target).is('a') && !$(e.target).closest('ul').length) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $parent.toggleClass('active');
+                    return false;
+                }
+            }
+        });
+        
+        // Ensure submenu items are fully clickable
+        $('.primary-nav li ul li a').on('click', function(e) {
+            // Allow submenu items to navigate normally
+            e.stopPropagation();
+            // Don't prevent default - let the link work
+            // Close mobile menu after clicking
+            if ($(window).width() <= 991) {
+                $('.header-nav').removeClass('open');
+                $('.nav-toggle').removeClass('active');
+            }
+            // Handle smooth scroll for hash links on same page
+            var href = $(this).attr('href');
+            if (href.indexOf('#') !== -1) {
+                var hash = href.split('#')[1];
+                var target = $('#' + hash);
+                if (target.length && location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')) {
+                    e.preventDefault();
+                    // Calculate navigation menu height dynamically
+                    var navHeight = $('section.navigation').outerHeight() || 120;
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - navHeight - 20
+                    }, 1000);
+                    // Update URL without jumping
+                    if (history.pushState) {
+                        history.pushState(null, null, '#' + hash);
+                    }
+                }
+            }
+        });
+    });
+</script>
+<script>
+    // Handle hash anchor scrolling on page load (for cross-page navigation)
+    $(document).ready(function() {
+        if (window.location.hash) {
+            var hash = window.location.hash.substring(1);
+            var target = $('#' + hash);
+            if (target.length) {
+                // Wait for page to fully load, then scroll
+                // Calculate navigation menu height dynamically
+                setTimeout(function() {
+                    var navHeight = $('section.navigation').outerHeight() || 120;
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - navHeight - 20
+                    }, 1000);
+                }, 500);
+            }
+        }
+    });
+    
+    // Gallery page navigation scroll effect
+    // Run after scripts.js loads to ensure it works
+    (function() {
+        var scrollHandler = function() {
+            var scroll = $(window).scrollTop();
+            var $nav = $('section.navigation');
+            
+            if (!$nav.length) return;
+            
+            if (scroll >= 20) {
+                $nav.addClass('fixed');
+                $nav[0].style.setProperty('background-color', 'rgba(55, 36, 40, .88)', 'important');
+                $('header').css({
+                    "border-bottom": "none",
+                    "padding": "35px 0"
+                });
+                $('header .member-actions').css({
+                    "top": "26px",
+                });
+                $('header .navicon').css({
+                    "top": "34px",
+                });
+            } else {
+                $nav.removeClass('fixed');
+                $nav[0].style.setProperty('background-color', '#000', 'important');
+                $('header').css({
+                    "border-bottom": "solid 1px rgba(255, 255, 255, 0.2)",
+                    "padding": "50px 0"
+                });
+                $('header .member-actions').css({
+                    "top": "41px",
+                });
+                $('header .navicon').css({
+                    "top": "48px",
+                });
+            }
+        };
+        
+        // Set up handler after page loads
+        $(document).ready(function() {
+            // Wait a bit for scripts.js to potentially set up
+            setTimeout(function() {
+                // Add our handler (will run alongside or after scripts.js handler)
+                $(window).on('scroll.gallery', scrollHandler);
+                // Check initial state
+                scrollHandler();
+            }, 300);
+        });
+        
+        // Also set up on window load
+        $(window).on('load', function() {
+            setTimeout(function() {
+                $(window).on('scroll.gallery', scrollHandler);
+                scrollHandler();
+            }, 100);
+        });
+    })();
+</script>
+<!-- Google Analytics -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-46465113-4', 'auto');
+    ga('send', 'pageview');
+</script>
+<script>
+    // Language Translation System (shared with index.html)
+    const translations = {
+        en: {
+            nav: {
+                ourStory: "Our story",
+                events: "Events",
+                glimpse: "Glimpse of the city",
+                venue: "Venue",
+                wishes: "Wishes",
+                wishesWall: "Wishes Wall",
+                playlist: "DJ Playlist",
+                gallery: "Gallery",
+                bitsPieces: "Bits & Pieces",
+                weddingGallery: "Wedding Gallery",
+                rsvp: "RSVP"
+            },
+            memories: {
+                wishesWall: "Wishes Wall",
+                bitsPieces: "Bits & Pieces",
+                weddingGallery: "Wedding Gallery",
+                wishesDesc: "Leave your wishes, congratulations, or suggestions for our special day! Messages are anonymous.",
+                yourName: "Your Name (Optional)",
+                anonymous: "Leave blank to remain anonymous",
+                yourMessage: "Your Message *",
+                messagePlaceholder: "Share your wishes, congratulations, or suggestions...",
+                submitWish: "Submit Your Wish",
+                unlockPipita: "Click below to unlock puppy Pipita",
+                showRandom: "Show Random Cuttie",
+                galleryComing: "Gallery coming after the wedding...",
+                firstWish: "Be the first to leave a wish! 💕",
+                messagesFromGuests: "Messages from Our Guests",
+                watchVideo: "Watch Wedding Video",
+                oops: "Oops!",
+                checkBackSoon: "Please check back soon. We can't wait to share our special day with you! 💕",
+                gotIt: "Got it!",
+                footer: "Crafted with lots of <span class=\"fa fa-heart pulse2\"></span> by Yi",
+                playlist: "DJ Playlist Requests",
+                playlistTitle: "Dancing Party Playlist",
+                playlistDesc: "Request your favorite songs for the DJ to play at our dancing party! Share a YouTube, Spotify, or SoundCloud link to your song.",
+                songLink: "Song Link *",
+                songLinkPlaceholder: "Paste YouTube, Spotify, or SoundCloud link here",
+                songLinkHelp: "Supports YouTube, Spotify, or SoundCloud links",
+                submitSong: "Submit Song Request",
+                firstSong: "Be the first to request a song! 🎵"
+            }
+        },
+        de: {
+            nav: {
+                ourStory: "Unsere Geschichte",
+                events: "Veranstaltungen",
+                glimpse: "Einblick in die Stadt",
+                venue: "Veranstaltungsort",
+                wishes: "Wünsche",
+                wishesWall: "Wünschewand",
+                playlist: "DJ-Playlist",
+                bitsPieces: "Kleine Momente",
+                weddingGallery: "Hochzeitsgalerie",
+                rsvp: "Zusagen"
+            },
+            memories: {
+                wishesWall: "Wünschewand",
+                bitsPieces: "Kleine Momente",
+                weddingGallery: "Hochzeitsgalerie",
+                wishesDesc: "Hinterlassen Sie Ihre Wünsche, Glückwünsche oder Vorschläge für unseren besonderen Tag! Nachrichten sind anonym.",
+                yourName: "Ihr Name (Optional)",
+                anonymous: "Leer lassen, um anonym zu bleiben",
+                yourMessage: "Ihre Nachricht *",
+                messagePlaceholder: "Teilen Sie Ihre Wünsche, Glückwünsche oder Vorschläge mit...",
+                submitWish: "Wunsch absenden",
+                unlockPipita: "Klicken Sie unten, um Welpe Pipita freizuschalten",
+                showRandom: "Zufälliges Süßes zeigen",
+                galleryComing: "Galerie kommt nach der Hochzeit...",
+                firstWish: "Seien Sie der Erste, der einen Wunsch hinterlässt! 💕",
+                messagesFromGuests: "Nachrichten von unseren Gästen",
+                watchVideo: "Hochzeitsvideo ansehen",
+                oops: "Ups!",
+                checkBackSoon: "Bitte schauen Sie bald wieder vorbei. Wir können es kaum erwarten, unseren besonderen Tag mit Ihnen zu teilen! 💕",
+                gotIt: "Verstanden!",
+                footer: "Mit viel <span class=\"fa fa-heart pulse2\"></span> von Yi erstellt",
+                playlist: "DJ-Playlist-Anfragen",
+                playlistTitle: "Tanzparty-Playlist",
+                playlistDesc: "Fordern Sie Ihre Lieblingssongs für den DJ an, die er auf unserer Tanzparty spielen soll! Teilen Sie einen YouTube-, Spotify- oder SoundCloud-Link zu Ihrem Song.",
+                songLink: "Song-Link *",
+                songLinkPlaceholder: "YouTube-, Spotify- oder SoundCloud-Link hier einfügen",
+                songLinkHelp: "Unterstützt YouTube-, Spotify- oder SoundCloud-Links",
+                submitSong: "Song-Anfrage absenden",
+                firstSong: "Seien Sie der Erste, der einen Song anfordert! 🎵"
+            }
+        },
+        es: {
+            nav: {
+                ourStory: "Nuestra historia",
+                events: "Eventos",
+                glimpse: "Vista de la ciudad",
+                venue: "Lugar",
+                wishes: "Deseos",
+                wishesWall: "Muro de deseos",
+                playlist: "Lista de Reproducción DJ",
+                bitsPieces: "Momentos especiales",
+                weddingGallery: "Galería de boda",
+                rsvp: "Confirmar asistencia"
+            },
+            memories: {
+                wishesWall: "Muro de deseos",
+                bitsPieces: "Momentos especiales",
+                weddingGallery: "Galería de boda",
+                wishesDesc: "¡Deja tus deseos, felicitaciones o sugerencias para nuestro día especial! Los mensajes son anónimos.",
+                yourName: "Tu nombre (opcional)",
+                anonymous: "Deja en blanco para permanecer anónimo",
+                yourMessage: "Tu mensaje *",
+                messagePlaceholder: "Comparte tus deseos, felicitaciones o sugerencias...",
+                submitWish: "Enviar tu deseo",
+                unlockPipita: "Haz clic abajo para desbloquear al cachorro Pipita",
+                showRandom: "Mostrar aleatorio adorable",
+                galleryComing: "Galería después de la boda...",
+                firstWish: "¡Sé el primero en dejar un deseo! 💕",
+                messagesFromGuests: "Mensajes de nuestros invitados",
+                watchVideo: "Ver video de boda",
+                oops: "¡Ups!",
+                checkBackSoon: "Por favor, vuelve pronto. ¡No podemos esperar para compartir nuestro día especial contigo! 💕",
+                gotIt: "¡Entendido!",
+                footer: "Creado con mucho <span class=\"fa fa-heart pulse2\"></span> por Yi",
+                playlist: "Solicitudes de Lista de Reproducción DJ",
+                playlistTitle: "Lista de Reproducción de Fiesta de Baile",
+                playlistDesc: "¡Solicita tus canciones favoritas para que el DJ las reproduzca en nuestra fiesta de baile! Comparte un enlace de YouTube, Spotify o SoundCloud de tu canción.",
+                songLink: "Enlace de Canción *",
+                songLinkPlaceholder: "Pega el enlace de YouTube, Spotify o SoundCloud aquí",
+                songLinkHelp: "Soporta enlaces de YouTube, Spotify o SoundCloud",
+                submitSong: "Enviar Solicitud de Canción",
+                firstSong: "¡Sé el primero en solicitar una canción! 🎵"
+            }
+        }
+    };
+    
+    // Get saved language or default to English
+    let currentLang = localStorage.getItem('wedding-lang') || 'en';
+    
+    // Function to translate content
+    function translatePage(lang) {
+        currentLang = lang;
+        localStorage.setItem('wedding-lang', lang);
+        
+        // Update language selector
+        var selector = document.getElementById('language-selector');
+        if (selector) {
+            selector.value = lang;
+        }
+        
+        // Translate all elements with data-translate attribute
+        document.querySelectorAll('[data-translate]').forEach(function(element) {
+            const key = element.getAttribute('data-translate');
+            const keys = key.split('.');
+            let translation = translations[lang];
+            
+            for (let i = 0; i < keys.length; i++) {
+                translation = translation[keys[i]];
+            }
+            
+            if (translation) {
+                element.innerHTML = translation;
+            }
+        });
+        
+        // Translate placeholders
+        document.querySelectorAll('[data-translate-placeholder]').forEach(function(element) {
+            const key = element.getAttribute('data-translate-placeholder');
+            const keys = key.split('.');
+            let translation = translations[lang];
+            
+            for (let i = 0; i < keys.length; i++) {
+                translation = translation[keys[i]];
+            }
+            
+            if (translation) {
+                element.placeholder = translation;
+            }
+        });
+    }
+    
+    // Initialize language on page load
+    function initTranslation() {
+        translatePage(currentLang);
+        
+        // Language selector change handler
+        $('#language-selector').on('change', function(e) {
+            translatePage($(this).val());
+        });
+    }
+    
+    // Initialize translation
+    $(document).ready(function() {
+        initTranslation();
+    });
+    
+    $(window).on('load', function() {
+        setTimeout(function() {
+            initTranslation();
+        }, 100);
+    });
+    
+    // Also try with vanilla JS as fallback
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                initTranslation();
+            }, 200);
+        });
+    } else {
+        setTimeout(function() {
+            initTranslation();
+        }, 100);
+    }
+</script>
+</body>
+</html>
