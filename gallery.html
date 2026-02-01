@@ -593,6 +593,30 @@
                 .modal-close-btn:hover {
                     background-color: #c19d26 !important;
                 }
+                
+                /* Dark Mode for Video Modal (Oops box) */
+                html.dark-mode .video-modal-content {
+                    background: #3a3a3a !important;
+                    color: #ffffff !important;
+                }
+                
+                html.dark-mode .video-modal-content h2 {
+                    color: #ffffff !important;
+                }
+                
+                html.dark-mode .video-modal-content p {
+                    color: #cccccc !important;
+                }
+                
+                html.dark-mode .video-modal-content .modal-close {
+                    color: #ffffff !important;
+                    opacity: 0.8;
+                }
+                
+                html.dark-mode .video-modal-content .modal-close:hover {
+                    opacity: 1;
+                    color: #ffffff !important;
+                }
             </style>
         </div>
     </div>
@@ -979,8 +1003,23 @@
         }
     };
     
-    // Get saved language or default to English
-    let currentLang = localStorage.getItem('wedding-lang') || 'en';
+    // Get saved language, then system language, or default to English
+    let currentLang = localStorage.getItem('wedding-lang');
+    
+    if (!currentLang) {
+        // Check browser/system language
+        const browserLang = navigator.language || navigator.userLanguage || 'en';
+        const langCode = browserLang.split('-')[0].toLowerCase(); // Get language code (e.g., 'de' from 'de-DE')
+        
+        // Map browser language to available languages
+        if (langCode === 'de') {
+            currentLang = 'de';
+        } else if (langCode === 'es') {
+            currentLang = 'es';
+        } else {
+            currentLang = 'en'; // Default to English
+        }
+    }
     
     // Function to translate content
     function translatePage(lang) {
@@ -1105,16 +1144,47 @@
             updateIcons(isDarkMode);
         }
         
-        // Check for saved theme preference or default to dark mode
+        // Check for saved theme preference, then system preference, or default to dark mode
         const savedTheme = localStorage.getItem('theme');
-        const currentTheme = savedTheme || 'dark';
+        let currentTheme;
         
-        // Apply theme on page load - default to dark mode
+        if (savedTheme) {
+            // Use saved preference if exists
+            currentTheme = savedTheme;
+        } else {
+            // Check system preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                currentTheme = 'dark';
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                currentTheme = 'light';
+            } else {
+                // Default to dark mode if system preference not available
+                currentTheme = 'dark';
+            }
+        }
+        
+        // Apply theme on page load
         if (currentTheme === 'dark') {
             document.documentElement.classList.add('dark-mode');
             updateIcons(true);
         } else {
             updateIcons(false);
+        }
+        
+        // Listen for system theme changes (if user hasn't set a preference)
+        if (!savedTheme && window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                // Only update if user hasn't manually set a preference
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark-mode');
+                        updateIcons(true);
+                    } else {
+                        document.documentElement.classList.remove('dark-mode');
+                        updateIcons(false);
+                    }
+                }
+            });
         }
         
         // Toggle dark mode - desktop button

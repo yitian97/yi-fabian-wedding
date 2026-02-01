@@ -1607,8 +1607,23 @@
         }
     };
     
-    // Get saved language or default to English
-    let currentLang = localStorage.getItem('wedding-lang') || 'en';
+    // Get saved language, then system language, or default to English
+    let currentLang = localStorage.getItem('wedding-lang');
+    
+    if (!currentLang) {
+        // Check browser/system language
+        const browserLang = navigator.language || navigator.userLanguage || 'en';
+        const langCode = browserLang.split('-')[0].toLowerCase(); // Get language code (e.g., 'de' from 'de-DE')
+        
+        // Map browser language to available languages
+        if (langCode === 'de') {
+            currentLang = 'de';
+        } else if (langCode === 'es') {
+            currentLang = 'es';
+        } else {
+            currentLang = 'en'; // Default to English
+        }
+    }
     
     // Function to translate content
     function translatePage(lang) {
@@ -1734,8 +1749,40 @@
         }
         
         // Check for saved theme preference or default to dark mode
+        // Check for saved theme preference, then system preference, or default to dark mode
         const savedTheme = localStorage.getItem('theme');
-        const currentTheme = savedTheme || 'dark';
+        let currentTheme;
+        
+        if (savedTheme) {
+            // Use saved preference if exists
+            currentTheme = savedTheme;
+        } else {
+            // Check system preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                currentTheme = 'dark';
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                currentTheme = 'light';
+            } else {
+                // Default to dark mode if system preference not available
+                currentTheme = 'dark';
+            }
+        }
+        
+        // Listen for system theme changes (if user hasn't set a preference)
+        if (!savedTheme && window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                // Only update if user hasn't manually set a preference
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark-mode');
+                        updateIcons(true);
+                    } else {
+                        document.documentElement.classList.remove('dark-mode');
+                        updateIcons(false);
+                    }
+                }
+            });
+        }
         
         // Apply theme on page load - default to dark mode
         if (currentTheme === 'dark') {
