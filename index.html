@@ -73,6 +73,256 @@
             cursor: url('img/paw-cursor-32.png') 16 16, text;
         }
         
+        /* Dark Mode Styles */
+        :root {
+            --bg-light: #ffffff;
+            --bg-dark: #1a1a1a;
+            --text-light: rgba(28, 54, 83, 0.6);
+            --text-dark: #e0e0e0;
+            --section-light: #fff;
+            --section-dark-light: #f8f9fd;
+            --section-dark-dark: #2a2a2a;
+            --section-dark-darker: #1f1f1f;
+            --border-light: #E6E9EA;
+            --border-dark: #444;
+        }
+        
+        html.dark-mode {
+            background-color: var(--bg-dark);
+        }
+        
+        html.dark-mode body {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+        
+        html.dark-mode section.intro,
+        html.dark-mode section.features-extra,
+        html.dark-mode section.rsvp {
+            background: var(--section-dark-darker) !important;
+            color: var(--text-dark);
+        }
+        
+        html.dark-mode section.features,
+        html.dark-mode section.events,
+        html.dark-mode section.blog {
+            background: var(--section-dark-dark) !important;
+            color: var(--text-dark);
+        }
+        
+        /* Dark mode for map section - dark gray instead of pure black */
+        html.dark-mode section#map {
+            background: #2a2a2a !important;
+            color: var(--text-dark);
+        }
+        
+        html.dark-mode section#map h3,
+        html.dark-mode section#map h4,
+        html.dark-mode section#map h5,
+        html.dark-mode section#map p,
+        html.dark-mode section#map li {
+            color: var(--text-dark) !important;
+        }
+        
+        html.dark-mode h2,
+        html.dark-mode h3,
+        html.dark-mode h4,
+        html.dark-mode h5 {
+            color: var(--text-dark) !important;
+        }
+        
+        html.dark-mode p {
+            color: var(--text-dark);
+        }
+        
+        html.dark-mode .section-border {
+            border-bottom-color: var(--border-dark) !important;
+        }
+        
+        html.dark-mode .form-input-group {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border-color: var(--border-dark) !important;
+        }
+        
+        html.dark-mode .rsvp .form-input-group {
+            background: rgba(255, 255, 255, 0.05) !important;
+        }
+        
+        html.dark-mode .rsvp .form-input-group i:not(.fa-chevron-down):after {
+            border-right-color: #444 !important;
+        }
+        
+        html.dark-mode input,
+        html.dark-mode select,
+        html.dark-mode textarea {
+            background: rgba(255, 255, 255, 0.05) !important;
+            color: var(--text-dark) !important;
+            border-color: var(--border-dark) !important;
+        }
+        
+        html.dark-mode input::placeholder,
+        html.dark-mode textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        html.dark-mode .btn-white {
+            background: rgba(255, 255, 255, 0.1) !important;
+            color: var(--text-dark) !important;
+            border-color: var(--border-dark) !important;
+        }
+        
+        html.dark-mode .btn-white:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        html.dark-mode #dark-mode-toggle {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
+        }
+        
+        html.dark-mode #dark-mode-toggle:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        .dark-mode-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .dark-mode-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Dark Mode for Modals - grey like show info box */
+        html.dark-mode .modal-content {
+            background-color: #3a3a3a !important;
+            border: 1px solid #555 !important;
+        }
+        
+        html.dark-mode .modal-body {
+            background-color: #3a3a3a !important;
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode .modal-body h3,
+        html.dark-mode .modal-body h4,
+        html.dark-mode .modal-body h5,
+        html.dark-mode .modal-body p,
+        html.dark-mode .modal-body strong {
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode .modal-body .close {
+            color: #ffffff !important;
+            opacity: 0.8;
+        }
+        
+        html.dark-mode .modal-body .close:hover {
+            opacity: 1;
+        }
+        
+        /* Dark Mode for Shuttle Bus Box */
+        html.dark-mode div[style*="background: #f5f5f5"] {
+            background: #1a1a1a !important;
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode div[style*="background: #f5f5f5"] h5,
+        html.dark-mode div[style*="background: #f5f5f5"] p,
+        html.dark-mode div[style*="background: #f5f5f5"] strong {
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode div[style*="background: #f5f5f5"] p[style*="color: #666"] {
+            color: #aaa !important;
+        }
+        
+        /* Dark Mode for Popup Menus */
+        html.dark-mode .food-requirements-menu,
+        html.dark-mode .partner-info-menu,
+        html.dark-mode .accommodation-info-menu {
+            background: #1a1a1a !important;
+            border-color: #d4af37 !important;
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode .food-requirements-menu strong,
+        html.dark-mode .partner-info-menu strong,
+        html.dark-mode .accommodation-info-menu strong {
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode .food-option-item {
+            background: #2a2a2a !important;
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode .food-option-item:hover {
+            background: #333 !important;
+        }
+        
+        html.dark-mode .food-requirements-menu div[style*="color: #372428"],
+        html.dark-mode .partner-info-content {
+            color: #ffffff !important;
+        }
+        
+        /* More specific selector for shuttle bus box - dark gray */
+        html.dark-mode .col-md-5 > div[style*="background: #f5f5f5"],
+        html.dark-mode div[style*="background: #f5f5f5"][style*="padding: 20px"] {
+            background: #3a3a3a !important;
+        }
+        
+        html.dark-mode .col-md-5 > div[style*="background: #f5f5f5"] *,
+        html.dark-mode div[style*="background: #f5f5f5"][style*="padding: 20px"] * {
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode .col-md-5 > div[style*="background: #f5f5f5"] p[style*="color: #666"],
+        html.dark-mode div[style*="background: #f5f5f5"][style*="padding: 20px"] p[style*="color: #666"] {
+            color: #aaa !important;
+        }
+        
+        /* Dark mode for map content border */
+        html.dark-mode #map-content .col-md-6[style*="border-left"] {
+            border-left-color: #444 !important;
+        }
+        
+        /* Dark mode for accommodation menu content */
+        html.dark-mode .accommodation-info-menu div {
+            color: #ffffff !important;
+        }
+        
+        /* Dark Mode for Map Content Box - dark gray */
+        html.dark-mode #map-content {
+            background: #3a3a3a !important;
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode #map-content h5,
+        html.dark-mode #map-content p {
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode #map-content[style*="border-left"] {
+            border-left-color: #555 !important;
+        }
+        
+        /* Dark mode for show info button - grey */
+        html.dark-mode #btn-show-content {
+            background: #666666 !important;
+            color: #ffffff !important;
+        }
+        
+        /* Dark Mode for View Larger Button - grey */
+        html.dark-mode #btn-view-larger {
+            background: #666666 !important;
+            color: #ffffff !important;
+        }
+        
+        /* Dark Mode for Venue Map Background */
+        html.dark-mode img[src="img/venue_map.png"][style*="background-color: #f5f5f5"] {
+            background-color: #1a1a1a !important;
+        }
+        
         /* Fix RSVP form input placeholder alignment */
         .rsvp .form-input-group {
             display: flex !important;
@@ -595,6 +845,11 @@
                         </ul>
                         <ul class="member-actions">
                             <li>
+                                <button id="dark-mode-toggle" class="dark-mode-btn" title="Toggle dark mode" style="background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 5px 10px; border-radius: 3px; margin-right: 15px; cursor: pointer; font-size: 16px;">
+                                    <i class="fa fa-moon-o" id="dark-mode-icon"></i>
+                                </button>
+                            </li>
+                            <li>
                                 <select id="language-selector" style="background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 5px 10px; border-radius: 3px; margin-right: 15px; cursor: pointer;">
                                     <option value="en">🇬🇧 EN</option>
                                     <option value="de">🇩🇪 DE</option>
@@ -901,7 +1156,7 @@
                 <div style="position: relative;">
                     <img src="img/venue_map.png" alt="Venue Map" class="img-responsive" style="width: 100%; height: 500px; object-fit: contain; background-color: #f5f5f5; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
                     <div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">
-                        <div id="btn-view-larger" class="pointer-events-auto" data-toggle="modal" data-target="#venue-map-modal" style="cursor: pointer; display: inline-block; padding: 10px 20px; background: rgba(255,255,255,0.95); border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                        <div id="btn-view-larger" class="pointer-events-auto" data-toggle="modal" data-target="#venue-map-modal" style="cursor: pointer; display: inline-block; padding: 10px 20px; background: #808080; color: #ffffff; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
                             <i class="fa fa-expand"></i>&nbsp;&nbsp;<span data-translate="venue.viewLarger">View larger</span>
                         </div>
                     </div>
@@ -913,7 +1168,7 @@
         <div class="row">
             <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-6">
                 <div class="text-center">
-                    <div id="btn-show-content" class="pointer-events-auto">
+                    <div id="btn-show-content" class="pointer-events-auto" style="cursor: pointer; display: inline-block; padding: 10px 20px; background: #808080; color: #ffffff; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
                         <i class="fa fa-info-circle"></i>&nbsp;&nbsp; <span data-translate="venue.showInfo">Show info</span>
                     </div>
                 </div>
@@ -992,7 +1247,7 @@
                                 <i class="fa fa-info-circle partner-info-icon" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: #d4af37; cursor: pointer; font-size: 18px; z-index: 10;" title="Click for info"></i>
                             </div>
                             <div class="partner-info-menu" style="display: none; position: absolute; background: #fff; border: 2px solid #d4af37; border-radius: 8px; padding: 20px; margin-top: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 1000; max-width: 350px; right: 0; top: 100%;">
-                                <div style="font-size: 14px; color: #372428; line-height: 1.6;">
+                                <div class="partner-info-content" style="font-size: 14px; color: #372428; line-height: 1.6;">
                                     <span data-translate="rsvp.partnerDesc">Indicate the partner name if bringing a partner</span>
                                 </div>
                             </div>
@@ -1667,6 +1922,52 @@
         $('input[name="food_requirements"]').val(value);
         $('.food-requirements-menu').hide();
     }
+    
+    // Dark Mode Toggle
+    (function() {
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const darkModeIcon = document.getElementById('dark-mode-icon');
+        
+        // Check for saved theme preference or default to dark mode
+        const savedTheme = localStorage.getItem('theme');
+        const currentTheme = savedTheme || 'dark';
+        
+        // Apply theme on page load - default to dark mode
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+            if (darkModeIcon) {
+                darkModeIcon.classList.remove('fa-moon-o');
+                darkModeIcon.classList.add('fa-sun-o');
+            }
+        } else {
+            // Light mode - ensure icon is moon
+            if (darkModeIcon) {
+                darkModeIcon.classList.remove('fa-sun-o');
+                darkModeIcon.classList.add('fa-moon-o');
+            }
+        }
+        
+        // Toggle dark mode
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark-mode');
+                
+                const isDarkMode = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+                
+                // Update icon
+                if (darkModeIcon) {
+                    if (isDarkMode) {
+                        darkModeIcon.classList.remove('fa-moon-o');
+                        darkModeIcon.classList.add('fa-sun-o');
+                    } else {
+                        darkModeIcon.classList.remove('fa-sun-o');
+                        darkModeIcon.classList.add('fa-moon-o');
+                    }
+                }
+            });
+        }
+    })();
 </script>
 </body>
 </html>
