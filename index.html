@@ -536,6 +536,50 @@
                 padding: 10px 0;
                 font-size: 20px;
             }
+            
+            /* Move dark mode toggle and language selector to left next to logo on mobile */
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 0;
+            }
+            
+            /* Hide dark mode toggle and language selector from member-actions on mobile */
+            .member-actions #dark-mode-toggle {
+                display: none !important;
+            }
+            
+            .member-actions #language-selector {
+                display: none !important;
+            }
+            
+            /* Show dark mode toggle and language selector next to logo on mobile */
+            #dark-mode-toggle-mobile {
+                display: inline-flex !important;
+                margin-left: 15px;
+                padding: 6px !important;
+                width: 36px !important;
+                height: 36px !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            
+            #dark-mode-icon-mobile {
+                width: 18px !important;
+                height: 18px !important;
+            }
+            
+            #dark-mode-icon-mobile {
+                width: 16px !important;
+                height: 16px !important;
+            }
+            
+            #language-selector-mobile {
+                display: inline-block !important;
+                margin-left: 10px;
+                padding: 2px 4px !important;
+                font-size: 14px !important;
+            }
         }
         
         /* Mobile hero background - show full width */
@@ -562,21 +606,21 @@
             }
         }
         
-        /* Make logo smaller on mobile */
+        /* Make logo bigger on mobile for main page */
         @media screen and (max-width: 991px) {
             .logo img {
                 width: auto !important;
                 height: auto !important;
-                max-width: 60px !important;
-                max-height: 60px !important;
+                max-width: 80px !important;
+                max-height: 80px !important;
                 object-fit: contain !important;
             }
         }
         
         @media screen and (max-width: 640px) {
             .logo img {
-                max-width: 50px !important;
-                max-height: 50px !important;
+                max-width: 70px !important;
+                max-height: 70px !important;
             }
         }
         
@@ -820,7 +864,17 @@
     <section class="navigation">
         <header>
             <div class="header-content">
-                <div class="logo"><a href="#"><img src="img/logo.png" alt="Logo" style="width: 120%; max-width: 100px; height: 120%; max-height: 100px;"></a></div>
+            <div class="logo">
+                <a href="#"><img src="img/logo.png" alt="Logo" style="width: 120%; max-width: 100px; height: 120%; max-height: 100px;"></a>
+                <button id="dark-mode-toggle-mobile" class="dark-mode-btn-mobile" title="Toggle dark mode" style="display: none; background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 6px; border-radius: 3px; margin-left: 15px; cursor: pointer; font-size: 16px; vertical-align: middle; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
+                    <img id="dark-mode-icon-mobile" src="img/sun.png" alt="Toggle dark mode" style="width: 18px; height: 18px; display: inline-block;">
+                </button>
+                <select id="language-selector-mobile" class="language-selector-mobile" style="display: none; background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 3px 6px; border-radius: 3px; margin-left: 10px; cursor: pointer; font-size: 14px; vertical-align: middle;">
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="de">🇩🇪 DE</option>
+                    <option value="es">🇪🇸 ES</option>
+                </select>
+            </div>
                 <div class="header-nav">
                     <nav>
                         <ul class="primary-nav">
@@ -846,7 +900,7 @@
                         <ul class="member-actions">
                             <li>
                                 <button id="dark-mode-toggle" class="dark-mode-btn" title="Toggle dark mode" style="background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 5px 10px; border-radius: 3px; margin-right: 15px; cursor: pointer; font-size: 16px;">
-                                    <i class="fa fa-moon-o" id="dark-mode-icon"></i>
+                                    <img id="dark-mode-icon" src="img/sun.png" alt="Toggle dark mode" style="width: 20px; height: 20px; display: inline-block;">
                                 </button>
                             </li>
                             <li>
@@ -1793,10 +1847,14 @@
         currentLang = lang;
         localStorage.setItem('wedding-lang', lang);
         
-        // Update language selector
+        // Update language selectors (desktop and mobile)
         var selector = document.getElementById('language-selector');
         if (selector) {
             selector.value = lang;
+        }
+        var selectorMobile = document.getElementById('language-selector-mobile');
+        if (selectorMobile) {
+            selectorMobile.value = lang;
         }
         
         // Translate all elements with data-translate attribute
@@ -1849,9 +1907,12 @@
     $(document).ready(function() {
         translatePage(currentLang);
         
-        // Language selector change handler
-        $('#language-selector').on('change', function(e) {
-            translatePage($(this).val());
+        // Language selector change handler (desktop and mobile)
+        $('#language-selector, #language-selector-mobile').on('change', function(e) {
+            var selectedLang = $(this).val();
+            translatePage(selectedLang);
+            // Sync both selectors
+            $('#language-selector, #language-selector-mobile').val(selectedLang);
         });
         
         // Food requirements menu toggle
@@ -1927,6 +1988,28 @@
     (function() {
         const darkModeToggle = document.getElementById('dark-mode-toggle');
         const darkModeIcon = document.getElementById('dark-mode-icon');
+        const darkModeToggleMobile = document.getElementById('dark-mode-toggle-mobile');
+        const darkModeIconMobile = document.getElementById('dark-mode-icon-mobile');
+        
+        // Function to update icons
+        function updateIcons(isDarkMode) {
+            // When in dark mode, show sun.png (to switch to light mode)
+            // When in light mode, show night.png (to switch to dark mode)
+            if (darkModeIcon) {
+                darkModeIcon.src = isDarkMode ? 'img/sun.png' : 'img/night.png';
+            }
+            if (darkModeIconMobile) {
+                darkModeIconMobile.src = isDarkMode ? 'img/sun.png' : 'img/night.png';
+            }
+        }
+        
+        // Function to toggle dark mode
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark-mode');
+            const isDarkMode = document.documentElement.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            updateIcons(isDarkMode);
+        }
         
         // Check for saved theme preference or default to dark mode
         const savedTheme = localStorage.getItem('theme');
@@ -1935,37 +2018,19 @@
         // Apply theme on page load - default to dark mode
         if (currentTheme === 'dark') {
             document.documentElement.classList.add('dark-mode');
-            if (darkModeIcon) {
-                darkModeIcon.classList.remove('fa-moon-o');
-                darkModeIcon.classList.add('fa-sun-o');
-            }
+            updateIcons(true);
         } else {
-            // Light mode - ensure icon is moon
-            if (darkModeIcon) {
-                darkModeIcon.classList.remove('fa-sun-o');
-                darkModeIcon.classList.add('fa-moon-o');
-            }
+            updateIcons(false);
         }
         
-        // Toggle dark mode
+        // Toggle dark mode - desktop button
         if (darkModeToggle) {
-            darkModeToggle.addEventListener('click', function() {
-                document.documentElement.classList.toggle('dark-mode');
-                
-                const isDarkMode = document.documentElement.classList.contains('dark-mode');
-                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-                
-                // Update icon
-                if (darkModeIcon) {
-                    if (isDarkMode) {
-                        darkModeIcon.classList.remove('fa-moon-o');
-                        darkModeIcon.classList.add('fa-sun-o');
-                    } else {
-                        darkModeIcon.classList.remove('fa-sun-o');
-                        darkModeIcon.classList.add('fa-moon-o');
-                    }
-                }
-            });
+            darkModeToggle.addEventListener('click', toggleDarkMode);
+        }
+        
+        // Toggle dark mode - mobile button
+        if (darkModeToggleMobile) {
+            darkModeToggleMobile.addEventListener('click', toggleDarkMode);
         }
     })();
 </script>
