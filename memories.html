@@ -60,6 +60,20 @@
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <style>
+        /* Paw cursor - PNG for better browser compatibility */
+        html, body {
+            cursor: url('img/paw-cursor-32.png') 16 16, auto;
+        }
+        * {
+            cursor: inherit;
+        }
+        a, button, input[type="submit"], select, [onclick], [data-toggle], .btn, .pointer-events-auto {
+            cursor: url('img/paw-cursor-32.png') 16 16, pointer;
+        }
+        input[type="text"], input[type="email"], input[type="number"], textarea {
+            cursor: url('img/paw-cursor-32.png') 16 16, text;
+        }
+        
         /* White Background for Gallery */
         section#gallery {
             background-color: #ffffff !important;

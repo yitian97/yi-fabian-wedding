@@ -59,6 +59,20 @@
     <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
     <style>
+        /* Paw cursor - PNG for better browser compatibility */
+        html, body {
+            cursor: url('img/paw-cursor-32.png') 16 16, auto;
+        }
+        * {
+            cursor: inherit;
+        }
+        a, button, input[type="submit"], select, [onclick], [data-toggle], .btn, .pointer-events-auto {
+            cursor: url('img/paw-cursor-32.png') 16 16, pointer;
+        }
+        input[type="text"], input[type="email"], input[type="number"], textarea {
+            cursor: url('img/paw-cursor-32.png') 16 16, text;
+        }
+        
         /* Fix RSVP form input placeholder alignment */
         .rsvp .form-input-group {
             display: flex !important;
