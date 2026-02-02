@@ -169,6 +169,7 @@ $(document).ready(function () {
         // Button stays visible, only content toggles
     });
     
+    
     // Ceremony venue map
     $('#btn-show-ceremony-map').click(function () {
         // Hide the info window but keep the "Show info" button visible
