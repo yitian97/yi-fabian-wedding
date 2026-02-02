@@ -9,7 +9,15 @@
 <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- Ensure UTF-8 encoding for Chinese characters -->
+    <script>
+        // Force UTF-8 encoding check
+        if (typeof document !== 'undefined' && document.characterSet && document.characterSet.toLowerCase() !== 'utf-8') {
+            console.warn('Document encoding is not UTF-8:', document.characterSet);
+        }
+    </script>
     <title>Yi & Fabian getting married!</title>
     <meta name="description" content="We would like to invite you to our big day.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -2086,7 +2094,7 @@
                 mainCourse: "<strong>主菜</strong>（选择一种）",
                 sea: "<strong style=\"color: #0066cc;\"><i class=\"fa fa-tint\"></i> 海洋...</strong><br>酥脆海鲜慕斯配鳕鱼片。",
                 or: "<strong>- 或 -</strong>",
-                mountain: "<strong style=\"color: #8B4513;\"><i class=\"fa fa-tree\"></i> 山地...</strong><br>柔嫩的伊比利亚猪肉配\"赤霞珠\"，配奶油松露土豆、葡萄干和松子。",
+                mountain: "<strong style=\"color: #8B4513;\"><i class=\"fa fa-tree\"></i> 山地...</strong><br>柔嫩的伊比利亚猪肉配&ldquo;赤霞珠&rdquo;，配奶油松露土豆、葡萄干和松子。",
                 note: "* 可更换为炖小牛肉",
                 dessert: "<strong>甜点</strong><br>杏仁牛轧糖慕斯配巧克力杯"
             },
@@ -2138,14 +2146,38 @@
             selectorMobile.value = lang;
         }
         
+        // Debug: Check if translations object exists and has the language
+        if (!translations) {
+            console.error('Translations object is not defined!');
+            return;
+        }
+        if (!translations[lang]) {
+            console.error('Translation object not found for language:', lang);
+            console.log('Available languages:', Object.keys(translations));
+            return;
+        }
+        if (lang === 'zh') {
+            console.log('Chinese translation object loaded:', typeof translations.zh, Object.keys(translations.zh));
+        }
+        
         // Translate all elements with data-translate attribute
         document.querySelectorAll('[data-translate]').forEach(function(element) {
             const key = element.getAttribute('data-translate');
             const keys = key.split('.');
             let translation = translations[lang];
             
+            if (!translation) {
+                console.warn('Translation object not found for language:', lang);
+                return;
+            }
+            
             for (let i = 0; i < keys.length; i++) {
-                translation = translation[keys[i]];
+                if (translation && typeof translation === 'object') {
+                    translation = translation[keys[i]];
+                } else {
+                    translation = undefined;
+                    break;
+                }
             }
             
             if (translation) {
@@ -2159,8 +2191,17 @@
             const keys = key.split('.');
             let translation = translations[lang];
             
+            if (!translation) {
+                return;
+            }
+            
             for (let i = 0; i < keys.length; i++) {
-                translation = translation[keys[i]];
+                if (translation && typeof translation === 'object') {
+                    translation = translation[keys[i]];
+                } else {
+                    translation = undefined;
+                    break;
+                }
             }
             
             if (translation) {
@@ -2174,8 +2215,17 @@
             const keys = key.split('.');
             let translation = translations[lang];
             
+            if (!translation) {
+                return;
+            }
+            
             for (let i = 0; i < keys.length; i++) {
-                translation = translation[keys[i]];
+                if (translation && typeof translation === 'object') {
+                    translation = translation[keys[i]];
+                } else {
+                    translation = undefined;
+                    break;
+                }
             }
             
             if (translation) {
