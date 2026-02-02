@@ -436,6 +436,7 @@
                     <option value="en">🇬🇧 EN</option>
                     <option value="de">🇩🇪 DE</option>
                     <option value="es">🇪🇸 ES</option>
+                    <option value="zh">🇨🇳 中文</option>
                 </select>
             </div>
             <div class="header-nav">
@@ -471,6 +472,7 @@
                                     <option value="en">🇬🇧 EN</option>
                                     <option value="de">🇩🇪 DE</option>
                                     <option value="es">🇪🇸 ES</option>
+                                    <option value="zh">🇨🇳 中文</option>
                                 </select>
                         </li>
                         <li><a href="index.html#rsvp" class="btn-white btn-small" data-translate="nav.rsvp">RSVP</a></li>
@@ -1000,6 +1002,33 @@
                 gotIt: "¡Entendido!",
                 footer: "Creado con mucho <span class=\"fa fa-heart pulse2\"></span> por Yi"
             }
+        },
+        zh: {
+            nav: {
+                ourStory: "我们的故事",
+                events: "活动",
+                glimpse: "城市一瞥",
+                venue: "场地",
+                wishes: "祝福",
+                wishesWall: "祝福墙",
+                playlist: "DJ 播放列表",
+                gallery: "相册",
+                bitsPieces: "点滴瞬间",
+                weddingGallery: "婚礼相册",
+                rsvp: "确认出席"
+            },
+            memories: {
+                bitsPieces: "点滴瞬间",
+                weddingGallery: "婚礼相册",
+                unlockPipita: "点击下方解锁小狗 Pipita",
+                showRandom: "显示随机可爱照片",
+                galleryComing: "相册将在婚礼后发布...",
+                watchVideo: "观看婚礼视频",
+                oops: "哎呀！",
+                checkBackSoon: "请稍后再来查看。我们迫不及待地想与您分享我们的特殊日子！💕",
+                gotIt: "知道了！",
+                footer: "由 Yi 精心制作，充满 <span class=\"fa fa-heart pulse2\"></span>"
+            }
         }
     };
     
@@ -1016,6 +1045,8 @@
             currentLang = 'de';
         } else if (langCode === 'es') {
             currentLang = 'es';
+        } else if (langCode === 'zh') {
+            currentLang = 'zh';
         } else {
             currentLang = 'en'; // Default to English
         }
@@ -1025,6 +1056,9 @@
     function translatePage(lang) {
         currentLang = lang;
         localStorage.setItem('wedding-lang', lang);
+        
+        // Update HTML lang attribute
+        document.documentElement.lang = lang;
         
         // Update language selector
         var selector = document.getElementById('language-selector');
@@ -1063,6 +1097,21 @@
             
             if (translation) {
                 element.placeholder = translation;
+            }
+        });
+        
+        // Translate option text
+        document.querySelectorAll('option[data-translate]').forEach(function(element) {
+            const key = element.getAttribute('data-translate');
+            const keys = key.split('.');
+            let translation = translations[lang];
+            
+            for (let i = 0; i < keys.length; i++) {
+                translation = translation[keys[i]];
+            }
+            
+            if (translation) {
+                element.innerHTML = translation;
             }
         });
     }

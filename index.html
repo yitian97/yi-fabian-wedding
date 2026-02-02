@@ -1012,6 +1012,7 @@
                     <option value="en">🇬🇧 EN</option>
                     <option value="de">🇩🇪 DE</option>
                     <option value="es">🇪🇸 ES</option>
+                    <option value="zh">🇨🇳 中文</option>
                 </select>
             </div>
                 <div class="header-nav">
@@ -1047,6 +1048,7 @@
                                     <option value="en">🇬🇧 EN</option>
                                     <option value="de">🇩🇪 DE</option>
                                     <option value="es">🇪🇸 ES</option>
+                                    <option value="zh">🇨🇳 中文</option>
                                 </select>
                             </li>
                             <li><a href="#rsvp" class="btn-white btn-small" data-translate="nav.rsvp">RSVP</a></li>
@@ -1276,7 +1278,7 @@
          data-property="{videoURL:'https://youtu.be/TRDmKTIYwMQ',containment:'#video-bg',autoPlay:true, mute:true, showControls:false, startAt:14, stopAt:55, opacity:1}">
     </div>
     <div id="video-content">
-        <h5>Barcelona</h5>
+        <h5 data-translate="city.barcelona">Barcelona</h5>
         <p data-translate="city.joy">City of joy</p>
     </div>
 </section>
@@ -1468,19 +1470,19 @@
                                     <strong data-translate="rsvp.foodOptions">Common Options:</strong>
                                 </div>
                                 <div class="food-option-item" style="margin-bottom: 10px; padding: 8px; background: #faf8f3; border-radius: 5px; cursor: pointer;" onclick="setFoodRequirement('No');">
-                                    <strong>✓ No</strong> - No special dietary requirements
+                                    <span data-translate="rsvp.foodOptionNo">✓ No - No special dietary requirements</span>
                                 </div>
                                 <div class="food-option-item" style="margin-bottom: 10px; padding: 8px; background: #faf8f3; border-radius: 5px; cursor: pointer;" onclick="setFoodRequirement('Vegetarian');">
-                                    <strong>🥬 Vegetarian</strong> - No meat or fish
+                                    <span data-translate="rsvp.foodOptionVegetarian">🥬 Vegetarian - No meat or fish</span>
                                 </div>
                                 <div class="food-option-item" style="margin-bottom: 10px; padding: 8px; background: #faf8f3; border-radius: 5px; cursor: pointer;" onclick="setFoodRequirement('Vegan');">
-                                    <strong>🌱 Vegan</strong> - No animal products
+                                    <span data-translate="rsvp.foodOptionVegan">🌱 Vegan - No animal products</span>
                                 </div>
                                 <div class="food-option-item" style="margin-bottom: 10px; padding: 8px; background: #faf8f3; border-radius: 5px; cursor: pointer;" onclick="setFoodRequirement('Allergies');">
-                                    <strong>⚠️ Allergies</strong> - Please specify in the field
+                                    <span data-translate="rsvp.foodOptionAllergies">⚠️ Allergies - Please specify in the field</span>
                                 </div>
                                 <div class="food-option-item" style="margin-bottom: 10px; padding: 8px; background: #faf8f3; border-radius: 5px; cursor: pointer;" onclick="setFoodRequirement('Others');">
-                                    <strong>📝 Others</strong> - Please specify in the field
+                                    <span data-translate="rsvp.foodOptionOthers">📝 Others - Please specify in the field</span>
                                 </div>
                                 <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e8e8e8; font-size: 12px; color: #666;">
                                     <span data-translate="rsvp.foodNote">Click an option above or type your specific requirements in the field. You can check the <a href="#" data-toggle="modal" data-target="#menu-modal" onclick="$('.food-requirements-menu').hide();" style="color: #d4af37; text-decoration: underline; cursor: pointer;">menu</a> for details.</span>
@@ -1698,6 +1700,11 @@
                 na: "N/A",
                 food: "Food requirements (e.g., Vegetarian, Vegan, Allergies...)",
                 foodOptions: "Common Options:",
+                foodOptionNo: "✓ No - No special dietary requirements",
+                foodOptionVegetarian: "🥬 Vegetarian - No meat or fish",
+                foodOptionVegan: "🌱 Vegan - No animal products",
+                foodOptionAllergies: "⚠️ Allergies - Please specify in the field",
+                foodOptionOthers: "📝 Others - Please specify in the field",
                 foodNote: "Click an option above or type your specific requirements in the field. You can check the <a href=\"#\" data-toggle=\"modal\" data-target=\"#menu-modal\" onclick=\"$('.food-requirements-menu').hide();\" style=\"color: #d4af37; text-decoration: underline; cursor: pointer;\">menu</a> for details.",
                 accommodation: "Accommodation? (Optional)",
                 accommodationBarcelona: "Barcelona city",
@@ -1730,6 +1737,7 @@
                 dessert: "<strong>DESSERT</strong><br>Mousse of nougat of almond with chocolate to the cup"
             },
             city: {
+                barcelona: "Barcelona",
                 joy: "City of joy"
             },
             footer: {
@@ -1810,6 +1818,11 @@
                 na: "N/A",
                 food: "Essensanforderungen (z.B. Vegetarisch, Vegan, Allergien...)",
                 foodOptions: "Häufige Optionen:",
+                foodOptionNo: "✓ Nein - Keine besonderen Essensanforderungen",
+                foodOptionVegetarian: "🥬 Vegetarisch - Kein Fleisch oder Fisch",
+                foodOptionVegan: "🌱 Vegan - Keine tierischen Produkte",
+                foodOptionAllergies: "⚠️ Allergien - Bitte im Feld angeben",
+                foodOptionOthers: "📝 Andere - Bitte im Feld angeben",
                 foodNote: "Klicken Sie auf eine Option oben oder geben Sie Ihre spezifischen Anforderungen in das Feld ein. Sie können das <a href=\"#\" data-toggle=\"modal\" data-target=\"#menu-modal\" onclick=\"$('.food-requirements-menu').hide();\" style=\"color: #d4af37; text-decoration: underline; cursor: pointer;\">Menü</a> für Details überprüfen.",
                 accommodation: "Unterkunft? (Optional)",
                 accommodationBarcelona: "Barcelona Stadt",
@@ -1842,6 +1855,7 @@
                 dessert: "<strong>NACHTISCH</strong><br>Mousse aus Mandelnougat mit Schokolade im Becher"
             },
             city: {
+                barcelona: "Barcelona",
                 joy: "Stadt der Freude"
             },
             footer: {
@@ -1922,6 +1936,11 @@
                 na: "N/A",
                 food: "Requisitos alimentarios (ej: Vegetariano, Vegano, Alergias...)",
                 foodOptions: "Opciones comunes:",
+                foodOptionNo: "✓ No - Sin requisitos dietéticos especiales",
+                foodOptionVegetarian: "🥬 Vegetariano - Sin carne ni pescado",
+                foodOptionVegan: "🌱 Vegano - Sin productos animales",
+                foodOptionAllergies: "⚠️ Alergias - Por favor especifica en el campo",
+                foodOptionOthers: "📝 Otros - Por favor especifica en el campo",
                 foodNote: "Haz clic en una opción arriba o escribe tus requisitos específicos en el campo. Puedes consultar el <a href=\"#\" data-toggle=\"modal\" data-target=\"#menu-modal\" onclick=\"$('.food-requirements-menu').hide();\" style=\"color: #d4af37; text-decoration: underline; cursor: pointer;\">menú</a> para más detalles.",
                 accommodation: "¿Alojamiento? (Opcional)",
                 accommodationBarcelona: "Ciudad de Barcelona",
@@ -1954,10 +1973,129 @@
                 dessert: "<strong>POSTRE</strong><br>Mousse de turrón de almendra con chocolate en taza"
             },
             city: {
+                barcelona: "Barcelona",
                 joy: "Ciudad de la alegría"
             },
             footer: {
                 crafted: "Creado con mucho <span class=\"fa fa-heart pulse2\"></span> por Yi"
+            }
+        },
+        zh: {
+            nav: {
+                ourStory: "我们的故事",
+                events: "活动",
+                glimpse: "城市一瞥",
+                venue: "场地",
+                wishes: "祝福",
+                wishesWall: "祝福墙",
+                playlist: "DJ 播放列表",
+                gallery: "相册",
+                bitsPieces: "点滴瞬间",
+                weddingGallery: "婚礼相册",
+                rsvp: "确认出席"
+            },
+            content: {
+                gettingMarried: "我们要结婚了",
+                invitation: "日期是 <strong>2026年5月2日</strong>，我们希望您能参与其中。",
+                ourStory: "我们的故事",
+                ourStoryText: "我们的故事始于2020年新冠期间。我开始重拾跑步的爱好，因为那个时候实在没事干，碰巧遇到Fabian也跑同样的路线，我们就约着一起跑步。 我发现Fabian实在是个很奇怪的人，这让我越发地好奇。然后我们开始约会。两年后，我们收养了我们的小宝宝Pipita，扩展了我们的小家庭，她成为了我们爱情的结晶。就这样糊里糊涂居然过了这么多年。现在，我们很兴奋地迈出下一步，与大家共同庆祝我们的爱情。"
+            },
+            events: {
+                title: "活动预览",
+                guestArrival: "宾客到达 <span class=\"time\">16:00</span>",
+                guestArrivalDesc: "欢迎饮品和宾客拍照环节",
+                ceremony: "婚礼仪式 <span class=\"time\">17:00 – 18:00</span>",
+                ceremonyDesc: "加入我们，见证我们交换誓言并庆祝我们的结合",
+                photoSession: "拍照环节 <span class=\"time\">18:00 – 18:50</span>",
+                photoSessionDesc: "与家人和朋友继续拍照",
+                transfer: "前往餐厅 <span class=\"time\">19:00 – 19:30</span>",
+                transferDesc: "我们将前往接待场地",
+                cocktail: "花园鸡尾酒时光 <span class=\"time\">19:30 – 21:00</span>",
+                cocktailDesc: "在花园中轻松交流、享受饮品的时光",
+                banquet: "宴会晚餐 <span class=\"time\">21:00 – 23:00</span>",
+                banquetDesc: "一起庆祝的优雅晚宴",
+                dance: "舞会派对 & 开放酒吧 <span class=\"time\">23:00 – 01:00</span>",
+                danceDesc: "让我们彻夜跳舞！酒吧开放，音乐就绪",
+                dressCode: "着装要求",
+                menu: "菜单"
+            },
+            venue: {
+                ceremonyTitle: "仪式场地",
+                ceremonyDesc: "仪式将在布拉内斯的<strong>Marimurtra植物园</strong>内的Linnaeus Pavilion举行。",
+                howToGet: "如何到达？",
+                easy: "比您想象的容易得多！",
+                gettingThere: "从巴塞罗那前往仪式场地",
+                shuttleTitle: "🚌 班车服务",
+                shuttleDesc1: "我们将在仪式后提供班车<strong>从Marimurtra植物园（仪式场地）前往宴会场地</strong>。",
+                shuttleDesc2: "晚上结束时，将有一辆额外的班车<strong>从宴会场地返回巴塞罗那</strong>。更多信息将稍后更新。",
+                shuttleDesc3: "巴塞罗那的地铁24小时运行。",
+                viewLarger: "查看大图",
+                showInfo: "显示信息",
+                ceremonyVenue: "仪式场地",
+                banquetVenue: "宴会场地",
+                showMap: "显示地图",
+                venueMap: "场地地图",
+                byTrain: "<strong>乘火车：</strong>从巴塞罗那Sants或Plaça Catalunya乘坐R1火车（Rodalies de Catalunya）到Blanes站（约1.5小时）。火车全天频繁运行。车票可直接在车站购买。从Blanes站步行15分钟或短途出租车即可到达场地。<br><a href=\"https://rodalies.gencat.cat/en/horaris/\" target=\"_blank\">查看火车时刻表 →</a>",
+                checkTrain: "查看火车时刻表 →",
+                byCar: "<strong>开车：</strong>从巴塞罗那到场地需要1小时车程。走AP-7或C-32高速公路前往Girona，然后在Blanes出口。场地附近有停车场。<br><a href=\"https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden\" target=\"_blank\">获取路线 →</a>",
+                getDirections: "获取路线 →"
+            },
+            rsvp: {
+                title: "您还在等什么？",
+                deadline: "如果您能在2026年3月31日之前确认出席，我们将非常感激",
+                name: "姓名",
+                phone: "电话",
+                partner: "伴侣？",
+                partnerDesc: "如果带伴侣，请注明伴侣姓名",
+                kids: "孩子？",
+                bus: "前往巴塞罗那的班车？",
+                yes: "是",
+                no: "否",
+                na: "不适用",
+                food: "饮食要求（例如：素食、纯素、过敏...）",
+                foodOptions: "常见选项：",
+                foodOptionNo: "✓ 无 - 无特殊饮食要求",
+                foodOptionVegetarian: "🥬 素食 - 无肉无鱼",
+                foodOptionVegan: "🌱 纯素 - 无动物产品",
+                foodOptionAllergies: "⚠️ 过敏 - 请在字段中注明",
+                foodOptionOthers: "📝 其他 - 请在字段中注明",
+                foodNote: "点击上方选项或在字段中输入您的具体要求。您可以查看<a href=\"#\" data-toggle=\"modal\" data-target=\"#menu-modal\" onclick=\"$('.food-requirements-menu').hide();\" style=\"color: #d4af37; text-decoration: underline; cursor: pointer;\">菜单</a>了解详情。",
+                accommodation: "住宿？（可选）",
+                accommodationBarcelona: "巴塞罗那市区",
+                accommodationNearVenue: "场地附近",
+                accommodationNotBooked: "未预订",
+                interestedArrangedHotel: "对安排的酒店感兴趣？",
+                accommodationDetails: "酒店名称",
+                accommodationInfo: "请注明酒店名称以便更好地安排交通。",
+                otherComments: "其他要求（可选）",
+                yesMe: "是的，是我！",
+                wishWallMessage: "要给我们留言，请前往<a href=\"wishes.html#wishes\" style=\"color: #d4af37; text-decoration: underline;\">祝福</a>。",
+                thankYou: "谢谢！",
+                thankYouMsg: "我们很高兴您能参加我们的大日子。"
+            },
+            dressCode: {
+                title: "呃...着装要求？",
+                intro: "我们希望您感到舒适、快乐，做自己——无论这对您意味着什么。没有严格的着装要求，只要做自己，准备好与我们庆祝 ❤️",
+                ladies: "<strong>女士</strong><br>请避免白色、中国红（新娘的颜色）和黑色。<br>如果您想搭配<a href=\"img/colour.png\" target=\"_blank\" style=\"color: #d4af37; text-decoration: underline;\">婚礼主题颜色</a>（并在照片中看起来很棒），我们选择<strong>温暖、中性的柔和色调</strong>。",
+                gentlemen: "<strong>男士</strong><br>商务休闲到半正式——任何让您感觉良好和舒适的穿着都很完美。",
+                goodToKnow: "<strong>温馨提示</strong><br>仪式和晚餐将在海边户外举行，所以晚上可能会有点微风——带一件轻便的外套或披肩以防万一。<br>派对将在室内举行，所以一旦开始跳舞，您可以放下外套，尽情享受 💃🕺"
+            },
+            menu: {
+                title: "菜单",
+                appetizer: "<strong>开胃菜</strong><br>地中海小食",
+                mainCourse: "<strong>主菜</strong>（选择一种）",
+                sea: "<strong style=\"color: #0066cc;\"><i class=\"fa fa-tint\"></i> 海洋...</strong><br>酥脆海鲜慕斯配鳕鱼片。",
+                or: "<strong>- 或 -</strong>",
+                mountain: "<strong style=\"color: #8B4513;\"><i class=\"fa fa-tree\"></i> 山地...</strong><br>柔嫩的伊比利亚猪肉配\"赤霞珠\"，配奶油松露土豆、葡萄干和松子。",
+                note: "* 可更换为炖小牛肉",
+                dessert: "<strong>甜点</strong><br>杏仁牛轧糖慕斯配巧克力杯"
+            },
+            city: {
+                barcelona: "巴塞罗那",
+                joy: "欢乐之城"
+            },
+            footer: {
+                crafted: "由 Yi 精心制作，充满 <span class=\"fa fa-heart pulse2\"></span>"
             }
         }
     };
@@ -1975,6 +2113,8 @@
             currentLang = 'de';
         } else if (langCode === 'es') {
             currentLang = 'es';
+        } else if (langCode === 'zh') {
+            currentLang = 'zh';
         } else {
             currentLang = 'en'; // Default to English
         }
@@ -1984,6 +2124,9 @@
     function translatePage(lang) {
         currentLang = lang;
         localStorage.setItem('wedding-lang', lang);
+        
+        // Update HTML lang attribute
+        document.documentElement.lang = lang;
         
         // Update language selectors (desktop and mobile)
         var selector = document.getElementById('language-selector');

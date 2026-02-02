@@ -471,6 +471,7 @@
                     <option value="en">🇬🇧 EN</option>
                     <option value="de">🇩🇪 DE</option>
                     <option value="es">🇪🇸 ES</option>
+                    <option value="zh">🇨🇳 中文</option>
                 </select>
             </div>
             <div class="header-nav">
@@ -506,6 +507,7 @@
                                     <option value="en">🇬🇧 EN</option>
                                     <option value="de">🇩🇪 DE</option>
                                     <option value="es">🇪🇸 ES</option>
+                                    <option value="zh">🇨🇳 中文</option>
                                 </select>
                         </li>
                         <li><a href="index.html#rsvp" class="btn-white btn-small" data-translate="nav.rsvp">RSVP</a></li>
@@ -1604,6 +1606,50 @@
                 submitSong: "Enviar Solicitud de Canción",
                 firstSong: "¡Sé el primero en solicitar una canción! 🎵"
             }
+        },
+        zh: {
+            nav: {
+                ourStory: "我们的故事",
+                events: "活动",
+                glimpse: "城市一瞥",
+                venue: "场地",
+                wishes: "祝福",
+                wishesWall: "祝福墙",
+                playlist: "DJ 播放列表",
+                gallery: "相册",
+                bitsPieces: "点滴瞬间",
+                weddingGallery: "婚礼相册",
+                rsvp: "确认出席"
+            },
+            memories: {
+                wishesWall: "祝福墙",
+                bitsPieces: "点滴瞬间",
+                weddingGallery: "婚礼相册",
+                wishesDesc: "为我们的特殊日子留下您的祝福、祝贺或建议！留言是匿名的。",
+                yourName: "您的姓名（可选）",
+                anonymous: "留空以保持匿名",
+                yourMessage: "您的留言 *",
+                messagePlaceholder: "分享您的祝福、祝贺或建议...",
+                submitWish: "提交祝福",
+                unlockPipita: "点击下方解锁小狗 Pipita",
+                showRandom: "显示随机可爱照片",
+                galleryComing: "相册将在婚礼后发布...",
+                firstWish: "成为第一个留下祝福的人！💕",
+                messagesFromGuests: "来自宾客的留言",
+                watchVideo: "观看婚礼视频",
+                oops: "哎呀！",
+                checkBackSoon: "请稍后再来查看。我们迫不及待地想与您分享我们的特殊日子！💕",
+                gotIt: "知道了！",
+                footer: "由 Yi 精心制作，充满 <span class=\"fa fa-heart pulse2\"></span>",
+                playlist: "DJ 播放列表请求",
+                playlistTitle: "舞会播放列表",
+                playlistDesc: "为我们的舞会请求您最喜欢的歌曲！分享您歌曲的 YouTube、Spotify 或 SoundCloud 链接。",
+                songLink: "歌曲链接 *",
+                songLinkPlaceholder: "在此粘贴 YouTube、Spotify 或 SoundCloud 链接",
+                songLinkHelp: "支持 YouTube、Spotify 或 SoundCloud 链接",
+                submitSong: "提交歌曲请求",
+                firstSong: "成为第一个请求歌曲的人！🎵"
+            }
         }
     };
     
@@ -1620,6 +1666,8 @@
             currentLang = 'de';
         } else if (langCode === 'es') {
             currentLang = 'es';
+        } else if (langCode === 'zh') {
+            currentLang = 'zh';
         } else {
             currentLang = 'en'; // Default to English
         }
@@ -1629,6 +1677,9 @@
     function translatePage(lang) {
         currentLang = lang;
         localStorage.setItem('wedding-lang', lang);
+        
+        // Update HTML lang attribute
+        document.documentElement.lang = lang;
         
         // Update language selector
         var selector = document.getElementById('language-selector');
@@ -1667,6 +1718,21 @@
             
             if (translation) {
                 element.placeholder = translation;
+            }
+        });
+        
+        // Translate option text
+        document.querySelectorAll('option[data-translate]').forEach(function(element) {
+            const key = element.getAttribute('data-translate');
+            const keys = key.split('.');
+            let translation = translations[lang];
+            
+            for (let i = 0; i < keys.length; i++) {
+                translation = translation[keys[i]];
+            }
+            
+            if (translation) {
+                element.innerHTML = translation;
             }
         });
     }
