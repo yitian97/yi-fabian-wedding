@@ -1127,6 +1127,131 @@
                 transform: translate(-50%, 0);
             }
         }
+        
+        /* Events section header row alignment */
+        section.events .row:first-child {
+            margin-bottom: 15px;
+        }
+        
+        /* Cute Countdown Timer Styles */
+        .countdown-timer {
+            text-align: center;
+            margin: 20px auto 0;
+            padding: 10px 12px;
+            max-width: 400px;
+            width: 100%;
+            display: block;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.12) 100%);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .countdown-timer h4 {
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: #d4af37;
+            font-weight: 300;
+        }
+        
+        .countdown-grid {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            background: #fff;
+            border-radius: 8px;
+            padding: 8px 6px;
+            min-width: 50px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 12px rgba(212, 175, 55, 0.3);
+        }
+        
+        .countdown-number {
+            font-size: 18px;
+            font-weight: 700;
+            color: #d4af37;
+            line-height: 1;
+            margin-bottom: 3px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .countdown-label {
+            font-size: 9px;
+            color: rgba(28, 54, 83, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            font-weight: 500;
+        }
+        
+        /* Dark mode for countdown timer */
+        html.dark-mode .countdown-timer {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.18) 100%);
+        }
+        
+        html.dark-mode .countdown-item {
+            background: #2a2a2a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        html.dark-mode .countdown-item:hover {
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        html.dark-mode .countdown-number {
+            color: #d4af37;
+        }
+        
+        html.dark-mode .countdown-label {
+            color: rgba(224, 224, 224, 0.7);
+        }
+        
+        html.dark-mode .countdown-timer h4 {
+            color: #d4af37;
+        }
+        
+        /* Responsive countdown timer */
+        @media screen and (max-width: 991px) {
+            .countdown-timer {
+                margin: 0 auto;
+                max-width: 100%;
+            }
+        }
+        
+        @media screen and (max-width: 640px) {
+            .countdown-timer {
+                padding: 10px 8px;
+            }
+            
+            .countdown-grid {
+                gap: 6px;
+            }
+            
+            .countdown-item {
+                min-width: 45px;
+                padding: 6px 5px;
+            }
+            
+            .countdown-number {
+                font-size: 16px;
+            }
+            
+            .countdown-label {
+                font-size: 8px;
+            }
+            
+            .countdown-timer h4 {
+                font-size: 11px;
+                margin-bottom: 8px;
+            }
+        }
     </style>
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
@@ -1228,6 +1353,30 @@
                 <h3 data-translate="content.gettingMarried">We are getting married</h3>
                 <p data-translate="content.invitation">The date is <strong>2<sup>nd</sup> of May, 2026</strong> and we would like you to be a part of
                     it.</p>
+                
+                <!-- Cute Countdown Timer -->
+                <div class="countdown-timer">
+                    <h4 data-translate="countdown.title">⏰ Counting down to our big day!</h4>
+                    <div class="countdown-grid">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="countdown-days">0</div>
+                            <div class="countdown-label" data-translate="countdown.days">Days</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="countdown-hours">0</div>
+                            <div class="countdown-label" data-translate="countdown.hours">Hours</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="countdown-minutes">0</div>
+                            <div class="countdown-label" data-translate="countdown.minutes">Minutes</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="countdown-seconds">0</div>
+                            <div class="countdown-label" data-translate="countdown.seconds">Seconds</div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="share-bar"></div>
             </div>
         </div>
@@ -1749,6 +1898,81 @@
             // For cross-page links, let them navigate normally
             // The target page will handle scrolling to the hash
         });
+        
+        // Cute Countdown Timer
+        function updateCountdown() {
+            // Wedding date: May 2, 2026 at 16:00 (4:00 PM)
+            const weddingDate = new Date('May 2, 2026 16:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            if (distance < 0) {
+                // Wedding has passed
+                document.getElementById('countdown-days').textContent = '0';
+                document.getElementById('countdown-hours').textContent = '0';
+                document.getElementById('countdown-minutes').textContent = '0';
+                document.getElementById('countdown-seconds').textContent = '0';
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Update with animation
+            const daysEl = document.getElementById('countdown-days');
+            const hoursEl = document.getElementById('countdown-hours');
+            const minutesEl = document.getElementById('countdown-minutes');
+            const secondsEl = document.getElementById('countdown-seconds');
+            
+            if (daysEl && daysEl.textContent !== days.toString()) {
+                daysEl.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    daysEl.textContent = days;
+                    daysEl.style.transform = 'scale(1)';
+                }, 150);
+            } else if (daysEl) {
+                daysEl.textContent = days;
+            }
+            
+            if (hoursEl && hoursEl.textContent !== hours.toString()) {
+                hoursEl.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    hoursEl.textContent = hours;
+                    hoursEl.style.transform = 'scale(1)';
+                }, 150);
+            } else if (hoursEl) {
+                hoursEl.textContent = hours;
+            }
+            
+            if (minutesEl && minutesEl.textContent !== minutes.toString()) {
+                minutesEl.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    minutesEl.textContent = minutes;
+                    minutesEl.style.transform = 'scale(1)';
+                }, 150);
+            } else if (minutesEl) {
+                minutesEl.textContent = minutes;
+            }
+            
+            if (secondsEl) {
+                secondsEl.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    secondsEl.textContent = seconds;
+                    secondsEl.style.transform = 'scale(1)';
+                }, 100);
+            }
+        }
+        
+        // Update countdown immediately and then every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Add smooth transition for countdown numbers
+        $('.countdown-number').css({
+            'transition': 'transform 0.3s ease'
+        });
     });
 </script>
 <script async defer
@@ -1810,6 +2034,13 @@
                 danceDesc: "Let's dance the night away! The bar is open and the music is ready",
                 dressCode: "Dress code",
                 menu: "Menu"
+            },
+            countdown: {
+                title: "⏰ Counting down to our big day!",
+                days: "Days",
+                hours: "Hours",
+                minutes: "Minutes",
+                seconds: "Seconds"
             },
             venue: {
                 ceremonyTitle: "The Ceremony Venue",
@@ -1937,6 +2168,13 @@
                 dressCode: "Dresscode",
                 menu: "Menü"
             },
+            countdown: {
+                title: "⏰ Wir zählen die Tage bis zu unserem großen Tag!",
+                days: "Tage",
+                hours: "Stunden",
+                minutes: "Minuten",
+                seconds: "Sekunden"
+            },
             venue: {
                 ceremonyTitle: "Der Zeremonienort",
                 ceremonyDesc: "Die Zeremonie findet im Linnaeus-Pavillon im <strong>Botanischen Garten Marimurtra</strong> in Blanes statt.",
@@ -2063,6 +2301,13 @@
                 dressCode: "Código de vestimenta",
                 menu: "Menú"
             },
+            countdown: {
+                title: "⏰ ¡Contando los días hasta nuestro gran día!",
+                days: "Días",
+                hours: "Horas",
+                minutes: "Minutos",
+                seconds: "Segundos"
+            },
             venue: {
                 ceremonyTitle: "El lugar de la ceremonia",
                 ceremonyDesc: "La ceremonia se llevará a cabo en el Pabellón Linnaeus dentro del <strong>Jardín Botánico Marimurtra</strong> en Blanes.",
@@ -2166,7 +2411,7 @@
             },
             content: {
                 gettingMarried: "我们要结婚了",
-                invitation: "日期是 <strong>2026年5月2日</strong>，我们希望您能参与其中。",
+                invitation: "日期是 <strong>2026年5月2日</strong>，我们希望您能参加。",
                 ourStory: "我们的故事",
                 ourStoryText: "我们的故事始于2020年新冠期间。我开始重拾跑步的爱好，因为那个时候实在没事干，碰巧遇到Fabian也跑同样的路线，我们就约着一起跑步。 我发现Fabian实在是个很奇怪的人，这让我越发地好奇。然后我们开始约会。两年后，我们收养了我们的小宝宝Pipita，扩展了我们的小家庭，她成为了我们爱情的结晶。就这样糊里糊涂居然过了这么多年。现在，我们很兴奋地迈出下一步，与大家共同庆祝我们的爱情。"
             },
@@ -2188,6 +2433,13 @@
                 danceDesc: "让我们彻夜跳舞！酒吧开放，音乐就绪",
                 dressCode: "着装要求",
                 menu: "菜单"
+            },
+            countdown: {
+                title: "⏰ 倒计时，婚礼即将开始！",
+                days: "天",
+                hours: "小时",
+                minutes: "分钟",
+                seconds: "秒"
             },
             venue: {
                 ceremonyTitle: "仪式场地",
@@ -2218,7 +2470,7 @@
                 partner: "伴侣？",
                 partnerDesc: "如果带伴侣，请注明伴侣姓名",
                 kids: "孩子？",
-                bus: "前往巴塞罗那的班车？",
+                bus: "回巴塞罗那的夜班车？",
                 yes: "是",
                 no: "否",
                 na: "不适用",
