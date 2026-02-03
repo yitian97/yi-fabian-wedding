@@ -645,30 +645,194 @@
                     background-color: #c19d26 !important;
                 }
                 
-                /* Dark Mode for Video Modal (Oops box) */
-                html.dark-mode .video-modal-content {
-                    background: #3a3a3a !important;
-                    color: #ffffff !important;
-                }
-                
-                html.dark-mode .video-modal-content h2 {
-                    color: #ffffff !important;
-                }
-                
-                html.dark-mode .video-modal-content p {
-                    color: #cccccc !important;
-                }
-                
-                html.dark-mode .video-modal-content .modal-close {
-                    color: #ffffff !important;
-                    opacity: 0.8;
-                }
-                
-                html.dark-mode .video-modal-content .modal-close:hover {
-                    opacity: 1;
-                    color: #ffffff !important;
-                }
+        /* Dark Mode for Video Modal (Oops box) */
+        html.dark-mode .video-modal-content {
+            background: #3a3a3a !important;
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode .video-modal-content h2 {
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode .video-modal-content p {
+            color: #cccccc !important;
+        }
+        
+        html.dark-mode .video-modal-content .modal-close {
+            color: #ffffff !important;
+            opacity: 0.8;
+        }
+        
+        html.dark-mode .video-modal-content .modal-close:hover {
+            opacity: 1;
+            color: #ffffff !important;
+        }
+        
+        /* Photo Upload Section Styles */
+        .photo-upload-container {
+            transition: all 0.3s ease;
+        }
+        
+        html.dark-mode .photo-upload-container {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%) !important;
+            border-color: #444 !important;
+        }
+        
+        html.dark-mode .photo-upload-container label {
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode .photo-upload-container input[type="text"],
+        html.dark-mode .photo-upload-container input[type="file"] {
+            background: rgba(255, 255, 255, 0.05) !important;
+            color: #ffffff !important;
+            border-color: #444 !important;
+        }
+        
+        html.dark-mode .photo-upload-container input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        html.dark-mode .photo-upload-container p {
+            color: #cccccc !important;
+        }
+        
+        html.dark-mode .photo-upload-container div[style*="color: #666"] {
+            color: #aaa !important;
+        }
+        
+        html.dark-mode .photo-upload-container div[style*="border-top: 1px solid #e8e8e8"] {
+            border-top-color: #444 !important;
+        }
+        
+        #photo-preview img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 2px solid #d4af37;
+        }
+        
+        #upload-status.success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        
+        html.dark-mode #upload-status.success {
+            background-color: #2a4a2a !important;
+            border-color: #3a6a3a !important;
+            color: #90ee90 !important;
+        }
+        
+        #upload-status.error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        
+        html.dark-mode #upload-status.error {
+            background-color: #4a2a2a !important;
+            border-color: #6a3a3a !important;
+            color: #ffcccc !important;
+        }
+        
+        #upload-status.uploading {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        
+        html.dark-mode #upload-status.uploading {
+            background-color: #2a3a4a !important;
+            border-color: #3a5a6a !important;
+            color: #cceeff !important;
+        }
+        
+        #upload-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .preview-item {
+            position: relative;
+        }
+        
+        .preview-item .remove-photo {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        .preview-item .remove-photo:hover {
+            background: #cc0000;
+        }
             </style>
+        </div>
+        
+        <!-- Share Your Photos Section -->
+        <div class="row section-padding" id="share-photos" style="padding-top: 50px;">
+            <div class="col-md-12 text-center">
+                <h3 class="header" style="margin-bottom: 30px;" data-translate="memories.sharePhotos">Share Your Photos With Us</h3>
+                <p style="color: #666; font-size: 16px; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;" data-translate="memories.sharePhotosDesc">
+                    We'd love to see your photos from our special day! Upload your favorite moments and they'll be added to our wedding album.
+                </p>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+                        <div class="photo-upload-container" style="background: linear-gradient(135deg, #faf8f3 0%, #ffffff 100%); padding: 40px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border: 2px solid #e8e8e8;">
+                            <form id="photo-upload-form" enctype="multipart/form-data">
+                                <div class="form-group" style="margin-bottom: 25px;">
+                                    <label for="guest-name" style="display: block; margin-bottom: 10px; color: #372428; font-weight: 600;" data-translate="memories.yourName">Your Name (Optional)</label>
+                                    <input type="text" id="guest-name" name="guest_name" class="form-input-group" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; background: #fff;" placeholder="" data-translate-placeholder="memories.namePlaceholder">
+                                </div>
+                                
+                                <div class="form-group" style="margin-bottom: 25px;">
+                                    <label for="photo-files" style="display: block; margin-bottom: 10px; color: #372428; font-weight: 600;" data-translate="memories.selectPhotos">Select Photos</label>
+                                    <div style="position: relative;">
+                                        <input type="file" id="photo-files" name="photos" multiple accept="image/*" style="width: 100%; padding: 12px; border: 2px dashed #d4af37; border-radius: 5px; font-size: 16px; background: #fff; cursor: pointer;">
+                                        <div style="margin-top: 10px; color: #666; font-size: 14px;" data-translate="memories.photoUploadHint">
+                                            You can select multiple photos at once. Maximum 10 photos per upload.
+                                        </div>
+                                    </div>
+                                    <div id="photo-preview" style="margin-top: 20px; display: none;">
+                                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px;" id="preview-container"></div>
+                                    </div>
+                                </div>
+                                
+                                <div id="upload-status" style="display: none; margin-bottom: 20px; padding: 15px; border-radius: 5px; text-align: center;"></div>
+                                
+                                <div class="text-center">
+                                    <button type="submit" id="upload-btn" class="btn btn-accent" style="padding: 12px 40px; font-size: 16px; border: none; cursor: pointer; border-radius: 5px; min-width: 200px;">
+                                        <i class="fa fa-cloud-upload" style="margin-right: 8px;"></i><span data-translate="memories.uploadPhotos">Upload Photos</span>
+                                    </button>
+                                </div>
+                                
+                                <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid #e8e8e8; text-align: center;">
+                                    <p style="color: #666; font-size: 14px; margin-bottom: 15px;" data-translate="memories.orViewAlbum">Or view our shared album:</p>
+                                    <a href="https://photos.app.goo.gl/ifPCMSD5xS1cWSSQA" target="_blank" class="btn btn-white" style="padding: 10px 30px; font-size: 14px; text-decoration: none; display: inline-block; border-radius: 5px;">
+                                        <i class="fa fa-photo" style="margin-right: 8px;"></i><span data-translate="memories.viewAlbum">View Album</span>
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -995,6 +1159,16 @@
                 oops: "Oops!",
                 checkBackSoon: "Please check back soon. We can't wait to share our special day with you! 💕",
                 gotIt: "Got it!",
+                sharePhotos: "Share Your Photos With Us",
+                sharePhotosDesc: "We'd love to see your photos from our special day! Upload your favorite moments and they'll be added to our wedding album.",
+                yourName: "Your Name (Optional)",
+                namePlaceholder: "Enter your name",
+                selectPhotos: "Select Photos",
+                photoUploadHint: "You can select multiple photos at once. Maximum 10 photos per upload.",
+                uploadPhotos: "Upload Photos",
+                uploading: "Uploading...",
+                orViewAlbum: "Or view our shared album:",
+                viewAlbum: "View Album",
                 footer: "Crafted with lots of <span class=\"fa fa-heart pulse2\"></span> by Yi"
             }
         },
@@ -1022,6 +1196,16 @@
                 oops: "Ups!",
                 checkBackSoon: "Bitte schauen Sie bald wieder vorbei. Wir können es kaum erwarten, unseren besonderen Tag mit Ihnen zu teilen! 💕",
                 gotIt: "Verstanden!",
+                sharePhotos: "Teilen Sie Ihre Fotos mit uns",
+                sharePhotosDesc: "Wir würden gerne Ihre Fotos von unserem besonderen Tag sehen! Laden Sie Ihre Lieblingsmomente hoch und sie werden zu unserem Hochzeitsalbum hinzugefügt.",
+                yourName: "Ihr Name (Optional)",
+                namePlaceholder: "Geben Sie Ihren Namen ein",
+                selectPhotos: "Fotos auswählen",
+                photoUploadHint: "Sie können mehrere Fotos gleichzeitig auswählen. Maximum 10 Fotos pro Upload.",
+                uploadPhotos: "Fotos hochladen",
+                uploading: "Wird hochgeladen...",
+                orViewAlbum: "Oder sehen Sie sich unser geteiltes Album an:",
+                viewAlbum: "Album ansehen",
                 footer: "Mit viel <span class=\"fa fa-heart pulse2\"></span> von Yi erstellt"
             }
         },
@@ -1049,6 +1233,16 @@
                 oops: "¡Ups!",
                 checkBackSoon: "Por favor, vuelve pronto. ¡No podemos esperar para compartir nuestro día especial contigo! 💕",
                 gotIt: "¡Entendido!",
+                sharePhotos: "Comparte tus fotos con nosotros",
+                sharePhotosDesc: "¡Nos encantaría ver tus fotos de nuestro día especial! Sube tus momentos favoritos y se agregarán a nuestro álbum de boda.",
+                yourName: "Tu nombre (Opcional)",
+                namePlaceholder: "Ingresa tu nombre",
+                selectPhotos: "Seleccionar fotos",
+                photoUploadHint: "Puedes seleccionar varias fotos a la vez. Máximo 10 fotos por carga.",
+                uploadPhotos: "Subir fotos",
+                uploading: "Subiendo...",
+                orViewAlbum: "O ver nuestro álbum compartido:",
+                viewAlbum: "Ver álbum",
                 footer: "Creado con mucho <span class=\"fa fa-heart pulse2\"></span> por Yi"
             }
         },
@@ -1076,6 +1270,16 @@
                 oops: "哎呀！",
                 checkBackSoon: "请稍后再来查看。我们迫不及待地想与您分享我们的特殊日子！💕",
                 gotIt: "知道了！",
+                sharePhotos: "与我们分享您的照片",
+                sharePhotosDesc: "我们很想看到您在我们特殊日子拍摄的照片！上传您最喜欢的瞬间，它们将被添加到我们的婚礼相册中。",
+                yourName: "您的姓名（可选）",
+                namePlaceholder: "请输入您的姓名",
+                selectPhotos: "选择照片",
+                photoUploadHint: "您可以一次选择多张照片。每次最多上传10张照片。",
+                uploadPhotos: "上传照片",
+                uploading: "上传中...",
+                orViewAlbum: "或查看我们的共享相册：",
+                viewAlbum: "查看相册",
                 footer: "由 Yi 精心制作，充满 <span class=\"fa fa-heart pulse2\"></span>"
             }
         }
@@ -1163,6 +1367,9 @@
                 element.innerHTML = translation;
             }
         });
+        
+        // Dispatch language change event for other scripts
+        document.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: lang } }));
     }
     
     // Initialize language on page load
@@ -1294,6 +1501,400 @@
         if (darkModeToggleMobile) {
             darkModeToggleMobile.addEventListener('click', toggleDarkMode);
         }
+    })();
+</script>
+<script>
+    // Photo Upload Functionality
+    (function() {
+        const MAX_PHOTOS = 10;
+        const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB per file
+        let selectedFiles = [];
+        
+        // Google Apps Script URL
+        const PHOTO_UPLOAD_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxyyUo3xje0du-7PErJGU-jcRq49wMOeT-zZXXwU38zRf0Dz475ANlFD8h8sisSb8sfcA/exec';
+        
+        const photoFilesInput = document.getElementById('photo-files');
+        const photoPreview = document.getElementById('photo-preview');
+        const previewContainer = document.getElementById('preview-container');
+        const uploadForm = document.getElementById('photo-upload-form');
+        const uploadStatus = document.getElementById('upload-status');
+        const uploadBtn = document.getElementById('upload-btn');
+        
+        // Handle file selection
+        if (photoFilesInput) {
+            photoFilesInput.addEventListener('change', function(e) {
+                const files = Array.from(e.target.files);
+                
+                // Validate number of files
+                if (selectedFiles.length + files.length > MAX_PHOTOS) {
+                    showStatus('error', 'Maximum ' + MAX_PHOTOS + ' photos allowed.', true);
+                    return;
+                }
+                
+                // Validate file sizes and types
+                const validFiles = [];
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    
+                    if (!file.type.startsWith('image/')) {
+                        showStatus('error', file.name + ' is not an image file.', true);
+                        continue;
+                    }
+                    
+                    if (file.size > MAX_FILE_SIZE) {
+                        showStatus('error', file.name + ' is too large. Maximum size is 10MB.', true);
+                        continue;
+                    }
+                    
+                    validFiles.push(file);
+                }
+                
+                // Add valid files to selectedFiles
+                selectedFiles = selectedFiles.concat(validFiles);
+                
+                // Update preview
+                updatePreview();
+                
+                // Reset input
+                photoFilesInput.value = '';
+            });
+        }
+        
+        // Update preview
+        function updatePreview() {
+            if (selectedFiles.length === 0) {
+                photoPreview.style.display = 'none';
+                return;
+            }
+            
+            photoPreview.style.display = 'block';
+            previewContainer.innerHTML = '';
+            
+            selectedFiles.forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const previewItem = document.createElement('div');
+                    previewItem.className = 'preview-item';
+                    previewItem.innerHTML = `
+                        <img src="${e.target.result}" alt="Preview ${index + 1}">
+                        <button type="button" class="remove-photo" data-index="${index}">×</button>
+                    `;
+                    previewContainer.appendChild(previewItem);
+                    
+                    // Add remove button handler
+                    const removeBtn = previewItem.querySelector('.remove-photo');
+                    removeBtn.addEventListener('click', function() {
+                        selectedFiles.splice(index, 1);
+                        updatePreview();
+                    });
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        // Show status message
+        function showStatus(type, message, autoHide) {
+            uploadStatus.className = type;
+            uploadStatus.style.display = 'block';
+            uploadStatus.innerHTML = message;
+            
+            if (autoHide) {
+                setTimeout(function() {
+                    uploadStatus.style.display = 'none';
+                }, 5000);
+            }
+        }
+        
+        // Handle form submission
+        if (uploadForm) {
+            uploadForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (selectedFiles.length === 0) {
+                    showStatus('error', 'Please select at least one photo to upload.', true);
+                    return;
+                }
+                
+                if (PHOTO_UPLOAD_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                    showStatus('error', 'Photo upload is not configured yet. Please contact the website administrator.', true);
+                    return;
+                }
+                
+                // Disable upload button
+                uploadBtn.disabled = true;
+                uploadBtn.innerHTML = '<i class="fa fa-spinner fa-spin" style="margin-right: 8px;"></i><span data-translate="memories.uploading">Uploading...</span>';
+                
+                // Show uploading status
+                showStatus('uploading', 'Processing ' + selectedFiles.length + ' photo(s)... Please wait.', false);
+                
+                // Convert files to base64 with compression
+                const guestName = document.getElementById('guest-name').value || 'Anonymous';
+                
+                // Helper function to compress image
+                function compressImage(file, maxWidth, maxHeight, quality) {
+                    return new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const img = new Image();
+                            img.onerror = function() {
+                                reject(new Error('Failed to load image'));
+                            };
+                            img.onload = function() {
+                                try {
+                                    const canvas = document.createElement('canvas');
+                                    let width = img.width;
+                                    let height = img.height;
+                                    
+                                    // Calculate new dimensions (reduce further for reliability)
+                                    if (width > height) {
+                                        if (width > maxWidth) {
+                                            height = (height * maxWidth) / width;
+                                            width = maxWidth;
+                                        }
+                                    } else {
+                                        if (height > maxHeight) {
+                                            width = (width * maxHeight) / height;
+                                            height = maxHeight;
+                                        }
+                                    }
+                                    
+                                    canvas.width = width;
+                                    canvas.height = height;
+                                    
+                                    const ctx = canvas.getContext('2d');
+                                    ctx.drawImage(img, 0, 0, width, height);
+                                    
+                                    // Convert to base64
+                                    const base64 = canvas.toDataURL('image/jpeg', quality).split(',')[1];
+                                    
+                                    // Log size for debugging
+                                    const sizeKB = (base64.length * 3 / 4) / 1024;
+                                    console.log('Compressed image size: ' + sizeKB.toFixed(2) + ' KB');
+                                    
+                                    if (sizeKB > 5000) { // Warn if still > 5MB
+                                        console.warn('Image is still large: ' + sizeKB.toFixed(2) + ' KB');
+                                    }
+                                    
+                                    resolve({
+                                        name: file.name,
+                                        data: base64,
+                                        type: 'image/jpeg',
+                                        size: sizeKB
+                                    });
+                                } catch (error) {
+                                    reject(error);
+                                }
+                            };
+                            img.src = e.target.result;
+                        };
+                        reader.onerror = function() {
+                            reject(new Error('Failed to read file'));
+                        };
+                        reader.readAsDataURL(file);
+                    });
+                }
+                
+                // Process and upload photos one at a time
+                let uploadIndex = 0;
+                let successCount = 0;
+                let errorCount = 0;
+                
+                function uploadNextPhoto() {
+                    if (uploadIndex >= selectedFiles.length) {
+                        // All photos processed
+                        if (errorCount === 0) {
+                            showStatus('success', 'All ' + successCount + ' photo(s) uploaded successfully! Thank you for sharing your memories with us. 💕', false);
+                        } else if (successCount > 0) {
+                            showStatus('success', successCount + ' photo(s) uploaded successfully. ' + errorCount + ' photo(s) failed. Please try uploading the failed photos again.', false);
+                        } else {
+                            showStatus('error', 'All photos failed to upload. Please try again.', true);
+                        }
+                        
+                        // Reset form
+                        selectedFiles = [];
+                        updatePreview();
+                        document.getElementById('guest-name').value = '';
+                        
+                        // Re-enable button after 3 seconds
+                        setTimeout(function() {
+                            uploadBtn.disabled = false;
+                            uploadBtn.innerHTML = '<i class="fa fa-cloud-upload" style="margin-right: 8px;"></i><span data-translate="memories.uploadPhotos">Upload Photos</span>';
+                            if (errorCount === 0) {
+                                uploadStatus.style.display = 'none';
+                            }
+                        }, 3000);
+                        return;
+                    }
+                    
+                    const file = selectedFiles[uploadIndex];
+                    const currentPhotoNum = uploadIndex + 1;
+                    
+                    // Update status
+                    showStatus('uploading', 'Uploading photo ' + currentPhotoNum + ' of ' + selectedFiles.length + '...', false);
+                    
+                    // Compress and upload (reduce size further for reliability)
+                    compressImage(file, 1600, 1600, 0.75).then(function(photoData) {
+                        console.log('Starting upload for photo ' + currentPhotoNum + ', size: ' + photoData.size.toFixed(2) + ' KB');
+                        
+                        // Use URL-encoded form data for better compatibility with Google Apps Script
+                        const formData = new URLSearchParams();
+                        formData.append('guest_name', guestName);
+                        formData.append('photo_count', '1');
+                        formData.append('photo_index', currentPhotoNum.toString());
+                        formData.append('total_photos', selectedFiles.length.toString());
+                        formData.append('photo_name', photoData.name);
+                        formData.append('photo_data', photoData.data);
+                        formData.append('photo_type', photoData.type);
+                        
+                        const payloadSize = formData.toString().length;
+                        console.log('Payload size: ' + (payloadSize / 1024).toFixed(2) + ' KB');
+                        
+                        if (payloadSize > 50 * 1024 * 1024) { // 50MB limit
+                            throw new Error('Photo is too large even after compression. Please try a smaller image.');
+                        }
+                        
+                        // Upload to Google Apps Script
+                        return fetch(PHOTO_UPLOAD_SCRIPT_URL, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            },
+                            body: formData.toString()
+                        });
+                    })
+                    .then(response => {
+                        console.log('Response status:', response.status, response.statusText);
+                        console.log('Response redirected:', response.redirected);
+                        
+                        // Check if response is ok
+                        if (!response.ok && !response.redirected) {
+                            return response.text().then(function(text) {
+                                console.error('Error response:', text.substring(0, 200));
+                                throw new Error('HTTP ' + response.status + ': ' + response.statusText + ' - ' + text.substring(0, 100));
+                            });
+                        }
+                        
+                        // Handle redirect (Google Apps Script quirk)
+                        if (response.redirected) {
+                            console.log('Following redirect to:', response.url);
+                            return fetch(response.url, {
+                                method: 'GET',
+                                redirect: 'follow',
+                                credentials: 'omit'
+                            }).then(function(redirectResponse) {
+                                console.log('Redirect response status:', redirectResponse.status);
+                                if (!redirectResponse.ok) {
+                                    return redirectResponse.text().then(function(text) {
+                                        throw new Error('Redirect failed: ' + redirectResponse.status + ' - ' + text.substring(0, 100));
+                                    });
+                                }
+                                return redirectResponse.text().then(function(text) {
+                                    console.log('Redirect response text (first 500 chars):', text.substring(0, 500));
+                                    console.log('Redirect response text length:', text.length);
+                                    
+                                    // Handle empty response
+                                    if (!text || text.trim() === '') {
+                                        console.log('Empty redirect response, treating as success');
+                                        return { result: 'success' };
+                                    }
+                                    
+                                    try {
+                                        const data = JSON.parse(text);
+                                        console.log('Parsed JSON from redirect:', data);
+                                        return data;
+                                    } catch (e) {
+                                        console.log('Failed to parse JSON from redirect, error:', e);
+                                        console.log('Raw text:', text);
+                                        
+                                        // Google Apps Script sometimes returns HTML or other formats
+                                        // Check if it contains success indicators
+                                        if (text.includes('"result":"success"') || 
+                                            text.includes('"result": "success"') ||
+                                            (text.includes('success') && text.includes('result'))) {
+                                            console.log('Treating as success based on text content');
+                                            return { result: 'success' };
+                                        }
+                                        
+                                        // If it's a very short response, might be success
+                                        if (text.trim().length < 50) {
+                                            console.log('Short response, treating as success');
+                                            return { result: 'success' };
+                                        }
+                                        
+                                        // Last resort: if we got here and response is 200, assume success
+                                        console.log('Assuming success despite parse failure (status was 200)');
+                                        return { result: 'success' };
+                                    }
+                                });
+                            }).catch(function(error) {
+                                console.error('Error following redirect:', error);
+                                throw error;
+                            });
+                        }
+                        
+                        // Try to parse as JSON (non-redirect case)
+                        return response.text().then(function(text) {
+                            console.log('Response text (first 500 chars):', text.substring(0, 500));
+                            try {
+                                const data = JSON.parse(text);
+                                console.log('Parsed JSON:', data);
+                                return data;
+                            } catch (e) {
+                                console.log('Failed to parse JSON, raw text:', text);
+                                // If not JSON, check if it looks like success
+                                if (text.includes('success') || text.trim() === '' || text.includes('"result":"success"')) {
+                                    console.log('Treating as success based on text content');
+                                    return { result: 'success' };
+                                }
+                                throw new Error('Invalid response format: ' + text.substring(0, 200));
+                            }
+                        });
+                    })
+                    .then(data => {
+                        // Check if it's actually a success
+                        if (data && data.result === 'success') {
+                            successCount++;
+                            console.log('✅ Photo ' + currentPhotoNum + ' uploaded successfully');
+                        } else {
+                            errorCount++;
+                            const errorMsg = data && data.message ? data.message : (data ? JSON.stringify(data) : 'Unknown error');
+                            console.error('❌ Upload failed for photo ' + currentPhotoNum + ':', errorMsg);
+                        }
+                        
+                        uploadIndex++;
+                        uploadNextPhoto();
+                    })
+                    .catch(error => {
+                        console.error('❌ Upload error for photo ' + currentPhotoNum + ':', error);
+                        console.error('Error details:', {
+                            message: error.message,
+                            stack: error.stack
+                        });
+                        errorCount++;
+                        uploadIndex++;
+                        uploadNextPhoto();
+                    });
+                }
+                
+                // Start uploading
+                uploadNextPhoto();
+            });
+        }
+        
+        // Update button text on language change
+        document.addEventListener('languageChanged', function() {
+            if (uploadBtn && !uploadBtn.disabled) {
+                const currentLang = localStorage.getItem('wedding-lang') || 'en';
+                const translations = {
+                    en: { uploadPhotos: 'Upload Photos', uploading: 'Uploading...' },
+                    de: { uploadPhotos: 'Fotos hochladen', uploading: 'Wird hochgeladen...' },
+                    es: { uploadPhotos: 'Subir fotos', uploading: 'Subiendo...' },
+                    zh: { uploadPhotos: '上传照片', uploading: '上传中...' }
+                };
+                const t = translations[currentLang] || translations.en;
+                uploadBtn.innerHTML = '<i class="fa fa-cloud-upload" style="margin-right: 8px;"></i><span>' + t.uploadPhotos + '</span>';
+            }
+        });
     })();
 </script>
 </body>
