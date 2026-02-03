@@ -277,6 +277,54 @@
             body.lang-de .primary-nav li:last-child a {
                 padding-right: 0 !important;
             }
+            
+            /* Move language selector, dark mode toggle, and RSVP button up on desktop */
+            header .member-actions {
+                top: 20px !important;
+                right: 20px !important;
+            }
+            
+            /* Align items vertically */
+            header .member-actions li {
+                vertical-align: middle !important;
+            }
+            
+            /* Make menu items smaller on desktop */
+            header .member-actions #dark-mode-toggle {
+                padding: 3px 6px !important;
+                font-size: 12px !important;
+                margin-right: 10px !important;
+            }
+            
+            header .member-actions #dark-mode-toggle img {
+                width: 14px !important;
+                height: 14px !important;
+            }
+            
+            header .member-actions #language-selector {
+                padding: 3px 6px !important;
+                font-size: 12px !important;
+                margin-right: 10px !important;
+            }
+            
+            header .member-actions .btn-white.btn-small {
+                padding: 5px 15px !important;
+                font-size: 10px !important;
+            }
+            
+            /* Make Wishes and Gallery menu items smaller on desktop - must come after German-specific rules */
+            header .primary-nav li a {
+                font-size: 11px !important;
+                padding-right: 20px !important;
+            }
+            
+            /* Override German-specific rules to ensure consistency */
+            html[lang="de"] .primary-nav li a,
+            html:lang(de) .primary-nav li a,
+            body.lang-de .primary-nav li a {
+                font-size: 11px !important;
+                padding-right: 20px !important;
+            }
         }
         
         .primary-nav li {
@@ -863,7 +911,7 @@
                     "padding": "35px 0"
                 });
                 $('header .member-actions').css({
-                    "top": "26px",
+                    "top": "20px",
                 });
                 $('header .navicon').css({
                     "top": "34px",
@@ -876,7 +924,7 @@
                     "padding": "50px 0"
                 });
                 $('header .member-actions').css({
-                    "top": "41px",
+                    "top": "20px",
                 });
                 $('header .navicon').css({
                     "top": "48px",
@@ -989,7 +1037,7 @@
                 gallery: "Galería",
                 bitsPieces: "Momentos especiales",
                 weddingGallery: "Galería de boda",
-                rsvp: "Confirmar asistencia"
+                rsvp: "Confirmar"
             },
             memories: {
                 bitsPieces: "Momentos especiales",
