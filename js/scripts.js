@@ -215,6 +215,22 @@ $(document).ready(function () {
     });
 
     $('#add-to-cal').html(myCalendar);
+    
+    // Trigger calendar text update after calendar is generated
+    // This will be handled by the updateCalendarTexts function in index.html
+    if (typeof window.updateCalendarTexts === 'function') {
+        // Get current language from localStorage or default to 'en'
+        var currentLang = localStorage.getItem('wedding-lang') || 'en';
+        window.updateCalendarTexts(currentLang);
+    } else {
+        // If function not yet available, wait a bit and try again
+        setTimeout(function() {
+            if (typeof window.updateCalendarTexts === 'function') {
+                var currentLang = localStorage.getItem('wedding-lang') || 'en';
+                window.updateCalendarTexts(currentLang);
+            }
+        }, 100);
+    }
 
 
     /********************** RSVP **********************/

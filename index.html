@@ -814,6 +814,20 @@
             }
         }
         
+        /* WhatsApp button - same style as calendar button but with WhatsApp green */
+        #rsvp-modal .whatsapp-btn {
+            background-color: #25D366 !important;
+            border-color: #25D366 !important;
+            color: #ffffff !important;
+        }
+        
+        #rsvp-modal .whatsapp-btn:hover,
+        #rsvp-modal .whatsapp-btn:focus {
+            background-color: #128C7E !important;
+            border-color: #128C7E !important;
+            color: #ffffff !important;
+        }
+        
         /* Additional sparkle variations */
         .sparkle:nth-child(odd) {
             background: radial-gradient(circle, #fff 0%, #ff6b6b 50%, transparent 100%);
@@ -1512,6 +1526,13 @@
                         <h3 data-translate="rsvp.thankYou">Thank you!</h3>
                         <p data-translate="rsvp.thankYouMsg">We are glad to see you join us on our big day.</p>
                         <div id="add-to-cal"></div>
+                        <p style="margin-top: 20px;">
+                            <span data-translate="rsvp.whatsappGroupText">Join our WhatsApp group to stay connected:</span><br>
+                            <a href="https://chat.whatsapp.com/J1g0nqn3IGhHpi2pQVIXl0?mode=gi_t" target="_blank" 
+                               class="btn btn-fill btn-small whatsapp-btn" style="margin-top: 10px;">
+                                <i class="fa fa-whatsapp"></i>&nbsp;&nbsp;<span data-translate="rsvp.joinWhatsAppGroup">Join WhatsApp Group</span>
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div><!-- /.modal-content -->
@@ -1842,7 +1863,15 @@
                 yesMe: "Yes, that's me!",
                 wishWallMessage: "To leave us wishes, go to <a href=\"wishes.html#wishes\" style=\"color: #d4af37; text-decoration: underline;\">Wishes</a>.",
                 thankYou: "Thank you!",
-                thankYouMsg: "We are glad to see you join us on our big day."
+                thankYouMsg: "We are glad to see you join us on our big day.",
+                whatsappGroupText: "Join our WhatsApp group to stay connected:",
+                joinWhatsAppGroup: "Join WhatsApp Group",
+                addToCalendar: "Add to Calendar",
+                googleCalendar: "Google Calendar",
+                yahooCalendar: "Yahoo! Calendar",
+                iCal: "iCal",
+                outlook: "Outlook",
+                calendar: "Calendar"
             },
             dressCode: {
                 title: "Ugh... dress codes?",
@@ -1960,7 +1989,15 @@
                 yesMe: "Ja, das bin ich!",
                 wishWallMessage: "Um uns Wünsche zu hinterlassen, gehen Sie zu <a href=\"wishes.html#wishes\" style=\"color: #d4af37; text-decoration: underline;\">Wünsche</a>.",
                 thankYou: "Danke schön!",
-                thankYouMsg: "Wir freuen uns, Sie an unserem großen Tag dabei zu haben."
+                thankYouMsg: "Wir freuen uns, Sie an unserem großen Tag dabei zu haben.",
+                whatsappGroupText: "Treten Sie unserer WhatsApp-Gruppe bei, um in Kontakt zu bleiben:",
+                joinWhatsAppGroup: "WhatsApp-Gruppe beitreten",
+                addToCalendar: "Zum Kalender hinzufügen",
+                googleCalendar: "Google Kalender",
+                yahooCalendar: "Yahoo! Kalender",
+                iCal: "iCal",
+                outlook: "Outlook",
+                calendar: "Kalender"
             },
             dressCode: {
                 title: "Ugh... Dresscode?",
@@ -2078,7 +2115,15 @@
                 yesMe: "¡Sí, soy yo!",
                 wishWallMessage: "Para dejarnos deseos, ve a <a href=\"wishes.html#wishes\" style=\"color: #d4af37; text-decoration: underline;\">Deseos</a>.",
                 thankYou: "¡Gracias!",
-                thankYouMsg: "Estamos encantados de verte unirte a nosotros en nuestro gran día."
+                thankYouMsg: "Estamos encantados de verte unirte a nosotros en nuestro gran día.",
+                whatsappGroupText: "Únete a nuestro grupo de WhatsApp para mantenerte conectado:",
+                joinWhatsAppGroup: "Unirse al Grupo de WhatsApp",
+                addToCalendar: "Añadir al Calendario",
+                googleCalendar: "Google Calendar",
+                yahooCalendar: "Yahoo! Calendar",
+                iCal: "iCal",
+                outlook: "Outlook",
+                calendar: "Calendario"
             },
             dressCode: {
                 title: "Ugh... ¿código de vestimenta?",
@@ -2193,10 +2238,18 @@
                 accommodationDetails: "酒店名称",
                 accommodationInfo: "请注明酒店名称以便更好地安排交通。",
                 otherComments: "其他要求（可选）",
-                yesMe: "是的，是我！",
+                yesMe: "我要来！",
                 wishWallMessage: "要给我们留言，请前往<a href=\"wishes.html#wishes\" style=\"color: #d4af37; text-decoration: underline;\">祝福</a>。",
                 thankYou: "谢谢！",
-                thankYouMsg: "我们很高兴您能参加我们的大日子。"
+                thankYouMsg: "我们很高兴您能参加我们的大日子。",
+                whatsappGroupText: "加入我们的WhatsApp群组以保持联系：",
+                joinWhatsAppGroup: "加入WhatsApp群组",
+                addToCalendar: "添加到日历",
+                googleCalendar: "Google日历",
+                yahooCalendar: "Yahoo!日历",
+                iCal: "iCal",
+                outlook: "Outlook",
+                calendar: "日历"
             },
             dressCode: {
                 title: "呃...着装要求？",
@@ -2349,11 +2402,61 @@
                 element.textContent = translation;
             }
         });
+        
+        // Update calendar button texts
+        updateCalendarTexts(lang);
     }
+    
+    // Function to update calendar button texts
+    function updateCalendarTexts(lang) {
+        if (!translations[lang] || !translations[lang].rsvp) {
+            return;
+        }
+        
+        const calendarTranslations = translations[lang].rsvp;
+        
+        // Update "Add to Calendar" label
+        const addToCalLabel = document.querySelector('#add-to-calendar-label');
+        if (addToCalLabel && calendarTranslations.addToCalendar) {
+            addToCalLabel.innerHTML = '<i class="fa fa-calendar"></i>&nbsp;&nbsp; ' + calendarTranslations.addToCalendar;
+        }
+        
+        // Update Google Calendar link
+        const googleLink = document.querySelector('#add-to-cal .icon-google');
+        if (googleLink && calendarTranslations.googleCalendar) {
+            googleLink.textContent = calendarTranslations.googleCalendar;
+        }
+        
+        // Update Yahoo Calendar link
+        const yahooLink = document.querySelector('#add-to-cal .icon-yahoo');
+        if (yahooLink && calendarTranslations.yahooCalendar) {
+            yahooLink.textContent = calendarTranslations.yahooCalendar;
+        }
+        
+        // Update iCal link (ouical.js adds " Calendar" after the name)
+        const iCalLink = document.querySelector('#add-to-cal .icon-ical');
+        if (iCalLink && calendarTranslations.iCal && calendarTranslations.calendar) {
+            iCalLink.textContent = calendarTranslations.iCal + ' ' + calendarTranslations.calendar;
+        }
+        
+        // Update Outlook link (ouical.js adds " Calendar" after the name)
+        const outlookLink = document.querySelector('#add-to-cal .icon-outlook');
+        if (outlookLink && calendarTranslations.outlook && calendarTranslations.calendar) {
+            outlookLink.textContent = calendarTranslations.outlook + ' ' + calendarTranslations.calendar;
+        }
+    }
+    
+    // Make function available globally so scripts.js can call it
+    window.updateCalendarTexts = updateCalendarTexts;
     
     // Initialize language on page load
     $(document).ready(function() {
         translatePage(currentLang);
+        
+        // Update calendar texts after a short delay to ensure calendar is generated
+        setTimeout(function() {
+            updateCalendarTexts(currentLang);
+        }, 200);
         
         // Language selector change handler (desktop and mobile)
         $('#language-selector, #language-selector-mobile').on('change', function(e) {
