@@ -1217,6 +1217,80 @@
             color: #d4af37;
         }
         
+        /* Weather Forecast Styles */
+        .weather-forecast {
+            margin: 15px 0;
+        }
+        
+        #weather-widget {
+            width: 100%;
+        }
+        
+        #weather-content {
+            flex-wrap: nowrap;
+        }
+        
+        @media screen and (max-width: 991px) {
+            section.events .row:first-child {
+                flex-direction: column;
+                align-items: flex-start !important;
+            }
+            
+            section.events .row:first-child .col-md-6:last-child {
+                justify-content: flex-start !important;
+                width: 100%;
+                margin-top: 15px;
+            }
+        }
+        
+        @media screen and (max-width: 640px) {
+            #weather-widget {
+                min-width: 240px !important;
+                max-width: 280px !important;
+                padding: 7px 12px !important;
+            }
+            
+            #weather-content {
+                gap: 8px !important;
+                flex-wrap: wrap;
+            }
+            
+            .weather-forecast span[data-translate="weather.current"] {
+                font-size: 11px !important;
+            }
+            
+            #weather-temp {
+                font-size: 15px !important;
+            }
+            
+            #weather-desc {
+                font-size: 10px !important;
+            }
+            
+            #weather-details {
+                font-size: 9px !important;
+            }
+        }
+        
+        html.dark-mode .weather-forecast h5 {
+            color: rgba(224, 224, 224, 0.8) !important;
+        }
+        
+        html.dark-mode #weather-widget {
+            background: rgba(212, 175, 55, 0.12) !important;
+        }
+        
+        html.dark-mode #weather-loading,
+        html.dark-mode #weather-desc,
+        html.dark-mode #weather-details,
+        html.dark-mode #weather-error {
+            color: rgba(224, 224, 224, 0.7) !important;
+        }
+        
+        html.dark-mode #weather-temp {
+            color: #d4af37 !important;
+        }
+        
         /* Responsive countdown timer */
         @media screen and (max-width: 991px) {
             .countdown-timer {
@@ -1408,11 +1482,29 @@
 
 <section class="events section-padding" id="events">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row" style="display: flex; align-items: center; margin-bottom: 30px;">
+            <div class="col-md-6 col-sm-12">
                 <h3 class="header" data-translate="events.title">Events Preview</h3>
             </div>
+            <div class="col-md-6 col-sm-12 text-right" style="display: flex; justify-content: flex-end; align-items: center; gap: 10px;">
+                <!-- Weather Forecast -->
+                <div class="weather-forecast" style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 11px; color: rgba(28, 54, 83, 0.6); white-space: nowrap;" data-translate="weather.current">Current Weather:</span>
+                    <div id="weather-widget" style="display: inline-block; padding: 6px 15px; background: rgba(212, 175, 55, 0.08); border-radius: 8px; min-width: 250px; max-width: 300px;">
+                        <div id="weather-loading" style="font-size: 11px; color: rgba(28, 54, 83, 0.6);">Loading...</div>
+                        <div id="weather-content" style="display: none; align-items: center; justify-content: space-between; gap: 10px;">
+                            <div style="font-size: 16px; font-weight: 600; color: #d4af37; white-space: nowrap;" id="weather-temp"></div>
+                            <div style="font-size: 10px; color: rgba(28, 54, 83, 0.6); white-space: nowrap;" id="weather-desc"></div>
+                            <div style="font-size: 9px; color: rgba(28, 54, 83, 0.5); white-space: nowrap;" id="weather-details"></div>
+                        </div>
+                        <div id="weather-error" style="display: none; font-size: 10px; color: rgba(28, 54, 83, 0.5);">
+                            Weather unavailable
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
                 <div class="wp3">
@@ -1973,6 +2065,65 @@
         $('.countdown-number').css({
             'transition': 'transform 0.3s ease'
         });
+        
+        // Current Weather for Blanes, Spain
+        // Using Open-Meteo API (completely free, no API key required)
+        function loadWeatherForecast() {
+            // Using coordinates for Blanes, Spain
+            const lat = '41.6744';
+            const lon = '2.7906';
+            
+            // Open-Meteo API - free, no API key needed - get current weather
+            const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=Europe/Madrid`;
+            
+            fetch(weatherUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Weather data unavailable');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (!data.current) {
+                        throw new Error('Weather data unavailable');
+                    }
+                    
+                    // Weather code to description mapping
+                    const weatherCodes = {
+                        0: 'Clear sky', 1: 'Mainly clear', 2: 'Partly cloudy', 3: 'Overcast',
+                        45: 'Foggy', 48: 'Depositing rime fog',
+                        51: 'Light drizzle', 53: 'Moderate drizzle', 55: 'Dense drizzle',
+                        56: 'Light freezing drizzle', 57: 'Dense freezing drizzle',
+                        61: 'Slight rain', 63: 'Moderate rain', 65: 'Heavy rain',
+                        66: 'Light freezing rain', 67: 'Heavy freezing rain',
+                        71: 'Slight snow', 73: 'Moderate snow', 75: 'Heavy snow',
+                        77: 'Snow grains', 80: 'Slight rain showers', 81: 'Moderate rain showers',
+                        82: 'Violent rain showers', 85: 'Slight snow showers', 86: 'Heavy snow showers',
+                        95: 'Thunderstorm', 96: 'Thunderstorm with slight hail', 99: 'Thunderstorm with heavy hail'
+                    };
+                    
+                    const temp = Math.round(data.current.temperature_2m);
+                    const weatherCode = data.current.weather_code;
+                    const description = weatherCodes[weatherCode] || 'Partly cloudy';
+                    const humidity = data.current.relative_humidity_2m;
+                    const windSpeed = Math.round(data.current.wind_speed_10m * 3.6); // Convert m/s to km/h
+                    
+                    document.getElementById('weather-loading').style.display = 'none';
+                    document.getElementById('weather-content').style.display = 'flex';
+                    document.getElementById('weather-temp').textContent = temp + '°C';
+                    document.getElementById('weather-desc').textContent = description;
+                    document.getElementById('weather-details').textContent = `Humidity: ${humidity}% | Wind: ${windSpeed} km/h`;
+                })
+                .catch(error => {
+                    console.error('Weather fetch error:', error);
+                    document.getElementById('weather-loading').style.display = 'none';
+                    document.getElementById('weather-error').style.display = 'block';
+                    document.getElementById('weather-error').textContent = 'Weather unavailable';
+                });
+        }
+        
+        // Load weather forecast on page load
+        loadWeatherForecast();
     });
 </script>
 <script async defer
@@ -2041,6 +2192,10 @@
                 hours: "Hours",
                 minutes: "Minutes",
                 seconds: "Seconds"
+            },
+            weather: {
+                title: "🌤️ Current Weather at Venue",
+                current: "Current Weather:"
             },
             venue: {
                 ceremonyTitle: "The Ceremony Venue",
@@ -2175,6 +2330,10 @@
                 minutes: "Minuten",
                 seconds: "Sekunden"
             },
+            weather: {
+                title: "🌤️ Aktuelles Wetter am Veranstaltungsort",
+                current: "Aktuelles Wetter:"
+            },
             venue: {
                 ceremonyTitle: "Der Zeremonienort",
                 ceremonyDesc: "Die Zeremonie findet im Linnaeus-Pavillon im <strong>Botanischen Garten Marimurtra</strong> in Blanes statt.",
@@ -2308,6 +2467,10 @@
                 minutes: "Minutos",
                 seconds: "Segundos"
             },
+            weather: {
+                title: "🌤️ Clima Actual en el Lugar",
+                current: "Clima Actual:"
+            },
             venue: {
                 ceremonyTitle: "El lugar de la ceremonia",
                 ceremonyDesc: "La ceremonia se llevará a cabo en el Pabellón Linnaeus dentro del <strong>Jardín Botánico Marimurtra</strong> en Blanes.",
@@ -2440,6 +2603,10 @@
                 hours: "小时",
                 minutes: "分钟",
                 seconds: "秒"
+            },
+            weather: {
+                title: "🌤️ 场地当前天气",
+                current: "当前天气："
             },
             venue: {
                 ceremonyTitle: "仪式场地",
