@@ -745,8 +745,86 @@
         }
         
         /* Add shadow to desktop logo-lg */
-        .hero-content img[src="img/logo-lg.png"] {
+        .hero-content img[src="img/logo-lg.png"],
+        .hero-content .logo-default,
+        .hero-content .logo-hover-img {
             filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.8)) !important;
+        }
+        
+        /* Logo hover effect - simple swap, no layout shift */
+        /* Logo hover wrapper */
+        .logo-hover-wrapper {
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .logo-default {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: auto;
+            opacity: 1;
+            transition: opacity 0.1s ease;
+        }
+        
+        .logo-hover-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.1s ease;
+        }
+        
+        .logo-hover-wrapper:hover .logo-default {
+            opacity: 0;
+        }
+        
+        .logo-hover-wrapper:hover .logo-hover-img {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        /* Sparkles animation */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #fff 0%, #ffd700 50%, transparent 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            animation: sparkleAnimation 1s ease-out forwards;
+        }
+        
+        @keyframes sparkleAnimation {
+            0% {
+                opacity: 1;
+                transform: scale(0) translate(0, 0);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.5) translate(var(--sparkle-x), var(--sparkle-y));
+            }
+        }
+        
+        /* Additional sparkle variations */
+        .sparkle:nth-child(odd) {
+            background: radial-gradient(circle, #fff 0%, #ff6b6b 50%, transparent 100%);
+        }
+        
+        .sparkle:nth-child(3n) {
+            background: radial-gradient(circle, #fff 0%, #4ecdc4 50%, transparent 100%);
+        }
+        
+        .sparkle:nth-child(4n) {
+            background: radial-gradient(circle, #fff 0%, #ffe66d 50%, transparent 100%);
         }
         
         /* Make logo-lg smaller on mobile and overlap the hero image */
@@ -755,9 +833,10 @@
                 position: relative !important;
             }
             
-            .hero-content img[src="img/logo-lg.png"] {
-                width: 50% !important;
-                max-width: 200px !important;
+            .hero-content img[src="img/logo-lg.png"],
+            .hero-content .logo-hover-wrapper {
+                width: 60% !important;
+                max-width: 240px !important;
                 position: relative !important;
                 margin-top: -20vh !important;
                 margin-left: auto !important;
@@ -765,7 +844,24 @@
                 margin-bottom: -50px !important;
                 display: block !important;
                 z-index: 10 !important;
+            }
+            
+            .hero-content .logo-default,
+            .hero-content .logo-hover-img {
                 filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.8)) !important;
+            }
+            
+            /* Mobile: show logo-lg2.png by default (no mouse hover) */
+            .hero-content .logo-default {
+                opacity: 0 !important;
+                display: none !important;
+            }
+            
+            .hero-content .logo-hover-img {
+                opacity: 1 !important;
+                display: block !important;
+                position: relative !important;
+                pointer-events: auto !important;
             }
             
             /* Show RSVP button on mobile and position it below logo-lg */
@@ -901,9 +997,10 @@
                 position: relative !important;
             }
             
-            .hero-content img[src="img/logo-lg.png"] {
-                width: 65% !important;
-                max-width: 160px !important;
+            .hero-content img[src="img/logo-lg.png"],
+            .hero-content .logo-hover-wrapper {
+                width: 75% !important;
+                max-width: 200px !important;
                 position: relative !important;
                 margin-top: -12vh !important;
                 margin-left: auto !important;
@@ -911,7 +1008,24 @@
                 margin-bottom: -40px !important;
                 display: block !important;
                 z-index: 10 !important;
+            }
+            
+            .hero-content .logo-default,
+            .hero-content .logo-hover-img {
                 filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 1)) !important;
+            }
+            
+            /* Mobile: show logo-lg2.png by default (no mouse hover) */
+            .hero-content .logo-default {
+                opacity: 0 !important;
+                display: none !important;
+            }
+            
+            .hero-content .logo-hover-img {
+                opacity: 1 !important;
+                display: block !important;
+                position: relative !important;
+                pointer-events: auto !important;
             }
             
             /* Show RSVP button on mobile and position it below logo-lg */
@@ -1074,7 +1188,10 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="hero-content text-center">
                     <!--<h1>Yi and Fabian</h1>-->
-                    <img src="img/logo-lg.png" style="margin-top: 500px; margin-left: 50px;width: 150%; max-width: 800px;">
+                    <div class="logo-hover-wrapper" style="margin-top: 500px; margin-left: 50px; width: 150%; max-width: 800px;">
+                        <img src="img/logo-lg.png" class="logo-default" style="width: 100%; display: block;">
+                        <img src="img/logo-lg2.png" class="logo-hover-img" style="width: 100%; position: absolute; top: 0; left: 0;">
+                    </div>
                     <!--<p class="intro">Yi & Fabian are getting married!</p>-->
                     <!--<a href="#" class="btn btn-fill btn-large btn-margin-right">Scroll Down</a> -->
                 </div>
@@ -2406,6 +2523,52 @@
         if (darkModeToggleMobile) {
             darkModeToggleMobile.addEventListener('click', toggleDarkMode);
         }
+    })();
+    
+    // Logo sparkles effect
+    (function() {
+        const logoWrapper = document.querySelector('.logo-hover-wrapper');
+        
+        if (!logoWrapper) return;
+        
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            
+            // Calculate random direction and distance
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 50 + Math.random() * 100;
+            const sparkleX = Math.cos(angle) * distance;
+            const sparkleY = Math.sin(angle) * distance;
+            
+            // Set position relative to click point
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.setProperty('--sparkle-x', sparkleX + 'px');
+            sparkle.style.setProperty('--sparkle-y', sparkleY + 'px');
+            
+            // Add to logo wrapper
+            logoWrapper.appendChild(sparkle);
+            
+            // Remove after animation
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        }
+        
+        logoWrapper.addEventListener('click', function(e) {
+            // Get click position relative to logo wrapper
+            const rect = logoWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Create multiple sparkles
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createSparkle(x, y);
+                }, i * 20);
+            }
+        });
     })();
 </script>
 </body>
