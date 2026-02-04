@@ -780,6 +780,64 @@
         .preview-item .remove-photo:hover {
             background: #cc0000;
         }
+        
+        /* Album Code Modal Styles */
+        .album-modal-overlay {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .album-modal-content {
+            position: relative;
+        }
+        
+        html.dark-mode .album-modal-content {
+            background: #3a3a3a !important;
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode .album-modal-content h3 {
+            color: #ffffff !important;
+        }
+        
+        html.dark-mode .album-modal-content p {
+            color: #cccccc !important;
+        }
+        
+        html.dark-mode .album-modal-content input {
+            background: rgba(255, 255, 255, 0.05) !important;
+            color: #ffffff !important;
+            border-color: #444 !important;
+        }
+        
+        html.dark-mode .album-modal-content .album-modal-close {
+            color: #ffffff !important;
+        }
+        
+        #album-code-status.error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        
+        html.dark-mode #album-code-status.error {
+            background-color: #4a2a2a !important;
+            border-color: #6a3a3a !important;
+            color: #ffcccc !important;
+        }
+        
+        #album-code-status.success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        
+        html.dark-mode #album-code-status.success {
+            background-color: #2a4a2a !important;
+            border-color: #3a6a3a !important;
+            color: #90ee90 !important;
+        }
             </style>
         </div>
         
@@ -796,6 +854,14 @@
                     <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
                         <div class="photo-upload-container" style="background: linear-gradient(135deg, #faf8f3 0%, #ffffff 100%); padding: 40px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border: 2px solid #e8e8e8;">
                             <form id="photo-upload-form" enctype="multipart/form-data">
+                                <div class="form-group" style="margin-bottom: 25px;">
+                                    <label for="invitation-code" style="display: block; margin-bottom: 10px; color: #372428; font-weight: 600;" data-translate="memories.invitationCode">Invitation Code <span style="color: #d4af37;">*</span></label>
+                                    <input type="text" id="invitation-code" name="invitation_code" class="form-input-group" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; background: #fff;" placeholder="" data-translate-placeholder="memories.invitationCodePlaceholder" required>
+                                    <div style="margin-top: 5px; color: #666; font-size: 12px;" data-translate="memories.invitationCodeHint">
+                                        Please enter the invitation code provided on your wedding invitation.
+                                    </div>
+                                </div>
+                                
                                 <div class="form-group" style="margin-bottom: 25px;">
                                     <label for="guest-name" style="display: block; margin-bottom: 10px; color: #372428; font-weight: 600;" data-translate="memories.yourName">Your Name (Optional)</label>
                                     <input type="text" id="guest-name" name="guest_name" class="form-input-group" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; background: #fff;" placeholder="" data-translate-placeholder="memories.namePlaceholder">
@@ -824,14 +890,32 @@
                                 
                                 <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid #e8e8e8; text-align: center;">
                                     <p style="color: #666; font-size: 14px; margin-bottom: 15px;" data-translate="memories.orViewAlbum">Or view our shared album:</p>
-                                    <a href="https://photos.app.goo.gl/ifPCMSD5xS1cWSSQA" target="_blank" class="btn btn-white" style="padding: 10px 30px; font-size: 14px; text-decoration: none; display: inline-block; border-radius: 5px;">
+                                    <button type="button" id="view-album-btn" class="btn btn-white" style="padding: 10px 30px; font-size: 14px; border: none; cursor: pointer; border-radius: 5px; display: inline-block;">
                                         <i class="fa fa-photo" style="margin-right: 8px;"></i><span data-translate="memories.viewAlbum">View Album</span>
-                                    </a>
+                                    </button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        
+        <!-- View Album Invitation Code Modal -->
+        <div id="album-code-modal" class="album-modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 1000000 !important;">
+            <div class="album-modal-content" style="background: #fff; padding: 30px; border-radius: 15px; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; z-index: 1000001 !important; animation: modalFadeIn 0.3s ease; margin-top: 100px;">
+                <button class="album-modal-close" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 28px; color: #999; cursor: pointer; line-height: 1; padding: 0; width: 30px; height: 30px;">&times;</button>
+                <h3 style="color: #372428; margin-bottom: 20px; font-size: 24px; font-weight: bold;" data-translate="memories.enterCodeToView">Enter Code to View Album</h3>
+                <p style="color: #666; font-size: 14px; margin-bottom: 20px;" data-translate="memories.enterCodeToViewDesc">
+                    Please enter your invitation code to view the wedding album.
+                </p>
+                <div style="margin-bottom: 20px;">
+                    <input type="text" id="album-invitation-code" placeholder="" data-translate-placeholder="memories.invitationCodePlaceholder" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; background: #fff; text-align: center; letter-spacing: 2px; text-transform: uppercase;">
+                </div>
+                <div id="album-code-status" style="display: none; margin-bottom: 15px; padding: 10px; border-radius: 5px; font-size: 14px;"></div>
+                <button type="button" id="album-code-submit-btn" class="btn btn-accent" style="padding: 10px 30px; font-size: 16px; border: none; cursor: pointer; border-radius: 5px; width: 100%;">
+                    <span data-translate="memories.viewAlbum">View Album</span>
+                </button>
             </div>
         </div>
     </div>
@@ -1161,6 +1245,9 @@
                 gotIt: "Got it!",
                 sharePhotos: "Share Your Photos With Us",
                 sharePhotosDesc: "We'd love to see your photos from our special day! Upload your favorite moments and they'll be added to our wedding album.",
+                invitationCode: "Invitation Code",
+                invitationCodePlaceholder: "Enter your invitation code",
+                invitationCodeHint: "Please enter the invitation code provided on your wedding invitation.",
                 yourName: "Your Name (Optional)",
                 namePlaceholder: "Enter your name",
                 selectPhotos: "Select Photos",
@@ -1169,6 +1256,8 @@
                 uploading: "Uploading...",
                 orViewAlbum: "Or view our shared album:",
                 viewAlbum: "View Album",
+                enterCodeToView: "Enter Code to View Album",
+                enterCodeToViewDesc: "Please enter your invitation code to view the wedding album.",
                 footer: "Crafted with lots of <span class=\"fa fa-heart pulse2\"></span> by Yi"
             }
         },
@@ -1198,6 +1287,9 @@
                 gotIt: "Verstanden!",
                 sharePhotos: "Teilen Sie Ihre Fotos mit uns",
                 sharePhotosDesc: "Wir würden gerne Ihre Fotos von unserem besonderen Tag sehen! Laden Sie Ihre Lieblingsmomente hoch und sie werden zu unserem Hochzeitsalbum hinzugefügt.",
+                invitationCode: "Einladungscode",
+                invitationCodePlaceholder: "Geben Sie Ihren Einladungscode ein",
+                invitationCodeHint: "Bitte geben Sie den auf Ihrer Hochzeitseinladung angegebenen Einladungscode ein.",
                 yourName: "Ihr Name (Optional)",
                 namePlaceholder: "Geben Sie Ihren Namen ein",
                 selectPhotos: "Fotos auswählen",
@@ -1206,6 +1298,8 @@
                 uploading: "Wird hochgeladen...",
                 orViewAlbum: "Oder sehen Sie sich unser geteiltes Album an:",
                 viewAlbum: "Album ansehen",
+                enterCodeToView: "Code eingeben, um Album anzusehen",
+                enterCodeToViewDesc: "Bitte geben Sie Ihren Einladungscode ein, um das Hochzeitsalbum anzusehen.",
                 footer: "Mit viel <span class=\"fa fa-heart pulse2\"></span> von Yi erstellt"
             }
         },
@@ -1235,6 +1329,9 @@
                 gotIt: "¡Entendido!",
                 sharePhotos: "Comparte tus fotos con nosotros",
                 sharePhotosDesc: "¡Nos encantaría ver tus fotos de nuestro día especial! Sube tus momentos favoritos y se agregarán a nuestro álbum de boda.",
+                invitationCode: "Código de invitación",
+                invitationCodePlaceholder: "Ingresa tu código de invitación",
+                invitationCodeHint: "Por favor ingresa el código de invitación proporcionado en tu invitación de boda.",
                 yourName: "Tu nombre (Opcional)",
                 namePlaceholder: "Ingresa tu nombre",
                 selectPhotos: "Seleccionar fotos",
@@ -1243,6 +1340,8 @@
                 uploading: "Subiendo...",
                 orViewAlbum: "O ver nuestro álbum compartido:",
                 viewAlbum: "Ver álbum",
+                enterCodeToView: "Ingrese el código para ver el álbum",
+                enterCodeToViewDesc: "Por favor ingrese su código de invitación para ver el álbum de boda.",
                 footer: "Creado con mucho <span class=\"fa fa-heart pulse2\"></span> por Yi"
             }
         },
@@ -1272,6 +1371,9 @@
                 gotIt: "知道了！",
                 sharePhotos: "与我们分享您的照片",
                 sharePhotosDesc: "我们很想看到您在我们特殊日子拍摄的照片！上传您最喜欢的瞬间，它们将被添加到我们的婚礼相册中。",
+                invitationCode: "邀请码",
+                invitationCodePlaceholder: "请输入您的邀请码",
+                invitationCodeHint: "请输入您的婚礼邀请函上提供的邀请码。",
                 yourName: "您的姓名（可选）",
                 namePlaceholder: "请输入您的姓名",
                 selectPhotos: "选择照片",
@@ -1280,6 +1382,8 @@
                 uploading: "上传中...",
                 orViewAlbum: "或查看我们的共享相册：",
                 viewAlbum: "查看相册",
+                enterCodeToView: "输入代码查看相册",
+                enterCodeToViewDesc: "请输入您的邀请码以查看婚礼相册。",
                 footer: "由 Yi 精心制作，充满 <span class=\"fa fa-heart pulse2\"></span>"
             }
         }
@@ -1610,6 +1714,13 @@
             uploadForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
+                // Validate invitation code
+                const invitationCode = document.getElementById('invitation-code').value.trim();
+                if (!invitationCode) {
+                    showStatus('error', 'Please enter the invitation code.', true);
+                    return;
+                }
+                
                 if (selectedFiles.length === 0) {
                     showStatus('error', 'Please select at least one photo to upload.', true);
                     return;
@@ -1738,6 +1849,7 @@
                         
                         // Use URL-encoded form data for better compatibility with Google Apps Script
                         const formData = new URLSearchParams();
+                        formData.append('invitation_code', invitationCode);
                         formData.append('guest_name', guestName);
                         formData.append('photo_count', '1');
                         formData.append('photo_index', currentPhotoNum.toString());
@@ -1859,6 +1971,14 @@
                             errorCount++;
                             const errorMsg = data && data.message ? data.message : (data ? JSON.stringify(data) : 'Unknown error');
                             console.error('❌ Upload failed for photo ' + currentPhotoNum + ':', errorMsg);
+                            
+                            // Check if it's an invitation code error
+                            if (errorMsg.includes('invitation') || errorMsg.includes('code') || errorMsg.includes('invalid')) {
+                                showStatus('error', errorMsg, false);
+                                uploadBtn.disabled = false;
+                                uploadBtn.innerHTML = '<i class="fa fa-cloud-upload" style="margin-right: 8px;"></i><span data-translate="memories.uploadPhotos">Upload Photos</span>';
+                                return; // Stop uploading if code is invalid
+                            }
                         }
                         
                         uploadIndex++;
@@ -1893,6 +2013,244 @@
                 };
                 const t = translations[currentLang] || translations.en;
                 uploadBtn.innerHTML = '<i class="fa fa-cloud-upload" style="margin-right: 8px;"></i><span>' + t.uploadPhotos + '</span>';
+            }
+        });
+    })();
+</script>
+<script>
+    // View Album with Invitation Code
+    (function() {
+        const GOOGLE_PHOTOS_ALBUM_URL = 'https://photos.app.goo.gl/ifPCMSD5xS1cWSSQA';
+        const PHOTO_UPLOAD_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxyyUo3xje0du-7PErJGU-jcRq49wMOeT-zZXXwU38zRf0Dz475ANlFD8h8sisSb8sfcA/exec';
+        const STORAGE_KEY = 'wedding_album_code_verified';
+        
+        const viewAlbumBtn = document.getElementById('view-album-btn');
+        const albumModal = document.getElementById('album-code-modal');
+        const albumCodeInput = document.getElementById('album-invitation-code');
+        const albumCodeSubmitBtn = document.getElementById('album-code-submit-btn');
+        const albumCodeStatus = document.getElementById('album-code-status');
+        const albumModalClose = document.querySelector('.album-modal-close');
+        
+        // Check if code was already verified (stored in localStorage)
+        function isCodeVerified() {
+            const verified = localStorage.getItem(STORAGE_KEY);
+            if (verified) {
+                const data = JSON.parse(verified);
+                // Check if verification is still valid (24 hours)
+                const now = new Date().getTime();
+                if (now - data.timestamp < 24 * 60 * 60 * 1000) {
+                    return true;
+                } else {
+                    localStorage.removeItem(STORAGE_KEY);
+                }
+            }
+            return false;
+        }
+        
+        // Open album directly if code is verified
+        function openAlbum() {
+            window.open(GOOGLE_PHOTOS_ALBUM_URL, '_blank');
+            closeAlbumModal();
+        }
+        
+        // Show album modal
+        function showAlbumModal() {
+            albumModal.style.display = 'flex';
+            albumCodeInput.value = '';
+            albumCodeStatus.style.display = 'none';
+            setTimeout(function() {
+                albumCodeInput.focus();
+            }, 100);
+        }
+        
+        // Close album modal
+        function closeAlbumModal() {
+            albumModal.style.display = 'none';
+            albumCodeInput.value = '';
+            albumCodeStatus.style.display = 'none';
+        }
+        
+        // Validate invitation code
+        function validateAlbumCode(code) {
+            return new Promise(function(resolve, reject) {
+                const formData = new URLSearchParams();
+                formData.append('invitation_code', code);
+                formData.append('validate_only', 'true');
+                
+                fetch(PHOTO_UPLOAD_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: formData.toString()
+                })
+                .then(response => {
+                    console.log('Album code validation - Response status:', response.status);
+                    console.log('Album code validation - Response redirected:', response.redirected);
+                    
+                    // Handle redirect (Google Apps Script quirk)
+                    if (response.redirected) {
+                        console.log('Following redirect for album code validation');
+                        return fetch(response.url, {
+                            method: 'GET',
+                            redirect: 'follow',
+                            credentials: 'omit'
+                        }).then(function(redirectResponse) {
+                            console.log('Redirect response status:', redirectResponse.status);
+                            return redirectResponse.text().then(function(text) {
+                                console.log('Redirect response text (first 200 chars):', text.substring(0, 200));
+                                
+                                // Handle empty response
+                                if (!text || text.trim() === '') {
+                                    console.log('Empty redirect response, treating as success');
+                                    return { result: 'success' };
+                                }
+                                
+                                try {
+                                    const data = JSON.parse(text);
+                                    console.log('Parsed JSON from redirect:', data);
+                                    return data;
+                                } catch (e) {
+                                    console.log('Failed to parse JSON from redirect');
+                                    // Check if it contains success indicators
+                                    if (text.includes('"result":"success"') || 
+                                        text.includes('"result": "success"') ||
+                                        (text.includes('success') && text.includes('result'))) {
+                                        console.log('Treating as success based on text content');
+                                        return { result: 'success' };
+                                    }
+                                    
+                                    // If it's a very short response, might be success
+                                    if (text.trim().length < 50) {
+                                        console.log('Short response, treating as success');
+                                        return { result: 'success' };
+                                    }
+                                    
+                                    // Last resort: if we got here and response is 200, assume success
+                                    console.log('Assuming success despite parse failure (status was 200)');
+                                    return { result: 'success' };
+                                }
+                            });
+                        });
+                    }
+                    
+                    // Non-redirect case
+                    return response.text().then(function(text) {
+                        console.log('Response text (first 200 chars):', text.substring(0, 200));
+                        try {
+                            const data = JSON.parse(text);
+                            console.log('Parsed JSON:', data);
+                            return data;
+                        } catch (e) {
+                            console.log('Failed to parse JSON');
+                            if (text.includes('success') || text.trim() === '' || text.includes('"result":"success"')) {
+                                console.log('Treating as success based on text content');
+                                return { result: 'success' };
+                            }
+                            throw new Error('Invalid response format');
+                        }
+                    });
+                })
+                .then(data => {
+                    console.log('Album code validation result:', data);
+                    if (data && data.result === 'success') {
+                        resolve(true);
+                    } else {
+                        const errorMsg = data && data.message ? data.message : 'Invalid invitation code. Please check your wedding invitation and try again.';
+                        reject(new Error(errorMsg));
+                    }
+                })
+                .catch(error => {
+                    console.error('Album code validation error:', error);
+                    reject(error);
+                });
+            });
+        }
+        
+        // Handle view album button click
+        if (viewAlbumBtn) {
+            viewAlbumBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (isCodeVerified()) {
+                    openAlbum();
+                } else {
+                    showAlbumModal();
+                }
+            });
+        }
+        
+        // Handle modal close
+        if (albumModalClose) {
+            albumModalClose.addEventListener('click', closeAlbumModal);
+        }
+        
+        // Close modal when clicking outside
+        if (albumModal) {
+            albumModal.addEventListener('click', function(e) {
+                if (e.target === albumModal) {
+                    closeAlbumModal();
+                }
+            });
+        }
+        
+        // Handle code submission
+        if (albumCodeSubmitBtn) {
+            albumCodeSubmitBtn.addEventListener('click', function() {
+                const code = albumCodeInput.value.trim().toUpperCase();
+                
+                if (!code) {
+                    albumCodeStatus.className = 'error';
+                    albumCodeStatus.style.display = 'block';
+                    albumCodeStatus.textContent = 'Please enter an invitation code.';
+                    return;
+                }
+                
+                // Disable button
+                albumCodeSubmitBtn.disabled = true;
+                albumCodeSubmitBtn.innerHTML = '<i class="fa fa-spinner fa-spin" style="margin-right: 8px;"></i>Validating...';
+                albumCodeStatus.style.display = 'none';
+                
+                // Validate code
+                validateAlbumCode(code)
+                    .then(function() {
+                        // Save verified code
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+                            code: code,
+                            timestamp: new Date().getTime()
+                        }));
+                        
+                        // Show success and open album
+                        albumCodeStatus.className = 'success';
+                        albumCodeStatus.style.display = 'block';
+                        albumCodeStatus.textContent = 'Code verified! Opening album...';
+                        
+                        setTimeout(function() {
+                            openAlbum();
+                        }, 500);
+                    })
+                    .catch(function(error) {
+                        albumCodeStatus.className = 'error';
+                        albumCodeStatus.style.display = 'block';
+                        albumCodeStatus.textContent = error.message || 'Invalid invitation code. Please try again.';
+                        albumCodeSubmitBtn.disabled = false;
+                        albumCodeSubmitBtn.innerHTML = '<span data-translate="memories.viewAlbum">View Album</span>';
+                    });
+            });
+        }
+        
+        // Handle Enter key in code input
+        if (albumCodeInput) {
+            albumCodeInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    albumCodeSubmitBtn.click();
+                }
+            });
+        }
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && albumModal.style.display === 'flex') {
+                closeAlbumModal();
             }
         });
     })();

@@ -27,11 +27,19 @@ const DRIVE_FOLDER_ID = '1uAInLZGxX7hK8O269sk0OMpXKQwOBe75'; // Your Google Driv
 const GOOGLE_PHOTOS_ALBUM_LINK = 'https://photos.app.goo.gl/ifPCMSD5xS1cWSSQA'; // Your Google Photos album link
 const RECIPIENT_EMAIL = 'tianyi9097@gmail.com'; // ⬅️ CHANGE THIS TO YOUR EMAIL
 
+// Invitation codes - Add your codes here (case-insensitive)
+// You can add multiple codes separated by commas, or use a single code
+const INVITATION_CODES = [
+  'yifabi2026',     // Add more codes if needed
+  'pipita.amor'  // Example: multiple codes
+];
+
 function doPost(e) {
   try {
     Logger.log('=== Photo Upload Request Received ===');
     
     // Parse form data (URL-encoded)
+    const invitationCode = (e.parameter.invitation_code || '').trim().toUpperCase();
     const guestName = e.parameter.guest_name || 'Anonymous';
     const photoCount = parseInt(e.parameter.photo_count) || 0;
     const photoIndex = parseInt(e.parameter.photo_index) || 0;
@@ -40,9 +48,43 @@ function doPost(e) {
     const photoData = e.parameter.photo_data || '';
     const photoType = e.parameter.photo_type || 'image/jpeg';
     
+    Logger.log('Invitation code: ' + invitationCode);
     Logger.log('Guest name: ' + guestName);
     Logger.log('Photo count: ' + photoCount);
     Logger.log('Photo index: ' + photoIndex + ' of ' + totalPhotos);
+    
+    // Validate invitation code
+    if (!invitationCode) {
+      Logger.log('ERROR: No invitation code provided');
+      return ContentService.createTextOutput(JSON.stringify({
+        result: 'error',
+        message: 'Invitation code is required. Please enter the code from your wedding invitation.'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    // Check if code is valid (case-insensitive)
+    const validCodes = INVITATION_CODES.map(code => code.toUpperCase());
+    if (validCodes.indexOf(invitationCode) === -1) {
+      Logger.log('ERROR: Invalid invitation code: ' + invitationCode);
+      return ContentService.createTextOutput(JSON.stringify({
+        result: 'error',
+        message: 'Invalid invitation code. Please check your wedding invitation and try again.'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    Logger.log('Invitation code validated successfully');
+    
+    // If this is just a validation request (for viewing album), return success
+    const validateOnly = e.parameter.validate_only === 'true' || e.parameter.validate_only === true;
+    Logger.log('validate_only parameter: ' + e.parameter.validate_only);
+    Logger.log('validateOnly flag: ' + validateOnly);
+    if (validateOnly) {
+      Logger.log('Validation-only request, returning success');
+      return ContentService.createTextOutput(JSON.stringify({
+        result: 'success',
+        message: 'Invitation code validated successfully.'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
     
     // Get the Drive folder
     const folder = DriveApp.getFolderById(DRIVE_FOLDER_ID);
