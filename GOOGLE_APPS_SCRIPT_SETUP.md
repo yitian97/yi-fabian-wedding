@@ -19,6 +19,7 @@ This guide will help you set up Google Sheets and Google Apps Script to collect 
    - **I1**: `Accommodation Details` (optional - hotel name)
    - **J1**: `Interested in Arranged Hotel` (optional - Yes/No, appears when "Not booked" is selected)
    - **K1**: `Other Requirements` (optional)
+   - *(Invitation code is validated but not stored in the sheet by default; you can add a column and append it if you wish.)*
 5. Format Row 1 as **bold** (optional, but recommended)
 6. **Save the sheet** - remember the name for later
 
@@ -30,15 +31,18 @@ This guide will help you set up Google Sheets and Google Apps Script to collect 
 3. Copy and paste this complete code (matches your current form fields):
 
 ```javascript
+// Invitation codes for RSVP (case-insensitive). Use the same codes as photo upload if you want one code for all.
+var INVITATION_CODES_RSVP = [
+  // ⬅️ CHANGE THIS TO YOUR INVITATION CODE(S)
+  'Barkhau2026',
+  'pipita.amor'
+];
+
 function doPost(e) {
   try {
     // Log that the function was called (this should always appear)
     Logger.log('=== doPost function called ===');
     Logger.log('e.parameter: ' + JSON.stringify(e.parameter));
-    
-    // Get the active spreadsheet
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    Logger.log('Sheet accessed successfully');
     
     // Get the form data from parameters
     // Google Apps Script automatically parses form data into e.parameter
@@ -58,6 +62,29 @@ function doPost(e) {
     }
     
     Logger.log('All parameters: ' + JSON.stringify(params));
+    
+    // Validate invitation code first
+    var invitationCode = (params.invitation_code || '').trim().toUpperCase();
+    if (!invitationCode) {
+      Logger.log('ERROR: No invitation code provided');
+      return ContentService.createTextOutput(JSON.stringify({
+        "result": "error",
+        "message": "Please enter the invitation code from your wedding invitation."
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+    var validCodes = INVITATION_CODES_RSVP.map(function(c) { return c.toUpperCase(); });
+    if (validCodes.indexOf(invitationCode) === -1) {
+      Logger.log('ERROR: Invalid invitation code: ' + invitationCode);
+      return ContentService.createTextOutput(JSON.stringify({
+        "result": "error",
+        "message": "Invalid invitation code. Please check your wedding invitation and try again."
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+    Logger.log('Invitation code validated successfully');
+    
+    // Get the active spreadsheet
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    Logger.log('Sheet accessed successfully');
     
     var name = params.name || '';
     var phone = params.phone || '';
@@ -306,9 +333,17 @@ var body = "You have received a new RSVP!\n\n" +
 - This is normal - Google Apps Script handles CORS automatically
 - If you see errors, make sure your deployment is set to "Anyone" access
 
+## Invitation Code for RSVP
+
+The RSVP form now requires an invitation code. In your Apps Script:
+
+1. **Set your codes** at the top of the script in `INVITATION_CODES_RSVP` (same format as the photo upload script if you want one code for everything).
+2. **Validation** runs before any data is written; invalid or missing code returns an error and the website shows the script’s `message` to the user.
+3. **Redeploy** after changing codes: Deploy → Manage deployments → Edit → Deploy.
+
 ## Security Note
 
-Since you removed invite codes, anyone can submit RSVPs. If you want to add some protection later, you can:
+Invitation codes limit who can submit RSVPs. Keep your codes private and only share them on wedding invitations. If you want to add some protection later, you can:
 - Add a simple password field
 - Add rate limiting in the script
 - Add email validation
