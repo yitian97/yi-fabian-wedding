@@ -2077,6 +2077,16 @@
                       action=""
                       method="POST">
                     <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="form-input-group">
+                                <i class="fa fa-key"></i><input type="text" name="invitation_code" id="rsvp-invitation-code" class=""
+                                                                 placeholder="" data-translate-placeholder="rsvp.invitationCodePlaceholder"
+                                                                 required style="padding: 0; padding-left: 68px; margin: 0; line-height: 55px; height: 55px; box-sizing: border-box; text-transform: uppercase;">
+                            </div>
+                            <p class="text-muted" style="font-size: 12px; margin-top: 5px; margin-bottom: 15px;" data-translate="rsvp.invitationCodeHint">Please enter the invitation code from your wedding invitation.</p>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
                                 <i class="fa fa-user"></i><input name="name" class=""
@@ -2509,6 +2519,8 @@
             rsvp: {
                 title: "What are you waiting for?",
                 deadline: "We would greatly appreciate if you could RSVP before 31st of March, 2026",
+                invitationCodePlaceholder: "Invitation code *",
+                invitationCodeHint: "Please enter the invitation code from your wedding invitation.",
                 name: "Name",
                 phone: "Phone",
                 partner: "Partner?",
@@ -2590,7 +2602,7 @@
                 gettingMarried: "Wir heiraten",
                 invitation: "Das Datum ist der <strong>2. Mai 2026</strong> und wir möchten, dass Sie dabei sind.",
                 ourStory: "Unsere Geschichte",
-                ourStoryText: "Unsere Geschichte begann 2020 während COVID, als es nichts anderes zu tun gab. Wir wurden Laufpartner und trafen uns auf den Trails, um der Monotonie des Lockdowns zu entkommen. Was als eine Möglichkeit begann, in diesen herausfordernden Zeiten aktiv und bei Verstand zu bleiben, verwandelte sich langsam in etwas mehr. Meile für Meile, Lauf für Lauf, entdeckten wir eine Verbindung, die weit über die Wege hinausging, die wir teilten. Laufen wurde unsere Liebessprache, und wir erkannten, dass wir füreinander bestimmt waren. Nach zwei Jahren adoptierten wir unser Baby Pipita und erweiterten unsere kleine Familie. Jetzt freuen wir uns darauf, den nächsten Schritt zu gehen und unsere Liebe mit euch allen zu feiern."
+                ourStoryText: "Unsere Geschichte begann 2020, mitten im Lockdown während COVID, als es kaum etwas anderes zu tun gab. Wir wurden Laufpartner und entdeckten die Trails zusammen, um dem Alltagstrott zu entkommen. Was als bloße Möglichkeit begann, in diesen schwierigen Zeiten aktiv und ausgeglichen zu bleiben, entwickelte sich nach und nach zu etwas viel Größerem. Kilometer für Kilometer, Lauf für Lauf spürten wir eine Verbindung, die weit über die gemeinsamen Wege hinausging. Das Laufen wurde unsere ganz eigene Liebessprache, und bald merkten wir: Wir gehören zusammen. Nach zwei Jahren durften wir unser Baby Pipita adoptieren und unsere kleine Familie vergrößern. Jetzt freuen wir uns darauf, den nächsten Schritt zu gehen und unsere Liebe mit all unseren Lieben zu feiern."
             },
             events: {
                 title: "Veranstaltungsvorschau",
@@ -2646,6 +2658,8 @@
             rsvp: {
                 title: "Worauf wartest du noch?",
                 deadline: "Wir würden uns sehr freuen, wenn Sie vor dem 31. März 2026 zusagen könnten",
+                invitationCodePlaceholder: "Einladungscode *",
+                invitationCodeHint: "Bitte geben Sie den Einladungscode von Ihrer Hochzeitseinladung ein.",
                 name: "Name",
                 phone: "Telefon",
                 partner: "Partner?",
@@ -2727,24 +2741,24 @@
                 gettingMarried: "Nos casamos",
                 invitation: "La fecha es el <strong>2 de mayo de 2026</strong> y nos encantaría que fueras parte de ello.",
                 ourStory: "Nuestra historia",
-                ourStoryText: "Nuestra historia comenzó en 2020 durante el COVID, cuando no había nada más que hacer. Nos convertimos en compañeros de running, recorriendo los senderos juntos para escapar de la monotonía del confinamiento. Lo que comenzó como una forma de mantenerse activo y cuerdo durante esos tiempos desafiantes se transformó lentamente en algo más. Milla tras milla, carrera tras carrera, descubrimos una conexión que iba mucho más allá de los caminos que compartimos. Correr se convirtió en nuestro lenguaje del amor, y nos dimos cuenta de que estábamos destinados a estar juntos. Después de dos años, adoptamos a nuestro bebé Pipita, expandiendo nuestra pequeña familia. Ahora, estamos emocionados de dar el siguiente paso y celebrar nuestro amor con todos ustedes."
+                ourStoryText: "Nuestra historia comenzó en 2020, durante el confinamiento por COVID, cuando no había mucho que hacer. Nos convertimos en compañeros de running, recorriendo juntos los senderos para escapar de la monotonía. Lo que empezó como una manera de mantenerse activos y despejados durante esos tiempos difíciles se convirtió en una conexión que iba mucho más allá de los caminos que compartíamos: kilómetro tras kilómetro, carrera tras carrera, descubrimos que estábamos hechos el uno para el otro. Después de dos años, adoptamos a nuestro bebé Pipita, ampliando nuestra pequeña familia. Ahora estamos emocionados de dar el siguiente paso y celebrar nuestro amor junto a todos ustedes."
             },
             events: {
                 title: "Vista previa de eventos",
                 guestArrival: "Llegada de invitados <span class=\"time\">16:00</span>",
-                guestArrivalDesc: "Bebida de bienvenida y sesión de fotos con invitados",
+                guestArrivalDesc: "Bebida de bienvenida y sesión de fotos con nuestros invitados.",
                 ceremony: "Ceremonia de boda <span class=\"time\">17:00 – 18:00</span>",
-                ceremonyDesc: "Únete a nosotros mientras intercambiamos votos y celebramos nuestra unión",
+                ceremonyDesc: "Acompáñanos mientras intercambiamos nuestros votos y celebramos nuestra unión.",
                 photoSession: "Sesión de fotos <span class=\"time\">18:00 – 18:50</span>",
-                photoSessionDesc: "Sesión de fotos continuada con familia y amigos",
+                photoSessionDesc: "Continuaremos con fotos con familiares y amigos.",
                 transfer: "Traslado al restaurante <span class=\"time\">19:00 – 19:30</span>",
-                transferDesc: "Nos dirigiremos al lugar de la recepción",
+                transferDesc: "Nos dirigiremos al lugar de la recepción.",
                 cocktail: "Cóctel en el jardín <span class=\"time\">19:30 – 21:00</span>",
-                cocktailDesc: "Un momento relajado para socializar y disfrutar de bebidas en el jardín",
+                cocktailDesc: "Un momento relajado para socializar y disfrutar de bebidas en el jardín.",
                 banquet: "Cena de banquete <span class=\"time\">21:00 – 23:00</span>",
-                banquetDesc: "Una elegante cena para celebrar juntos",
+                banquetDesc: "Una elegante cena para celebrar juntos esta ocasión especial.",
                 dance: "Fiesta de baile y barra libre <span class=\"time\">23:00 – 01:00</span>",
-                danceDesc: "¡Bailemos toda la noche! La barra está abierta y la música está lista",
+                danceDesc: "¡Bailemos toda la noche! La barra está abierta y la música está lista para disfrutar.",
                 dressCode: "Código de vestimenta",
                 menu: "Menú"
             },
@@ -2783,6 +2797,8 @@
             rsvp: {
                 title: "¿Qué estás esperando?",
                 deadline: "Agradeceríamos mucho si pudieras confirmar tu asistencia antes del 31 de marzo de 2026",
+                invitationCodePlaceholder: "Código de invitación *",
+                invitationCodeHint: "Por favor ingrese el código de invitación de su invitación de boda.",
                 name: "Nombre",
                 phone: "Teléfono",
                 partner: "¿Acompañante?",
@@ -2920,6 +2936,8 @@
             rsvp: {
                 title: "您还在等什么？",
                 deadline: "如果您能在2026年3月31日之前确认出席，我们将非常感激",
+                invitationCodePlaceholder: "邀请码 *",
+                invitationCodeHint: "请输入您的婚礼邀请函上的邀请码。",
                 name: "姓名",
                 phone: "电话",
                 partner: "伴侣？",
