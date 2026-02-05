@@ -199,6 +199,16 @@
             color: #aaa !important;
         }
         
+        a.instagram-pipita-btn:hover {
+            background: rgba(225, 48, 108, 0.25) !important;
+            transform: scale(1.05);
+        }
+        html.dark-mode a.instagram-pipita-btn {
+            color: #f777b8 !important;
+            background: rgba(225, 48, 108, 0.2) !important;
+            border-color: rgba(247, 119, 184, 0.5) !important;
+        }
+        
         /* White Background for Gallery */
         section#gallery {
             background-color: #ffffff !important;
@@ -546,10 +556,15 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
                         <div style="background: linear-gradient(135deg, #faf8f3 0%, #ffffff 100%); padding: 40px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border: 2px solid #e8e8e8; text-align: center;">
-                            <div id="random-photo-container" style="margin-bottom: 25px; min-height: 500px; background: #f5f5f5; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                                <div style="color: #999; font-size: 16px;">
+                            <div id="random-photo-container" style="margin-bottom: 25px; min-height: 500px; background: #f5f5f5; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
+                                <img id="random-photo-default" src="https://lh3.googleusercontent.com/pw/AP1GczMiBdmDnNworf3YqSyzPgqLc4u10qaD_Ybv09c4SPkKl3hZberkDPgLbpY2jnOwQmUXpdeiVimBJbO0NsUVtWBs7DyHgqCF-8RJAVgvnTJu6rBhQrp8955ng8XFCTuKeonhE4jyAPShOgg5N1jpS9iZTg=w585-h780-s-no?authuser=0" alt="Bits & Pieces" style="width: 100%; height: auto; max-height: 600px; object-fit: contain; opacity: 0.35;">
+                                <div id="random-photo-placeholder" style="position: absolute; color: #999; font-size: 16px;">
                                     <i class="fa fa-image" style="font-size: 48px; display: block; margin-bottom: 10px;"></i>
                                     <p data-translate="memories.unlockPipita">Click below to unlock puppy Pipita</p>
+                                    <p style="margin-top: 14px; margin-bottom: 8px;" data-translate="memories.orFollowMeOn">or follow me on</p>
+                                    <a href="https://www.instagram.com/pipita.amor/" target="_blank" rel="noopener noreferrer" class="instagram-pipita-btn" style="display: inline-flex; align-items: center; gap: 8px; color: #E1306C; text-decoration: none; font-weight: 600; padding: 8px 16px; border-radius: 8px; background: rgba(225, 48, 108, 0.12); border: 1px solid rgba(225, 48, 108, 0.4); transition: background 0.2s, transform 0.2s;">
+                                        <i class="fa fa-instagram" style="font-size: 22px;"></i> Instagram
+                                    </a>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
@@ -1237,6 +1252,7 @@
                 bitsPieces: "Bits & Pieces",
                 weddingGallery: "Wedding Gallery",
                 unlockPipita: "Click below to unlock puppy Pipita",
+                orFollowMeOn: "or follow me on",
                 showRandom: "Show Random Cuttie",
                 galleryComing: "Gallery coming after the wedding...",
                 watchVideo: "Watch Wedding Video",
@@ -1278,7 +1294,8 @@
             memories: {
                 bitsPieces: "Kleine Momente",
                 weddingGallery: "Hochzeitsgalerie",
-                unlockPipita: "Klicken Sie unten, um Welpe Pipita freizuschalten",
+                unlockPipita: "Klicken Sie unten, um Welpin Pipita freizuschalten",
+                orFollowMeOn: "oder folge mir auf",
                 showRandom: "Zufälliges Süßes zeigen",
                 galleryComing: "Galerie kommt nach der Hochzeit...",
                 watchVideo: "Hochzeitsvideo ansehen",
@@ -1320,7 +1337,8 @@
             memories: {
                 bitsPieces: "Momentos especiales",
                 weddingGallery: "Galería de boda",
-                unlockPipita: "Haz clic abajo para desbloquear al cachorro Pipita",
+                unlockPipita: "Haz clic abajo para desbloquear a la cachorra Pipita",
+                orFollowMeOn: "o sígueme en",
                 showRandom: "Mostrar aleatorio adorable",
                 galleryComing: "Galería después de la boda...",
                 watchVideo: "Ver video de boda",
@@ -1363,6 +1381,7 @@
                 bitsPieces: "点滴瞬间",
                 weddingGallery: "婚礼相册",
                 unlockPipita: "点击下方解锁小狗 Pipita",
+                orFollowMeOn: "或在以下关注我",
                 showRandom: "显示随机可爱照片",
                 galleryComing: "相册将在婚礼后发布...",
                 watchVideo: "观看婚礼视频",
