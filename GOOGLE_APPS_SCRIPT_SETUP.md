@@ -13,12 +13,14 @@ This guide will help you set up Google Sheets and Google Apps Script to collect 
    - **C1**: `Phone`
    - **D1**: `Partner Name` (text - name of partner if bringing one)
    - **E1**: `Kids` (number of kids)
-   - **F1**: `Shuttle Bus` (Yes/No)
-   - **G1**: `Food Requirements` (optional)
-   - **H1**: `Accommodation` (optional - Barcelona city / Near venue / Not booked)
-   - **I1**: `Accommodation Details` (optional - hotel name)
-   - **J1**: `Interested in Arranged Hotel` (optional - Yes/No, appears when "Not booked" is selected)
-   - **K1**: `Other Requirements` (optional)
+   - **F1**: `Menu Choice` (Fish / Pork - main course for guest)
+   - **G1**: `Partner Menu Choice` (Fish / Pork / N/A - main course for partner)
+   - **H1**: `Shuttle Bus` (Yes/No)
+   - **I1**: `Food Requirements` (optional)
+   - **J1**: `Accommodation` (optional - Barcelona city / Near venue / Not booked)
+   - **K1**: `Accommodation Details` (optional - hotel name)
+   - **L1**: `Interested in Arranged Hotel` (optional - Yes/No, appears when "Not booked" is selected)
+   - **M1**: `Other Requirements` (optional)
    - *(Invitation code is validated but not stored in the sheet by default; you can add a column and append it if you wish.)*
 5. Format Row 1 as **bold** (optional, but recommended)
 6. **Save the sheet** - remember the name for later
@@ -90,6 +92,8 @@ function doPost(e) {
     var phone = params.phone || '';
     var partnerName = params.partner_name || '';
     var kids = params.num_of_kids ? parseInt(params.num_of_kids) : 0;
+    var menuChoice = params.menu_choice || '';
+    var partnerMenuChoice = params.partner_menu_choice || '';
     var shuttleBus = params.shuttle_bus || 'No';
     var foodRequirements = params.food_requirements || '';
     var accommodation = params.accommodation || '';
@@ -106,6 +110,8 @@ function doPost(e) {
     Logger.log('  phone: ' + phone);
     Logger.log('  partnerName: ' + partnerName);
     Logger.log('  kids: ' + kids);
+    Logger.log('  menuChoice: ' + menuChoice);
+    Logger.log('  partnerMenuChoice: ' + partnerMenuChoice);
     Logger.log('  shuttleBus: ' + shuttleBus);
     Logger.log('  foodRequirements: ' + foodRequirements);
     Logger.log('  accommodation: ' + accommodation);
@@ -113,8 +119,8 @@ function doPost(e) {
     Logger.log('  interestedArrangedHotel: ' + interestedArrangedHotel);
     Logger.log('  otherComments: ' + otherComments);
     
-    // Add the data to the sheet in the correct order: Timestamp, Name, Phone, Partner Name, Kids, Shuttle Bus, Food Requirements, Accommodation, Accommodation Details, Interested in Arranged Hotel, Other Requirements
-    sheet.appendRow([timestamp, name, phone, partnerName, kids, shuttleBus, foodRequirements, accommodation, accommodationDetails, interestedArrangedHotel, otherComments]);
+    // Add the data to the sheet in the correct order: Timestamp, Name, Phone, Partner Name, Kids, Menu Choice, Partner Menu Choice, Shuttle Bus, Food Requirements, Accommodation, Accommodation Details, Interested in Arranged Hotel, Other Requirements
+    sheet.appendRow([timestamp, name, phone, partnerName, kids, menuChoice, partnerMenuChoice, shuttleBus, foodRequirements, accommodation, accommodationDetails, interestedArrangedHotel, otherComments]);
     
     // Send email notification every time someone RSVPs
     // IMPORTANT: Replace "your-email@gmail.com" with your actual email address
@@ -125,6 +131,8 @@ function doPost(e) {
                "Phone: " + phone + "\n" +
                "Partner Name: " + (partnerName || "None") + "\n" +
                "Kids: " + kids + "\n" +
+               "Menu Choice: " + (menuChoice || "None") + "\n" +
+               "Partner Menu Choice: " + (partnerMenuChoice || "None") + "\n" +
                "Shuttle Bus: " + shuttleBus + "\n" +
                "Food Requirements: " + (foodRequirements || "None") + "\n" +
                "Accommodation: " + (accommodation || "None") + "\n" +
@@ -203,14 +211,19 @@ function doGet(e) {
 
 If you've already created your Google Sheet and Apps Script, you'll need to **update them** to include the new fields:
 
-1. **Add new columns to your Google Sheet**:
-   - Add column **H1**: `Accommodation`
-   - Add column **I1**: `Accommodation Details`
-   - Add column **J1**: `Interested in Arranged Hotel`
-   - Add column **K1**: `Other Requirements`
+1. **Add new columns to your Google Sheet** (if missing):
+   - **F1**: `Menu Choice`
+   - **G1**: `Partner Menu Choice`
+   - **H1**: `Shuttle Bus`
+   - **I1**: `Food Requirements`
+   - **J1**: `Accommodation`
+   - **K1**: `Accommodation Details`
+   - **L1**: `Interested in Arranged Hotel`
+   - **M1**: `Other Requirements`
+   - *(If you already have columns but no menu columns, insert two columns after Kids for Menu Choice and Partner Menu Choice, and shift Shuttle Bus and everything after to the right.)*
 
 2. **Update your Google Apps Script**:
-   - Copy the updated script code from Step 2 (it now includes accommodation and other_comments fields)
+   - Copy the updated script code from Step 2 (it includes menu_choice, partner_menu_choice, accommodation, and other_comments)
    - Replace your existing script with the new code
    - Click **Save**
    - Click **Deploy** → **Manage deployments** → **Edit** → **Deploy** (to update the live version)
@@ -310,7 +323,7 @@ var body = "You have received a new RSVP!\n\n" +
 - **Try redeploying**: Edit your deployment and click Deploy again
 
 ### Data not appearing in sheet
-- Check that your column headers match: Timestamp, Name, Phone, Partner Name, Kids, Shuttle Bus, Food Requirements, Accommodation, Accommodation Details, Interested in Arranged Hotel, Other Requirements
+- Check that your column headers match: Timestamp, Name, Phone, Partner Name, Kids, Menu Choice, Partner Menu Choice, Shuttle Bus, Food Requirements, Accommodation, Accommodation Details, Interested in Arranged Hotel, Other Requirements
 - Make sure the sheet is the active one when you created the script
 - Check the Apps Script execution log: **View** → **Executions**
 - If you see logs but data is wrong, check the log output to see what values were received

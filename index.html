@@ -301,7 +301,8 @@
         /* Dark Mode for Popup Menus */
         html.dark-mode .food-requirements-menu,
         html.dark-mode .partner-info-menu,
-        html.dark-mode .accommodation-info-menu {
+        html.dark-mode .accommodation-info-menu,
+        html.dark-mode .menu-info-menu {
             background: #1a1a1a !important;
             border-color: #d4af37 !important;
             color: #ffffff !important;
@@ -323,8 +324,21 @@
         }
         
         html.dark-mode .food-requirements-menu div[style*="color: #372428"],
-        html.dark-mode .partner-info-content {
+        html.dark-mode .partner-info-content,
+        html.dark-mode .menu-info-menu div {
             color: #ffffff !important;
+        }
+        
+        /* View full menu popup - dark mode */
+        html.dark-mode .menu-info-menu {
+            background: #1a1a1a !important;
+            border-color: #d4af37 !important;
+        }
+        html.dark-mode .menu-info-menu a {
+            color: #d4af37 !important;
+        }
+        html.dark-mode .menu-info-menu a:hover {
+            color: #e8ca6f !important;
         }
         
         /* More specific selector for shuttle bus box - dark gray */
@@ -1126,7 +1140,7 @@
                 display: inline-block !important;
             }
             
-            /* Make Show map button less wide on mobile (like banquet venue button) */
+            /* Make Show entrance button less wide on mobile (like banquet venue button) */
             section#map #btn-show-ceremony-map {
                 flex: 0 1 auto !important;
                 width: auto !important;
@@ -1820,11 +1834,11 @@
                     <p data-translate="events.cocktailDesc">A relaxed time to mingle and enjoy drinks in the garden</p>
                 </div>
                 <div class="wp6">
-                    <h5 data-translate="events.banquet">Banquet Dinner <span class="time">21:00 – 23:00</span></h5>
+                    <h5 data-translate="events.banquet">Banquet Dinner (indoor) <span class="time">21:00 – 23:00</span></h5>
                     <p data-translate="events.banquetDesc">An elegant evening meal to celebrate together</p>
                 </div>
                 <div class="wp3">
-                    <h5 data-translate="events.dance">Dance Party & Open Bar <span class="time">23:00 – 01:00</span></h5>
+                    <h5 data-translate="events.dance">Dance Party & Open Bar (indoor) <span class="time">23:00 – 01:00</span></h5>
                     <p data-translate="events.danceDesc">Let's dance the night away! The bar is open and the music is ready</p>
                 </div>
             </div>
@@ -1871,8 +1885,7 @@
                     
                     <p data-translate="dressCode.goodToKnow">
                         <strong>Good to know</strong><br>
-                        The ceremony and dinner will be outdoors by the sea, so it can get a little breezy in the evening—bring a light jacket or wrap just in case.<br>
-                        The party will be indoors, so once the dancing starts, you can drop the jacket and have fun 💃🕺
+                        Nights can be cool in May—bring a light jacket.
                     </p>
                 </div>
             </div><!-- /.modal-content -->
@@ -1889,7 +1902,18 @@
                     <div style="text-align: left; padding: 0 15px 10px 15px;">
                         <p style="margin-bottom: 6px; line-height: 1.4;" data-translate="menu.appetizer">
                             <strong>Appetizer</strong><br>
-                            Mediterranean tapas
+                            Artisan flatbread with escalivada (Catalan roasted vegetables) and fresh cheese mousse<br>
+                            Tapa of Manchego cheese<br>
+                            Octopus medallion with sherry vinaigrette<br>
+                            Citrus pickled mussel<br>
+                            Seafood and pineapple in vermouth sauce<br>
+                            Zucchini cannelloni with candied mushrooms<br>
+                            Poultry croquettes<br>
+                            Cod fritters<br>
+                            Andalusian-style fried squid<br>
+                            Skewer prawn in romesco<br>
+                            Cannelloni of changurro with mousseline of its coral<br>
+                            Sticky rice in the "Art" style of our fishermen
                         </p>
                         
                         <p style="margin-bottom: 5px; line-height: 1.4;" data-translate="menu.mainCourse">
@@ -1908,10 +1932,6 @@
                         <p style="margin-bottom: 5px; line-height: 1.4;" data-translate="menu.mountain">
                             <strong style="color: #8B4513;"><i class="fa fa-tree"></i> THE MOUNTAIN...</strong><br>
                             Mellow Iberian Pork at the "Cabernet Sauvignon" with creamy truffled potato, raisins and pine nuts.
-                        </p>
-                        
-                        <p style="margin-bottom: 6px; font-size: 0.8em; color: #666; line-height: 1.3;" data-translate="menu.note">
-                            * Possibility of changing it for braised veal
                         </p>
                         
                         <p style="margin-bottom: 0; line-height: 1.4;" data-translate="menu.dessert">
@@ -1981,18 +2001,15 @@
                 </p>
                 <ul style="text-align: justify; margin-bottom: 30px;">
                     <li style="margin-bottom: 10px; text-align: justify;" data-translate="venue.byTrain">
-                        <strong>By Train:</strong> Take the R1 train (Rodalies de Catalunya) from Barcelona Sants or Plaça Catalunya to Blanes station (approximately 1.5 hours). 
-                        Trains run frequently throughout the day. Tickets can be purchased directly at the station. 
-                        From Blanes station, it's a 15-minute walk or short taxi ride to the venue.
+                        <strong>By Train:</strong> Take the R1 train (Rodalies de Catalunya) from Barcelona Sants or Plaça Catalunya to Blanes station (approximately 1.5 hours). Trains run frequently throughout the day. Tickets can be purchased directly at the station. From Blanes station, it's a short 15 min taxi ride to the venue.
                         <br><a href="https://rodalies.gencat.cat/en/horaris/" target="_blank" data-translate="venue.checkTrain">Check train schedules →</a>
                     </li>
                     <li style="margin-bottom: 10px; text-align: justify;" data-translate="venue.byCar">
-                        <strong>By Car:</strong> It is 1 hour drive from Barcelona to the venue. Take the AP-7 or C-32 highway towards Girona, then exit at Blanes. 
-                        Parking is available near the venue.
+                        <strong>By Car:</strong> It is 1 hour drive from Barcelona to the venue. Take the AP-7 or C-32 highway towards Girona, then exit at Blanes. Parking is free near the entrance; the blue zone area is also free.
                         <br><a href="https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden" target="_blank" data-translate="venue.getDirections">Get directions →</a>
                     </li>
-    
                 </ul>
+                <p style="margin-top: 15px; color: #555;" data-translate="venue.entranceNote"><strong>Please enter through the event-exclusive entrance shown on the map below. Do not use the main entrance.</strong></p>
             </div>
             <div class="col-md-5">
                 <div style="background: #f5f5f5; padding: 20px; border-radius: 5px; height: 100%;">
@@ -2000,11 +2017,14 @@
                     <p style="margin-bottom: 10px;" data-translate="venue.shuttleDesc1">
                         We will provide a shuttle bus <strong>from Marimurtra Botanical Garden (ceremony venue) to the banquet venue</strong> after the ceremony.
                     </p>
-                    <p data-translate="venue.shuttleDesc2">
-                        There will be an extra shuttle bus to transfer guests <strong>from the banquet venue back to Barcelona</strong> at the end of the night. More info will be updated here later.
+                    <p style="margin-bottom: 10px;" data-translate="venue.shuttleDesc2">
+                        There will be an extra shuttle bus to transfer guests <strong>from the banquet venue back to Barcelona</strong> at the end of the night. The metro service in Barcelona will function 24 hours that day.
                     </p>
-                    <p data-translate="venue.shuttleDesc3" style="margin-top: 15px; font-size: 0.95em; color: #666;">
-                        The metro in Barcelona functions 24 hours.
+                    <p style="margin-bottom: 10px;" data-translate="venue.shuttleDesc3">
+                        We are arranging hotel options near the venue. Please indicate your interest in the RSVP.
+                    </p>
+                    <p data-translate="venue.shuttleDesc4">
+                        Extra transportation after the wedding may be provided if necessary.
                     </p>
                 </div>
             </div>
@@ -2025,7 +2045,7 @@
                             <h5 data-translate="venue.ceremonyVenue">Ceremony Venue</h5>
                             <p>Marimurtra Botanical Garden<br>Passeig de Carles Faust, 9, 17300 Blanes, Girona, Spain</p>
                             <div style="margin-top: 0px; margin-bottom: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-                                <a class="btn btn-accent btn-small" id="btn-show-ceremony-map" style="font-size: 11px; padding: 6px 10px;"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span data-translate="venue.showMap">Show map</span></a>
+                                <a class="btn btn-accent btn-small" id="btn-show-ceremony-map" style="font-size: 11px; padding: 6px 10px;"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span data-translate="venue.showEntrance">Show entrance</span></a>
                                 <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#venue-map-modal" style="display: none; font-size: 11px; padding: 6px 10px;" id="btn-venue-map-mobile"><i class="fa fa-image"></i>&nbsp;&nbsp;<span data-translate="venue.venueMap">Venue map</span></a>
                             </div>
                         </div>
@@ -2128,6 +2148,37 @@
                                     <option value="4">4</option>
                                 </select>
                                 <i class="fa fa-chevron-down" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #999; z-index: 1;"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6" style="position: relative;">
+                            <div class="form-input-group" style="position: relative;">
+                                <i class="fa fa-cutlery"></i>
+                                <select name="menu_choice" class="" required style="padding: 0; padding-left: 68px; padding-right: 50px; margin: 0; width: 100%; height: 55px; border: none; border-radius: 6px; background: transparent; -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; line-height: 55px; box-sizing: border-box;">
+                                    <option value="" data-translate="rsvp.menuChoice">Main course (you)</option>
+                                    <option value="fish" data-translate="rsvp.fish">Fish</option>
+                                    <option value="pork" data-translate="rsvp.pork">Pork</option>
+                                </select>
+                                <i class="fa fa-chevron-down" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #999;"></i>
+                                <i class="fa fa-info-circle menu-info-icon" style="position: absolute; right: 42px; top: 50%; transform: translateY(-50%); color: #d4af37; cursor: pointer; font-size: 18px; z-index: 10;" title="Click for menu"></i>
+                            </div>
+                            <div class="menu-info-menu" style="display: none; position: absolute; background: #fff; border: 2px solid #d4af37; border-radius: 8px; padding: 20px; margin-top: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 1000; max-width: 350px; right: 0; top: 100%;">
+                                <div style="font-size: 14px; color: #372428; line-height: 1.6;">
+                                    <a href="#" data-toggle="modal" data-target="#menu-modal" onclick="$('.menu-info-menu').hide();" style="color: #d4af37; text-decoration: underline; cursor: pointer;" data-translate="rsvp.viewMenu">View full menu</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group" style="position: relative;">
+                                <i class="fa fa-cutlery"></i>
+                                <select name="partner_menu_choice" class="" style="padding: 0; padding-left: 68px; padding-right: 30px; margin: 0; width: 100%; height: 55px; border: none; border-radius: 6px; background: transparent; -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; line-height: 55px; box-sizing: border-box;">
+                                    <option value="" data-translate="rsvp.menuChoicePartner">Main course (partner)</option>
+                                    <option value="na" data-translate="rsvp.na">N/A</option>
+                                    <option value="fish" data-translate="rsvp.fish">Fish</option>
+                                    <option value="pork" data-translate="rsvp.pork">Pork</option>
+                                </select>
+                                <i class="fa fa-chevron-down" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #999;"></i>
                             </div>
                         </div>
                     </div>
@@ -2477,9 +2528,9 @@
                 transferDesc: "We'll make our way to the reception venue",
                 cocktail: "Garden Cocktail Hour <span class=\"time\">19:30 – 21:00</span>",
                 cocktailDesc: "A relaxed time to mingle and enjoy drinks in the garden",
-                banquet: "Banquet Dinner <span class=\"time\">21:00 – 23:00</span>",
+                banquet: "Banquet Dinner (indoor) <span class=\"time\">21:00 – 23:00</span>",
                 banquetDesc: "An elegant evening meal to celebrate together",
-                dance: "Dance Party & Open Bar <span class=\"time\">23:00 – 01:00</span>",
+                dance: "Dance Party & Open Bar (indoor) <span class=\"time\">23:00 – 01:00</span>",
                 danceDesc: "Let's dance the night away! The bar is open and the music is ready",
                 dressCode: "Dress code",
                 menu: "Menu"
@@ -2503,17 +2554,20 @@
                 gettingThere: "Getting to the Ceremony Venue from Barcelona",
                 shuttleTitle: "🚌 Shuttle Bus Service",
                 shuttleDesc1: "We will provide a shuttle bus <strong>from Marimurtra Botanical Garden (ceremony venue) to the banquet venue</strong> after the ceremony.",
-                shuttleDesc2: "There will be an extra shuttle bus to transfer guests <strong>from the banquet venue back to Barcelona</strong> at the end of the night. More info will be updated here later.",
-                shuttleDesc3: "The metro in Barcelona functions 24 hours.",
+                shuttleDesc2: "There will be an extra shuttle bus to transfer guests <strong>from the banquet venue back to Barcelona</strong> at the end of the night. The metro service in Barcelona will function 24 hours that day.",
+                shuttleDesc3: "We are arranging hotel options near the venue. Please indicate your interest in the RSVP.",
+                shuttleDesc4: "Extra transportation after the wedding may be provided if necessary.",
                 viewLarger: "View larger",
                 showInfo: "Show info",
                 ceremonyVenue: "Ceremony Venue",
                 banquetVenue: "Banquet Venue",
                 showMap: "Show map",
+                showEntrance: "Show entrance",
                 venueMap: "Venue map",
-                byTrain: "<strong>By Train:</strong> Take the R1 train (Rodalies de Catalunya) from Barcelona Sants or Plaça Catalunya to Blanes station (approximately 1.5 hours). Trains run frequently throughout the day. Tickets can be purchased directly at the station. From Blanes station, it's a 15-minute walk or short taxi ride to the venue.<br><a href=\"https://rodalies.gencat.cat/en/horaris/\" target=\"_blank\">Check train schedules →</a>",
+                byTrain: "<strong>By Train:</strong> Take the R1 train (Rodalies de Catalunya) from Barcelona Sants or Plaça Catalunya to Blanes station (approximately 1.5 hours). Trains run frequently throughout the day. Tickets can be purchased directly at the station. From Blanes station, it's a short 15 min taxi ride to the venue.<br><a href=\"https://rodalies.gencat.cat/en/horaris/\" target=\"_blank\">Check train schedules →</a>",
                 checkTrain: "Check train schedules →",
-                byCar: "<strong>By Car:</strong> It is 1 hour drive from Barcelona to the venue. Take the AP-7 or C-32 highway towards Girona, then exit at Blanes. Parking is available near the venue.<br><a href=\"https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden\" target=\"_blank\">Get directions →</a>",
+                byCar: "<strong>By Car:</strong> It is 1 hour drive from Barcelona to the venue. Take the AP-7 or C-32 highway towards Girona, then exit at Blanes. Parking is free near the entrance; the blue zone area is also free.<br><a href=\"https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden\" target=\"_blank\">Get directions →</a>",
+                entranceNote: "<strong>Please enter through the event-exclusive entrance shown on the map below. Do not use the main entrance.</strong>",
                 getDirections: "Get directions →"
             },
             rsvp: {
@@ -2538,6 +2592,11 @@
                 foodOptionAllergies: "⚠️ Allergies - Please specify in the field",
                 foodOptionOthers: "📝 Others - Please specify in the field",
                 foodNote: "Click an option above or type your specific requirements in the field. You can check the <a href=\"#\" data-toggle=\"modal\" data-target=\"#menu-modal\" onclick=\"$('.food-requirements-menu').hide();\" style=\"color: #d4af37; text-decoration: underline; cursor: pointer;\">menu</a> for details.",
+                menuChoice: "Main course (you)",
+                menuChoicePartner: "Main course (partner)",
+                fish: "Fish",
+                pork: "Pork",
+                viewMenu: "View full menu",
                 accommodation: "Accommodation? (Optional)",
                 accommodationBarcelona: "Barcelona city",
                 accommodationNearVenue: "Near the venue",
@@ -2564,16 +2623,15 @@
                 intro: "We want you to feel comfortable, happy, and yourself—whatever that means for you. There's no strict dress code, just come as you are and ready to celebrate with us ❤️",
                 ladies: "<strong>Ladies</strong><br>Please kindly avoid white, china red (the bride's color), and black.<br>If you'd like to match the <a href=\"img/colour.png\" target=\"_blank\" style=\"color: #d4af37; text-decoration: underline;\">wedding theme colour</a> (and look great in photos), we're going for <strong>warm, neutral pastel tones</strong>.",
                 gentlemen: "<strong>Gentlemen</strong><br>Smart casual to semi-formal—anything you feel good and comfortable wearing is perfect.",
-                goodToKnow: "<strong>Good to know</strong><br>The ceremony and dinner will be outdoors by the sea, so it can get a little breezy in the evening—bring a light jacket or wrap just in case.<br>The party will be indoors, so once the dancing starts, you can drop the jacket and have fun 💃🕺"
+                goodToKnow: "<strong>Good to know</strong><br>Nights can be cool in May—bring a light jacket."
             },
             menu: {
                 title: "Menu",
-                appetizer: "<strong>Appetizer</strong><br>Mediterranean tapas",
+                appetizer: "<strong>Appetizer</strong><br>Artisan flatbread with escalivada (Catalan roasted vegetables) and fresh cheese mousse<br>Tapa of Manchego cheese<br>Octopus medallion with sherry vinaigrette<br>Citrus pickled mussel<br>Seafood and pineapple in vermouth sauce<br>Zucchini cannelloni with candied mushrooms<br>Poultry croquettes<br>Cod fritters<br>Andalusian-style fried squid<br>Skewer prawn in romesco<br>Cannelloni of changurro with mousseline of its coral<br>Sticky rice in the \"Art\" style of our fishermen",
                 mainCourse: "<strong>Main Course</strong> (Choose one)",
                 sea: "<strong style=\"color: #0066cc;\"><i class=\"fa fa-tint\"></i> THE SEA...</strong><br>Hake supremes with crunchy seafood mussoline.",
                 or: "<strong>- OR -</strong>",
                 mountain: "<strong style=\"color: #8B4513;\"><i class=\"fa fa-tree\"></i> THE MOUNTAIN...</strong><br>Mellow Iberian Pork at the \"Cabernet Sauvignon\" with creamy truffled potato, raisins and pine nuts.",
-                note: "* Possibility of changing it for braised veal",
                 dessert: "<strong>DESSERT</strong><br>Mousse of nougat of almond with chocolate to the cup"
             },
             city: {
@@ -2616,9 +2674,9 @@
                 transferDesc: "Wir machen uns auf den Weg zum Empfangsort",
                 cocktail: "Garten-Cocktail-Stunde <span class=\"time\">19:30 – 21:00</span>",
                 cocktailDesc: "Eine entspannte Zeit zum Plaudern und Genießen von Getränken im Garten",
-                banquet: "Bankettessen <span class=\"time\">21:00 – 23:00</span>",
+                banquet: "Bankettessen (drinnen) <span class=\"time\">21:00 – 23:00</span>",
                 banquetDesc: "Ein elegantes Abendessen zum gemeinsamen Feiern",
-                dance: "Tanzparty & Open Bar <span class=\"time\">23:00 – 01:00</span>",
+                dance: "Tanzparty & Open Bar (drinnen) <span class=\"time\">23:00 – 01:00</span>",
                 danceDesc: "Lassen Sie uns die Nacht durchtanzen! Die Bar ist geöffnet und die Musik ist bereit",
                 dressCode: "Dresscode",
                 menu: "Menü"
@@ -2642,17 +2700,20 @@
                 gettingThere: "Anreise zum Zeremonienort von Barcelona",
                 shuttleTitle: "🚌 Shuttle-Bus-Service",
                 shuttleDesc1: "Wir stellen einen Shuttle-Bus <strong>vom Botanischen Garten Marimurtra (Zeremonienort) zum Bankettort</strong> nach der Zeremonie zur Verfügung.",
-                shuttleDesc2: "Es wird einen zusätzlichen Shuttle-Bus geben, um die Gäste <strong>vom Bankettort zurück nach Barcelona</strong> am Ende der Nacht zu transportieren. Weitere Informationen werden später hier aktualisiert.",
-                shuttleDesc3: "Die Metro in Barcelona fährt 24 Stunden.",
+                shuttleDesc2: "Es wird einen zusätzlichen Shuttle-Bus geben, um die Gäste <strong>vom Bankettort zurück nach Barcelona</strong> am Ende der Nacht zu transportieren. Der Metro-Service in Barcelona fährt an diesem Tag 24 Stunden.",
+                shuttleDesc3: "Wir organisieren Hoteloptionen in der Nähe des Veranstaltungsorts. Bitte geben Sie Ihr Interesse in der RSVP an.",
+                shuttleDesc4: "Bei Bedarf kann nach der Hochzeit zusätzlicher Transport bereitgestellt werden.",
                 viewLarger: "Größer anzeigen",
                 showInfo: "Info anzeigen",
                 ceremonyVenue: "Zeremonienort",
                 banquetVenue: "Bankettort",
                 showMap: "Karte anzeigen",
+                showEntrance: "Eingang anzeigen",
                 venueMap: "Ortskarte",
-                byTrain: "<strong>Mit dem Zug:</strong> Nehmen Sie den R1-Zug (Rodalies de Catalunya) vom Barcelona Sants oder Plaça Catalunya zum Bahnhof Blanes (ca. 1,5 Stunden). Die Züge verkehren tagsüber häufig. Tickets können direkt am Bahnhof gekauft werden. Vom Bahnhof Blanes sind es 15 Minuten zu Fuß oder eine kurze Taxifahrt zum Veranstaltungsort.<br><a href=\"https://rodalies.gencat.cat/en/horaris/\" target=\"_blank\">Fahrpläne prüfen →</a>",
+                byTrain: "<strong>Mit dem Zug:</strong> Nehmen Sie den R1-Zug (Rodalies de Catalunya) vom Barcelona Sants oder Plaça Catalunya zum Bahnhof Blanes (ca. 1,5 Stunden). Die Züge verkehren tagsüber häufig. Tickets können direkt am Bahnhof gekauft werden. Vom Bahnhof Blanes sind es mit dem Taxi etwa 15 Minuten zum Veranstaltungsort.<br><a href=\"https://rodalies.gencat.cat/en/horaris/\" target=\"_blank\">Fahrpläne prüfen →</a>",
                 checkTrain: "Fahrpläne prüfen →",
-                byCar: "<strong>Mit dem Auto:</strong> Es sind 1 Stunde Fahrt von Barcelona zum Veranstaltungsort. Nehmen Sie die AP-7 oder C-32 Autobahn Richtung Girona, dann Ausfahrt Blanes. Parkplätze sind in der Nähe des Veranstaltungsorts verfügbar.<br><a href=\"https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden\" target=\"_blank\">Wegbeschreibung abrufen →</a>",
+                byCar: "<strong>Mit dem Auto:</strong> Es sind 1 Stunde Fahrt von Barcelona zum Veranstaltungsort. Nehmen Sie die AP-7 oder C-32 Autobahn Richtung Girona, dann Ausfahrt Blanes. Parken ist in der Nähe des Eingangs kostenlos; die blaue Zone ist ebenfalls kostenlos.<br><a href=\"https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden\" target=\"_blank\">Wegbeschreibung abrufen →</a>",
+                entranceNote: "<strong>Bitte betreten Sie den Veranstaltungsort über den nur für die Veranstaltung vorgesehenen Eingang, der auf der Karte unten eingezeichnet ist. Benutzen Sie nicht den Haupteingang.</strong>",
                 getDirections: "Wegbeschreibung abrufen →"
             },
             rsvp: {
@@ -2677,6 +2738,11 @@
                 foodOptionAllergies: "⚠️ Allergien - Bitte im Feld angeben",
                 foodOptionOthers: "📝 Andere - Bitte im Feld angeben",
                 foodNote: "Klicken Sie auf eine Option oben oder geben Sie Ihre spezifischen Anforderungen in das Feld ein. Sie können das <a href=\"#\" data-toggle=\"modal\" data-target=\"#menu-modal\" onclick=\"$('.food-requirements-menu').hide();\" style=\"color: #d4af37; text-decoration: underline; cursor: pointer;\">Menü</a> für Details überprüfen.",
+                menuChoice: "Hauptgericht (Sie)",
+                menuChoicePartner: "Hauptgericht (Partner)",
+                fish: "Fisch",
+                pork: "Schwein",
+                viewMenu: "Vollständiges Menü anzeigen",
                 accommodation: "Unterkunft? (Optional)",
                 accommodationBarcelona: "Barcelona Stadt",
                 accommodationNearVenue: "In der Nähe des Veranstaltungsorts",
@@ -2703,16 +2769,15 @@
                 intro: "Wir möchten, dass Sie sich wohl, glücklich und wie Sie selbst fühlen—was auch immer das für Sie bedeutet. Es gibt keinen strengen Dresscode, kommen Sie einfach wie Sie sind und bereit, mit uns zu feiern ❤️",
                 ladies: "<strong>Damen</strong><br>Bitte vermeiden Sie freundlicherweise Weiß, China-Rot (die Farbe der Braut) und Schwarz.<br>Wenn Sie zur <a href=\"img/colour.png\" target=\"_blank\" style=\"color: #d4af37; text-decoration: underline;\">Hochzeitsfarben</a> passen möchten (und auf Fotos großartig aussehen), gehen wir für <strong>warme, neutrale Pastelltöne</strong>.",
                 gentlemen: "<strong>Herren</strong><br>Smart Casual bis Semi-Formal—alles, womit Sie sich gut und wohl fühlen, ist perfekt.",
-                goodToKnow: "<strong>Gut zu wissen</strong><br>Die Zeremonie und das Abendessen finden im Freien am Meer statt, daher kann es abends etwas windig werden—bringen Sie eine leichte Jacke oder ein Tuch mit, nur für den Fall.<br>Die Party wird drinnen stattfinden, sobald das Tanzen beginnt, können Sie die Jacke ablegen und Spaß haben 💃🕺"
+                goodToKnow: "<strong>Gut zu wissen</strong><br>Im Mai kann es nachts kühl werden—pack eine leichte Jacke ein."
             },
             menu: {
                 title: "Menü",
-                appetizer: "<strong>Vorspeise</strong><br>Mediterrane Tapas",
+                appetizer: "<strong>Vorspeise</strong><br>Handwerklich hergestelltes Fladenbrot mit Escalivada (katalanisches Ofengemüse) und frischer Käse-Mousse<br>Tapa von Manchego-Käse<br>Oktopus-Medaille mit Sherry-Vinaigrette<br>Zitrus-marinierte Miesmuschel<br>Meeresfrüchte und Ananas in Wermutsauce<br>Zucchini-Cannelloni mit kandierten Pilzen<br>Geflügel-Kroketten<br>Kabeljau-Frikadellen<br>Kalmarringe nach andalusischer Art<br>Garnelen-Spieß in Romesco<br>Cannelloni vom Changurro mit Mousseline aus seinem Korallensaft<br>Klebreis nach „Art“ unserer Fischer",
                 mainCourse: "<strong>Hauptgericht</strong> (Wählen Sie eines)",
                 sea: "<strong style=\"color: #0066cc;\"><i class=\"fa fa-tint\"></i> DAS MEER...</strong><br>Seehecht-Supremes mit knuspriger Meeresfrüchte-Mousseline.",
                 or: "<strong>- ODER -</strong>",
                 mountain: "<strong style=\"color: #8B4513;\"><i class=\"fa fa-tree\"></i> DER BERG...</strong><br>Milder iberischer Schweinebraten am \"Cabernet Sauvignon\" mit cremiger Trüffelkartoffel, Rosinen und Pinienkernen.",
-                note: "* Möglichkeit, es gegen geschmortes Kalbfleisch zu ändern",
                 dessert: "<strong>NACHTISCH</strong><br>Mousse aus Mandelnougat mit Schokolade im Becher"
             },
             city: {
@@ -2755,9 +2820,9 @@
                 transferDesc: "Nos dirigiremos al lugar de la recepción.",
                 cocktail: "Cóctel en el jardín <span class=\"time\">19:30 – 21:00</span>",
                 cocktailDesc: "Un momento relajado para socializar y disfrutar de bebidas en el jardín.",
-                banquet: "Cena de banquete <span class=\"time\">21:00 – 23:00</span>",
+                banquet: "Cena de banquete (interior) <span class=\"time\">21:00 – 23:00</span>",
                 banquetDesc: "Una elegante cena para celebrar juntos esta ocasión especial.",
-                dance: "Fiesta de baile y barra libre <span class=\"time\">23:00 – 01:00</span>",
+                dance: "Fiesta de baile y barra libre (interior) <span class=\"time\">23:00 – 01:00</span>",
                 danceDesc: "¡Bailemos toda la noche! La barra está abierta y la música está lista para disfrutar.",
                 dressCode: "Código de vestimenta",
                 menu: "Menú"
@@ -2781,17 +2846,20 @@
                 gettingThere: "Cómo llegar al lugar de la ceremonia desde Barcelona",
                 shuttleTitle: "🚌 Servicio de autobús lanzadera",
                 shuttleDesc1: "Proporcionaremos un autobús lanzadera <strong>desde el Jardín Botánico Marimurtra (lugar de la ceremonia) al lugar del banquete</strong> después de la ceremonia.",
-                shuttleDesc2: "Habrá un autobús lanzadera adicional para trasladar a los invitados <strong>desde el lugar del banquete de vuelta a Barcelona</strong> al final de la noche. Más información se actualizará aquí más tarde.",
-                shuttleDesc3: "El metro en Barcelona funciona las 24 horas.",
+                shuttleDesc2: "Habrá un autobús lanzadera adicional para trasladar a los invitados <strong>desde el lugar del banquete de vuelta a Barcelona</strong> al final de la noche. El servicio de metro en Barcelona funcionará 24 horas ese día.",
+                shuttleDesc3: "Estamos organizando opciones de hotel cerca del lugar. Por favor indique su interés en la RSVP.",
+                shuttleDesc4: "Se puede proporcionar transporte adicional después de la boda si es necesario.",
                 viewLarger: "Ver más grande",
                 showInfo: "Mostrar información",
                 ceremonyVenue: "Lugar de la ceremonia",
                 banquetVenue: "Lugar del banquete",
                 showMap: "Mostrar mapa",
+                showEntrance: "Mostrar entrada",
                 venueMap: "Mapa del lugar",
-                byTrain: "<strong>En tren:</strong> Toma el tren R1 (Rodalies de Catalunya) desde Barcelona Sants o Plaça Catalunya hasta la estación de Blanes (aproximadamente 1.5 horas). Los trenes circulan con frecuencia durante el día. Los billetes se pueden comprar directamente en la estación. Desde la estación de Blanes, son 15 minutos a pie o un corto viaje en taxi hasta el lugar.<br><a href=\"https://rodalies.gencat.cat/en/horaris/\" target=\"_blank\">Consultar horarios de trenes →</a>",
+                byTrain: "<strong>En tren:</strong> Toma el tren R1 (Rodalies de Catalunya) desde Barcelona Sants o Plaça Catalunya hasta la estación de Blanes (aproximadamente 1.5 horas). Los trenes circulan con frecuencia durante el día. Los billetes se pueden comprar directamente en la estación. Desde la estación de Blanes, son unos 15 min en taxi hasta el lugar.<br><a href=\"https://rodalies.gencat.cat/en/horaris/\" target=\"_blank\">Consultar horarios de trenes →</a>",
                 checkTrain: "Consultar horarios de trenes →",
-                byCar: "<strong>En coche:</strong> Es 1 hora en coche desde Barcelona hasta el lugar. Toma la autopista AP-7 o C-32 hacia Girona, luego salida en Blanes. Hay aparcamiento disponible cerca del lugar.<br><a href=\"https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden\" target=\"_blank\">Obtener indicaciones →</a>",
+                byCar: "<strong>En coche:</strong> Es 1 hora en coche desde Barcelona hasta el lugar. Toma la autopista AP-7 o C-32 hacia Girona, luego salida en Blanes. El aparcamiento es gratuito cerca de la entrada; la zona azul también es gratuita.<br><a href=\"https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden\" target=\"_blank\">Obtener indicaciones →</a>",
+                entranceNote: "<strong>Por favor, entra por la entrada exclusiva del evento indicada en el mapa de abajo. No uses la entrada principal.</strong>",
                 getDirections: "Obtener indicaciones →"
             },
             rsvp: {
@@ -2816,6 +2884,11 @@
                 foodOptionAllergies: "⚠️ Alergias - Por favor especifica en el campo",
                 foodOptionOthers: "📝 Otros - Por favor especifica en el campo",
                 foodNote: "Haz clic en una opción arriba o escribe tus requisitos específicos en el campo. Puedes consultar el <a href=\"#\" data-toggle=\"modal\" data-target=\"#menu-modal\" onclick=\"$('.food-requirements-menu').hide();\" style=\"color: #d4af37; text-decoration: underline; cursor: pointer;\">menú</a> para más detalles.",
+                menuChoice: "Plato principal (tú)",
+                menuChoicePartner: "Plato principal (acompañante)",
+                fish: "Pescado",
+                pork: "Cerdo",
+                viewMenu: "Ver menú completo",
                 accommodation: "¿Alojamiento? (Opcional)",
                 accommodationBarcelona: "Ciudad de Barcelona",
                 accommodationNearVenue: "Cerca del lugar",
@@ -2842,16 +2915,15 @@
                 intro: "Queremos que te sientas cómodo, feliz y como tú mismo—lo que sea que eso signifique para ti. No hay un código de vestimenta estricto, solo ven como eres y listo para celebrar con nosotros ❤️",
                 ladies: "<strong>Damas</strong><br>Por favor, evita amablemente el blanco, el rojo china (el color de la novia) y el negro.<br>Si quieres hacer juego con los <a href=\"img/colour.png\" target=\"_blank\" style=\"color: #d4af37; text-decoration: underline;\">colores del tema de la boda</a> (y lucir genial en las fotos), vamos por <strong>tonos pastel cálidos y neutros</strong>.",
                 gentlemen: "<strong>Caballeros</strong><br>Casual elegante a semi-formal—cualquier cosa con la que te sientas bien y cómodo es perfecto.",
-                goodToKnow: "<strong>Bueno saber</strong><br>La ceremonia y la cena serán al aire libre junto al mar, por lo que puede hacer un poco de brisa por la noche—trae una chaqueta ligera o un chal por si acaso.<br>La fiesta será en interiores, así que una vez que comience el baile, puedes dejar la chaqueta y divertirte 💃🕺"
+                goodToKnow: "<strong>Bueno saber</strong><br>En mayo las noches pueden ser frescas—trae una chaqueta ligera."
             },
             menu: {
                 title: "Menú",
-                appetizer: "<strong>Aperitivo</strong><br>Tapas mediterráneas",
+                appetizer: "<strong>Aperitivo</strong><br>Pan artesano con escalivada (verduras asadas catalanas) y mousse de queso fresco<br>Tapa de queso Manchego<br>Medallón de pulpo con vinagreta de Jerez<br>Mejillón en escabeche cítrico<br>Marisco y piña en salsa de vermut<br>Canelones de calabacín con setas confitadas<br>Croquetas de ave<br>Buñuelos de bacalao<br>Calamares a la andaluza<br>Brocheta de gambas en romesco<br>Canelones de changurro con mousseline de su coral<br>Arroz meloso al estilo \"Art\" de nuestros pescadores",
                 mainCourse: "<strong>Plato principal</strong> (Elige uno)",
                 sea: "<strong style=\"color: #0066cc;\"><i class=\"fa fa-tint\"></i> EL MAR...</strong><br>Supremas de merluza con mousseline crujiente de mariscos.",
                 or: "<strong>- O -</strong>",
                 mountain: "<strong style=\"color: #8B4513;\"><i class=\"fa fa-tree\"></i> LA MONTAÑA...</strong><br>Cerdo ibérico suave al \"Cabernet Sauvignon\" con patata trufada cremosa, pasas y piñones.",
-                note: "* Posibilidad de cambiarlo por ternera estofada",
                 dessert: "<strong>POSTRE</strong><br>Mousse de turrón de almendra con chocolate en taza"
             },
             city: {
@@ -2894,9 +2966,9 @@
                 transferDesc: "我们将前往接待场地",
                 cocktail: "花园鸡尾酒时光 <span class=\"time\">19:30 – 21:00</span>",
                 cocktailDesc: "在花园中轻松交流、享受饮品的时光",
-                banquet: "宴会晚餐 <span class=\"time\">21:00 – 23:00</span>",
+                banquet: "宴会晚餐（室内） <span class=\"time\">21:00 – 23:00</span>",
                 banquetDesc: "一起庆祝的优雅晚宴",
-                dance: "舞会派对 & 开放酒吧 <span class=\"time\">23:00 – 01:00</span>",
+                dance: "舞会派对 & 开放酒吧（室内） <span class=\"time\">23:00 – 01:00</span>",
                 danceDesc: "让我们彻夜跳舞！酒吧开放，音乐就绪",
                 dressCode: "着装要求",
                 menu: "菜单"
@@ -2920,17 +2992,20 @@
                 gettingThere: "从巴塞罗那前往仪式场地",
                 shuttleTitle: "🚌 班车服务",
                 shuttleDesc1: "我们将在仪式后提供班车<strong>从Marimurtra植物园（仪式场地）前往宴会场地</strong>。",
-                shuttleDesc2: "晚上结束时，将有一辆额外的班车<strong>从宴会场地返回巴塞罗那</strong>。更多信息将稍后更新。",
-                shuttleDesc3: "巴塞罗那的地铁24小时运行。",
+                shuttleDesc2: "晚上结束时，将有一辆额外的班车<strong>从宴会场地返回巴塞罗那</strong>。巴塞罗那地铁服务当天24小时运营。",
+                shuttleDesc3: "我们正在安排场地附近的酒店选项。请在RSVP中表明您的意向。",
+                shuttleDesc4: "如有需要，婚礼结束后可能提供额外交通。",
                 viewLarger: "查看大图",
                 showInfo: "显示信息",
                 ceremonyVenue: "仪式场地",
                 banquetVenue: "宴会场地",
                 showMap: "显示地图",
+                showEntrance: "显示入口",
                 venueMap: "场地地图",
-                byTrain: "<strong>乘火车：</strong>从巴塞罗那Sants或Plaça Catalunya乘坐R1火车（Rodalies de Catalunya）到Blanes站（约1.5小时）。火车全天频繁运行。车票可直接在车站购买。从Blanes站步行15分钟或短途出租车即可到达场地。<br><a href=\"https://rodalies.gencat.cat/en/horaris/\" target=\"_blank\">查看火车时刻表 →</a>",
+                byTrain: "<strong>乘火车：</strong>从巴塞罗那Sants或Plaça Catalunya乘坐R1火车（Rodalies de Catalunya）到Blanes站（约1.5小时）。火车全天频繁运行。车票可直接在车站购买。从Blanes站乘出租车约15分钟即可到达场地。<br><a href=\"https://rodalies.gencat.cat/en/horaris/\" target=\"_blank\">查看火车时刻表 →</a>",
                 checkTrain: "查看火车时刻表 →",
-                byCar: "<strong>开车：</strong>从巴塞罗那到场地需要1小时车程。走AP-7或C-32高速公路前往Girona，然后在Blanes出口。场地附近有停车场。<br><a href=\"https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden\" target=\"_blank\">获取路线 →</a>",
+                byCar: "<strong>开车：</strong>从巴塞罗那到场地需要1小时车程。走AP-7或C-32高速公路前往Girona，然后在Blanes出口。入口附近停车免费；蓝区也免费。<br><a href=\"https://www.google.com/maps/dir/Barcelona+Airport+(BCN)/Marimurtra+Botanical+Garden\" target=\"_blank\">获取路线 →</a>",
+                entranceNote: "<strong>请从下方地图上标出的活动专用入口进入。请勿使用正门。</strong>",
                 getDirections: "获取路线 →"
             },
             rsvp: {
@@ -2955,6 +3030,11 @@
                 foodOptionAllergies: "⚠️ 过敏 - 请在字段中注明",
                 foodOptionOthers: "📝 其他 - 请在字段中注明",
                 foodNote: "点击上方选项或在字段中输入您的具体要求。您可以查看<a href=\"#\" data-toggle=\"modal\" data-target=\"#menu-modal\" onclick=\"$('.food-requirements-menu').hide();\" style=\"color: #d4af37; text-decoration: underline; cursor: pointer;\">菜单</a>了解详情。",
+                menuChoice: "主菜（您）",
+                menuChoicePartner: "主菜（伴侣）",
+                fish: "鱼",
+                pork: "猪肉",
+                viewMenu: "查看完整菜单",
                 accommodation: "住宿？（可选）",
                 accommodationBarcelona: "巴塞罗那市区",
                 accommodationNearVenue: "场地附近",
@@ -2981,16 +3061,15 @@
                 intro: "我们希望您感到舒适、快乐，做自己——无论这对您意味着什么。没有严格的着装要求，只要做自己，准备好与我们庆祝 ❤️",
                 ladies: "<strong>女士</strong><br>请避免白色、中国红（新娘的颜色）和黑色。<br>如果您想搭配<a href=\"img/colour.png\" target=\"_blank\" style=\"color: #d4af37; text-decoration: underline;\">婚礼主题颜色</a>（并在照片中看起来很棒），我们选择<strong>温暖、中性的柔和色调</strong>。",
                 gentlemen: "<strong>男士</strong><br>商务休闲到半正式——任何让您感觉良好和舒适的穿着都很完美。",
-                goodToKnow: "<strong>温馨提示</strong><br>仪式和晚餐将在海边户外举行，所以晚上可能会有点微风——带一件轻便的外套或披肩以防万一。<br>派对将在室内举行，所以一旦开始跳舞，您可以放下外套，尽情享受 💃🕺"
+                goodToKnow: "<strong>温馨提示</strong><br>五月夜间会凉，带件薄外套即可。"
             },
             menu: {
                 title: "菜单",
-                appetizer: "<strong>开胃菜</strong><br>地中海小食",
+                appetizer: "<strong>开胃菜</strong><br>手工扁面包配 escalivada（加泰罗尼亚烤蔬菜）与新鲜奶酪慕斯<br>曼切戈奶酪塔帕<br>雪利醋汁章鱼卷<br>柑橘腌青口<br>苦艾酒酱海鲜菠萝<br>西葫芦意式卷配蜜饯蘑菇<br>鸡肉炸丸子<br>鳕鱼炸饼<br>安达卢西亚式炸鱿鱼<br>罗马斯科酱大虾串<br>蜘蛛蟹肉卷配蟹黄慕斯琳<br>渔民「Art」风格糯米饭",
                 mainCourse: "<strong>主菜</strong>（选择一种）",
                 sea: "<strong style=\"color: #0066cc;\"><i class=\"fa fa-tint\"></i> 海洋...</strong><br>酥脆海鲜慕斯配鳕鱼片。",
                 or: "<strong>- 或 -</strong>",
                 mountain: "<strong style=\"color: #8B4513;\"><i class=\"fa fa-tree\"></i> 山地...</strong><br>柔嫩的伊比利亚猪肉配&ldquo;赤霞珠&rdquo;，配奶油松露土豆、葡萄干和松子。",
-                note: "* 可更换为炖小牛肉",
                 dessert: "<strong>甜点</strong><br>杏仁牛轧糖慕斯配巧克力杯"
             },
             city: {
@@ -3217,6 +3296,13 @@
             $menu.toggle();
         });
         
+        // Menu info (view full menu) toggle
+        $('.menu-info-icon').on('click', function(e) {
+            e.stopPropagation();
+            var $menu = $('.menu-info-menu');
+            $menu.toggle();
+        });
+        
         // Accommodation info menu toggle
         $('.accommodation-info-icon').on('click', function(e) {
             e.stopPropagation();
@@ -3231,6 +3317,9 @@
             }
             if (!$(e.target).closest('.partner-info-icon, .partner-info-menu').length) {
                 $('.partner-info-menu').hide();
+            }
+            if (!$(e.target).closest('.menu-info-icon, .menu-info-menu').length) {
+                $('.menu-info-menu').hide();
             }
             if (!$(e.target).closest('.accommodation-info-icon, .accommodation-info-menu').length) {
                 $('.accommodation-info-menu').hide();

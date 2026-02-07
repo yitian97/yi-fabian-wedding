@@ -309,8 +309,8 @@ function showCeremonyMap() {
             return;
         }
         
-        // Ceremony venue: Marimurtra Botanical Garden coordinates
-        var location = {lat: 41.67685518645192, lng: 2.8023133370418227};
+        // Ceremony venue: Marimurtra entrance (41°40'36.7"N 2°48'17.2"E)
+        var location = {lat: 41.676861, lng: 2.804778};
         
         if (currentMap) {
             // Update existing map
